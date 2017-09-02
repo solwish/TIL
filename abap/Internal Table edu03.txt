@@ -1,0 +1,42 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05_170901
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05_170901.
+
+*SFLIGHT 테이블에서 CARRID가 SCARR의 CARRID에 있는 조건을 만족하는 레코드 출력해봐
+
+DATA :gt_sflight LIKE TABLE OF SFLIGHT,
+      gs_sflight LIKE SFLIGHT,
+      gt_scarr LIKE TABLE OF SCARR,
+      gs_scarr LIKE SCARR.
+
+CLEAR : gt_sflight, gs_sflight, gt_scarr, gs_scarr.
+
+SELECT carrid connid fldate price currency PLANETYPE
+  INTO CORRESPONDING FIELDS OF TABLE gt_sflight
+  FROM SFLIGHT.
+
+SELECT carrid carrname CURRCODE url
+  INTO CORRESPONDING FIELDS OF TABLE gt_scarr
+  FROM SCARR.
+
+LOOP AT gt_scarr INTO gs_scarr.
+
+  CLEAR gs_sflight.
+
+  READ TABLE gt_sflight INTO gs_sflight
+  WITH KEY CARRID = gs_scarr-CARRID.
+
+  WRITE : gs_sflight-CARRID.
+  WRITE : gs_sflight-CONNID.
+  WRITE : gs_sflight-FLDATE.
+  WRITE : gs_sflight-PRICE.
+  WRITE : gs_sflight-CURRENCY.
+  WRITE : gs_sflight-PLANETYPE, /,/.
+
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

@@ -1,0 +1,37 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05_170901
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05_170901.
+
+*GLPCA 테이블에서 RLDNR = '8A' 이고 RRCTY = '0' 이고 RVERS = '000' 인 데이터를 조회하고
+*조회할 필드는 RLDNR RRCTY RVERS RYEAR RTCUR DOCNR DOCLN
+*
+*GLPCA ITAB을 LOOP 돌리면서
+*ITAB의 RTCUR 필드의 값을 모두 'KRW'로
+*수정하라.
+*WRITE로 출력하지 않는다.
+
+DATA :gs_glpca LIKE GLPCA,
+      gt_glpca LIKE TABLE OF GLPCA.
+
+SELECT RLDNR RRCTY RVERS RYEAR RTCUR DOCNR DOCLN
+  INTO CORRESPONDING FIELDS OF TABLE gt_glpca
+  FROM GLPCA
+  WHERE RLDNR = '8A'
+    AND RRCTY = '0'
+    AND RVERS = '000'.
+
+LOOP AT gt_glpca INTO gs_glpca.
+
+  gs_glpca-RTCUR = 'KRW'.
+  MODIFY gt_glpca FROM gs_glpca INDEX SY-TABIX.
+
+
+ENDLOOP.
+
+BREAK-POINT.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

@@ -1,0 +1,36 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05_170901
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05_170901.
+
+*COBK 테이블에서 VRGNG = 'COIN' 인 데이터를
+*SELECT 한다. SELECT 필드는
+*KOKRS BELNR GJAHR VERSN VRGNG
+*
+*COBK ITAB을 LOOP 돌리면서
+*COBK ITAB 의 Work Area를 CLEAR 시킨 후
+*VRGNG = 'AT01' 로 COBK ITAB 을 변경하라
+*
+*COBK ITAB은 VRGNG만 변경 되어야 함.
+
+DATA : gt_cobk LIKE TABLE OF COBK,
+       gs_cobk LIKE COBK.
+
+SELECT KOKRS BELNR GJAHR VERSN VRGNG
+  INTO CORRESPONDING FIELDS OF TABLE gt_cobk
+  FROM COBK.
+
+LOOP AT gt_cobk INTO gs_cobk.
+  CLEAR : gs_cobk.
+  gs_cobk-VRGNG = 'AT01'.
+
+  MODIFY gt_cobk FROM gs_cobk INDEX SY-TABIX TRANSPORTING VRGNG.
+
+ENDLOOP.
+
+BREAK-POINT.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

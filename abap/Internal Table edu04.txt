@@ -1,0 +1,55 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05_170901
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05_170901.
+
+*SFLIGHT 테이블에서 CARRID = 'AA' 인 데이터를 조회
+*조회할 필드 CARRID CONNID FLDATE PRICE CURRENCY PLANETYPE
+*
+*SBOOK 테이블에서는 모든 데이터를 조회.
+*조회할 필드 CARRID CONNID FLDATE BOOKID CUSTOMID CUSTTYPE SMOKER LUGGWEIGHT WUNIT
+*
+*SFLIGHT 정보가지고 있는 ITAB을 LOOP 돌리면서 LOOP 내부에서 SBOOK 정보가 있는 ITAB을 읽는데,
+* SBOOK ITAB 읽는 조건은 CARRID, CONNID, FLADATE가 같은 것을 읽은 후
+*WRITE 로 SBOOK 내용을 출력한다.
+
+
+DATA :gs_sflight LIKE SFLIGHT,
+      gt_sflight LIKE TABLE OF SFLIGHT,
+      gs_sbook LIKE SBOOK,
+      gt_sbook LIKE TABLE OF SBOOK.
+
+SELECT CARRID CONNID FLDATE PRICE CURRENCY PLANETYPE
+  INTO CORRESPONDING FIELDS OF TABLE gt_sflight
+  FROM SFLIGHT
+  WHERE CARRID = 'AA'.
+
+SELECT CARRID CONNID FLDATE BOOKID CUSTOMID CUSTTYPE SMOKER LUGGWEIGHT WUNIT
+  INTO CORRESPONDING FIELDS OF TABLE gt_sbook
+  FROM SBOOK.
+
+LOOP AT gt_sflight INTO gs_sflight.
+
+  CLEAR : gs_sbook.
+
+  READ TABLE gt_sbook INTO gs_sbook
+  WITH KEY CARRID = gs_sflight-CARRID
+                 CONNID = gs_sflight-CONNID
+                 FLDATE = gs_sflight-FLDATE.
+
+  WRITE : gs_sbook-CARRID.
+  WRITE : gs_sbook-CONNID.
+  WRITE : gs_sbook-FLDATE.
+  WRITE : gs_sbook-BOOKID.
+  WRITE : gs_sbook-CUSTOMID.
+  WRITE : gs_sbook-CUSTTYPE.
+  WRITE : gs_sbook-SMOKER.
+  WRITE : gs_sbook-LUGGWEIGHT.
+  WRITE : gs_sbook-WUNIT, /,/.
+
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

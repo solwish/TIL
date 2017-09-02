@@ -1,0 +1,42 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05_170901
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05_170901.
+
+
+
+*  SFLIGHT 테이블에서 CARRID CONNID FLDATE PRICE CURRENCY PLANETYPE
+*  필드를 가져오고 CARRID = 'AA' 이고 CONNID = '17' 인 데이터를 가지고 오고 난 후 마지막엔
+*  CARRID = 'AZ' 인 데이터를 붙여라.
+
+DATA :gt_data LIKE TABLE OF SFLIGHT,
+      gs_data LIKE SFLIGHT.
+
+CLEAR : gs_data, gt_data.
+
+SELECT CARRID CONNID FLDATE PRICE CURRENCY PLANETYPE
+  INTO CORRESPONDING FIELDS OF TABLE gt_data
+  FROM SFLIGHT
+  WHERE CARRID = 'AA'
+    AND CONNID = '17'.
+
+SELECT CARRID CONNID FLDATE PRICE CURRENCY PLANETYPE
+  FROM SFLIGHT
+  APPENDING CORRESPONDING FIELDS OF TABLE gt_data
+  WHERE CARRID = 'AZ'.
+
+LOOP AT gt_data INTO gs_data.
+
+  WRITE : gs_data-CARRID.
+  WRITE : gs_data-CONNID.
+  WRITE : gs_data-FLDATE.
+  WRITE : gs_data-PRICE.
+  WRITE : gs_data-CURRENCY.
+  WRITE : gs_data-PLANETYPE,/,/.
+
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
