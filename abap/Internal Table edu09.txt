@@ -1,0 +1,45 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+*MARA 테이블에서
+*MATNR MTART MATKL MEINS SELECT 하고
+*
+*MAKT 테이블에서 SPRAS = '3' 인 데이터를 조회.
+*MATNR SPRAS MAKTX MAKTG 필드를 SELECT한다.
+*
+*MARA ITAB을 LOOP 돌리면서 MAKT ITAB의 MATNR필드와 비교해서
+*
+*출력할 필드는 MARA-MATNR, MARA-MTART, MAKT-MAKTX를 WRITE하라.
+
+DATA : gt_mara LIKE TABLE OF mara WITH HEADER LINE,
+       gt_makt LIKE TABLE OF makt WITH HEADER LINE.
+
+CLEAR : gt_mara, gt_mara[], gt_makt, gt_makt[].
+
+SELECT MATNR MTART MATKL MEINS
+  into CORRESPONDING FIELDS OF TABLE gt_mara
+  FROM mara.
+
+SELECT MATNR SPRAS MAKTX MAKTG
+  INTO CORRESPONDING FIELDS OF TABLE gt_makt
+  FROM makt
+  WHERE SPRAS = '3'.
+
+LOOP AT gt_mara.
+
+  READ TABLE gt_makt WITH KEY matnr = gt_mara-matnr.
+  IF sy-subrc EQ 0.
+    WRITE : gt_mara-matnr.
+    WRITE : gt_mara-mtart.
+    WRITE : gt_makt-maktx,/,/.
+
+  ENDIF.
+
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

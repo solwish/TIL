@@ -1,0 +1,48 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+DATA : BEGIN OF gt_data OCCURS 0,
+          matnr LIKE mara-matnr,
+          mtart LIKE mara-mtart,
+          matkl LIKE mara-matkl,
+          meins LIKE mara-meins,
+          maktx LIKE makt-maktx,
+       END OF gt_data.
+
+ DATA : gt_mara TYPE TABLE OF mara WITH HEADER LINE,
+        gt_makt TYPE TABLE OF makt WITH HEADER LINE.
+
+ CLEAR : gt_data, gt_data[], gt_mara, gt_mara[],
+         gt_makt, gt_makt[].
+
+SELECT matnr mtart matkl meins
+  INTO CORRESPONDING FIELDS OF TABLE gt_mara
+  FROM mara.
+
+SELECT matnr spras maktx maktg
+  INTO CORRESPONDING FIELDS OF TABLE gt_makt
+  FROM makt
+  WHERE SPRAS = '3'.
+
+LOOP AT gt_mara.
+  READ TABLE gt_makt WITH KEY matnr = gt_mara-matnr.
+  IF sy-subrc EQ 0.
+    gt_data-maktx = gt_makt-maktx.
+  ENDIF.
+
+  gt_data-MATNR = gt_mara-MATNR.
+  gt_data-mtart = gt_mara-mtart.
+  gt_data-matkl = gt_mara-matkl.
+  gt_data-meins = gt_mara-meins.
+
+  APPEND gt_data.
+  CLEAR gt_data.
+
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

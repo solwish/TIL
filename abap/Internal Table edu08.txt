@@ -1,0 +1,35 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+*SFLIGHT 에서
+*CARRID CONNID FLDATE PRICE CURRENCY PLANETYPE 필드를 조회하고
+*ITAB의 CURRENCY 필드를 모두 'KRW'로 변경후 WRITE로 출력하러
+*헤더가 있는 ITAB을 사용할 것.
+
+DATA : gt_data TYPE TABLE OF sflight WITH HEADER LINE.
+CLEAR : gt_data, gt_data[].
+
+SELECT CARRID CONNID FLDATE PRICE CURRENCY PLANETYPE
+  INTO CORRESPONDING FIELDS OF TABLE gt_data
+  FROM sflight.
+
+LOOP AT gt_data.
+
+  gt_data-currency = 'KRW'.
+  MODIFY gt_data INDEX sy-tabix TRANSPORTING currency.
+
+  WRITE : gt_data-CARRID.
+  WRITE : gt_data-CONNID.
+  WRITE : gt_data-FLDATE.
+  WRITE : gt_data-PRICE.
+  WRITE : gt_data-CURRENCY.
+  WRITE : gt_data-PLANETYPE ,/,/.
+
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

@@ -1,0 +1,51 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+DATA: BEGIN OF gt_data OCCURS 0,
+      mblnr LIKE mkpf-mblnr,
+      zeile LIKE mseg-zeile,
+      mjahr LIKE mkpf-mjahr,
+      vgart LIKE mkpf-vgart,
+      blart LIKE mkpf-blart,
+      bwart LIKE mseg-bwart,
+      matnr LIKE mseg-matnr,
+      werks LIKE mseg-werks,
+      lgort LIKE mseg-lgort,
+      END OF gt_data.
+
+DATA: gt_mkpf LIKE TABLE OF mkpf WITH HEADER LINE,
+      gt_mseg LIKE TABLE OF mseg WITH HEADER LINE.
+
+CLEAR : gt_data, gt_data[], gt_mkpf, gt_mkpf[],
+        gt_mseg, gt_mseg[].
+
+SELECT MBLNR MJAHR VGART BLART
+  INTO CORRESPONDING FIELDS OF TABLE gt_mkpf
+  FROM mkpf
+  WHERE mjahr = '2016'.
+
+SELECT MBLNR ZEILE BWART MATNR WERKS LGORT
+  INTO CORRESPONDING FIELDS OF TABLE gt_mseg
+  FROM mseg
+  WHERE mjahr = '2016'
+    AND zeile = '1'.
+
+LOOP AT gt_mkpf.
+  READ TABLE gt_mseg WITH KEY mblnr = gt_mkpf-mblnr.
+  IF sy-subrc EQ 0.
+
+    MOVE-CORRESPONDING gt_mkpf TO gt_data.
+    MOVE-CORRESPONDING gt_mseg TO gt_data.
+
+    APPEND gt_data.
+    CLEAR: gt_data.
+  ENDIF.
+
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
