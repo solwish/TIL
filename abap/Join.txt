@@ -1,0 +1,32 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+DATA : BEGIN OF gt_data OCCURS 0,
+        carrid LIKE sflight-carrid,
+        connid LIKE sflight-connid,
+        fldate LIKE sflight-fldate,
+        price  LIKE sflight-price,
+        bookid LIKE sbook-bookid,
+        customid LIKE sbook-customid,
+        custtype LIKE sbook-custtype,
+  END OF gt_data.
+
+CLEAR : gt_data, gt_data[].
+
+SELECT a~carrid a~connid a~fldate a~price b~bookid
+       b~customid b~custtype
+  INTO CORRESPONDING FIELDS OF TABLE gt_data
+  FROM sflight AS a
+INNER JOIN sbook AS b
+    ON a~carrid = b~carrid
+   AND a~connid = b~connid
+   AND a~fldate = b~fldate
+ WHERE a~carrid = 'AA'
+  ORDER BY a~fldate.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
