@@ -1,0 +1,27 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+DATA : BEGIN OF gt_data OCCURS 0.
+       INCLUDE STRUCTURE sflight.
+DATA : END OF gt_data.
+
+CLEAR : gt_data, gt_data[].
+
+SELECT carrid connid fldate price
+  INTO CORRESPONDING FIELDS OF TABLE gt_data
+  FROM sflight
+  ORDER BY fldate.
+
+SORT gt_data BY carrid connid.
+READ TABLE gt_data WITH KEY carrid = 'AA'
+                            connid = '64'
+                            BINARY SEARCH.
+
+WRITE sy-subrc.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
