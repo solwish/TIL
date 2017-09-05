@@ -1,0 +1,35 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+DATA : gt_sflight LIKE TABLE OF sflight WITH HEADER LINE.
+
+DATA : gv_cnt_aa TYPE i,
+       gv_cnt_az TYPE i,
+       gv_cnt_etc TYPE i.
+
+CLEAR : gt_sflight, gt_sflight[], gv_cnt_aa, gv_cnt_az, gv_cnt_etc.
+
+SELECT carrid connid planetype price
+  INTO CORRESPONDING FIELDS OF TABLE gt_sflight
+  FROM sflight.
+
+LOOP AT gt_sflight.
+  CASE gt_sflight-carrid.
+    WHEN 'AA'.
+      gv_cnt_aa = gv_cnt_aa + 1.
+    WHEN 'AZ'.
+      gv_cnt_az = gv_cnt_az + 1.
+    WHEN OTHERS.
+      gv_cnt_etc = gv_cnt_etc + 1.
+  ENDCASE.
+
+ENDLOOP.
+
+WRITE : gv_cnt_aa, gv_cnt_az, gv_cnt_etc.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

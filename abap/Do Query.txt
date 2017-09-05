@@ -1,0 +1,32 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+DATA : gt_sflight LIKE TABLE OF sflight WITH HEADER LINE.
+
+DATA : gv_cnt TYPE i.
+
+CLEAR : gt_sflight, gt_sflight[], gv_cnt.
+
+SELECT carrid connid planetype price
+  INTO CORRESPONDING FIELDS OF TABLE gt_sflight
+  FROM sflight.
+
+gv_cnt = LINES( gt_sflight ).
+
+DO gv_cnt TIMES.
+  READ TABLE gt_sflight INDEX sy-index.
+  IF sy-subrc EQ 0.
+    WRITE : gt_sflight-carrid.
+    WRITE : gt_sflight-connid.
+    WRITE : gt_sflight-planetype.
+    WRITE : gt_sflight-price,/.
+  ENDIF.
+
+ENDDO.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

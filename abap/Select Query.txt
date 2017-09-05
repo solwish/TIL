@@ -1,0 +1,24 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+DATA : BEGIN OF gt_data OCCURS 0,
+          carrid LIKE sflight-carrid,
+          sum TYPE i,
+          cnt TYPE i,
+       END OF gt_data.
+
+CLEAR : gt_data, gt_data[].
+
+SELECT carrid SUM( price ) AS sum COUNT(*) AS cnt
+  INTO CORRESPONDING FIELDS OF TABLE gt_data
+  FROM sflight
+  GROUP BY carrid.
+
+BREAK-POINT.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

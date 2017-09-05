@@ -1,0 +1,47 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+
+DATA : gt_mkpf LIKE TABLE OF mkpf WITH HEADER LINE,
+       gt_mseg LIKE TABLE OF mseg WITH HEADER LINE.
+
+CLEAR : gt_mkpf, gt_mkpf[], gt_mseg, gt_mseg[].
+
+SELECT mblnr vgart blart
+  INTO CORRESPONDING FIELDS OF TABLE gt_mkpf
+  FROM mkpf
+  WHERE mjahr = '2016'.
+
+SELECT mblnr zeile bwart matnr werks
+  INTO CORRESPONDING FIELDS OF TABLE gt_mseg
+  FROM mseg
+  WHERE mjahr = '2016'.
+
+SORT gt_mkpf BY mblnr.
+SORT gt_mseg BY mblnr.
+
+LOOP AT gt_mkpf.
+
+  READ TABLE gt_mseg WITH KEY mblnr = gt_mkpf-mblnr
+                              BINARY SEARCH.
+  IF sy-subrc NE 0.
+    EXIT.
+  ENDIF.
+
+  LOOP AT gt_mseg FROM sy-tabix.
+
+    IF gt_mkpf-mblnr <> gt_mseg-mblnr.
+      EXIT.
+    ENDIF.
+
+    WRITE : gt_mseg-mblnr, gt_mseg-zeile, gt_mseg-bwart, gt_mseg-matnr,/.
+
+  ENDLOOP.
+
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

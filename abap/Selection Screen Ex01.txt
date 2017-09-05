@@ -1,0 +1,38 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05.
+TABLES : sflight.
+
+SELECTION-SCREEN BEGIN OF BLOCK bl1 WITH FRAME TITLE text-001.
+  SELECT-OPTIONS : s_carrid FOR sflight-carrid OBLIGATORY,
+                   s_connid FOR sflight-connid NO-EXTENSION,
+                   s_fldate FOR sflight-fldate NO INTERVALS,
+                   s_curren FOR sflight-currency DEFAULT 'EUR'.
+SELECTION-SCREEN END OF BLOCK bl1.
+
+DATA : gt_data LIKE TABLE OF sflight WITH HEADER LINE.
+CLEAR : gt_data, gt_data[].
+
+SELECT carrid connid fldate price currency
+  INTO CORRESPONDING FIELDS OF TABLE gt_data
+  FROM sflight
+  WHERE carrid IN s_carrid
+    AND connid EQ '17'.
+
+*Text elements
+*----------------------------------------------------------
+* 001 검색 조건
+
+
+*Selection texts
+*----------------------------------------------------------
+* S_CARRID D       .
+* S_CONNID D       .
+* S_CURREN D       .
+* S_FLDATE D       .
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
