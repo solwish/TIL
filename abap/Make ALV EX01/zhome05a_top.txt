@@ -1,0 +1,17 @@
+*&---------------------------------------------------------------------*
+*& Include ZHOME05A_TOP                                      Report ZHOME05A
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHOME05A.
+
+TABLES : sflight.
+*BREAK-POINT.
+DATA : gt_sflight TYPE TABLE OF sflight WITH HEADER LINE.
+
+DATA : go_container TYPE REF TO cl_gui_custom_container,
+       go_grid      TYPE REF TO cl_gui_alv_grid,
+       go_fcat      TYPE REF TO lvc_s_fcat,
+       gt_fcat      TYPE REF TO lvc_t_fcat.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

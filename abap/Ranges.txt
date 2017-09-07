@@ -1,0 +1,77 @@
+*&---------------------------------------------------------------------*
+*& Report ZHOME05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT zhome05.
+TABLES : sflight, scarr.
+
+SELECTION-SCREEN BEGIN OF BLOCK bl1 WITH FRAME TITLE TEXT-001.
+SELECT-OPTIONS : s_carrid FOR scarr-carrid OBLIGATORY,
+                 s_connid FOR sflight-connid NO INTERVALS.
+PARAMETERS :     p_bookid TYPE sbook-bookid.
+SELECTION-SCREEN END OF BLOCK bl1.
+
+DATA : BEGIN OF gt_data OCCURS 0,
+         carrid   LIKE scarr-carrid,
+         connid   LIKE sflight-carrid,
+         fldate   LIKE sflight-fldate,
+         bookid   LIKE sbook-bookid,
+         price    LIKE sflight-price,
+         currency LIKE sflight-currency,
+         customid LIKE sbook-customid,
+         custtype LIKE sbook-custtype,
+         invoice  LIKE sbook-invoice,
+       END OF gt_data.
+
+RANGES : gr_bookid FOR sbook-bookid.
+
+CLEAR : gr_bookid, gr_bookid[], gt_data, gt_data[].
+
+IF p_bookid IS NOT INITIAL.
+
+  gr_bookid-sign = 'I'.
+  gr_bookid-option = 'EQ'.
+  gr_bookid-low = p_bookid.
+
+  APPEND gr_bookid.
+  CLEAR gr_bookid.
+
+ENDIF.
+
+SELECT a~carrid b~connid b~fldate c~bookid b~price b~currency c~customid c~custtype c~invoice
+  INTO CORRESPONDING FIELDS OF TABLE gt_data
+  FROM scarr AS a
+  INNER JOIN sflight AS b
+  ON a~carrid EQ b~carrid
+  INNER JOIN sbook AS c
+  ON b~carrid = c~carrid
+  AND b~connid = c~connid
+  AND b~fldate = c~fldate
+  WHERE a~carrid IN s_carrid
+  AND b~connid IN s_connid
+  AND c~bookid IN gr_bookid.
+
+IF sy-subrc EQ 0.
+  LOOP AT gt_data.
+
+    WRITE : gt_data-carrid, gt_data-connid, gt_data-fldate, gt_data-bookid, gt_data-price,
+            gt_data-currency, gt_data-customid, gt_data-custtype, gt_data-invoice,/.
+
+  ENDLOOP.
+ENDIF.
+
+*Text elements
+*----------------------------------------------------------
+* 001 검색 조건
+
+
+*Selection texts
+*----------------------------------------------------------
+* S_CARRID D       .
+* S_CONNID D       .
+* S_CURREN D       .
+* S_FLDATE D       .
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

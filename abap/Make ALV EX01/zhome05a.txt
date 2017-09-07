@@ -1,0 +1,38 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHOME05A
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE ZHOME05A_TOP                            .    " global Data
+
+ INCLUDE ZHOME05A_scr                            .  " Selection Screen
+ INCLUDE ZHOME05A_O01                            .  " PBO-Modules
+ INCLUDE ZHOME05A_I01                            .  " PAI-Modules
+ INCLUDE ZHOME05A_F01                            .  " FORM-Routines
+
+ START-OF-SELECTION.
+ PERFORM get_data.
+
+ CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> 캔슬하고 백버튼 입력했던
+* 0101 --> Sflight Home
+
+*Text elements
+*----------------------------------------------------------
+* T01 검색 조건
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: Hard coded
+*   Data not found
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

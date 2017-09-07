@@ -1,0 +1,71 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZHOME05A_O01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  DISPLAY_SCREEN  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE display_screen OUTPUT.
+   CREATE OBJECT go_container
+    EXPORTING
+      container_name = 'GO_CONTAINER'.
+
+  CREATE OBJECT go_grid
+    EXPORTING
+      i_parent = go_container.
+
+  CALL METHOD go_grid->set_table_for_first_display
+    EXPORTING
+*      i_buffer_active               =
+*      i_bypassing_buffer            =
+*      i_consistency_check           =
+      i_structure_name              = 'SFLIGHT'
+*      is_variant                    =
+*      i_save                        =
+*      i_default                     = 'X'
+*      is_layout                     =
+*      is_print                      =
+*      it_special_groups             =
+*      it_toolbar_excluding          =
+*      it_hyperlink                  =
+*      it_alv_graphics               =
+*      it_except_qinfo               =
+*      ir_salv_adapter               =
+    CHANGING
+      it_outtab                     = gt_sflight[]
+*      it_fieldcatalog               =
+*      it_sort                       =
+*      it_filter                     =
+*    EXCEPTIONS
+*      invalid_parameter_combination = 1
+*      program_error                 = 2
+*      too_many_lines                = 3
+*      others                        = 4
+          .
+  IF sy-subrc <> 0.
+*   Implement suitable error handling here
+  ENDIF.
+ENDMODULE.
+
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0101  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0101 OUTPUT.
+  SET PF-STATUS '0101'.
+  SET TITLEBAR '0101'.
+ENDMODULE.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
