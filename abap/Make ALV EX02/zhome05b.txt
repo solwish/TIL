@@ -1,0 +1,39 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHOME05B
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE ZHOME05B_TOP                            .    " global Data
+
+ INCLUDE ZHOME05B_scr                            .  " selection screen
+ INCLUDE ZHOME05B_O01                            .  " PBO-Modules
+ INCLUDE ZHOME05B_I01                            .  " PAI-Modules
+ INCLUDE ZHOME05B_F01                            .  " FORM-Routines
+
+ START-OF-SELECTION.
+ PERFORM get_data.
+
+ CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> Day 8's Last Ex
+
+
+*Selection texts
+*----------------------------------------------------------
+* P_MJAHR D       .
+* S_MBLNR D       .
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: Hard coded
+*   Data not found
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

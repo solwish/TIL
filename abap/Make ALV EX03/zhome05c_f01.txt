@@ -1,0 +1,104 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZHOME05C_F01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM get_data .
+
+  SELECT a~ebeln b~ebelp a~bukrs a~bsart b~matnr c~maktx
+         b~matkl b~menge b~meins b~netwr a~waers
+    INTO CORRESPONDING FIELDS OF TABLE gt_data
+    FROM ekko AS a
+    INNER JOIN ekpo AS b
+    ON a~ebeln EQ b~ebeln
+    AND a~bukrs EQ b~bukrs
+    INNER JOIN makt AS c
+    ON b~matnr EQ c~matnr
+    AND c~spras EQ 'EN'
+    WHERE a~bukrs EQ p_bukrs
+    AND a~ebeln IN s_ebeln.
+
+  IF sy-subrc NE 0.
+
+    MESSAGE 'Data not found' TYPE 'S'.
+    LEAVE LIST-PROCESSING.
+
+  ENDIF.
+
+  DATA: lv_index LIKE sy-tabix.
+
+  LOOP AT gt_data.
+
+    lv_index = sy-tabix.
+    gt_data-waers = 'KRW'.
+
+    IF sy-tabix <= 10.
+*      gt_data-color = 'C610'.
+      gs_scol-fname = 'MATNR'.
+      gs_scol-color-col = 6.
+      gs_scol-color-int = 1.
+      gs_scol-color-inv = 0.
+
+      APPEND gs_scol TO gt_data-cell_color.
+      CLEAR gs_scol.
+      gs_scol-fname = 'MENGE'.
+      gs_scol-color-col = 5.
+      gs_scol-color-int = 1.
+      gs_scol-color-inv = 0.
+
+      APPEND gs_scol TO gt_data-cell_color.
+
+
+    ENDIF.
+
+    MODIFY gt_data INDEX lv_index TRANSPORTING waers cell_color color.
+    CLEAR : gt_data.
+
+  ENDLOOP.
+
+
+
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  SET_FCAT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM set_fcat USING p_key p_field p_text p_ref_table p_ref_field.
+
+  gs_fcat-key       = p_key.
+  gs_fcat-fieldname = p_field.
+  gs_fcat-coltext   = p_text.
+  gs_fcat-ref_table = p_ref_table.
+  gs_fcat-ref_field = p_ref_field.
+
+  CASE p_field.
+    WHEN 'MENGE'.
+      gs_fcat-qfieldname = 'MEINS'.
+    WHEN 'NETWR'.
+      gs_fcat-cfieldname = 'WAERS'.
+      gs_fcat-do_sum = 'X'.
+    WHEN 'MAKTX'.
+*      gs_fcat-emphasize = 'C610'.
+  ENDCASE.
+
+
+
+  APPEND gs_fcat TO gt_fcat.
+  CLEAR gs_fcat.
+
+
+ENDFORM.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

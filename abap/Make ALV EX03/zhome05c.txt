@@ -1,0 +1,39 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHOME05C
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE ZHOME05C_TOP                            .    " global Data
+
+ INCLUDE ZHOME05C_scr                            .  " selection screen
+ INCLUDE ZHOME05C_O01                            .  " PBO-Modules
+ INCLUDE ZHOME05C_I01                            .  " PAI-Modules
+ INCLUDE ZHOME05C_F01                            .  " FORM-Routines
+
+ START-OF-SELECTION.
+ PERFORM get_data.
+
+ CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> 구매문서조회
+
+
+*Selection texts
+*----------------------------------------------------------
+* P_BUKRS D       .
+* S_EBELN D       .
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: Hard coded
+*   Data not found
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

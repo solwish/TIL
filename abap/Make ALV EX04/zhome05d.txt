@@ -1,0 +1,39 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHOME05D
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE ZHOME05D_TOP                            .    " global Data
+
+ INCLUDE ZHOME05D_scr                            .  " Selection Screen
+ INCLUDE ZHOME05D_O01                            .  " PBO-Modules
+ INCLUDE ZHOME05D_I01                            .  " PAI-Modules
+ INCLUDE ZHOME05D_F01                            .  " FORM-Routines
+
+START-OF-SELECTION.
+ PERFORM get_data.
+
+CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> 자제예약 현황 조회
+
+
+*Selection texts
+*----------------------------------------------------------
+* P_RSART D       .
+* S_RSNUM D       .
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: Hard coded
+*   Data not found
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

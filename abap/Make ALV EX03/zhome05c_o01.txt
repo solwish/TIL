@@ -1,0 +1,99 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZHOME05C_O01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  DISPLAY_SCREEN  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE display_screen OUTPUT.
+
+  CREATE OBJECT go_container
+    EXPORTING
+
+      container_name              = 'GO_CONTAINER'.
+  CREATE OBJECT go_grid
+    EXPORTING
+      i_parent          = go_container.
+
+  CALL METHOD go_grid->set_table_for_first_display
+    EXPORTING
+*      i_buffer_active               =
+*      i_bypassing_buffer            =
+*      i_consistency_check           =
+*      i_structure_name              =
+      is_variant                    = gs_variant
+      i_save                        = 'X'
+*      i_default                     = 'X'
+      is_layout                     = gs_layout
+*      is_print                      =
+*      it_special_groups             =
+*      it_toolbar_excluding          =
+*      it_hyperlink                  =
+*      it_alv_graphics               =
+*      it_except_qinfo               =
+*      ir_salv_adapter               =
+    CHANGING
+      it_outtab                     = gt_data[]
+      it_fieldcatalog               = gt_fcat
+*      it_sort                       =
+*      it_filter                     =
+*    EXCEPTIONS
+*      invalid_parameter_combination = 1
+*      program_error                 = 2
+*      too_many_lines                = 3
+*      others                        = 4
+          .
+  IF sy-subrc <> 0.
+*   Implement suitable error handling here
+  ENDIF.
+
+
+
+
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  SET_FIELD  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_field OUTPUT.
+
+  CLEAR : gt_fcat, gs_fcat.
+  PERFORM set_fcat USING :    'X'    'EBELN'   '구매문서'         'EKKO' 'EBELN',
+                              'X'    'EBELP'   '구매문서 순번'     'EKPO' 'EBELP',
+                              'X'    'BUKRS'   '회사코드'         'EKKO' 'BUKRS',
+                              ' '    'BSART'   '구매문서 유형'     'EKKO' 'BSART',
+                              ' '    'MATNR'   '자재코드'         'EKPO' 'MATNR',
+                              ' '    'MAKTX'   '자재내역'         'MAKT' 'MAKTX',
+                              ' '    'MATKL'   '자재그룹'         'EKPO' 'MATKL',
+                              ' '    'MENGE'   '수량'           'EKPO' 'MENGE',
+                              ' '    'MEINS'   '단위'           'EKPO' 'MEINS',
+                              ' '    'NETWR'   '금액'           'EKPO' 'NETWR',
+                              ' '    'WAERS'   '통화키'          'EKKO' 'WAERS'.
+
+
+
+
+    gs_layout-zebra = 'X'.
+    gs_layout-sel_mode = 'D'.
+    gs_layout-info_fname = 'COLOR'.
+    gs_layout-ctab_fname = 'CELL_COLOR'.
+
+    gs_variant-report = sy-repid.
+
+
+ENDMODULE.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
