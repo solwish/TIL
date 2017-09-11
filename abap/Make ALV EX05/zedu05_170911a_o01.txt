@@ -1,0 +1,67 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170911A_O01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  DISPLAY_SCREEN  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE display_screen OUTPUT.
+  IF go_container IS NOT BOUND.
+    CREATE OBJECT go_container
+      EXPORTING
+        side      = go_container->dock_at_left
+        extension = 2000.
+
+    CREATE OBJECT go_grid
+      EXPORTING
+        i_parent = go_container.
+
+    SET HANDLER : lcl_event_handler=>double_click FOR go_grid.
+
+    CALL METHOD go_grid->set_table_for_first_display
+      EXPORTING
+        is_variant      = gs_variant
+        i_save          = 'X'
+        is_layout       = gs_layout
+      CHANGING
+        it_outtab       = gt_data[]
+        it_fieldcatalog = gt_fcat
+        it_sort         = gt_sort.
+  ELSE.
+    PERFORM refresh_grid.
+  ENDIF.
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  SET_FIELD  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_field OUTPUT.
+  CLEAR : gt_fcat, gs_fcat.
+  PERFORM set_fcat USING : 'X' 'BUKRS'  '회사코드'        'BKPF'   'BUKRS',
+                           'X' 'BELNR'  '회계전표번호'    'BKPF'   'BELNR',
+                           'X' 'GJAHR'  '회계연도'        'BKPF'   'GJAHR',
+                           ' ' 'BLART'  '전표유형'        'BKPF'   'BLART',
+                           ' ' 'BUDAT'  '전기일자'        'BKPF'   'BUDAT',
+                           ' ' 'BKTXT'  '전표내역'        'BKPF'   'BKTXT'.
+
+  gs_layout-zebra = 'X'.
+  gs_layout-sel_mode = 'D'.
+  gs_variant-report = sy-repid.
+  gs_layout-cwidth_opt = 'X'.
+
+ENDMODULE.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
