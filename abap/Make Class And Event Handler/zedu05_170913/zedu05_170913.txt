@@ -1,0 +1,43 @@
+*&---------------------------------------------------------------------*
+*& Report  ZEDU05_170913
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE ZEDU05_170913_TOP                       .    " global Data
+
+ INCLUDE ZEDU05_170913_cls                       .  " Class
+ INCLUDE ZEDU05_170913_scr                       .  " Selection screen
+ INCLUDE ZEDU05_170913_O01                       .  " PBO-Modules
+ INCLUDE ZEDU05_170913_I01                       .  " PAI-Modules
+ INCLUDE ZEDU05_170913_F01                       .  " FORM-Routines
+
+
+START-OF-SELECTION.
+PERFORM get_data.
+CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> 자재전표 조회
+
+
+*Selection texts
+*----------------------------------------------------------
+* P_MJAHR D       .
+* S_MBLNR D       .
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: Hard coded
+*   for what
+*
+* Message class: OO
+*003   &1 &2 does not exist
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

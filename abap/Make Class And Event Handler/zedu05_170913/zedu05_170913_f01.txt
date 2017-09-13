@@ -1,0 +1,105 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170913_F01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM get_data .
+  DATA : lt_data TYPE zt05_mseg_t WITH HEADER LINE.
+
+  CLEAR : gt_data, gt_data[].
+
+  IF go_mseg IS NOT BOUND.
+    CREATE OBJECT go_mseg.
+  ENDIF.
+
+  CALL METHOD go_mseg->get_data
+    EXPORTING
+      e_mjahr = p_mjahr
+      e_mblnr_l = s_mblnr-low
+      e_mblnr_h = s_mblnr-high
+    CHANGING
+      it_list = lt_data[].
+
+  IF lt_data[] IS INITIAL.
+    MESSAGE s003 WITH p_mjahr s_mblnr.
+    LEAVE LIST-PROCESSING.
+  ENDIF.
+
+  LOOP AT lt_data.
+    MOVE-CORRESPONDING lt_data TO gt_data.
+
+    IF gt_data-vgart EQ 'WL'.
+      gt_data-color = 'C610'.
+    ENDIF.
+
+    APPEND gt_data.
+    CLEAR gt_data.
+
+  ENDLOOP.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  SET_FCAT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_KEY  text
+*      -->P_FIELD  text
+*      -->P_TEXT  text
+*      -->P_REF_TABLE  text
+*      -->P_REF_FIELD  text
+*----------------------------------------------------------------------*
+FORM set_fcat  USING    p_key
+                        p_field
+                        p_text
+                        p_ref_table
+                        p_ref_field.
+
+  gs_fcat-key       = p_key.
+  gs_fcat-fieldname = p_field.
+  gs_fcat-coltext   = p_text.
+  gs_fcat-ref_table = p_ref_table.
+  gs_fcat-ref_field = p_ref_field.
+
+  CASE p_field.
+    WHEN 'DMBTR'.
+      gs_fcat-cfieldname = 'WAERS'.
+    WHEN 'MENGE'.
+      gs_fcat-qfieldname = 'MEINS'.
+  ENDCASE.
+
+  APPEND gs_fcat TO gt_fcat.
+  CLEAR gs_fcat.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  DOUBLE_CLICKER
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_E_ROW  text
+*      -->P_E_COLUMN  text
+*      -->P_ES_ROW_NO  text
+*----------------------------------------------------------------------*
+FORM double_clicker  USING    p_row     STRUCTURE lvc_s_row
+                              p_column  STRUCTURE lvc_s_col
+                              ps_row_no STRUCTURE lvc_s_roid.
+
+  READ TABLE gt_data INDEX p_row-index.
+
+  IF sy-subrc EQ 0.
+    SET PARAMETER ID : 'MBN' FIELD gt_data-mblnr,
+                       'MJA' FIELD gt_data-mjahr.
+    CALL TRANSACTION 'MB03' AND SKIP FIRST SCREEN.
+  ENDIF.
+
+ENDFORM.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

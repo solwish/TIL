@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>GET_DATA</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: GET_DATA</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  테이블 조회</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">**************************************************************************</font>
+<font color ="#0000FF">*   Method attributes.                                                   *</font>
+<font color ="#0000FF">**************************************************************************</font>
+Instantiation: Public
+<font color ="#0000FF">**************************************************************************</font>
+
+  METHOD get_data.
+
+    CLEAR : it_list.
+
+    DATA : lt_selopt TYPE TABLE OF selopt,
+           ls_selopt TYPE selopt.
+
+    IF e_mblnr_l IS NOT INITIAL AND
+       e_mblnr_h IS NOT INITIAL.
+
+      ls_selopt-sign   = 'I'.
+      ls_selopt-option = 'BT'.
+      ls_selopt-low    = e_mblnr_l.
+      ls_selopt-high   = e_mblnr_h.
+
+      APPEND ls_selopt TO lt_selopt.
+      CLEAR  ls_selopt.
+
+    ELSEIF e_mblnr_l IS INITIAL AND
+           e_mblnr_h IS NOT INITIAL.
+
+      ls_selopt-sign   = 'I'.
+      ls_selopt-option = 'BT'.
+      ls_selopt-high   = e_mblnr_h.
+
+      APPEND ls_selopt TO lt_selopt.
+      CLEAR  ls_selopt.
+
+    ELSEIF e_mblnr_l IS NOT INITIAL AND
+           e_mblnr_h IS INITIAL.
+
+      ls_selopt-sign   = 'I'.
+      ls_selopt-option = 'EQ'.
+      ls_selopt-low    = e_mblnr_l.
+
+      APPEND ls_selopt TO lt_selopt.
+      CLEAR  ls_selopt.
+
+    ENDIF.
+
+    SELECT a~mjahr a~mblnr b~zeile a~vgart a~budat b~bwart b~matnr d~maktx
+         b~werks c~name1 AS werks_name b~dmbtr b~waers b~menge b~meins
+    INTO CORRESPONDING FIELDS OF TABLE it_list
+    FROM mkpf AS a
+    INNER JOIN mseg AS b
+    ON  a~mjahr EQ b~mjahr
+    AND a~mblnr EQ b~mblnr
+    INNER JOIN t001w AS c
+    ON b~werks EQ c~werks
+    INNER JOIN makt AS d
+    ON  b~matnr EQ d~matnr
+    AND d~spras EQ 'EN'
+    WHERE a~mjahr EQ e_mjahr
+    AND   b~mblnr IN lt_selopt.
+
+  ENDMETHOD.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

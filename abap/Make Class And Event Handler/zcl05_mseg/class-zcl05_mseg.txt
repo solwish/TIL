@@ -1,0 +1,46 @@
+**************************************************************************
+*   Class attributes.                                                    *
+**************************************************************************
+Instantiation: Public
+Message class:
+State: Implemented
+Final Indicator: X
+R/3 Release: 750
+
+**************************************************************************
+*   Public section of class.                                             *
+**************************************************************************
+class ZCL05_MSEG definition
+  public
+  final
+  create public .
+
+public section.
+
+  methods GET_DATA
+    importing
+      E_MJAHR type MJAHR
+      E_MBLNR_L type MBLNR optional
+      E_MBLNR_H type MBLNR optional
+    changing
+      IT_LIST type ZT05_MSEG_T .
+
+**************************************************************************
+*   Private section of class.                                            *
+**************************************************************************
+private section.
+
+**************************************************************************
+*   Protected section of class.                                          *
+**************************************************************************
+protected section.
+
+**************************************************************************
+*   Types section of class.                                              *
+**************************************************************************
+*"* dummy include to reduce generation dependencies between
+*"* class ZCL05_MSEG and it's users.
+*"* touched if any type reference has been changed
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
