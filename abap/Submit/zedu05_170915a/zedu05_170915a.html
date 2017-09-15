@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZEDU05_170915A</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZEDU05_170915A</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  자재전표데이터 훔치기</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*& Report ZEDU05_170915A</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+REPORT zedu05_170915a.
+
+TABLES : mkpf.
+
+SELECTION-SCREEN BEGIN OF BLOCK bl1 WITH FRAME.
+    PARAMETERS      : p_mjahr LIKE mkpf-mjahr.
+    SELECT-OPTIONS  : s_mblnr FOR  mkpf-mblnr.
+SELECTION-SCREEN END OF BLOCK bl1.
+
+DATA : BEGIN OF gt_data OCCURS 0,
+         mblnr    LIKE mkpf-mblnr,
+         mjahr    LIKE mkpf-mjahr,
+         vgart    LIKE mkpf-vgart,
+         blart    LIKE mkpf-blart,
+         budat    LIKE mkpf-budat,
+         bktxt    LIKE mkpf-bktxt,
+         color(5),
+       END OF gt_data.
+
+SET PARAMETER ID 'HEY' FIELD 'X'.
+
+SUBMIT zedu05_170912
+WITH p_mjahr EQ p_mjahr
+WITH s_mblnr IN s_mblnr
+AND RETURN.
+
+CLEAR : gt_data, gt_data[].
+
+IMPORT gt_data FROM MEMORY ID 'ZSM05A'.
+
+IF gt_data[] IS NOT INITIAL.
+  LOOP AT gt_data.
+    WRITE : gt_data-mblnr, gt_data-mjahr,
+            gt_data-vgart, gt_data-blart,
+            gt_data-blart, gt_data-budat,
+            gt_data-bktxt, gt_data-bktxt, /.
+  ENDLOOP.
+ELSE.
+  WRITE : 'NO DATA'.
+ENDIF.
+
+
+<font color ="#0000FF">*Selection texts</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">* P_MJAHR D       .</font>
+<font color ="#0000FF">* S_MBLNR D       .</font>
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

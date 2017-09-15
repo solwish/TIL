@@ -1,0 +1,192 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170914A_F01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM get_data .
+
+  CLEAR : gt_data, gt_data[].
+
+  SELECT a~mjahr a~mblnr a~vgart b~ltext AS vgart_desc
+         a~blart c~ltext AS blart_desc a~budat
+    INTO CORRESPONDING FIELDS OF TABLE gt_data
+    FROM mkpf AS a
+    INNER JOIN t158w AS b
+    ON a~vgart EQ b~vgart
+    AND b~spras EQ 'EN'
+    INNER JOIN t003t AS c
+    ON a~blart EQ c~blart
+    AND c~spras EQ 'EN'
+    WHERE mjahr EQ p_mjahr
+    AND   mblnr IN s_mblnr.
+
+  IF gt_data[] IS INITIAL.
+    MESSAGE s000 WITH 'Data not found'.
+    LEAVE LIST-PROCESSING.
+  ENDIF.
+
+ENDFORM.
+
+*&---------------------------------------------------------------------*
+*&      Form  REFRESH_TABLE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM refresh_table .
+
+  gs_stable-row = 'X'.
+  gs_stable-col = 'X'.
+
+  CALL METHOD go_grid->refresh_table_display
+    EXPORTING
+      is_stable      = gs_stable
+      i_soft_refresh = space.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  SET_FCAT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_KEY  text
+*      -->P_FIELD  text
+*      -->P_TEXT  text
+*      -->P_REF_TABLE  text
+*      -->P_REF_FIELD  text
+*----------------------------------------------------------------------*
+FORM set_fcat  USING    p_key
+                        p_field
+                        p_text
+                        p_ref_table
+                        p_ref_field.
+
+  gs_fcat-key       = p_key.
+  gs_fcat-fieldname = p_field.
+  gs_fcat-coltext   = p_text.
+  gs_fcat-ref_table = p_ref_table.
+  gs_fcat-ref_field = p_field.
+
+  CASE p_field.
+    WHEN 'MBLNR'.
+      gs_fcat-hotspot = 'X'.
+  ENDCASE.
+
+  APPEND gs_fcat TO gt_fcat.
+  CLEAR gs_fcat.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  DOUBLE_CLICK
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_E_ROW  text
+*      -->P_E_COLUMN  text
+*      -->P_ES_ROW_NO  text
+*----------------------------------------------------------------------*
+FORM double_click  USING    p_row     STRUCTURE lvc_s_row
+                            p_column  STRUCTURE lvc_s_col
+                            ps_row_no STRUCTURE lvc_s_roid.
+
+  READ TABLE gt_data INDEX p_row-index.
+
+  IF sy-subrc EQ 0.
+    SET PARAMETER ID : 'MBN' FIELD gt_data-mblnr,
+                       'MJA' FIELD gt_data-mjahr.
+    CALL TRANSACTION 'MB03' AND SKIP FIRST SCREEN.
+  ENDIF.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  EXCLUDE_TOOLBAR
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM exclude_toolbar .
+  gs_toolbar = go_grid->mc_fc_excl_all.
+
+  APPEND gs_toolbar TO gt_toolbar.
+  CLEAR gs_toolbar.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  SET_FCAT_POP
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_FIELD  text
+*      -->P_TEXT  text
+*      -->P_REF_TABLE  text
+*      -->P_REF_FIELD  text
+*----------------------------------------------------------------------*
+FORM set_fcat_pop  USING    p_field
+                            p_text
+                            p_ref_table
+                            p_ref_field.
+
+  gs_fcat_pop-fieldname = p_field.
+  gs_fcat_pop-coltext   = p_text.
+  gs_fcat_pop-ref_table = p_ref_table.
+  gs_fcat_pop-ref_field = p_field.
+
+  CASE p_field.
+    WHEN 'DMBTR'.
+      gs_fcat_pop-cfieldname = 'WAERS'.
+    WHEN 'MENGE'.
+      gs_fcat_pop-qfieldname = 'MEINS'.
+  ENDCASE.
+
+  APPEND gs_fcat_pop TO gt_fcat_pop.
+  CLEAR gs_fcat_pop.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  HOT_SPOT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_E_ROW_ID  text
+*      -->P_E_COLUMN_ID  text
+*      -->P_ES_ROW_NO  text
+*----------------------------------------------------------------------*
+FORM hot_spot  USING        p_row     STRUCTURE lvc_s_row
+                            p_column  STRUCTURE lvc_s_col
+                            ps_row_no STRUCTURE lvc_s_roid.
+
+  READ TABLE gt_data INDEX p_row-index.
+
+  SELECT a~mblnr a~zeile a~matnr b~maktx a~werks c~name1 AS werks_name
+         a~dmbtr a~waers a~menge a~meins
+    INTO CORRESPONDING FIELDS OF TABLE gt_data2
+    FROM mseg AS a
+    INNER JOIN makt AS b
+    ON a~matnr EQ b~matnr
+    AND b~spras EQ 'EN'
+    INNER JOIN t001w AS c
+    ON a~werks EQ c~werks
+    WHERE a~mblnr EQ gt_data-mblnr
+      AND a~mjahr EQ gt_data-mjahr.
+
+  IF sy-subrc NE 0.
+    MESSAGE s000 WITH 'No data found' DISPLAY LIKE 'E'.
+    EXIT.
+  ENDIF.
+
+  CALL SCREEN '0101' STARTING AT 20 3. " ENDING AT .
+
+ENDFORM.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

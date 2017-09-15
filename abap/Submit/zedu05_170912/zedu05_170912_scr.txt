@@ -1,0 +1,11 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170912_SCR
+*&---------------------------------------------------------------------*
+
+SELECTION-SCREEN : BEGIN OF BLOCK bl1 WITH FRAME.
+  PARAMETERS :        p_mjahr LIKE MKPF-MJAHR OBLIGATORY.
+  SELECT-OPTIONS :    s_mblnr FOR  MKPF-MBLNR.
+SELECTION-SCREEN : END OF BLOCK bl1.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

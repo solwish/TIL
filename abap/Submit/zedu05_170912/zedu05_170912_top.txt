@@ -1,0 +1,37 @@
+*&---------------------------------------------------------------------*
+*& Include ZEDU05_170912_TOP                                 Report ZEDU05_170912
+*&
+*&---------------------------------------------------------------------*
+REPORT zedu05_170912 MESSAGE-ID oo.
+
+CLASS lcl_event_handler DEFINITION DEFERRED.
+
+TABLES : mkpf.
+
+DATA : gv_filed(10).
+
+DATA : BEGIN OF gt_data OCCURS 0,
+         mblnr    LIKE mkpf-mblnr,
+         mjahr    LIKE mkpf-mjahr,
+         vgart    LIKE mkpf-vgart,
+         blart    LIKE mkpf-blart,
+         budat    LIKE mkpf-budat,
+         bktxt    LIKE mkpf-bktxt,
+         color(5),
+       END OF gt_data.
+
+
+DATA : go_container TYPE REF TO cl_gui_docking_container,
+       go_grid      TYPE REF TO cl_gui_alv_grid,
+       go_handler   TYPE REF TO lcl_event_handler,
+       gs_layout    TYPE lvc_s_layo,
+       gs_variant   TYPE disvariant,
+       gs_fcat      TYPE lvc_s_fcat,
+       gt_fcat      TYPE lvc_t_fcat,
+       gs_scol      TYPE lvc_s_scol,
+       gs_sort      TYPE lvc_s_sort,
+       gt_sort      TYPE lvc_t_sort,
+       gs_stable    TYPE lvc_s_stbl.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

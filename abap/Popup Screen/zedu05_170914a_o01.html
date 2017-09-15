@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZEDU05_170914A_O01</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZEDU05_170914A_O01</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Include ZEDU05_170914A_O01</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&  Include           ZEDU05_170914A_O01</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  STATUS_0100  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  SET_FIELD  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE set_field OUTPUT.
+  CLEAR : gt_fcat, gs_fcat.
+  PERFORM set_fcat USING : 'X' 'MJAHR'       '자재전표년도'         'MKPF'    'MJAHR',
+                           'X' 'MBLNR'       '자재전표번호'         'MKPF'    'MBLNR',
+                           ' ' 'VGART'       '트랜잭션 타입'        'MKPF'    'VGART',
+                           ' ' 'VGART_DESC'  '트랜잭션 타입 내역'   'T158W'   'LTEXT',
+                           ' ' 'BLART'       '전표유형'             'MKPF'    'BLART',
+                           ' ' 'BLART_DESC'  '전표유형 내역'        'T003T'   'LTEXT',
+                           ' ' 'BUDAT'       '전기일자'             'MKPF'    'BUDAT'.
+
+  gs_layout-zebra      = 'X'.
+  gs_layout-sel_mode   = 'D'.
+  gs_layout-cwidth_opt = 'X'.
+  gs_variant-report    = sy-repid.
+
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  DISPLAY_SCREEN  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE display_screen OUTPUT.
+  IF go_container IS NOT BOUND.
+    CREATE OBJECT go_container
+      EXPORTING
+        side      = go_container-&gt;dock_at_left
+        extension = 2000.
+
+    CREATE OBJECT go_grid
+      EXPORTING
+        i_parent = go_container.
+
+    SET HANDLER : lcl_pop_handler=&gt;double_clicker FOR go_grid,
+                  lcl_pop_handler=&gt;hot_spot FOR go_grid.
+
+    CALL METHOD go_grid-&gt;set_table_for_first_display
+      EXPORTING
+        is_variant      = gs_variant
+        i_save          = 'X'
+        is_layout       = gs_layout
+      CHANGING
+        it_outtab       = gt_data[]
+        it_fieldcatalog = gt_fcat
+<font color ="#0000FF">*       it_sort         =</font>
+      .
+  ELSE.
+    PERFORM refresh_table.
+  ENDIF.
+
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  STATUS_0101  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE status_0101 OUTPUT.
+  SET PF-STATUS '0101'.
+  SET TITLEBAR '0101'.
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  DISPLAY_SCREEN_0101  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE display_screen_0101 OUTPUT.
+  IF go_container_pop IS NOT BOUND.
+
+    CREATE OBJECT go_container_pop
+      EXPORTING
+        container_name = 'GO_CONTAINER_POP'.
+
+    CLEAR : gs_toolbar, gt_toolbar.
+    PERFORM exclude_toolbar.
+
+    CREATE OBJECT go_grid_pop
+      EXPORTING
+        i_parent = go_container_pop.
+
+    CALL METHOD go_grid_pop-&gt;set_table_for_first_display
+      EXPORTING
+<font color ="#0000FF">*       is_variant           =</font>
+        i_save               = 'X'
+        is_layout            = gs_layout_pop
+        it_toolbar_excluding = gt_toolbar
+      CHANGING
+        it_outtab            = gt_data2[]
+        it_fieldcatalog      = gt_fcat_pop
+<font color ="#0000FF">*       it_sort              =</font>
+      .
+  ELSE.
+    PERFORM refresh_table.
+  ENDIF.
+
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  SET_FIELD_0101  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE set_field_0101 OUTPUT.
+
+  CLEAR : gs_fcat_pop, gt_fcat_pop.
+
+  PERFORM set_fcat_pop USING : 'MBLNR'         '자재전표번호'     'MSEG'  'MBLNR',
+                               'ZEILE'         '자재전표순번'     'MSEG'  'ZEILE',
+                               'MATNR'         '자재코드'         'MSEG'  'MATNR',
+                               'MAKTX'         '자재내역'         'MAKT'  'MAKTX',
+                               'WERKS'         '플랜트'           'MSEG'  'WERKS',
+                               'WERKS_NAME'    '플랜트 내역'      'T001W' 'NAME1',
+                               'DMBTR'         '금액'             'MSEG'  'DMBTR',
+                               'WAERS'         '통화키'           'MSEG'  'WAERS',
+                               'MENGE'         '수량'             'MSEG'  'MENGE',
+                               'MEINS'         '단위'             'MSEG'  'MEINS'.
+
+ENDMODULE.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>
