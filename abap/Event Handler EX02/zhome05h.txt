@@ -1,0 +1,35 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHOME05H
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE zhome05h_top                            .    " global Data
+
+INCLUDE zhome05h_cls                            .  " Class
+INCLUDE zhome05h_scr                            .  " Selection Screen
+INCLUDE zhome05h_o01                            .  " PBO-Modules
+INCLUDE zhome05h_i01                            .  " PAI-Modules
+INCLUDE zhome05h_f01                            .  " FORM-Routines
+
+START-OF-SELECTION.
+  PERFORM get_data.
+  CALL SCREEN '0100'.
+
+
+*Selection texts
+*----------------------------------------------------------
+* P_MJAHR D       .
+* S_MBLNR D       .
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: OO
+*000   & & & &
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

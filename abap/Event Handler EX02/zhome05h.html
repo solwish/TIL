@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZHOME05H</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZHOME05H</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Program ZHOME05H</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*& Report  ZHOME05H</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+
+include <a href ="zhome05h_top.html">zhome05h_top</a>.    " global Data
+
+include <a href ="zhome05h_cls.html">zhome05h_cls</a>.  " Class
+include <a href ="zhome05h_scr.html">zhome05h_scr</a>.  " Selection Screen
+include <a href ="zhome05h_o01.html">zhome05h_o01</a>.  " PBO-Modules
+include <a href ="zhome05h_i01.html">zhome05h_i01</a>.  " PAI-Modules
+include <a href ="zhome05h_f01.html">zhome05h_f01</a>.  " FORM-Routines
+
+START-OF-SELECTION.
+  PERFORM get_data.
+  CALL SCREEN '0100'.
+
+
+<font color ="#0000FF">*Selection texts</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">* P_MJAHR D       .</font>
+<font color ="#0000FF">* S_MBLNR D       .</font>
+
+
+<font color ="#0000FF">*Messages</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: OO</font>
+<font color ="#0000FF">*000   & & & &</font>
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>
