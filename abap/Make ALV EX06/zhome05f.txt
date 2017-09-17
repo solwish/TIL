@@ -1,0 +1,38 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHOME05F
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE ZHOME05F_TOP                            .    " global Data
+
+ INCLUDE ZHOME05F_scr                            .  " Selection Screen
+ INCLUDE ZHOME05F_O01                            .  " PBO-Modules
+ INCLUDE ZHOME05F_I01                            .  " PAI-Modules
+ INCLUDE ZHOME05F_F01                            .  " FORM-Routines
+
+START-OF-SELECTION.
+ PERFORM get_data.
+ CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> 항공운항정보
+
+
+*Selection texts
+*----------------------------------------------------------
+* P_CONNID         항공사코드
+* S_CARRID         항공연결코드
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: OO
+*000   & & & &
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
