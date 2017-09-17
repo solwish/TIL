@@ -1,0 +1,41 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHOME05G
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE zhome05g_top                            .    " global Data
+
+INCLUDE zhome05g_cls                            .  " Class
+INCLUDE zhome05g_scr                            .  " Selection Screen
+INCLUDE zhome05g_o01                            .  " PBO-Modules
+INCLUDE zhome05g_i01                            .  " PAI-Modules
+INCLUDE zhome05g_f01                            .  " FORM-Routines
+
+START-OF-SELECTION.
+  PERFORM get_data.
+  CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> 회계전표 조회
+
+
+*Selection texts
+*----------------------------------------------------------
+* P_BUKRS D       .
+* P_GJAHR D       .
+* S_BELNR D       .
+
+
+*Messages
+*----------------------------------------------------------
+*YPE
+*
+* Message class: Hard coded
+*   No data found
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

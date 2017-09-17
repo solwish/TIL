@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZHOME05G_SCR</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZHOME05G_SCR</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Include ZHOME05G_SCR</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&  Include           ZHOME05G_SCR</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+
+SELECTION-SCREEN BEGIN OF BLOCK bl1 WITH FRAME.
+PARAMETERS     : p_gjahr LIKE bkpf-gjahr OBLIGATORY,
+                 p_bukrs LIKE bkpf-bukrs OBLIGATORY.
+SELECT-OPTIONS : s_belnr FOR  bkpf-belnr.
+SELECTION-SCREEN END OF BLOCK bl1.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

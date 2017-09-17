@@ -1,0 +1,69 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZHOME05G_O01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  DISPLAY_SCREEN  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE display_screen OUTPUT.
+  IF go_container IS NOT BOUND.
+    CREATE OBJECT go_container
+      EXPORTING
+        side      = cl_gui_docking_container=>dock_at_left
+        extension = 2000.
+
+    CREATE OBJECT go_grid
+      EXPORTING
+        i_parent = go_container.
+
+    SET HANDLER : lcl_event_handler=>double_clicker FOR go_grid.
+
+    CALL METHOD go_grid->set_table_for_first_display
+      EXPORTING
+        is_variant      = gs_variant
+        i_save          = 'X'
+        is_layout       = gs_layout
+      CHANGING
+        it_outtab       = gt_data[]
+        it_fieldcatalog = gt_fcat
+*       it_sort         =
+      .
+  ELSE.
+
+    PERFORM refresh_table.
+
+  ENDIF.
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  SET_FIELD  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_field OUTPUT.
+  CLEAR : gs_fcat, gt_fcat.
+  PERFORM set_fcat USING : 'X' 'BUKRS' '회사코드',
+                           'X' 'BELNR' '회계전표번호',
+                           ' ' 'GJAHR' '회계연도',
+                           ' ' 'BLART' '전표유형',
+                           ' ' 'BUDAT' '전기일자',
+                           ' ' 'BKTXT' '전표내역'.
+
+  gs_layout-zebra      = 'X'.
+  gs_layout-sel_mode   = 'D'.
+  gs_layout-cwidth_opt = 'X'.
+  gs_variant-report    = sy-repid.
+ENDMODULE.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
