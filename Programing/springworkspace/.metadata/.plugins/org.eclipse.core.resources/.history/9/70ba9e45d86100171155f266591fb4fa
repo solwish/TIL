@@ -1,0 +1,60 @@
+select * from BOARD;
+select * from MEMBER;
+
+
+create table member(
+ID varchar2(20) primary key,
+Name  varchar2(20),
+password varchar2(20),
+gender varchar2(10),
+age number,
+phone varchar2(20)
+);
+
+drop table member;
+drop table board;
+
+insert into member values('test1', '김자바', '1234', '남자', 21, '010-1234-1231');
+insert into member values('test2', '클오라', '1234', '남자', 41, '010-4627-1052');
+insert into member values('test3', '김숙희', '1234', '여자', 28, '010-3456-3214');
+insert into member values('test4', '딜리트', '1234', '남자', 28, '010-4566-3543');
+
+update member
+set name='효도르'
+where id='test4';
+
+delete member
+where id='test4';
+
+create table board(
+num number primary key,
+writer varchar(20),
+title varchar(100),
+regdate date,
+readcnt number,
+content varchar(3000),
+constraint board_writer_fk foreign key(writer)
+references member (ID)
+);
+
+create sequence board_seq
+increment by 1
+start with 1
+;
+
+insert into board values(board_seq.nextval, 'test1', '테스트1의 제목', sysdate, 0, '테스트1의 내용입니다.');
+insert into board values(board_seq.nextval, 'test2', '테스트2의 제목', sysdate, 0, '테스트2의 내용입니다.');
+insert into board values(board_seq.nextval, 'test3', '테스트3의 제목', sysdate, 0, '테스트3의 내용입니다.');
+
+create or replace view board_view as
+select num as "글번호", name as "이름", writer as "작성자", title as "제목", 
+regdate as "등록일", readcnt as "조회수", content as "내용"
+from board, member
+where member.ID=board.writer;
+
+select *
+from board_view
+where "글번호"=1;
+
+select * from BOARD;
+select * from MEMBER;

@@ -1,0 +1,95 @@
+package com.edu.hw.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.edu.hw.dto.BoardVO;
+import com.edu.hw.service.BoardService;
+import com.lecture.board.dto.Board;
+
+@Controller
+public class BoardController {
+
+	@Autowired
+	BoardService service;
+
+	@RequestMapping(value = "/board-list", method = RequestMethod.GET)
+	public String list(Model model) {
+		List<BoardVO> list = service.getBoardList();
+
+		model.addAttribute("list", list);
+
+		return "board/list";
+	}
+
+	@RequestMapping(value = "/board-write", method = RequestMethod.GET)
+	public String writeForm() {
+		return "board/write";
+	}
+
+	@RequestMapping(value = "/board-write", method = RequestMethod.POST)
+	public String writeSubmit(BoardVO board, Model model) {
+
+		// System.out.println(board);
+
+		if (board.getTitle().length() > 4) {
+			if (board.getWriter().length() < 7) {
+				service.insert(board);
+				return "redirect:board-list";
+			} else {
+				model.addAttribute("board", board);
+				model.addAttribute("message", "작성자는 6글자 이내여야합니다.");
+				return "board/write";
+			}
+		} else {
+			model.addAttribute("board", board);
+			model.addAttribute("message", "제목은 4글자 이상이여야합니다.");
+			return "board/write";
+		}
+	}
+
+	@RequestMapping("/board-view")
+	public String view(@RequestParam(value = "num", required = false) int num, Model model) {
+
+		service.incRnt(num);
+		BoardVO board = service.getOne(num);
+		model.addAttribute("board", board);
+		return "board/view";
+
+	}
+
+	@RequestMapping("/board-delete")
+	public String delete(@RequestParam(value = "num", required = false) int num) {
+		service.delete(num);
+
+		return "redirect:board-list";
+	}
+	
+	@RequestMapping(value = "/board-update", method = RequestMethod.GET)
+	public String updateForm(@RequestParam(value = "num") int num, Model model) {
+
+		model.addAttribute(service.getOne(num));
+
+		return "board/update";
+	}
+	
+	@RequestMapping(value = "/board-update", method = RequestMethod.POST)
+	public String updatePost(BoardVO board, Model model) {
+		if (board.getTitle().length() > 5) {
+			service.update(board);
+
+			return "redirect:list";
+		} else {
+			model.addAttribute("message", "제목은 5글자 이상이여야합니다.");
+			return "board/update";
+		}
+	}
+
+
+}

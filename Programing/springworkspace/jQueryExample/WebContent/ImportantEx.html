@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('li').hover(function() {
+		// 스타일을 변경합니다.
+		$(this).addClass('active');
+	}, function() {
+		// 스타일을 변경합니다.
+		$(this).removeClass('active');
+	});
+
+	});
+</script>
+<style>
+ul {
+	overflow: hidden;
+	background-color: lightgray;
+}
+
+#menu li {
+	list-style: none;
+	width: 100px;
+	float: left;
+	padding : 5px;
+	text-align: center;
+}
+
+#menu li.active {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+	<ul id="menu">
+		<li>메뉴1</li>
+		<li>메뉴2</li>
+		<li>메뉴3</li>
+		<li>메뉴4</li>
+		<li>메뉴5</li>
+	</ul>
+</body>
+</html>

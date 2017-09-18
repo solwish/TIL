@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style></style>
+<script>
+function f(x) {
+	if(x==2){
+		return '2는 계산 안해'
+	}
+	return x*x;
+}
+
+var a = f(5);
+console.log(a);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

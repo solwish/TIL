@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="web-study-08">
+        <property name="context-root" value="web-study-08"/>
+        <property name="java-output-path" value="/web-study-08/build/classes"/>
+    </wb-module>
+</project-modules>

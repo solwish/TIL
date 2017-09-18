@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;BoardExample&apos;&#x0D;&#x0A;- Original project: &apos;BoardExample&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     com.lecture.board.dao.ListBoardDao.java&#x0D;&#x0A;     com.lecture.board.dao.OracleBoardDao.java" description="Delete elements" element1="/src\/main\/java&lt;com.lecture.board.dao{ListBoardDao.java" element2="/src\/main\/java&lt;com.lecture.board.dao{OracleBoardDao.java" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1498441461939" subPackages="false" version="1.0"/>
+</session>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+p:nth-child(1) {
+	
+}
+
+p:nth-child(2) {
+	font-size: 16px;
+}
+
+p:nth-child(3) {
+	font-size: 150%;
+}
+
+p:nth-child(4) {
+	font-size: 200%;
+}
+
+p:nth-child(2n):hover {
+	background: yellow;
+}
+p:nth-child(2n+1):hover {
+	background: purple;
+}
+body{background-image: url(''..\images\14')
+}
+</style>
+</head>
+<body>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+</body>
+</html>

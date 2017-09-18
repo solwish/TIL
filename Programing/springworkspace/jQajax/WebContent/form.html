@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		$('#my-form').submit(function(event) {
+			// 기본 이벤트 제거 
+			event.preventDefault();
+
+			// 입력 양식의 value 속성을 가져온다. 
+			var name = $('#name').val();
+			var region = $('#region').val();
+			// Ajax 요청을 수행한다
+			var url = 'parameter.jsp';
+		
+			$('#wrap').load(url, $(this).serialize());
+		});
+
+	});
+</script>
+
+</head>
+<body>
+	<form id="my-form">
+		<table>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" id="name" name="name"></td>
+			</tr>
+			<tr>
+				<td>Region</td>
+				<td><input type="text" id="region" name="region"></td>
+			</tr>
+		</table>
+		<input type="submit" value="Get Ajax String">
+	</form>
+	<div id="wrap"></div>
+</body>
+</html>

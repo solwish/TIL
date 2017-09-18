@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style></style>
+<script>
+	var radius = 10;
+	var pi = 3.14159265;
+	//	alert(2*radius*pi);
+	//	alert('Hello JavaScript .. !');
+	console.log(2 * radius * pi);
+	if(273>52){
+		console.log('273<52=>true');
+	}
+</script>
+</head>
+<body>안녕하세요
+</body>
+</html>

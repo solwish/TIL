@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	var images = [ 'Chrysanthemum.jpg', 'Desert.jpg', 'Hydrangeas.jpg',
+			'Jellyfish.jpg', 'Koala.jpg', 'Lighthouse.jpg', 'Penguins.jpg',
+			'Tulips.jpg' ];
+
+	
+	var index = 0;
+
+	$(document).ready(function() {
+		selectImage(index);
+
+		$('#Pre').click(function(){
+			$('img').animate({opacity:0}, 500, function(){
+				// index 조정
+				index--;
+				if(index <0) {
+					index = images.length -1;
+				}
+				selectImage(index);
+			});
+		});
+
+		$('#post').click(function() {
+			$('img').animate({opacity:0}, 500, function(){
+			index++;
+			if (index == images.length) {
+				index = 0;
+			}
+			selectImage(index);
+			});
+		});
+
+		$('.indexBtn').click(function() {
+			$('img').animate({opacity:0}, 500, function(){
+			index = $(this).text() - 1;
+			selectImage(index);
+			});
+		})
+
+		function selectImage(index) {
+			$('img').attr('src', 'images/' + images[index]));
+			$('.indexBtn').removeClass('active');
+			$('.indexBtn').eq(index).addClass('active');
+			$('img').animate({opacity:1});
+		}
+
+	});
+</script>
+
+<style>
+.indexBtn {
+	border-radius: 10px;
+	background-color: lightgray;
+	float: left;
+	margin: 5px;
+	font-size: 15px;
+	border: 1px solid black;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+}
+
+.active {
+	background-color: black;
+	color: white;
+}
+</style>
+
+</head>
+<body>
+	<table>
+		<tr>
+			<td><button id="pre"><</button></td>
+			<td><img width="300px" height="300px"></td>
+			<td><button id="post">></button></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="indexBtn">1</div>
+				<div class="indexBtn">2</div>
+				<div class="indexBtn">3</div>
+				<div class="indexBtn">4</div>
+				<div class="indexBtn">5</div>
+				<div class="indexBtn">6</div>
+				<div class="indexBtn">7</div>
+				<div class="indexBtn">8</div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

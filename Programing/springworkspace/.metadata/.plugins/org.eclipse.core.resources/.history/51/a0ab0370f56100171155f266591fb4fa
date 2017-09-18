@@ -1,0 +1,56 @@
+package com.edu.hw.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.edu.hw.dao.BoardDao;
+import com.edu.hw.dto.BoardVO;
+
+@Service
+public class BoardService {
+	
+	@Autowired
+	private BoardDao dao;
+	
+	public BoardVO getOne(int num) {
+		BoardVO board = dao.findView(num);
+		return board;
+	}
+
+	public List<BoardVO> getBoardList() {
+		List<BoardVO> list = dao.list();
+		return list;
+	}
+
+	public int insert(BoardVO board) {
+		/////////
+		if ((board.getTitle().length() > 4)&&(board.getWriter().length() < 7)) {
+				int result = dao.write(board);
+				return result;
+			}else{
+				return 0;
+			}
+			
+		}
+		/////////
+		int result = dao.write(board);
+		return result;
+	}
+	
+	public int update(BoardVO board) {
+		int result = dao.update(board);
+		return result;		
+	}
+
+	public int delete(int num) {
+		int result = dao.remove(num);
+		return result;
+	}
+	
+	public void incRnt(int num){
+		dao.increateReadCnt(num);
+	}
+
+}

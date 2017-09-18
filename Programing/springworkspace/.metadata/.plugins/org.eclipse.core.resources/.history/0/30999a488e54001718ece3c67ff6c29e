@@ -1,0 +1,10 @@
+package com.example.spring;
+
+public class camera {
+	private int number;
+	
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+}

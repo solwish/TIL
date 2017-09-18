@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		var basket = $('#basket');
+		var apple = $('#apple');
+		var banana = $('#banana');
+		var orange = $('#orange');
+		$('#basket').append($('#apple'));
+		$('#basket').append($('#banana'));
+		$('#basket').append($('#orange'));
+		
+		var div1 = $('#div1');
+		var img = $('<img src="img1.gif" alt="" />');
+		$('<img src="images/Desert.jpg" alt="이미지가 음서" />')
+		.appendTo(div1);
+	});
+</script>
+<style>
+#basket{ background:brown; padding:10px; }
+#apple{ background:red; margin:5px; }
+#banana{ background:yellow; margin:5px; }
+#orange{ background:orange; margin:5px; }
+</style>
+</head>
+<body>
+	<div id="basket">basket</div>
+	<div id="apple">apple</div>
+	<div id="banana">banana</div>
+	<div id="orange">orange</div>
+	<br>
+	<hr>
+	<br>
+	<div id="div1"></div>
+</body>
+</html>

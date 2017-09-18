@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		$('.tab').click(function() {
+			var num = $(this).data("tab");
+			var url = "tab" + num + ".html";
+			/* $.ajax(url, {
+				success: function(data) {
+					$('#content').html(data);
+				} */
+
+			$('#content').load(url);
+
+		});
+	});
+
+	/* 	$('#tab1').click(function() {
+			$.ajax('tab1.html', {
+				success : function(tab1) {
+					$('#content').html(data);
+				}
+			});
+		})
+
+		$('#tab2').click(function() {
+			$.ajax('tab2.html', {
+				success : function(tab2) {
+					$('#content').html(data);
+				}
+			});
+		})
+
+		$('#tab3').click(function() {
+			$.ajax('tab3.html', {
+				success : function(tab3) {
+					$('#content').html(data);
+				}
+			});
+		})
+
+		$('#tab4').click(function() {
+			$.ajax('tab4.html', {
+				success : function(tab4) {
+					$('#content').html(data);
+				}
+			});
+		}) */
+</script>
+
+</head>
+<body>
+
+	
+			<button class='tab' data-tab="1">탭1</button>
+			<button class='tab' data-tab="2">탭2</button>
+			<button class='tab' data-tab="3">탭3</button>
+			<button class='tab' data-tab="4">탭4</button>
+
+			<div id='content'></div>
+</body>
+</html>

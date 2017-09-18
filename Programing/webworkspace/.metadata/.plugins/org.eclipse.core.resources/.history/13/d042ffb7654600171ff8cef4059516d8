@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+</style>
+</head>
+<body>
+<header>
+우아오예
+</header>
+<nav>
+네비게이터</nav>
+
+<aside>어사이드</aside>
+<section>색션</section>
+<article>글자 들가는 부분</article>
+<footer>푸터아</footer>
+</body>
+</html>

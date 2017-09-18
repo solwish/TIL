@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	var images = [ 'Chrysanthemum.jpg', 'Desert.jpg', 'Hydrangeas.jpg',
+			'Jellyfish.jpg', 'Koala.jpg', 'Lighthouse.jpg', 'Penguins.jpg',
+			'Tulips.jpg' ];
+
+	var a = 0;
+	var index = 0;
+
+	$(document).ready(function() {
+		$('img').attr('src', 'images/' + images[index]);
+		$('#pre').click(function() {
+			a--;
+			index = a % images.length;
+			if (index < 0) {
+				index = images.length - 1;
+			}
+			$('img').attr('src', 'images/' + images[index]);
+		});
+
+		$('#post').click(function() {
+			a++;
+			index = a % images.length;
+			$('img').attr('src', 'images/' + images[index]);
+		});
+
+	});
+</script>
+
+</head>
+<body>
+	<table>
+		<td><button id="pre"><</button></td>
+		<td><img width="300px" height="300px"></td>
+		<td><button id="post">></button></td>
+	</table>
+</body>
+</html>

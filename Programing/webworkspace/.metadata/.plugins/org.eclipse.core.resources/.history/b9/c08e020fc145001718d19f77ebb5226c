@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS무ㅘ몬아ㅏ</title>
+<style>
+* {
+	color: green;
+}
+
+h1 {
+	color: red;
+}
+
+p {
+	color: blue;
+}
+</style>
+</head>
+<body>
+	<h1>제목 글자 태그</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+		nisi risus, sollicitudin eget vehicula sed, eleifend suscipit neque.
+		Proin rhoncus, ante vitae mattis consequat, libero nunc posuere justo,
+		ut laoreet dolor nunc at dolor. Lorem ipsum dolor sit amet,
+		consectetur adipiscing elit. Maecenas dictum, lectus vestibulum
+		laoreet tincidunt, nisi augue blandit risus, ut vestibulum erat dolor
+		sit amet risus. Praesent semper consectetur mi eget auctor. Nulla
+		facilisi. Duis bibendum massa in dui interdum sed tincidunt massa
+		eleifend.</p>
+		<h2>읃아앙아아앙아</h2>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<img src="Penguins.jpg" alt="팽귄" width="300" />
+<img src="Nothing.jpg" alt="그림이 존재하지 않습니다." width="300" />
+
+</body>
+</html>

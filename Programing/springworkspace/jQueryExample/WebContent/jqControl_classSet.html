@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#box').hover(function() {
+			// 스타일을 변경합니다.
+			$('#box').addClass('hover');
+		}, function() {
+			// 스타일을 변경합니다.
+			$('#box').removeClass('hover');
+		});
+	});
+</script>
+<style>
+#box {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+}
+
+#box.hover {
+	background-color: blue;
+	border-radius: 50px;
+}
+</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

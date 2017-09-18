@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#box {
+display: none;
+}
+</style>
+</head>
+<body>
+<span>더미 객체</span>
+<div id="box">대상 객체</div>
+<span>더미 객체</span>
+</body>
+</html>

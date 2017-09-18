@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.font_big {
+	font-size: 2em;
+}
+
+.font_italic {
+	font-style: italic;
+}
+
+.font_bold {
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<p class="font_big font_italic font_bold">Lorem ipsum dolor amet</p>
+</body>
+</html>

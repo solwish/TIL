@@ -1,0 +1,48 @@
+package com.edu.hw.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.edu.hw.dto.BoardVO;
+
+@Repository
+public class BoardDaoImpl implements BoardDao {
+
+	@Override
+	public List<BoardVO> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int write(BoardVO board) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public BoardVO findView(int num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void increateReadCnt(int num) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int remove(int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(BoardVO board) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

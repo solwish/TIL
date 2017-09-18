@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#btn').click(function() {
+
+			var frame = $('#frame');
+			var header = $('<h1>').text('그림제목 : Desert');
+			var img = $('<img/>').attr({
+				src : 'images/Desert.jpg',
+				width : '200'
+			}).addClass('border');
+			frame.append(header, img);
+
+			frame.append(header, img).css({
+				display : 'block',
+				opacity : 0
+			}).animate({
+				opacity : 1
+			}, 1000)
+		})
+		$('#btn2').click(function() {
+			var frame = $('#frame');
+			frame.animate({
+				opacity:0
+			}, 1000, function(){
+				$('#frame>h1').remove();
+				$('#frame>img').remove();
+				
+			})
+
+		})
+	});
+</script>
+<style>
+.border {
+	border: 3px solid navy
+}
+
+#frame {
+	display: none;
+}
+</style>
+</head>
+<body>
+	<div id="frame"></div>
+	<button id="btn">이미지 추가</button>
+	<button id="btn2">이미지 제거</button>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+1497402926956	Move 'ojdbc6.jar' to 'lib'
+1497402935429	Copy file
+1497406175709	Copy package
+1497406192381	Delete element
+1497406234644	Copy package
+1497406238166	Delete element
+1497408082076	Delete element
+1497414500365	Move 'META-INF' to 'script'
+1497414806043	Rename type 'controller'
+1497416089727	Copy folder
+1497416219001	Rename package 'script'
+1497416284693	Delete element
+1497427489624	Extract method 'map'
+1497488263522	Extract method 'pwdcheck'
+1497489382424	Move 'join.jsp' to 'member'

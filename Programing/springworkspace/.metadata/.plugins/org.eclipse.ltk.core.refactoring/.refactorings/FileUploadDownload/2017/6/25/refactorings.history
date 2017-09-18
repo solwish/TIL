@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;DownloadView&apos; to &apos;com.lecture.edu.downloadView&apos;&#x0D;&#x0A;- Original project: &apos;FileUploadDownload&apos;&#x0D;&#x0A;- Original element: &apos;FileUploadDownload/src/main/java/DownloadView&apos;&#x0D;&#x0A;- Renamed element: &apos;FileUploadDownload/src/main/java/com.lecture.edu.downloadView&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;DownloadView&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;DownloadView" name="com.lecture.edu.downloadView" qualified="false" references="true" stamp="1498112700799" textual="false" version="1.0"/>
+</session>

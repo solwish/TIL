@@ -1,0 +1,14 @@
+
+public class Article {
+	
+	private int num;
+	private String title;
+	private String writer;
+	private String content;
+	
+
+	public Article() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

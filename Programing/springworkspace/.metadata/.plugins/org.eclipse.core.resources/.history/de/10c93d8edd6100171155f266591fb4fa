@@ -1,0 +1,52 @@
+package com.edu.hw.dao;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.edu.hw.dto.BoardVO;
+
+@Repository
+public class BoardDaoImpl implements BoardDao {
+	
+	private static final String namespace="com.edu.hw.dao.BoardDao";
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+
+	@Override
+	public List<BoardVO> list() {
+		return sqlSession.selectList(namespace + ".list");
+	}
+
+	@Override
+	public int write(BoardVO board) {
+		return sqlSession.insert(namespace + ".write", board);
+	}
+
+	@Override
+	public BoardVO findView(int num) {
+		return sqlSession.selectOne(namespace + ".findView", num);
+	}
+
+	@Override
+	public void increateReadCnt(int num) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int remove(int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(BoardVO board) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

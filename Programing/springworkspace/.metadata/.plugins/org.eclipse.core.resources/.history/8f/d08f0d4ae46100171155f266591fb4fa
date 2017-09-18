@@ -1,0 +1,50 @@
+package com.edu.hw.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.edu.hw.dto.BoardVO;
+import com.edu.hw.service.BoardService;
+import com.lecture.board.dto.Board;
+
+@Controller
+public class BoardController {
+	
+	@Autowired
+	BoardService service;
+	
+	@RequestMapping(value = "/board-list", method = RequestMethod.GET)
+	public String list(Model model) {
+		List<BoardVO> list = service.getBoardList();
+		
+		model.addAttribute("list", list);
+		
+		return "board/list";
+	}
+	
+	@RequestMapping(value = "/board-write", method = RequestMethod.GET)
+	public String writeForm() {
+		return "board/write";
+	}
+	
+	@RequestMapping(value = "/board-write", method = RequestMethod.POST)
+	public String writeSubmit(BoardVO board, Model model) {
+		
+//		System.out.println(board);
+		
+		if (board.getTitle().length() > 5) {
+			service.insert(board);
+			return "redirect:list";
+		} else {
+			model.addAttribute("board", board);
+			model.addAttribute("message", "제목은 5글자 이상이여야합니다.");
+			return "board/write";
+		}
+	}
+
+}

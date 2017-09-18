@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style></style>
+<script>
+var i= 0;
+var array = ['가', '나', '다'];
+
+while(i<array.lenth){
+	console.log(i + '번째 출력: '+array[i]);
+	i++
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

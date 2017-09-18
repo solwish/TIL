@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+newFileTemplateName=New HTML File (5)
+org.eclipse.wst.sse.ui.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="true" context\="html_new" deleted\="false" description\="html 5" enabled\="true" id\="org.eclipse.wst.html.ui.templates.html5" name\="New HTML File (5)">&lt;\!DOCTYPE html&gt;\r\n&lt;html&gt;\r\n&lt;head&gt;\r\n&lt;meta charset\="${encoding}"&gt;\r\n&lt;title&gt;Insert title here&lt;/title&gt;\r\n&lt;style&gt;&lt;/style&gt;\r\n&lt;script&gt;\r\nwindow.onload \= function () {\r\n\t\r\n};\r\n&lt;/script&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;\r\n${cursor}\r\n&lt;/body&gt;\r\n&lt;/html&gt;</template></templates>

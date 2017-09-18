@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style></style>
+<script>
+	//함수를 선얶합니다.
+	var 함수 = function() {
+		console.log('함수_01');
+		console.log('함수_02');
+	};
+	// 출력합니다.
+	console.log(typeof (함수) + ' : ' + 함수);
+	함수();
+</script>
+</head>
+<body>
+
+</body>
+</html>

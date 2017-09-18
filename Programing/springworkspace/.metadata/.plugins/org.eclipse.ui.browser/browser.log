@@ -1,0 +1,63 @@
+
+6월 20, 2017 11:02:20.35 NEW SESSION
+6월 20, 2017 11:02:20.35 [2208:6476:0620/110220.350:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 20, 2017 13:00:44.23 [2208:5048:0620/130044.236:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 13:01:33.83 [2208:6476:0620/130133.836:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 20, 2017 14:33:15.01 [5348:7004:0620/143315.015:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 20, 2017 14:33:16.03 [5348:6560:0620/143316.035:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 14:34:01.30 [5348:6560:0620/143401.301:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:02:40.93 [5348:7004:0620/160240.938:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 20, 2017 16:02:41.28 [5348:6560:0620/160241.281:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:11:58.37 [5348:7004:0620/161158.376:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 20, 2017 16:54:47.57 [1736:5720:0620/165447.578:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:54:55.91 [1736:5720:0620/165455.914:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:56:00.47 [1736:5720:0620/165600.473:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:56:14.21 [1736:5720:0620/165614.215:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:56:20.34 [1736:5720:0620/165620.347:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:57:07.47 [1736:5720:0620/165707.478:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:57:27.17 [1736:5720:0620/165727.177:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 20, 2017 16:59:52.40 [1736:5720:0620/165952.401:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+
+6월 21, 2017 09:01:09.50 NEW SESSION
+6월 21, 2017 09:01:09.50 [5852:2324:0621/090109.498:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 21, 2017 09:06:03.21 [5852:2324:0621/090603.210:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 21, 2017 10:25:29.89 [5852:3048:0621/102529.890:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 21, 2017 10:26:10.16 [5852:3048:0621/102610.162:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 21, 2017 11:05:44.21 [1184:6360:0621/110544.213:ERROR:default_component_installer.cc(276)] Failed to read manifest or verify installation for Signed Tree Heads (C:\Users\student\AppData\Local\Google\Chrome\User Data\CertificateTransparency\422).: 지정된 파일을 찾을 수 없습니다. (0x2)
+6월 21, 2017 11:07:41.49 [1184:1404:0621/110741.492:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 21, 2017 11:10:05.87 [1184:844:0621/111005.875:ERROR:shader_disk_cache.cc(237)] Failed to create shader cache entry: -2
+6월 21, 2017 11:10:06.32 [1184:1404:0621/111006.327:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 21, 2017 12:45:46.50 [1184:1404:0621/124546.506:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 21, 2017 12:46:06.86 [1184:1404:0621/124606.860:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 21, 2017 12:47:57.65 [1184:1404:0621/124757.654:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 21, 2017 12:49:40.77 [1184:1404:0621/124940.776:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+
+6월 22, 2017 11:01:25.23 NEW SESSION
+6월 22, 2017 11:01:25.23 [5308:6636:0622/110125.231:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 22, 2017 11:01:31.24 [5308:6636:0622/110131.242:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 22, 2017 11:11:36.06 [5308:6636:0622/111136.064:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 22, 2017 11:21:38.07 [5308:6636:0622/112138.070:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 22, 2017 11:31:43.04 [5308:6636:0622/113143.044:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 22, 2017 11:41:50.07 [5308:6636:0622/114150.071:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 22, 2017 15:11:58.79 [6740:5572:0622/151158.793:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+
+6월 26, 2017 13:00:22.23 NEW SESSION
+6월 26, 2017 13:00:22.23 [1076:6080:0626/130022.235:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 26, 2017 13:28:23.71 [1076:6080:0626/132823.716:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 26, 2017 13:28:53.88 [1076:6080:0626/132853.882:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+
+6월 27, 2017 14:19:50.47 NEW SESSION
+6월 27, 2017 14:19:50.47 [6288:7124:0627/141950.476:ERROR:service_manager_context.cc(161)] Attempting to run unsupported native service: C:\Program Files (x86)\Google\Chrome\Application\59.0.3071.115\content_browser.service.exe
+6월 27, 2017 14:19:50.47 [6288:7124:0627/141950.476:ERROR:service_manager_context.cc(161)] Attempting to run unsupported native service: C:\Program Files (x86)\Google\Chrome\Application\59.0.3071.115\content_browser.service.exe
+6월 27, 2017 14:19:50.47 [6288:7124:0627/141950.476:ERROR:service_manager_context.cc(161)] Attempting to run unsupported native service: C:\Program Files (x86)\Google\Chrome\Application\59.0.3071.115\content_browser.service.exe
+6월 27, 2017 14:20:52.19 [7012:5504:0627/142052.199:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 27, 2017 14:21:01.99 [7012:5504:0627/142101.992:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 27, 2017 14:21:08.41 [7012:5504:0627/142108.419:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 27, 2017 14:21:59.37 [7012:5504:0627/142159.377:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+6월 27, 2017 14:22:37.66 [7012:5660:0627/142237.667:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 27, 2017 14:59:38.95 [4712:5524:0627/145938.954:ERROR:service_manager.cc(158)] Connection InterfaceProviderSpec prevented service: content_plugin from binding interface: memory_instrumentation::mojom::Coordinator exposed by: content_browser
+6월 27, 2017 15:00:03.76 [4712:5504:0627/150003.760:ERROR:audio_manager_base.cc(264)] Invalid audio output parameters received; using fake audio path. Channels: 0, Sample Rate: 0, Bits Per Sample: 0, Frames Per Buffer: 0
+
+7월 06, 2017 16:18:01.28 NEW SESSION
+7월 06, 2017 16:18:01.28 [2816:3504:0706/161801.285:ERROR:ssl_client_socket_impl.cc(1054)] handshake failed; returned -1, SSL error code 1, net_error -101
+7월 06, 2017 16:18:06.77 [2816:3504:0706/161806.771:ERROR:ssl_client_socket_impl.cc(1054)] handshake failed; returned -1, SSL error code 1, net_error -100

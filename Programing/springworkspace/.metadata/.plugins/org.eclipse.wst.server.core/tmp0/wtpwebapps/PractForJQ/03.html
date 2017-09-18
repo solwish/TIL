@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('img').attr({
+			alt: 'jQuery 라이브러리를 사용한 속성 지정',
+			src: function (index) {
+			// 변수를 선언합니다.
+			var size = (index + 1) * 100;
+			// 리턴합니다.
+			return 'http://placehold.it/' + size + 'x100';
+			}
+			});
+	});
+</script>
+
+</head>
+<body>
+	<img />
+	<img />
+	<img />
+</body>
+</html>

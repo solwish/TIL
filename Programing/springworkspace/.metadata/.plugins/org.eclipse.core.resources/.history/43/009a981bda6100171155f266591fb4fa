@@ -1,0 +1,7 @@
+package com.edu.hw.dto;
+
+import java.io.Serializable;
+
+public class BoardVO implements Serializable {
+
+}

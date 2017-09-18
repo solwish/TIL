@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		var output = '';
+		for (var i = 0; i < 256; i++) {
+			output += '<div></div>';
+		}
+		document.body.innerHTML = output; 
+		
+		$('div').css({ height: 2, backgroundColor: function (i) { 
+			return 'rgb(' + i + ',' + i + ',' + i + ')'; } });
+	});
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.0.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#bird')
+		.css({position : 'fixed'})
+		.animate({
+			left : '100%',
+		}, 3000)
+		.click(function() {
+			$(this).stop()
+			.animate({top : '100%'});
+		});
+
+	});
+</script>
+
+</head>
+<body>
+<img id="bird" width="200px" src="images/Desert.jpg">
+</body>
+</html>

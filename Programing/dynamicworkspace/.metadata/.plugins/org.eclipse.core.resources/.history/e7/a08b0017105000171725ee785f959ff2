@@ -1,0 +1,24 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%! Connection conn = null;
+	PreparedStatement pstmt = null;
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	String uid = "edu";
+	String pass = "1231";
+	String sql =
+		"update  member " +
+		"set name=?, pwd=?, email=?, phone=?, admin=? " +
+		"where userid=?";%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

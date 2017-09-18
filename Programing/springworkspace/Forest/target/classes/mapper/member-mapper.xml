@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lecture.forest.dao.MemberDao">
+
+
+	<select id="selectOne" parameterType="String" resultType="MemberVO"> SELECT
+		* FROM member WHERE userid=#{userid}
+	</select>
+	<select id="selectList" parameterType="int" resultType="MemberVO"> SELECT *
+		FROM member
+	</select>
+	<select id="selectCount" resultType="int"> SELECT count(*) FROM member
+	</select>
+	
+	
+	<insert id="insert" parameterType="MemberVO"> 
+		insert into member values( #{name}, #{userid}, #{password}, #{email}, #{phone}, #{admin})
+	</insert>
+	
+	
+	<update id="update" parameterType="MemberVO"> UPDATE member SET email =
+		#{email}, phone = #{phone} WHERE userid=#{userid} and password = #{password}
+	</update>
+	<delete id="delete" parameterType="String"> 
+		DELETE FROM member
+		WHERE userid=#{userid}
+	</delete>
+	
+</mapper>

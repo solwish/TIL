@@ -1,0 +1,103 @@
+package com.lecture.board.controller;
+
+import java.util.ArrayList;
+
+import javax.xml.ws.Response;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.lecture.board.dao.BoardDao;
+import com.lecture.board.dto.Board;
+
+@Controller
+@RequestMapping("/board")
+public class BoardController {
+	
+	@Autowired
+	private BoardDao dao;
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String list(Model model) {
+		
+		model.addAttribute("list", dao.list());
+		return "board/list";
+	}
+
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public String writeForm() {
+		return "board/write";
+	}
+
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String writeSubmit(Board board, Model model) {
+		System.out.println(board);
+		if (board.getTitle().length() > 5) {
+			dao.write(board);
+			return "redirect:list";
+		} else {
+			model.addAttribute("message", "제목은 5글자 이상이여야합니다.");
+			return "board/write";
+		}
+	}
+
+	@RequestMapping("/search")
+	public String search(@RequestParam(value = "query", required = false) String query,
+			@RequestParam(value = "page", defaultValue = "1") int page) {
+		System.out.println(query + "/\\" + page);
+		return "board/searh_result";
+	}
+
+	@RequestMapping("/view")
+	public String view(@RequestParam(value = "num", required = false) int num, Model model) {
+
+		dao.increateReadCnt(num);
+		model.addAttribute("board", dao.findView(num));
+		return "board/view";
+
+	}
+
+	@RequestMapping("/delete")
+	public String delete(@RequestParam(value = "num", required = false) int num) {
+		dao.remove(num);
+
+		return "redirect:list";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String updateForm(@RequestParam(value = "num") int num, Model model) {
+
+		model.addAttribute(dao.findView(num));
+
+		return "board/update";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updatePost(Board board, Model model) {
+		if (board.getTitle().length() > 5) {
+			dao.update(board);
+
+			return "redirect:list";
+		} else {
+			model.addAttribute("message", "제목은 5글자 이상이여야합니다.");
+			return "board/update";
+		}
+	}
+	
+	@ModelAttribute("keywords")
+	public ArrayList<String> timeCheck() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("가나다");
+		list.add("마바사");
+		list.add("최고짱짱");
+		list.add("초등학교에서 파는");
+		list.add("병든 병아리");
+		return list;
+	}
+
+}

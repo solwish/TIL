@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="smsSender" class="homenetwork.SmsSender"></bean>
+
+	<!-- <bean name="monitor1" class="homenetwork.SystemMoniter"> <constructor-arg> 
+		<value>10</value> </constructor-arg> </bean> <bean name="monitor2" class="homenetwork.SystemMoniter"> 
+		<constructor-arg ref="sender" /> </bean> <bean name="monitor3" class="homenetwork.SystemMoniter"> 
+		<constructor-arg value="10" /> <constructor-arg ref="sender" /> </bean> -->
+
+	<!-- <bean name="monitor1" class="homenetwork.SystemMoniter" p:periodTime="10"> 
+		<property name="periodTime" value="10" /> </bean> <bean name="monitor2" class="homenetwork.SystemMoniter" 
+		p:sender-ref="smsSender"> <property name="sender" value="smsSender" /> </bean> 
+		<bean name="monitor3" class="homenetwork.SystemMoniter" p:periodTime="10" 
+		p:sender-ref="smsSender"> <property name="periodTime" value="10" /> <property 
+		name="sender" value="smsSender" /> </bean> -->
+
+
+	<bean name="monitor1" class="homenetwork.SystemMoniter">
+		<property name="periodTime" value="10" />
+	</bean>
+
+	<bean name="monitor2" class="homenetwork.SystemMoniter">
+		<property name="sender" ref="smsSender" />
+	</bean>
+
+	<bean name="monitor3" class="homenetwork.SystemMoniter">
+		<property name="periodTime" value="10" />
+		<property name="sender" ref="smsSender" />
+	</bean>
+
+	<bean name="client" class="homenetwork.BookClient">
+		<property name="config">
+			<props>
+				<prop key="server">
+					192.186.1.100
+				</prop>
+				<prop key="connectionTimeout">
+					5000
+				</prop>
+				<prop key="userid">
+					edu
+				</prop>
+				<prop key="password">
+					1234
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+
+
+
+</beans>

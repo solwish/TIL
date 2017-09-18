@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style></style>
+<script>
+window.onload = function () {
+	var image = document.getElementById('image');
+	
+	image.src = 'http://placehold.it/300x200';
+	image.width = 300;
+	image.height = 200;
+};
+</script>
+</head>
+<body>
+<img id="image" />
+</body>
+</html>

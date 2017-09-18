@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style></style>
+<script>
+console.log(i);
+var i= 0;
+var array = ['가', '나', '다'];
+array[9] = 1000;
+while(i<array.length){
+	console.log(i + '번째 출력: '+array[i]);
+	i++
+}
+	// 변수를 선얶합니다.
+	var output = 0;
+	// 반복을 수행합니다.
+	for (var i = 0; i <= 10; i++) {
+	output += i;
+	
+	}
+	// 출력합니다.
+	console.log(output);
+	console.log(i);
+</script>
+</head>
+<body>
+
+</body>
+</html>

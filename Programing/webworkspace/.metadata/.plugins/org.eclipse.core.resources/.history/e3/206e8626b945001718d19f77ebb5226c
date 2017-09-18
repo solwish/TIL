@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr>
+				<td><label for="username">이름</label></td>
+				<td><input id="username" type="text" placeholder="이름 입력"
+					name="username"></td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td><input id="man" type="radio" name="gender" value="m" /> <label
+					for="man">남자</label> <input id="woman" type="radio" name="gender"
+					value="w" /> <label for="woman">여자</label></td>
+			</tr>
+
+			<tr>
+				<td>결혼여부</td>
+				<td><input id="marry" type="radio" name="marry" value="y" /> <label
+					for="marry">기혼</label> <input id="single" type="radio" name="marry"
+					value="n" /> <label for="single">미혼</label></td>
+			</tr>
+
+
+		</table>
+		<select name="lunch">
+			<option>김밥</option>
+			<option>떡볶이</option>
+			<option>순대</option>
+			<option>어묵</option>
+		</select> <br />
+		<input type="submit" value="가입" />
+	</form>
+</body>
+</html>

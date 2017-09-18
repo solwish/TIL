@@ -1,0 +1,9 @@
+package pract.edu;
+
+public class Testforbean {
+
+	public Testforbean() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

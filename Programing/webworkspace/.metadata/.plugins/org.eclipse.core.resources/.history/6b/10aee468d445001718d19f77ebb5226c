@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#wrap {
+	width: 650px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+h1{
+	width: 400px;
+	float: left;
+}
+
+h3 {
+	width: 200px;
+	float: left;
+}
+
+p{
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+}
+
+a {
+	float: left;
+}
+
+input[type="submit"] {
+	float: right;
+}
+</style>
+</head>
+<body>
+
+	<form>
+		<div id="wrap">
+			<h1>제목 1</h1>
+			<h3>"2017-05-31"</h3>
+			<p>	
+				내용 테스트
+			</p>
+			
+				<a href="board_list.html">목록</a> <input type="submit" value="완료">
+			</div>
+		</div>
+	</form>
+
+</body>
+</html>

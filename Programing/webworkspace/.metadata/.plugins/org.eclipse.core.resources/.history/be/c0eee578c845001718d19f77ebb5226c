@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+input[type="text"] {
+	background: red;
+}
+
+input[type="password"] {
+	background: blue;
+}
+</style>
+</head>
+<body>
+	<form>
+		<input type="text" /> <input type="password" />
+	</form>
+</body>
+</html>

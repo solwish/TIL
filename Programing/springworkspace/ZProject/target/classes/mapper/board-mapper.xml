@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.edu.hw.dao.BoardDao">
+
+	<select id="findView" parameterType="int" resultType="Board">
+		SELECT * FROM BOARD WHERE num=#{num}
+	</select>
+
+
+	<select id="list" resultType="Board">
+		SELECT * FROM BOARD
+	</select>
+
+	<insert id="write" parameterType="Board">
+		insert into board(num, title, writer, readCnt, content, regDate)
+		values(#{board_seq.nextval}, #{title}, #{writer}, 0, #{content},
+		sysdate)
+	</insert>
+
+	<update id="update" parameterType="Board">
+		UPDATE board SET
+		title = #{title}, content= #{content}
+		WHERE num = #{num}
+	</update>
+
+	<delete id="remove" parameterType="int">
+		DELETE FROM board
+		WHERE num=#{num}
+	</delete>
+
+	<select id="increaseReadCnt" resultType="int">
+		update board set readCnt = readCnt +1
+		where num = #{num}
+	</select>
+
+
+
+</mapper>

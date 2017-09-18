@@ -1,0 +1,5 @@
+package com.edu.hw.dao;
+
+public interface BoardDao {
+
+}

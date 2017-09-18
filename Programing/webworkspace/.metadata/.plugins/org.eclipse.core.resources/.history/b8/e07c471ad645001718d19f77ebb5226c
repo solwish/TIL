@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#wrap {
+	width: 650px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+h1 {
+	width: 400px;
+	float: left;
+}
+
+h3 {
+	width: 200px;
+	float: left;
+}
+
+p {
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+}
+a{
+padding=400px;
+}
+
+</style>
+</head>
+<body>
+
+
+	<div id="wrap">
+		<h1>제목 1</h1>
+		<h3>"2017-05-31"</h3>
+	</div>
+	<p>내용 테스트</p>
+	<div id="123">
+		<a id="1" href="board_list.html">목록</a> <a id="2"
+			href="board_list.html">수정</a> <a id="3" href="board_list.html">삭제</a>
+	</div>
+
+
+</body>
+</html>
