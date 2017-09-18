@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZEDU05_170918_F01</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZEDU05_170918_F01</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Include ZEDU05_170918_F01</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&  Include           ZEDU05_170918_F01</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  GET_DATA</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM get_data .
+
+  DATA : lv_code,
+         lv_msg(100).
+
+  CLEAR : gt_data, gt_data[].
+
+  call function <a href ="zed05_get_qmat/zed05_get_qmat.html">'ZED05_GET_QMAT'</a>
+    EXPORTING
+      i_art     = p_art
+<font color ="#0000FF">*      i_matnr_l = s_matnr-low</font>
+<font color ="#0000FF">*      i_matnr_h = s_matnr-high</font>
+<font color ="#0000FF">*      i_werks_l = s_werks-low</font>
+<font color ="#0000FF">*      i_werks_h = s_werks-high</font>
+    IMPORTING
+      e_code    = lv_code
+      e_message = lv_msg
+    TABLES
+      t_list    = gt_data
+      it_matnr  = s_matnr
+      it_werks  = s_werks.
+
+  IF lv_code EQ 'E'.
+    MESSAGE s000 WITH lv_msg DISPLAY LIKE 'E'.
+    EXIT.
+  ENDIF.
+
+ENDFORM.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  REFRESH_TABLE</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM refresh_table .
+
+  gs_stable-row = 'X'.
+  gs_stable-col = 'X'.
+
+  CALL METHOD go_grid-&gt;refresh_table_display
+    EXPORTING
+      is_stable      = gs_stable
+      i_soft_refresh = space.
+
+ENDFORM.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  SET_FCAT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*      --&gt;P_KEY  text</font>
+<font color ="#0000FF">*      --&gt;P_FIELDNAME  text</font>
+<font color ="#0000FF">*      --&gt;P_COLTEXT  text</font>
+<font color ="#0000FF">*      --&gt;P_REF_TABLE  text</font>
+<font color ="#0000FF">*      --&gt;P_REF_FIELD  text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM set_fcat  USING    p_key
+                        p_fieldname
+                        p_coltext
+                        p_ref_table
+                        p_ref_field.
+
+  gs_fcat-key       = p_key.
+  gs_fcat-fieldname = p_fieldname.
+  gs_fcat-coltext   = p_coltext.
+  gs_fcat-ref_table = p_ref_table.
+  gs_fcat-ref_field = p_ref_field.
+
+  APPEND gs_fcat TO gt_fcat.
+  CLEAR gs_fcat.
+
+ENDFORM.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>
