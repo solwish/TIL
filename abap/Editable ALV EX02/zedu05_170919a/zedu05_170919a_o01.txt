@@ -1,0 +1,53 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170919A_O01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  SET_FCAT  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_fcat OUTPUT.
+
+  CLEAR : gs_fcat, gt_fcat.
+  PERFORM set_fcat USING : 'X' 'MATNR' '자재코드'       'MARA'  'MATNR',
+                           'X' 'WERKS' '플랜트'         'MARC'  'WERKS',
+                           ' ' 'MAKTX' '자재내역'       'MAKT'  'MAKTX',
+                           ' ' 'PSTAT' '유지보수 상태'  'MATA'  'PSTAT',
+                           ' ' 'MTART' '자재타입'       'MARA'  'MTART',
+                           ' ' 'MATKL' '자재그룹'       'MARA'  'MATKL',
+                           ' ' 'NAME1' '플랜트 내역'    'T001W' 'NAME1',
+                           ' ' 'MEINS' '단위'           'MARA'  'MEINS'.
+
+  gs_layout-zebra      = 'X'.
+  gs_layout-sel_mode   = 'D'.
+  gs_layout-cwidth_opt = 'X'.
+  gs_variant-report    = sy-repid.
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  DISPLAY_SCREEN  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE display_screen OUTPUT.
+
+  IF go_container IS NOT BOUND.
+    PERFORM make_container.
+  ELSE.
+    PERFORM refresh_table.
+    PERFORM keep_select.
+  ENDIF.
+
+ENDMODULE.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

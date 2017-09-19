@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZEDU05_170919A_O01</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZEDU05_170919A_O01</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Include ZEDU05_170919A_O01</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&  Include           ZEDU05_170919A_O01</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  STATUS_0100  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  SET_FCAT  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE set_fcat OUTPUT.
+
+  CLEAR : gs_fcat, gt_fcat.
+  PERFORM set_fcat USING : 'X' 'MATNR' '자재코드'       'MARA'  'MATNR',
+                           'X' 'WERKS' '플랜트'         'MARC'  'WERKS',
+                           ' ' 'MAKTX' '자재내역'       'MAKT'  'MAKTX',
+                           ' ' 'PSTAT' '유지보수 상태'  'MATA'  'PSTAT',
+                           ' ' 'MTART' '자재타입'       'MARA'  'MTART',
+                           ' ' 'MATKL' '자재그룹'       'MARA'  'MATKL',
+                           ' ' 'NAME1' '플랜트 내역'    'T001W' 'NAME1',
+                           ' ' 'MEINS' '단위'           'MARA'  'MEINS'.
+
+  gs_layout-zebra      = 'X'.
+  gs_layout-sel_mode   = 'D'.
+  gs_layout-cwidth_opt = 'X'.
+  gs_variant-report    = sy-repid.
+
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  DISPLAY_SCREEN  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE display_screen OUTPUT.
+
+  IF go_container IS NOT BOUND.
+    PERFORM make_container.
+  ELSE.
+    PERFORM refresh_table.
+    PERFORM keep_select.
+  ENDIF.
+
+ENDMODULE.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

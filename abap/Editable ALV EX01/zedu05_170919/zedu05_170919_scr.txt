@@ -1,0 +1,10 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170919_SCR
+*&---------------------------------------------------------------------*
+
+SELECTION-SCREEN BEGIN OF BLOCK bl1 WITH FRAME TITLE TEXT-t01.
+  SELECT-OPTIONS : s_bukrs FOR ztedu05_01-bukrs.
+SELECTION-SCREEN END OF BLOCK bl1.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

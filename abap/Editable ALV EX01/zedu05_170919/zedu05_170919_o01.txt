@@ -1,0 +1,54 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170919_O01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  DISPLAY_SCREEN  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE display_screen OUTPUT.
+
+  IF go_container IS NOT BOUND.
+
+    PERFORM make_container.
+
+  ELSE.
+
+    PERFORM refresh_table.
+
+  ENDIF.
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  SET_FCAT  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_fcat OUTPUT.
+  CLEAR : gs_fcat, gt_fcat.
+
+  PERFORM set_fcat USING :
+        'X' 'BUKRS' '회사코드'    'ZTEDU05_01' 'X',
+        'X' 'WERKS' '플랜트'      'ZTEDU05_01' 'X',
+        ' ' 'MATNR' '자재코드'    'ZTEDU05_01' 'X',
+        ' ' 'KOSTL' '코스트센터'  'ZTEDU05_01' 'X',
+        ' ' 'PRCTR' '손익센터'    'ZTEDU05_01' 'X'.
+
+  gs_layout-zebra       = 'X'.
+  gs_layout-sel_mode    = 'D'.
+  gs_layout-cwidth_opt  = 'X'.
+  gs_variant-report     = sy-repid.   "sy-cprog
+
+ENDMODULE.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

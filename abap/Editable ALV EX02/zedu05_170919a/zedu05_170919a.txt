@@ -1,0 +1,42 @@
+*&---------------------------------------------------------------------*
+*& Report  ZEDU05_170919A
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE zedu05_170919a_top                      .    " global Data
+
+INCLUDE zedu05_170919a_scr                      .  " Select-Screen
+INCLUDE zedu05_170919a_o01                      .  " PBO-Modules
+INCLUDE zedu05_170919a_i01                      .  " PAI-Modules
+INCLUDE zedu05_170919a_f01                      .  " FORM-Routines
+
+START-OF-SELECTION.
+  CASE 'X'.
+    WHEN p_stan.
+      PERFORM get_data_stan.
+    WHEN p_cbo.
+      PERFORM get_data_cbo.
+    WHEN OTHERS.
+  ENDCASE.
+
+  CALL SCREEN '0100'.
+
+
+*Selection texts
+*----------------------------------------------------------
+* P_CBO         CBO Table 조회
+* P_STAN         Standart Table 조회
+* S_MATNR D       .
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: OO
+*000   & & & &
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
