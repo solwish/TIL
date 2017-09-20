@@ -1,0 +1,31 @@
+*&---------------------------------------------------------------------*
+*& Report  ZEDU05_170920B
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE zedu05_170920b_top                      .    " global Data
+
+INCLUDE zedu05_170920b_o01                      .  " PBO-Modules
+INCLUDE zedu05_170920b_i01                      .  " PAI-Modules
+INCLUDE zedu05_170920b_f01                      .  " FORM-Routines
+
+START-OF-SELECTION.
+*PERFORM get_data.
+CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> Sflight and Sbook tab
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: OO
+*000   & & & &
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

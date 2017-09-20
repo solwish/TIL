@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZEDU05_170920</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZEDU05_170920</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  사원 정보 조회 및 입력</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*& Report  ZEDU05_170920</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+
+include <a href ="zedu05_170920_top.html">ZEDU05_170920_TOP</a>.    " global Data
+
+ include <a href ="zedu05_170920_scr.html">ZEDU05_170920_scr</a>.  " Selection Screen
+ include <a href ="zedu05_170920_o01.html">ZEDU05_170920_O01</a>.  " PBO-Modules
+ include <a href ="zedu05_170920_i01.html">ZEDU05_170920_I01</a>.  " PAI-Modules
+ include <a href ="zedu05_170920_f01.html">ZEDU05_170920_F01</a>.  " FORM-Routines
+
+ START-OF-SELECTION.
+ PERFORM get_data.
+ CALL SCREEN '0100'.
+
+<font color ="#0000FF">*GUI Texts</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">* 0100 --&gt; SAVE AND VIEW ALV FOR MEMBER</font>
+
+
+<font color ="#0000FF">*Selection texts</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">* S_BUKRS D       .</font>
+
+
+<font color ="#0000FF">*Messages</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: OO</font>
+<font color ="#0000FF">*000   & & & &</font>
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

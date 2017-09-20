@@ -1,0 +1,164 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170920B_F01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM get_data .
+
+  CLEAR : gt_data1.
+
+  SELECT *
+  INTO CORRESPONDING FIELDS OF TABLE gt_data1
+  FROM sflight
+*  WHERE carrid EQ gv_carrid.
+  WHERE carrid EQ sflight-carrid.
+
+  IF sy-subrc NE 0.
+    MESSAGE s000 WITH 'Data not found'.
+  ENDIF.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  MAKE_CONTAINER
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM make_container .
+
+  CREATE OBJECT go_container
+    EXPORTING
+      container_name = 'GO_CONTAINER'.
+
+  CREATE OBJECT go_grid
+    EXPORTING
+      i_parent = go_container.
+
+  CALL METHOD go_grid->set_table_for_first_display
+    EXPORTING
+*     i_buffer_active  =
+*     i_bypassing_buffer            =
+*     i_consistency_check           =
+      i_structure_name = 'SFLIGHT'
+*     is_variant       =
+*     i_save           =
+*     i_default        = 'X'
+      is_layout        = gs_layout
+*     is_print         =
+*     it_special_groups             =
+*     it_toolbar_excluding          =
+*     it_hyperlink     =
+*     it_alv_graphics  =
+*     it_except_qinfo  =
+*     ir_salv_adapter  =
+    CHANGING
+      it_outtab        = gt_data1[]
+*     it_fieldcatalog  =
+*     it_sort          =
+*     it_filter        =
+*    EXCEPTIONS
+*     invalid_parameter_combination = 1
+*     program_error    = 2
+*     too_many_lines   = 3
+*     others           = 4
+    .
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  MAKE_CONTAINER_TAB2
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM make_container_tab2 .
+
+  CREATE OBJECT go_container2
+    EXPORTING
+      container_name = 'GO_CONTAINER2'.
+
+  CREATE OBJECT go_grid2
+    EXPORTING
+      i_parent = go_container2.
+
+  CALL METHOD go_grid2->set_table_for_first_display
+    EXPORTING
+*     i_buffer_active  =
+*     i_bypassing_buffer            =
+*     i_consistency_check           =
+      i_structure_name = 'SBOOK'
+*     is_variant       =
+*     i_save           =
+*     i_default        = 'X'
+      is_layout        = gs_layout
+*     is_print         =
+*     it_special_groups             =
+*     it_toolbar_excluding          =
+*     it_hyperlink     =
+*     it_alv_graphics  =
+*     it_except_qinfo  =
+*     ir_salv_adapter  =
+    CHANGING
+      it_outtab        = gt_data2[]
+*     it_fieldcatalog  =
+*     it_sort          =
+*     it_filter        =
+*    EXCEPTIONS
+*     invalid_parameter_combination = 1
+*     program_error    = 2
+*     too_many_lines   = 3
+*     others           = 4
+    .
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  REFRESH_TABLE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM refresh_table .
+  gs_stable-row = 'X'.
+  gs_stable-col = 'X'.
+
+  CALL METHOD go_grid->refresh_table_display
+    EXPORTING
+      is_stable      = gs_stable
+      i_soft_refresh = space.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA2
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM get_data2 .
+
+  CLEAR : gt_data2.
+
+  SELECT *
+    INTO CORRESPONDING FIELDS OF TABLE gt_data2
+    FROM sbook.
+
+  IF sy-subrc NE 0.
+    MESSAGE s000 WITH 'Data not found'.
+  ENDIF.
+
+ENDFORM.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
