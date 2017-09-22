@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZEDU05_170922A_F01</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZEDU05_170922A_F01</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Include ZEDU05_170922A_F01</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&  Include           ZEDU05_170922A_F01</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  MAKE_CONTAINER1</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM make_container1 .
+
+  CREATE OBJECT go_container1
+    EXPORTING
+      container_name = 'GO_CONTAINER1'.
+
+  CREATE OBJECT go_grid1
+    EXPORTING
+      i_parent = go_container1.
+
+  CLEAR : gs_toolbar, gt_toolbar.
+  PERFORM exclude_toolbar1.
+
+  CALL METHOD go_grid1-&gt;set_table_for_first_display
+    EXPORTING
+      i_structure_name     = 'SCARR'
+      is_variant           = gs_variant
+      i_save               = 'X'
+<font color ="#0000FF">*     i_default            = 'X'</font>
+      is_layout            = gs_layout
+      it_toolbar_excluding = gt_toolbar
+    CHANGING
+      it_outtab            = gt_data1[]
+<font color ="#0000FF">*     it_fieldcatalog      = gt_fcat</font>
+<font color ="#0000FF">*     it_sort              =</font>
+    .
+
+ENDFORM.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  REFRESH_TABLE</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM refresh_table .
+  gs_stable-row = 'X'.
+  gs_stable-col = 'X'.
+
+  CALL METHOD go_grid1-&gt;refresh_table_display
+    EXPORTING
+      is_stable      = gs_stable
+      i_soft_refresh = space.
+
+ENDFORM.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  MAKE_CONTAINER_TAB2</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM make_container_tab2 .
+
+  CREATE OBJECT go_container2
+    EXPORTING
+      container_name = 'GO_CONTAINER2'.
+
+  CREATE OBJECT go_grid2
+    EXPORTING
+      i_parent = go_container2.
+
+  CLEAR : gs_toolbar, gt_toolbar.
+  PERFORM exclude_toolbar2.
+
+  CALL METHOD go_grid2-&gt;set_table_for_first_display
+    EXPORTING
+      i_structure_name     = 'SFLIGHT'
+      is_variant           = gs_variant
+      i_save               = 'X'
+      is_layout            = gs_layout
+      it_toolbar_excluding = gt_toolbar
+    CHANGING
+      it_outtab            = gt_data2[]
+<font color ="#0000FF">*     it_fieldcatalog      =</font>
+<font color ="#0000FF">*     it_sort              =</font>
+    .
+ENDFORM.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  GET_DATA1</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM get_data1 .
+
+  CLEAR : gt_data1, gt_data1[].
+
+  SELECT *
+    INTO CORRESPONDING FIELDS OF TABLE gt_data1
+    FROM scarr.
+
+  IF sy-subrc NE 0.
+    MESSAGE s000 WITH 'Data not found'.
+  ENDIF.
+
+ENDFORM.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  GET_DATA2</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM get_data2 .
+
+  CLEAR : gt_data2, gt_data2[].
+
+  SELECT *
+    INTO CORRESPONDING FIELDS OF TABLE gt_data2
+    FROM sflight.
+
+  IF sy-subrc NE 0.
+    MESSAGE s000 WITH 'Data not found'.
+  ENDIF.
+
+ENDFORM.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  EXCLUDE_TOOLBAR</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM exclude_toolbar1 .
+
+  gs_toolbar = go_grid1-&gt;mc_fc_print.
+  APPEND gs_toolbar TO gt_toolbar.
+  CLEAR gs_toolbar.
+
+  gs_toolbar = go_grid1-&gt;mc_fc_graph.
+  APPEND gs_toolbar TO gt_toolbar.
+  CLEAR gs_toolbar.
+
+  gs_toolbar = go_grid1-&gt;mc_fc_current_variant.
+  APPEND gs_toolbar TO gt_toolbar.
+  CLEAR gs_toolbar.
+
+ENDFORM.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Form  EXCLUDE_TOOLBAR2</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*  --&gt;  p1        text</font>
+<font color ="#0000FF">*  &lt;--  p2        text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+FORM exclude_toolbar2 .
+
+  gs_toolbar = go_grid2-&gt;mc_fc_print.
+  APPEND gs_toolbar TO gt_toolbar.
+  CLEAR gs_toolbar.
+
+  gs_toolbar = go_grid2-&gt;mc_fc_graph.
+  APPEND gs_toolbar TO gt_toolbar.
+  CLEAR gs_toolbar.
+
+  gs_toolbar = go_grid2-&gt;mc_fc_current_variant.
+  APPEND gs_toolbar TO gt_toolbar.
+  CLEAR gs_toolbar.
+
+ENDFORM.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>
