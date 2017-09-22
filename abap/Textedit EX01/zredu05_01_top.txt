@@ -1,0 +1,14 @@
+*&---------------------------------------------------------------------*
+*& Include ZREDU05_01_TOP                                    Report ZREDU05_01
+*&
+*&---------------------------------------------------------------------*
+REPORT ZREDU05_01 MESSAGE-ID oo.
+
+
+DATA : go_container TYPE REF TO cl_gui_custom_container,
+       go_edit      TYPE REF TO cl_gui_textedit.
+
+DATA : gv_okcode LIKE sy-ucomm.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
