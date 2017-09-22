@@ -1,0 +1,28 @@
+*&---------------------------------------------------------------------*
+*& Module Pool       SAPMZED05_SFLIGHT
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+
+INCLUDE MZED05_SFLIGHT_TOP                      .    " global Data
+
+ INCLUDE MZED05_SFLIGHT_O01                      .  " PBO-Modules
+ INCLUDE MZED05_SFLIGHT_I01                      .  " PAI-Modules
+ INCLUDE MZED05_SFLIGHT_F01                      .  " FORM-Routines
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> Sflight Module
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: OO
+*000   & & & &
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

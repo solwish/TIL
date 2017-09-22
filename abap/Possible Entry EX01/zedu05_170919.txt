@@ -1,0 +1,49 @@
+*&---------------------------------------------------------------------*
+*& Report  ZEDU05_170919
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE zedu05_170919_top                       .    " global Data
+
+INCLUDE zedu05_170919_scr                       .  " Selection Screen
+INCLUDE zedu05_170919_o01                       .  " PBO-Modules
+INCLUDE zedu05_170919_i01                       .  " PAI-Modules
+INCLUDE zedu05_170919_f01                       .  " FORM-Routines
+
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR s_bukrs-low.
+  PERFORM get_company . "SING 'S_BUKRS-LOW'.
+
+*AT SELECTION-SCREEN ON VALUE-REQUEST FOR s_bukrs-high.
+*  PERFORM get_company USING 'S_BUKRS-HIGH'.
+
+START-OF-SELECTION.
+  PERFORM get_data.
+
+  CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> ALV Table Save 교육
+
+*Text elements
+*----------------------------------------------------------
+* 001 검색조건
+
+
+*Selection texts
+*----------------------------------------------------------
+* S_BUKRS D       .
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: OO
+*000   & & & &
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
