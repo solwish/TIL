@@ -1,0 +1,82 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZEDU05_170925_F01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  POSTING
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM posting .
+  CLEAR : gt_bdcdata, gt_bdcdata[], gt_messtab, gt_messtab[],
+          gs_param.
+
+  gs_param-dismode = 'N'.
+  gs_param-updmode = 'S'.
+
+  PERFORM dynpro USING :  'X'  'SAPLSPO4'               '0300',
+                          ' '  'BDC_OKCODE'             '=FURT',
+                          ' '  'SVALD-VALUE(01)'        '1000',
+
+                         'X'    'SAPLK23F1'              '1200',
+                         ' '    'BDC_OKCODE'              '/00' ,
+                         ' '    'COHEADER-SEND_REC_REL'  '01SAP',
+                         ' '    'COHEADER-BLDAT'          sy-datum,
+                         ' '    'COHEADER-BUDAT'          sy-datum,
+                         ' '    'COHEADER-PERIO'         sy-datum+4(2),  "월만 빼오는 방법
+                         ' '    'EL2(01)'                gv_kostl_fr,    "'2200',
+                         ' '    'EL3(01)'                gv_kstar, "'405100',
+                         ' '    'EL4(01)'                gv_currency,    "'KRW',
+                         ' '    'EL5(01)'                gv_kostl_to,    "'2301',
+                         ' '    'ELR1(01)'               gv_amount,      "'1000',
+
+                         'X'    'SAPLK23F1'              '1200',
+                         ' '    'BDC_OKCODE'              '=POST',
+                         ' '    'COHEADER-SEND_REC_REL'  '01SAP',
+                         ' '    'COHEADER-BLDAT'         sy-datum,
+                         ' '    'COHEADER-BUDAT'         sy-datum,
+                         ' '    'COHEADER-PERIO'         sy-datum+4(2).
+
+  CALL TRANSACTION 'KB11N' USING gt_bdcdata
+                           OPTIONS FROM gs_param
+                           MESSAGES INTO gt_messtab.
+
+  READ TABLE gt_messtab WITH KEY msgid = 'BK'
+                                 msgnr = '003'.
+*  bk랑 003은 사전에 약속 된거야 컨이나 고급 개발자에게 물어봐
+
+  IF sy-subrc EQ 0.
+    MESSAGE i000 WITH gt_messtab-msgv1.
+*    msgv1 숫자 1임.
+  ENDIF.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  DYNPRO
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_0016   text
+*      -->P_0017   text
+*      -->P_0018   text
+*----------------------------------------------------------------------*
+FORM dynpro  USING p_dynbegin p_name p_value.
+
+  IF p_dynbegin EQ 'X'.
+    gs_bdcdata-dynbegin = p_dynbegin.
+    gs_bdcdata-program  = p_name.
+    gs_bdcdata-dynpro   = p_value.
+  ELSE.
+    gs_bdcdata-fnam = p_name.
+    gs_bdcdata-fval = p_value.
+  ENDIF.
+
+  APPEND gs_bdcdata TO gt_bdcdata.
+  CLEAR  gs_bdcdata.
+
+ENDFORM.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

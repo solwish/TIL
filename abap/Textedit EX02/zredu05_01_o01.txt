@@ -1,0 +1,136 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZREDU05_01_O01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  DISPLAY_SCREEN  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*MODULE display_screen OUTPUT.
+*
+*  IF go_container IS NOT BOUND.
+*
+*    CREATE OBJECT go_container
+*      EXPORTING
+*        container_name = 'GO_CONTAINER'.
+*
+*    CREATE OBJECT go_edit
+*      EXPORTING
+**       max_number_chars       =
+**       style  = 0
+**       wordwrap_mode          = WORDWRAP_AT_WINDOWBORDER
+**       wordwrap_position      = -1
+**       wordwrap_to_linebreak_mode = FALSE
+**       filedrop_mode          = DROPFILE_EVENT_OFF
+*        parent = go_container
+**       lifetime               =
+**       name   =
+**      EXCEPTIONS
+**       error_cntl_create      = 1
+**       error_cntl_init        = 2
+**       error_cntl_link        = 3
+**       error_dp_create        = 4
+**       gui_type_not_supported = 5
+**       others = 6
+*      .
+*
+*  ENDIF.
+*ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  ACTIVE_TAB  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE active_tab OUTPUT.
+  go_tab-activetab = gv_pressedtab.
+
+  CASE gv_pressedtab.
+    WHEN 'T01'.
+      gv_subscreen = '0101'.
+    WHEN 'T02'.
+      gv_subscreen = '0102'.
+  ENDCASE.
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  CREATE_EDIT  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE create_edit OUTPUT.
+
+  IF go_container IS NOT BOUND.
+    CREATE OBJECT go_container
+      EXPORTING
+        container_name = 'GO_CONTAINER'.
+
+    CREATE OBJECT go_edit
+      EXPORTING
+*       max_number_chars       =
+*       style  = 0
+*       wordwrap_mode          = WORDWRAP_AT_WINDOWBORDER
+*       wordwrap_position      = -1
+*       wordwrap_to_linebreak_mode = FALSE
+*       filedrop_mode          = DROPFILE_EVENT_OFF
+        parent = go_container
+*       lifetime               =
+*       name   =
+*      EXCEPTIONS
+*       error_cntl_create      = 1
+*       error_cntl_init        = 2
+*       error_cntl_link        = 3
+*       error_dp_create        = 4
+*       gui_type_not_supported = 5
+*       others = 6
+      .
+  ENDIF.
+
+  IF go_container2 IS NOT BOUND.
+    CREATE OBJECT go_container2
+      EXPORTING
+        container_name = 'GO_CONTAINER2'.
+
+    CREATE OBJECT go_edit2
+      EXPORTING
+*       max_number_chars       =
+*       style  = 0
+*       wordwrap_mode          = WORDWRAP_AT_WINDOWBORDER
+*       wordwrap_position      = -1
+*       wordwrap_to_linebreak_mode = FALSE
+*       filedrop_mode          = DROPFILE_EVENT_OFF
+        parent = go_container2
+*       lifetime               =
+*       name   =
+*      EXCEPTIONS
+*       error_cntl_create      = 1
+*       error_cntl_init        = 2
+*       error_cntl_link        = 3
+*       error_dp_create        = 4
+*       gui_type_not_supported = 5
+*       others = 6
+      .
+
+    CALL METHOD go_edit2->set_readonly_mode.
+
+    CALL METHOD go_edit2->set_toolbar_mode
+      EXPORTING
+        toolbar_mode           = 0
+      EXCEPTIONS
+        error_cntl_call_method = 1
+        invalid_parameter      = 2
+        others                 = 3
+            .
+  ENDIF.
+ENDMODULE.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZEDU05_170925_TOP</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZEDU05_170925_TOP</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Include ZEDU05_170925_TOP</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*& Include ZEDU05_170925_TOP                                 Report ZEDU05_170925</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+REPORT ZEDU05_170925 MESSAGE-ID oo.
+
+DATA : gt_bdcdata TYPE TABLE OF bdcdata,
+       gs_bdcdata LIKE bdcdata,
+       gt_messtab LIKE bdcmsgcoll OCCURS 0 WITH HEADER LINE,
+       gs_param   TYPE ctu_params.
+
+DATA : gv_kostl_fr LIKE csks-kostl,
+       gv_kostl_to LIKE csks-kostl,
+       gv_kstar    LIKE cska-kstar,
+       gv_amount(15), "이거 통화키랑 맞춰줘야해서 이렇게 하는 거래   LIKE mseg-dmbtr.
+       gv_currency TYPE waers.
+
+DATA : gv_okcode LIKE sy-ucomm.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

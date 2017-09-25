@@ -1,0 +1,55 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZREDU05_01_I01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  EXIT_0100  INPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE exit_0100 INPUT.
+
+*  CALL METHOD : go_edit->free, go_container->free.
+*
+*  FREE : go_edit, go_container.
+*
+*  LEAVE TO SCREEN 0.
+
+  FREE : go_tab.
+
+  LEAVE TO SCREEN 0.
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  GET_PRESSED_TAB  INPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE get_pressed_tab INPUT.
+
+  CASE gv_okcode.
+    WHEN 'T01'OR'T02'.
+      gv_pressedtab = gv_okcode.
+  ENDCASE.
+
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  USER_COMMAND_0102  INPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE user_command_0102 INPUT.
+  CASE gv_okcode.
+    WHEN 'GET'.
+      PERFORM get_edit.
+    WHEN 'SET'.
+      PERFORM set_edit.
+    WHEN 'SAVE'.
+      PERFORM save_edit.
+    WHEN 'LOAD'.
+      PERFORM load_edit.
+  ENDCASE.
+
+ENDMODULE.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

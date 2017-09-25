@@ -1,0 +1,20 @@
+                                        	0000	T	KB11N                                                                                                                               	BS AA X   F
+SAPLK23F1                               	1200	X	                                                                                                                                    	
+                                        	0000	 	BDC_OKCODE                                                                                                                          	/00
+                                        	0000	 	COHEADER-SEND_REC_REL                                                                                                               	01SAP
+                                        	0000	 	COHEADER-BLDAT                                                                                                                      	2017/09/25
+                                        	0000	 	COHEADER-BUDAT                                                                                                                      	2017/09/25
+                                        	0000	 	COHEADER-PERIO                                                                                                                      	9
+                                        	0000	 	EL2(01)                                                                                                                             	2200
+                                        	0000	 	EL3(01)                                                                                                                             	405100
+                                        	0000	 	EL4(01)                                                                                                                             	KRW
+                                        	0000	 	EL5(01)                                                                                                                             	2301
+                                        	0000	 	ELR1(01)                                                                                                                            	                 1000
+SAPLK23F1                               	1200	X	                                                                                                                                    	
+                                        	0000	 	BDC_OKCODE                                                                                                                          	=POST
+                                        	0000	 	COHEADER-SEND_REC_REL                                                                                                               	01SAP
+                                        	0000	 	COHEADER-BLDAT                                                                                                                      	2017/09/25
+                                        	0000	 	COHEADER-BUDAT                                                                                                                      	2017/09/25
+                                        	0000	 	COHEADER-PERIO                                                                                                                      	9
+                                        	0000	 	BDC_CURSOR                                                                                                                          	ELR1(01)
+                                        	0000	 	ELR1(01)                                                                                                                            	                   1

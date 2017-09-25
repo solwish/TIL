@@ -1,0 +1,151 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZREDU05_01_F01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  GET_EDIT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM get_edit .
+  DATA : BEGIN OF lt_text OCCURS 0,
+           line_text(100),
+         END OF lt_text.
+
+  CLEAR : lt_text, lt_text[].
+
+  CALL METHOD go_edit->get_text_as_r3table
+    IMPORTING
+      table                  = lt_text[]
+    EXCEPTIONS
+      error_dp               = 1
+      error_cntl_call_method = 2
+      error_dp_create        = 3
+      potential_data_loss    = 4
+      OTHERS                 = 5.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  SET_EDIT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM set_edit .
+  DATA : BEGIN OF lt_text OCCURS 0,
+           line_text(100),
+         END OF lt_text.
+
+  CLEAR : lt_text, lt_text[].
+
+  CALL METHOD go_edit->get_text_as_r3table
+    IMPORTING
+      table                  = lt_text[]
+    EXCEPTIONS
+      error_dp               = 1
+      error_cntl_call_method = 2
+      error_dp_create        = 3
+      potential_data_loss    = 4
+      OTHERS                 = 5.
+
+  CALL METHOD go_edit2->set_text_as_r3table
+    EXPORTING
+      table           = lt_text[]
+    EXCEPTIONS
+      error_dp        = 1
+      error_dp_create = 2
+      OTHERS          = 3.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  SAVE_EDIT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM save_edit .
+  DATA : lt_save TYPE TABLE OF zttext00 WITH HEADER LINE.
+
+  DATA : BEGIN OF lt_text OCCURS 0,
+           line_text(100),
+         END OF lt_text.
+
+  CLEAR : lt_text, lt_text[], lt_save, lt_save[].
+
+  CALL METHOD go_edit->get_text_as_r3table
+    IMPORTING
+      table                  = lt_text[]
+    EXCEPTIONS
+      error_dp               = 1
+      error_cntl_call_method = 2
+      error_dp_create        = 3
+      potential_data_loss    = 4
+      OTHERS                 = 5.
+
+  lt_save-seq = gv_seq.
+
+  LOOP AT lt_text.
+    CONCATENATE lt_save-contents lt_text-line_text cl_abap_char_utilities=>newline
+    INTO lt_save-contents.
+  ENDLOOP.
+
+  APPEND lt_save.
+  CLEAR lt_save.
+
+  MODIFY zttext00 FROM TABLE lt_save.
+
+  IF sy-subrc EQ 0.
+    COMMIT WORK AND WAIT.
+    MESSAGE s000 WITH 'Save success'.
+  ELSE.
+    ROLLBACK WORK.
+    MESSAGE s000 WITH 'Save fail' DISPLAY LIKE 'E'.
+  ENDIF.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  LOAD_EDIT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM load_edit .
+  DATA : lt_load TYPE TABLE OF zttext00 WITH HEADER LINE.
+
+  DATA : BEGIN OF lt_text OCCURS 0,
+           line_text(100),
+         END OF lt_text.
+
+  CLEAR : lt_text, lt_text[], lt_load, lt_load[].
+
+  SELECT seq contents
+    INTO CORRESPONDING FIELDS OF TABLE lt_load
+    FROM zttext00
+    WHERE seq = gv_seq.
+
+  READ TABLE lt_load INDEX 1.
+
+  IF sy-subrc EQ 0.
+    SPLIT lt_load-contents AT cl_abap_char_utilities=>newline
+    INTO TABLE lt_text.
+  ENDIF.
+
+  CALL METHOD go_edit2->set_text_as_r3table
+    EXPORTING
+      table           = lt_text[]
+    EXCEPTIONS
+      error_dp        = 1
+      error_dp_create = 2
+      OTHERS          = 3.
+
+ENDFORM.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

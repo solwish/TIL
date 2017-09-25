@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZREDU05_01_O01</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZREDU05_01_O01</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Include ZREDU05_01_O01</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&  Include           ZREDU05_01_O01</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  STATUS_0100  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS '0100'.
+  SET TITLEBAR '0100'.
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  DISPLAY_SCREEN  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+<font color ="#0000FF">*MODULE display_screen OUTPUT.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  IF go_container IS NOT BOUND.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    CREATE OBJECT go_container</font>
+<font color ="#0000FF">*      EXPORTING</font>
+<font color ="#0000FF">*        container_name = 'GO_CONTAINER'.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    CREATE OBJECT go_edit</font>
+<font color ="#0000FF">*      EXPORTING</font>
+<font color ="#0000FF">**       max_number_chars       =</font>
+<font color ="#0000FF">**       style  = 0</font>
+<font color ="#0000FF">**       wordwrap_mode          = WORDWRAP_AT_WINDOWBORDER</font>
+<font color ="#0000FF">**       wordwrap_position      = -1</font>
+<font color ="#0000FF">**       wordwrap_to_linebreak_mode = FALSE</font>
+<font color ="#0000FF">**       filedrop_mode          = DROPFILE_EVENT_OFF</font>
+<font color ="#0000FF">*        parent = go_container</font>
+<font color ="#0000FF">**       lifetime               =</font>
+<font color ="#0000FF">**       name   =</font>
+<font color ="#0000FF">**      EXCEPTIONS</font>
+<font color ="#0000FF">**       error_cntl_create      = 1</font>
+<font color ="#0000FF">**       error_cntl_init        = 2</font>
+<font color ="#0000FF">**       error_cntl_link        = 3</font>
+<font color ="#0000FF">**       error_dp_create        = 4</font>
+<font color ="#0000FF">**       gui_type_not_supported = 5</font>
+<font color ="#0000FF">**       others = 6</font>
+<font color ="#0000FF">*      .</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  ENDIF.</font>
+<font color ="#0000FF">*ENDMODULE.</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  ACTIVE_TAB  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE active_tab OUTPUT.
+  go_tab-activetab = gv_pressedtab.
+
+  CASE gv_pressedtab.
+    WHEN 'T01'.
+      gv_subscreen = '0101'.
+    WHEN 'T02'.
+      gv_subscreen = '0102'.
+  ENDCASE.
+
+ENDMODULE.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&      Module  CREATE_EDIT  OUTPUT</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*       text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+MODULE create_edit OUTPUT.
+
+  IF go_container IS NOT BOUND.
+    CREATE OBJECT go_container
+      EXPORTING
+        container_name = 'GO_CONTAINER'.
+
+    CREATE OBJECT go_edit
+      EXPORTING
+<font color ="#0000FF">*       max_number_chars       =</font>
+<font color ="#0000FF">*       style  = 0</font>
+<font color ="#0000FF">*       wordwrap_mode          = WORDWRAP_AT_WINDOWBORDER</font>
+<font color ="#0000FF">*       wordwrap_position      = -1</font>
+<font color ="#0000FF">*       wordwrap_to_linebreak_mode = FALSE</font>
+<font color ="#0000FF">*       filedrop_mode          = DROPFILE_EVENT_OFF</font>
+        parent = go_container
+<font color ="#0000FF">*       lifetime               =</font>
+<font color ="#0000FF">*       name   =</font>
+<font color ="#0000FF">*      EXCEPTIONS</font>
+<font color ="#0000FF">*       error_cntl_create      = 1</font>
+<font color ="#0000FF">*       error_cntl_init        = 2</font>
+<font color ="#0000FF">*       error_cntl_link        = 3</font>
+<font color ="#0000FF">*       error_dp_create        = 4</font>
+<font color ="#0000FF">*       gui_type_not_supported = 5</font>
+<font color ="#0000FF">*       others = 6</font>
+      .
+  ENDIF.
+
+  IF go_container2 IS NOT BOUND.
+    CREATE OBJECT go_container2
+      EXPORTING
+        container_name = 'GO_CONTAINER2'.
+
+    CREATE OBJECT go_edit2
+      EXPORTING
+<font color ="#0000FF">*       max_number_chars       =</font>
+<font color ="#0000FF">*       style  = 0</font>
+<font color ="#0000FF">*       wordwrap_mode          = WORDWRAP_AT_WINDOWBORDER</font>
+<font color ="#0000FF">*       wordwrap_position      = -1</font>
+<font color ="#0000FF">*       wordwrap_to_linebreak_mode = FALSE</font>
+<font color ="#0000FF">*       filedrop_mode          = DROPFILE_EVENT_OFF</font>
+        parent = go_container2
+<font color ="#0000FF">*       lifetime               =</font>
+<font color ="#0000FF">*       name   =</font>
+<font color ="#0000FF">*      EXCEPTIONS</font>
+<font color ="#0000FF">*       error_cntl_create      = 1</font>
+<font color ="#0000FF">*       error_cntl_init        = 2</font>
+<font color ="#0000FF">*       error_cntl_link        = 3</font>
+<font color ="#0000FF">*       error_dp_create        = 4</font>
+<font color ="#0000FF">*       gui_type_not_supported = 5</font>
+<font color ="#0000FF">*       others = 6</font>
+      .
+
+    CALL METHOD go_edit2-&gt;set_readonly_mode.
+
+    CALL METHOD go_edit2-&gt;set_toolbar_mode
+      EXPORTING
+        toolbar_mode           = 0
+      EXCEPTIONS
+        error_cntl_call_method = 1
+        invalid_parameter      = 2
+        others                 = 3
+            .
+  ENDIF.
+ENDMODULE.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>
