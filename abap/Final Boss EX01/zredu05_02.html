@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZREDU05_02</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZREDU05_02</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  170926 실습</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*& Report  ZREDU05_02</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+
+include <a href ="zredu05_02_top.html">zredu05_02_top</a>.    " global Data
+
+include <a href ="zredu05_02_cls.html">zredu05_02_cls</a>.  " Class
+include <a href ="zredu05_02_scr.html">zredu05_02_scr</a>.  " Selection Screen
+include <a href ="zredu05_02_o01.html">zredu05_02_o01</a>.  " PBO-Modules
+include <a href ="zredu05_02_i01.html">zredu05_02_i01</a>.  " PAI-Modules
+include <a href ="zredu05_02_f01.html">zredu05_02_f01</a>.  " FORM-Routines
+
+START-OF-SELECTION.
+  PERFORM get_data.
+  PERFORM get_data2.
+  CALL SCREEN '0100'.
+
+<font color ="#0000FF">*GUI Texts</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">* 0100 --&gt; 170926 실습 스크린</font>
+<font color ="#0000FF">* 0104 --&gt; POPUP</font>
+
+
+<font color ="#0000FF">*Selection texts</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">* S_BUKRS D       .</font>
+<font color ="#0000FF">* S_MATNR D       .</font>
+
+
+<font color ="#0000FF">*Messages</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: Hard coded</font>
+<font color ="#0000FF">*   No data found</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: OO</font>
+<font color ="#0000FF">*000   & & & &</font>
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

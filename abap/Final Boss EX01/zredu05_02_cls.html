@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZREDU05_02_CLS</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: ZREDU05_02_CLS</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  Include ZREDU05_02_CLS</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&  Include           ZREDU05_02_CLS</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&       Class lcl_event_handler</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*        Text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+CLASS lcl_event_handler DEFINITION.
+  PUBLIC SECTION.
+    CLASS-METHODS : double_clicker FOR EVENT double_click
+                                    OF cl_gui_alv_grid
+                    IMPORTING
+                        e_row
+                        e_column
+                        es_row_no.
+
+ENDCLASS.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&       Class (Implementation)  lcl_event_handler</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*        Text</font>
+<font color ="#0000FF">*----------------------------------------------------------------------*</font>
+CLASS lcl_event_handler IMPLEMENTATION.
+  METHOD double_clicker.
+    PERFORM double_clicker USING e_row
+                                 e_column
+                                 es_row_no.
+
+  ENDMETHOD.
+ENDCLASS.               "lcl_event_handler
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

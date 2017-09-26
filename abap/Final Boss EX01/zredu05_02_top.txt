@@ -1,0 +1,49 @@
+*&---------------------------------------------------------------------*
+*& Include ZREDU05_02_TOP                                    Report ZREDU05_02
+*&
+*&---------------------------------------------------------------------*
+REPORT zredu05_02 MESSAGE-ID oo.
+
+TABLES : ztproj05_01.
+
+CLASS lcl_event_handler DEFINITION DEFERRED.
+
+CONTROLS go_main_tab TYPE TABSTRIP.
+
+DATA : gv_okcode     LIKE sy-ucomm,
+       gv_subscreen  LIKE sy-dynnr VALUE '0101',
+       gv_pressedtab LIKE sy-ucomm VALUE 'TAB1'.
+
+DATA : gt_data TYPE TABLE OF ztproj05_01 WITH HEADER LINE.
+
+DATA : go_container1 TYPE REF TO cl_gui_custom_container,
+       go_grid1      TYPE REF TO cl_gui_alv_grid,
+       gs_fcat       TYPE lvc_s_fcat,
+       gt_fcat       TYPE lvc_t_fcat,
+       gs_layout     TYPE lvc_s_layo,
+       gs_variant    TYPE disvariant,
+       gs_stable     TYPE lvc_s_stbl,
+       gs_row        TYPE lvc_s_row,
+       gt_row        TYPE lvc_t_row,
+       gs_toolbar    TYPE ui_func,
+       gt_toolbar    TYPE ui_functions.
+
+DATA : go_container2 TYPE REF TO cl_gui_custom_container,
+       go_edit       TYPE REF TO cl_gui_textedit.
+
+DATA : gv_seq  TYPE ztproj05_02-seq,
+       gv_name TYPE ztproj05_02-name.
+
+DATA : gt_data2 TYPE TABLE OF ztproj05_02 WITH HEADER LINE.
+
+DATA : go_container3 TYPE REF TO cl_gui_custom_container,
+       go_grid3      TYPE REF TO cl_gui_alv_grid,
+       gs_layout3    TYPE lvc_s_layo,
+       gs_variant3   TYPE disvariant,
+       go_handler    TYPE REF TO lcl_event_handler.
+
+DATA : go_container_pop TYPE REF TO cl_gui_custom_container,
+       go_edit2         TYPE REF TO cl_gui_textedit.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
