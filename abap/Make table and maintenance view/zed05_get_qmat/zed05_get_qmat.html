@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZED05_GET_QMAT</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for function: ZED05_GET_QMAT</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  자재 및 플랜트별 검사유형 펑션 모듈</b></font>
+<hr>
+<pre width="100">
+FUNCTION zed05_get_qmat.
+<font color ="#0000FF">*"----------------------------------------------------------------------</font>
+<font color ="#0000FF">*"*"Local Interface:</font>
+<font color ="#0000FF">*"  IMPORTING</font>
+<font color ="#0000FF">*"     REFERENCE(I_ART) TYPE  QMAT-ART</font>
+<font color ="#0000FF">*"     REFERENCE(I_MATNR_L) TYPE  QMAT-MATNR OPTIONAL</font>
+<font color ="#0000FF">*"     REFERENCE(I_MATNR_H) TYPE  QMAT-MATNR OPTIONAL</font>
+<font color ="#0000FF">*"     REFERENCE(I_WERKS_L) TYPE  QMAT-WERKS OPTIONAL</font>
+<font color ="#0000FF">*"     REFERENCE(I_WERKS_H) TYPE  QMAT-WERKS OPTIONAL</font>
+<font color ="#0000FF">*"  EXPORTING</font>
+<font color ="#0000FF">*"     REFERENCE(E_CODE) TYPE  CHAR1</font>
+<font color ="#0000FF">*"     REFERENCE(E_MESSAGE) TYPE  CHAR100</font>
+<font color ="#0000FF">*"  TABLES</font>
+<font color ="#0000FF">*"      T_LIST TYPE  ZT05_QMAT_T</font>
+<font color ="#0000FF">*"      IT_MATNR TYPE  STANDARD TABLE</font>
+<font color ="#0000FF">*"      IT_WERKS TYPE  STANDARD TABLE</font>
+<font color ="#0000FF">*"----------------------------------------------------------------------</font>
+
+<font color ="#0000FF">*       <a href ="global-zed05_get_qmat.html">Global data declarations</a></font>
+  CLEAR : t_list, t_list[].
+
+<font color ="#0000FF">*  RANGES : lr_matnr FOR qmat-matnr,</font>
+<font color ="#0000FF">*           lr_werks FOR qmat-werks.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  CLEAR : lr_matnr, lr_matnr[], lr_werks, lr_werks[].</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  IF i_matnr_h IS NOT INITIAL AND</font>
+<font color ="#0000FF">*     i_matnr_l IS NOT INITIAL.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    lr_matnr-sign   = 'I'.</font>
+<font color ="#0000FF">*    lr_matnr-option = 'BT'.</font>
+<font color ="#0000FF">*    lr_matnr-low    = i_matnr_l.</font>
+<font color ="#0000FF">*    lr_matnr-high   = i_matnr_h.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    APPEND lr_matnr.</font>
+<font color ="#0000FF">*    CLEAR lr_matnr.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  ELSEIF i_matnr_h IS NOT INITIAL AND</font>
+<font color ="#0000FF">*         i_matnr_l IS INITIAL.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    lr_matnr-sign   = 'I'.</font>
+<font color ="#0000FF">*    lr_matnr-option = 'BT'.</font>
+<font color ="#0000FF">*    lr_matnr-high   = i_matnr_h.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    APPEND lr_matnr.</font>
+<font color ="#0000FF">*    CLEAR lr_matnr.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  ELSEIF i_matnr_h IS INITIAL AND</font>
+<font color ="#0000FF">*         i_matnr_l IS NOT INITIAL.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    lr_matnr-sign   = 'I'.</font>
+<font color ="#0000FF">*    lr_matnr-option = 'EQ'.</font>
+<font color ="#0000FF">*    lr_matnr-low    = i_matnr_l.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    APPEND lr_matnr.</font>
+<font color ="#0000FF">*    CLEAR lr_matnr.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  ENDIF.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  IF i_werks_h IS NOT INITIAL AND</font>
+<font color ="#0000FF">*     i_werks_l IS NOT INITIAL.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    lr_werks-sign   = 'I'.</font>
+<font color ="#0000FF">*    lr_werks-option = 'BT'.</font>
+<font color ="#0000FF">*    lr_werks-low    = i_werks_l.</font>
+<font color ="#0000FF">*    lr_werks-high   = i_werks_h.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    APPEND lr_werks.</font>
+<font color ="#0000FF">*    CLEAR lr_werks.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  ELSEIF i_werks_h IS NOT INITIAL AND</font>
+<font color ="#0000FF">*         i_werks_l IS INITIAL.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    lr_werks-sign   = 'I'.</font>
+<font color ="#0000FF">*    lr_werks-option = 'BT'.</font>
+<font color ="#0000FF">*    lr_werks-high   = i_werks_h.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    APPEND lr_werks.</font>
+<font color ="#0000FF">*    CLEAR lr_werks.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  ELSEIF i_werks_h IS INITIAL AND</font>
+<font color ="#0000FF">*         i_werks_l IS NOT INITIAL.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    lr_werks-sign   = 'I'.</font>
+<font color ="#0000FF">*    lr_werks-option = 'EQ'.</font>
+<font color ="#0000FF">*    lr_werks-low    = i_werks_l.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*    APPEND lr_werks.</font>
+<font color ="#0000FF">*    CLEAR lr_werks.</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">*  ENDIF.</font>
+
+  IF i_art IS INITIAL.
+    e_code    = 'E'.
+    e_message = 'Input ART'.
+    EXIT.
+  ENDIF.
+
+<font color ="#0000FF">*  이거 안해줘도 돼. 바보같은 실수였음. 이미 넘어져 옴. 저쪽에서 그냥 바로 lt_matnr 써주면 돼.</font>
+<font color ="#0000FF">*  lt_matnr = s_matnr.</font>
+<font color ="#0000FF">*  lt_werks = s_werks.</font>
+
+  SELECT a~art a~matnr a~werks b~kurztext c~maktx
+         d~name1 AS werks_desc a~sproz a~qkzverf
+    INTO CORRESPONDING FIELDS OF TABLE t_list
+    FROM qmat AS a
+    INNER JOIN tq30t AS b
+    ON a~art EQ b~art
+    AND b~sprache EQ 'EN'
+    INNER JOIN makt AS c
+    ON a~matnr EQ c~matnr
+    AND c~spras EQ 'EN'
+    INNER JOIN t001w AS d
+    ON a~werks EQ d~werks
+    WHERE a~art EQ i_art
+    AND a~matnr IN it_matnr
+    AND a~werks IN it_werks.
+
+  IF sy-subrc NE 0.
+    e_code    = 'E'.
+    e_message = 'No data found'.
+  ENDIF.
+
+
+ENDFUNCTION.
+
+
+<font color ="#0000FF">*Messages</font>
+<font color ="#0000FF">*----------------------------------------------------------</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: ALE_MSGID</font>
+<font color ="#0000FF">*ALE</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: AM</font>
+<font color ="#0000FF">*287   Address cannot be maintained; entry in table TSADRV missing</font>
+<font color ="#0000FF">*290   Entry missing in TSADRV; new address maintenance cannot be called</font>
+<font color ="#0000FF">*291   Entry missing in TSADRV; new address maintenance cannot be called</font>
+<font color ="#0000FF">*298   Address group & not defined; delete flag for address not possible</font>
+<font color ="#0000FF">*I_M</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: EC</font>
+<font color ="#0000FF">*089   Internal error: Unable to read screen data</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: PM_ID</font>
+<font color ="#0000FF">*PM_</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: SCPR</font>
+<font color ="#0000FF">*026   Table & is too wide. It cannot be processed</font>
+<font color ="#0000FF">*028   The table/view & has no generated maintenance dialog</font>
+<font color ="#0000FF">*035   Dictionary interface error: Contact SAP</font>
+<font color ="#0000FF">*120   Table/view & not found</font>
+<font color ="#0000FF">*273   Function module call error</font>
+<font color ="#0000FF">*320   BC Set processing error</font>
+<font color ="#0000FF">*395   Internal field description read error</font>
+<font color ="#0000FF">*399   No data record activation information</font>
+<font color ="#0000FF">*408   Table key not supported by activation links</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: SV</font>
+<font color ="#0000FF">*001   The selected function is not supported</font>
+<font color ="#0000FF">*002   Number of retrieved entries: &</font>
+<font color ="#0000FF">*004   No entries found that match selection criteria</font>
+<font color ="#0000FF">*005   One entry chosen</font>
+<font color ="#0000FF">*006   Number of chosen entries: &</font>
+<font color ="#0000FF">*007   No previous entry exists</font>
+<font color ="#0000FF">*008   No next entry exists</font>
+<font color ="#0000FF">*009   An entry already exists with the same key</font>
+<font color ="#0000FF">*010   An entry with this key is marked for deletion</font>
+<font color ="#0000FF">*011   Number of deleted entries: &</font>
+<font color ="#0000FF">*012   Number of changed entries: &</font>
+<font color ="#0000FF">*013   Entry deleted</font>
+<font color ="#0000FF">*014   Number of entries copied: &</font>
+<font color ="#0000FF">*015   Target key must be different from source key</font>
+<font color ="#0000FF">*016   Number of reset entries: &</font>
+<font color ="#0000FF">*017   Entry reset</font>
+<font color ="#0000FF">*018   Data was saved</font>
+<font color ="#0000FF">*019   Choose the key from the allowed namespace</font>
+<font color ="#0000FF">*024   Specify target entries</font>
+<font color ="#0000FF">*025   Specify target entries</font>
+<font color ="#0000FF">*026   Select entries before performing the function</font>
+<font color ="#0000FF">*028   Table & not in DDIC</font>
+<font color ="#0000FF">*032   Position the cursor on a valid entry</font>
+<font color ="#0000FF">*033   Specify the key within the work area</font>
+<font color ="#0000FF">*037   The maintenance dialog for & is incomplete or not defined</font>
+<font color ="#0000FF">*039   Table & has no relevant fields</font>
+<font color ="#0000FF">*040   & entries reset, & original and & new entries are still marked</font>
+<font color ="#0000FF">*041   & entries reset, & original entries are still marked</font>
+<font color ="#0000FF">*042   & entries reset, & new entries are still marked</font>
+<font color ="#0000FF">*043   Data already saved</font>
+<font color ="#0000FF">*044   Read access only</font>
+<font color ="#0000FF">*045   Enter a start date that is before the end date</font>
+<font color ="#0000FF">*046   Enter an end date that is after the start date</font>
+<font color ="#0000FF">*047   Overlapping records are deleted or delimited</font>
+<font color ="#0000FF">*049   Data locked by user & (display only)</font>
+<font color ="#0000FF">*050   System error: Unable to lock table/view &</font>
+<font color ="#0000FF">*051   No data maintenance authorization; display only</font>
+<font color ="#0000FF">*053   No display authorization for requested data</font>
+<font color ="#0000FF">*054   Maintenance of data in current client & not permitted</font>
+<font color ="#0000FF">*055   Address for object & not found</font>
+<font color ="#0000FF">*056   Mark at least one entry before selecting this function</font>
+<font color ="#0000FF">*057   The selected entry is new and has no original</font>
+<font color ="#0000FF">*058   The selected entries are new and have no original</font>
+<font color ="#0000FF">*059   The selected entry is still in its original state</font>
+<font color ="#0000FF">*060   The selected entries are still in their original state</font>
+<font color ="#0000FF">*061   & entries are still originals, & new entries have no original</font>
+<font color ="#0000FF">*065   No entries exist, double-click for long text</font>
+<font color ="#0000FF">*066   Select block end</font>
+<font color ="#0000FF">*084   No values can be displayed</font>
+<font color ="#0000FF">*092   Change task & is being processed</font>
+<font color ="#0000FF">*095   System error changing change task &</font>
+<font color ="#0000FF">*096   Task & was changed</font>
+<font color ="#0000FF">*098   Entry flagged for inclusion in task &</font>
+<font color ="#0000FF">*099   Entry was flagged for deletion from task &</font>
+<font color ="#0000FF">*105   & entries were flagged for inclusion in task &</font>
+<font color ="#0000FF">*106   & entries were flagged for deletion from task &</font>
+<font color ="#0000FF">*107   Entry was already in task &</font>
+<font color ="#0000FF">*108   & entries were already in task &</font>
+<font color ="#0000FF">*109   & entries included, & entries were contained: &</font>
+<font color ="#0000FF">*110   Entry was not in task &</font>
+<font color ="#0000FF">*111   & entries deleted, & entries were not included: &</font>
+<font color ="#0000FF">*112   & entries were not in task &</font>
+<font color ="#0000FF">*113   Entry could not be retrieved</font>
+<font color ="#0000FF">*114   & entries could not be retrieved</font>
+<font color ="#0000FF">*115   Entry could not be deleted</font>
+<font color ="#0000FF">*116   & entries could not be deleted</font>
+<font color ="#0000FF">*117   Do not make any changes (SAP entry)</font>
+<font color ="#0000FF">*120   Other entries are retrieved and modified if necessary</font>
+<font color ="#0000FF">*121   Deleted entry will be recovered and possibly changed</font>
+<font color ="#0000FF">*122   Entry was delimited</font>
+<font color ="#0000FF">*123   Number of delimited entries: &</font>
+<font color ="#0000FF">*124   Process delimited entries</font>
+<font color ="#0000FF">*125   Process delimited entry</font>
+<font color ="#0000FF">*127   Delimit area of validity</font>
+<font color ="#0000FF">*128   Delivery class &, transport not possible</font>
+<font color ="#0000FF">*129   Related objects in various tasks</font>
+<font color ="#0000FF">*130   Client & is local, transport not permitted</font>
+<font color ="#0000FF">*132   Object locked for task &1, user &2 only display permitted</font>
+<font color ="#0000FF">*134   Inconsistency in object definition, only display permitted</font>
+<font color ="#0000FF">*136   Change with caution, entry belongs to customer</font>
+<font color ="#0000FF">*138   Check maintenance object &1 or update function group &2</font>
+<font color ="#0000FF">*139   Address data not applied</font>
+<font color ="#0000FF">*140   &1 entries deleted; &2 entries added</font>
+<font color ="#0000FF">*141   Individual entries not added to the change request</font>
+<font color ="#0000FF">*142   Transport is not possible for the specified data</font>
+<font color ="#0000FF">*153   No language was chosen</font>
+<font color ="#0000FF">*160   The installed system code page does not allow any other languages</font>
+<font color ="#0000FF">*161   Put the cursor on a form name</font>
+<font color ="#0000FF">*162   The object &1 &2 &3 cannot be put in a request</font>
+<font color ="#0000FF">*164   Table/view &1 is not in the Dictionary</font>
+<font color ="#0000FF">*173   Function group &1 inconsistent</font>
+<font color ="#0000FF">*174   Enter values in work area for non-key fields</font>
+<font color ="#0000FF">*175   The selected BC Set function is not supported</font>
+<font color ="#0000FF">*177   Data record contains fix value from BC Set and cannot be deleted</font>
+<font color ="#0000FF">*183   Error in remote access to central Customizing Distribution system</font>
+<font color ="#0000FF">*184   Data record contains fixed value from BC Set and cannot be changed</font>
+<font color ="#0000FF">*202   You are not authorized to change fields with fixed BC Set values</font>
+<font color ="#0000FF">*306   Table/view & is not active</font>
+<font color ="#0000FF">*413   & selected entries cannot be deleted</font>
+<font color ="#0000FF">*538   Dropdown lists are not supported in view clusters</font>
+<font color ="#0000FF">*757   You have no maintenance authorization for this table key</font>
+<font color ="#0000FF">*763   You have no maintenance authorization for the displayed data records</font>
+<font color ="#0000FF">*764   Changed data record selection</font>
+<font color ="#0000FF">*766   Restricted display of datasets</font>
+<font color ="#0000FF">*808   Not all columns in the table can be displayed in the list</font>
+<font color ="#0000FF">*810   View &1 is more than 1000 characters long</font>
+<font color ="#0000FF">*818   &1 of &2 Business Configuration Set entries imported</font>
+<font color ="#0000FF">*819   Business Configuration Set imported</font>
+<font color ="#0000FF">*830   Last selected entry has been reached</font>
+<font color ="#0000FF">*831   First selected entry has been reached</font>
+<font color ="#0000FF">*MSG</font>
+<font color ="#0000FF">*P_M</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: TB</font>
+<font color ="#0000FF">*109   No maintenance authorization for cross-client tables (see Help)</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: TK</font>
+<font color ="#0000FF">*430   Client &1 has status 'not modifiable'</font>
+<font color ="#0000FF">*729   Changes to repository objects are not permitted in this client</font>
+<font color ="#0000FF">*730   Changes to repository or cross-client customizing are not permitted</font>
+<font color ="#0000FF">*731   Cross-client customizing cannot be modified</font>
+<font color ="#0000FF">*</font>
+<font color ="#0000FF">* Message class: VIM_AUTH_MSGID</font>
+<font color ="#0000FF">*VIM</font>
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>
