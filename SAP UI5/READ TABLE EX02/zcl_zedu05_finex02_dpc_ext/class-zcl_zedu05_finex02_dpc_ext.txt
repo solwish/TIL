@@ -1,0 +1,49 @@
+**************************************************************************
+*   Class attributes.                                                    *
+**************************************************************************
+Instantiation: Public
+Message class:
+State: Implemented
+Final Indicator:
+R/3 Release: 750
+
+**************************************************************************
+*   Public section of class.                                             *
+**************************************************************************
+class ZCL_ZEDU05_FINEX02_DPC_EXT definition
+  public
+  inheriting from ZCL_ZEDU05_FINEX02_DPC
+  create public .
+
+public section.
+
+**************************************************************************
+*   Private section of class.                                            *
+**************************************************************************
+private section.
+
+**************************************************************************
+*   Protected section of class.                                          *
+**************************************************************************
+protected section.
+
+  methods EX02SET_CREATE_ENTITY
+    redefinition .
+  methods EX02SET_DELETE_ENTITY
+    redefinition .
+  methods EX02SET_GET_ENTITY
+    redefinition .
+  methods EX02SET_GET_ENTITYSET
+    redefinition .
+  methods EX02SET_UPDATE_ENTITY
+    redefinition .
+
+**************************************************************************
+*   Types section of class.                                              *
+**************************************************************************
+*"* dummy include to reduce generation dependencies between
+*"* class ZCL_ZEDU05_FINEX02_DPC_EXT and it's users.
+*"* touched if any type reference has been changed
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>DEFINE_CRUD</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for: DEFINE_CRUD</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  DEFINE_CRUD</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">**************************************************************************</font>
+<font color ="#0000FF">*   Method attributes.                                                   *</font>
+<font color ="#0000FF">**************************************************************************</font>
+Instantiation: Private
+<font color ="#0000FF">**************************************************************************</font>
+
+  method DEFINE_CRUD.
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+<font color ="#0000FF">*&           Generated code for the MODEL PROVIDER BASE CLASS         &*</font>
+<font color ="#0000FF">*&                                                                     &*</font>
+<font color ="#0000FF">*&  !!!NEVER MODIFY THIS CLASS. IN CASE YOU WANT TO CHANGE THE MODEL  &*</font>
+<font color ="#0000FF">*&        DO THIS IN THE MODEL PROVIDER SUBCLASS!!!                   &*</font>
+<font color ="#0000FF">*&                                                                     &*</font>
+<font color ="#0000FF">*&---------------------------------------------------------------------*</font>
+
+
+  data:
+        lo_annotation     type ref to /iwbep/if_mgw_odata_annotation,                "#EC NEEDED
+        lo_entity_type    type ref to /iwbep/if_mgw_odata_entity_typ,                "#EC NEEDED
+        lo_complex_type   type ref to /iwbep/if_mgw_odata_cmplx_type,                "#EC NEEDED
+        lo_property       type ref to /iwbep/if_mgw_odata_property,                  "#EC NEEDED
+        lo_entity_set     type ref to /iwbep/if_mgw_odata_entity_set.                "#EC NEEDED
+
+<font color ="#0000FF">***********************************************************************************************************************************</font>
+<font color ="#0000FF">*   ENTITY - CRUD</font>
+<font color ="#0000FF">***********************************************************************************************************************************</font>
+
+lo_entity_type = model-&gt;create_entity_type( iv_entity_type_name = 'CRUD' iv_def_entity_set = abap_false ). "#EC NOTEXT
+
+<font color ="#0000FF">***********************************************************************************************************************************</font>
+<font color ="#0000FF">*Properties</font>
+<font color ="#0000FF">***********************************************************************************************************************************</font>
+
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Sabun' iv_abap_fieldname = 'SABUN' ). "#EC NOTEXT
+lo_property-&gt;set_is_key( ).
+lo_property-&gt;set_type_edm_string( ).
+lo_property-&gt;set_maxlength( iv_max_length = 10 ). "#EC NOTEXT
+lo_property-&gt;set_creatable( abap_true ).
+lo_property-&gt;set_updatable( abap_true ).
+lo_property-&gt;set_sortable( abap_true ).
+lo_property-&gt;set_nullable( abap_false ).
+lo_property-&gt;set_filterable( abap_true ).
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Name' iv_abap_fieldname = 'NAME' ). "#EC NOTEXT
+lo_property-&gt;set_type_edm_string( ).
+lo_property-&gt;set_maxlength( iv_max_length = 30 ). "#EC NOTEXT
+lo_property-&gt;set_creatable( abap_true ).
+lo_property-&gt;set_updatable( abap_true ).
+lo_property-&gt;set_sortable( abap_true ).
+lo_property-&gt;set_nullable( abap_true ).
+lo_property-&gt;set_filterable( abap_true ).
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Mobile' iv_abap_fieldname = 'MOBILE' ). "#EC NOTEXT
+lo_property-&gt;set_type_edm_string( ).
+lo_property-&gt;set_maxlength( iv_max_length = 15 ). "#EC NOTEXT
+lo_property-&gt;set_creatable( abap_true ).
+lo_property-&gt;set_updatable( abap_true ).
+lo_property-&gt;set_sortable( abap_true ).
+lo_property-&gt;set_nullable( abap_true ).
+lo_property-&gt;set_filterable( abap_true ).
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Gender' iv_abap_fieldname = 'GENDER' ). "#EC NOTEXT
+lo_property-&gt;set_type_edm_string( ).
+lo_property-&gt;set_maxlength( iv_max_length = 1 ). "#EC NOTEXT
+lo_property-&gt;set_creatable( abap_true ).
+lo_property-&gt;set_updatable( abap_true ).
+lo_property-&gt;set_sortable( abap_true ).
+lo_property-&gt;set_nullable( abap_true ).
+lo_property-&gt;set_filterable( abap_true ).
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Area' iv_abap_fieldname = 'AREA' ). "#EC NOTEXT
+lo_property-&gt;set_type_edm_string( ).
+lo_property-&gt;set_maxlength( iv_max_length = 2 ). "#EC NOTEXT
+lo_property-&gt;set_creatable( abap_true ).
+lo_property-&gt;set_updatable( abap_true ).
+lo_property-&gt;set_sortable( abap_true ).
+lo_property-&gt;set_nullable( abap_true ).
+lo_property-&gt;set_filterable( abap_true ).
+
+lo_entity_type-&gt;bind_structure( iv_structure_name   = 'ZTUI505'
+                                iv_bind_conversions = 'X' ). "#EC NOTEXT
+
+
+<font color ="#0000FF">***********************************************************************************************************************************</font>
+<font color ="#0000FF">*   ENTITY SETS</font>
+<font color ="#0000FF">***********************************************************************************************************************************</font>
+lo_entity_set = lo_entity_type-&gt;create_entity_set( 'CRUDSet' ). "#EC NOTEXT
+
+lo_entity_set-&gt;set_creatable( abap_false ).
+lo_entity_set-&gt;set_updatable( abap_false ).
+lo_entity_set-&gt;set_deletable( abap_false ).
+
+lo_entity_set-&gt;set_pageable( abap_false ).
+lo_entity_set-&gt;set_addressable( abap_true ).
+lo_entity_set-&gt;set_has_ftxt_search( abap_false ).
+lo_entity_set-&gt;set_subscribable( abap_false ).
+lo_entity_set-&gt;set_filter_required( abap_false ).
+  endmethod.
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

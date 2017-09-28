@@ -1,0 +1,71 @@
+**************************************************************************
+*   Class attributes.                                                    *
+**************************************************************************
+Instantiation: Public
+Message class:
+State: Implemented
+Final Indicator:
+R/3 Release: 750
+
+**************************************************************************
+*   Public section of class.                                             *
+**************************************************************************
+class ZCL_ZEDU05_CRUD_MPC definition
+  public
+  inheriting from /IWBEP/CL_MGW_PUSH_ABS_MODEL
+  create public .
+
+public section.
+
+  types:
+     TS_CRUD type ZTUI505 .
+  types:
+TT_CRUD type standard table of TS_CRUD .
+  types:
+   begin of ts_text_element,
+      artifact_name  type c length 40,       " technical name
+      artifact_type  type c length 4,
+      parent_artifact_name type c length 40, " technical name
+      parent_artifact_type type c length 4,
+      text_symbol    type textpoolky,
+   end of ts_text_element .
+  types:
+         tt_text_elements type standard table of ts_text_element with key text_symbol .
+
+  constants GC_CRUD type /IWBEP/IF_MGW_MED_ODATA_TYPES=>TY_E_MED_ENTITY_NAME value 'CRUD' ##NO_TEXT.
+
+  methods LOAD_TEXT_ELEMENTS
+  final
+    returning
+      value(RT_TEXT_ELEMENTS) type TT_TEXT_ELEMENTS
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+
+  methods DEFINE
+    redefinition .
+  methods GET_LAST_MODIFIED
+    redefinition .
+
+**************************************************************************
+*   Private section of class.                                            *
+**************************************************************************
+private section.
+
+  methods DEFINE_CRUD
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+
+**************************************************************************
+*   Protected section of class.                                          *
+**************************************************************************
+protected section.
+
+**************************************************************************
+*   Types section of class.                                              *
+**************************************************************************
+*"* dummy include to reduce generation dependencies between
+*"* class ZCL_ZEDU05_CRUD_MPC and it's users.
+*"* touched if any type reference has been changed
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
