@@ -1,0 +1,52 @@
+package test01;
+
+import java.util.*;
+
+public class Test01 {
+
+	public static void main(String[] args) throws Exception {
+
+		Scanner sc = new Scanner(System.in);
+		int T = 1;// sc.nextInt();
+
+		for (int test_case = 0; test_case < T; test_case++) {
+			List<Integer> list = new ArrayList<Integer>();
+			int num = sc.nextInt();
+			int cnt = sc.nextInt();
+
+			while (num != 0) {
+				list.add(num % 10);
+				num = num / 10;
+			}
+
+			int i = 0;
+			int j = 0;
+			int temp = 0;
+
+			while (i < cnt) {
+
+				if (j >= cnt) {
+					break;
+				}
+				if (list.get(j) > list.get(list.size() - 1 - i)) {
+					temp = list.get(j);
+					list.set(j, list.get(list.size() - 1 - i));
+					list.set((list.size() - 1 - i), temp);
+					for (int k = list.size(); k > 0; k--) {
+						System.out.print(list.get(k));
+					}
+					System.out.println();
+					i++;
+				}
+				j++;
+			}
+
+			System.out.print("#" + (test_case + 1) + " ");
+			for (int k = 0; k < list.size(); k++) {
+				System.out.print(list.get(k));
+			}
+			System.out.println();
+		}
+
+	}
+}

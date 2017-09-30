@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Fri Sep 29 17:29:14 KST 2017
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\student\\.p2\\pool\\plugins\\com.sap.ui5.utils_1.48.4.jar=WEB-INF/lib/com.sap.ui5.utils_1.48.4.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\student\\.p2\\pool\\plugins\\com.sap.ui5.resource_1.48.4.jar=WEB-INF/lib/com.sap.ui5.resource_1.48.4.jar
