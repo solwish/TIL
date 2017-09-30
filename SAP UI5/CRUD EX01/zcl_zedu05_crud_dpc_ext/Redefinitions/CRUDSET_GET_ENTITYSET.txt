@@ -1,0 +1,43 @@
+  METHOD crudset_get_entityset.
+**TRY.
+*CALL METHOD SUPER->CRUDSET_GET_ENTITYSET
+*  EXPORTING
+*    IV_ENTITY_NAME           =
+*    IV_ENTITY_SET_NAME       =
+*    IV_SOURCE_NAME           =
+*    IT_FILTER_SELECT_OPTIONS =
+*    IS_PAGING                =
+*    IT_KEY_TAB               =
+*    IT_NAVIGATION_PATH       =
+*    IT_ORDER                 =
+*    IV_FILTER_STRING         =
+*    IV_SEARCH_STRING         =
+**    io_tech_request_context  =
+**  IMPORTING
+**    et_entityset             =
+**    es_response_context      =
+*    .
+** CATCH /iwbep/cx_mgw_busi_exception .
+** CATCH /iwbep/cx_mgw_tech_exception .
+**ENDTRY.
+
+    DATA : lt_data TYPE TABLE OF ztui505.
+
+    CLEAR : lt_data.
+
+    IF iv_filter_string IS INITIAL.
+      SELECT sabun name mobile gender area
+        INTO CORRESPONDING FIELDS OF TABLE lt_data "et_entityset  지역변수 안쓰고
+        FROM ztui505.
+    ELSE.
+      SELECT sabun name mobile gender area
+        INTO CORRESPONDING FIELDS OF TABLE lt_data "et_entityset   넣어줘도 됨.
+        FROM ztui505
+        WHERE (iv_filter_string).
+    ENDIF.
+
+    IF sy-subrc EQ 0.
+      et_entityset[] = lt_data[].
+    ENDIF.
+
+  ENDMETHOD.

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>ZCL_ZEDU05_CRUDEX01_MPC</title>
+</head>
+<body bgcolor="#FFFFE0">
+<font size="3" face = "Arial" color="#000000"><b>Code listing for class: ZCL_ZEDU05_CRUDEX01_MPC</b></font>
+<br>
+<font size="3" face = "Arial" color="#000000"><b>Description:  ZCL_ZEDU05_CRUDEX01_MPC</b></font>
+<hr>
+<pre width="100">
+<font color ="#0000FF">**************************************************************************</font>
+<font color ="#0000FF">*   Class attributes.                                                    *</font>
+<font color ="#0000FF">**************************************************************************</font>
+Instantiation: Public
+Message class:
+State: Implemented
+Final Indicator:
+R/3 Release: 750
+
+<font color ="#0000FF">**************************************************************************</font>
+<font color ="#0000FF">*   Public section of class.                                             *</font>
+<font color ="#0000FF">**************************************************************************</font>
+class ZCL_ZEDU05_CRUDEX01_MPC definition
+  public
+  inheriting from /IWBEP/CL_MGW_PUSH_ABS_MODEL
+  create public .
+
+public section.
+
+  types:
+     TS_CRUD type ZTUI505_01 .
+  types:
+TT_CRUD type standard table of TS_CRUD .
+  types:
+   begin of ts_text_element,
+      artifact_name  type c length 40,       " technical name
+      artifact_type  type c length 4,
+      parent_artifact_name type c length 40, " technical name
+      parent_artifact_type type c length 4,
+      text_symbol    type textpoolky,
+   end of ts_text_element .
+  types:
+         tt_text_elements type standard table of ts_text_element with key text_symbol .
+
+  constants GC_CRUD type /IWBEP/IF_MGW_MED_ODATA_TYPES=&gt;TY_E_MED_ENTITY_NAME value 'CRUD' ##NO_TEXT.
+
+  methods LOAD_TEXT_ELEMENTS
+  final
+    returning
+      value(RT_TEXT_ELEMENTS) type TT_TEXT_ELEMENTS
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+
+  methods DEFINE
+    redefinition .
+  methods GET_LAST_MODIFIED
+    redefinition .
+
+<font color ="#0000FF">**************************************************************************</font>
+<font color ="#0000FF">*   Private section of class.                                            *</font>
+<font color ="#0000FF">**************************************************************************</font>
+private section.
+
+  methods DEFINE_CRUD
+    raising
+      /IWBEP/CX_MGW_MED_EXCEPTION .
+
+<font color ="#0000FF">**************************************************************************</font>
+<font color ="#0000FF">*   Protected section of class.                                          *</font>
+<font color ="#0000FF">**************************************************************************</font>
+protected section.
+
+<font color ="#0000FF">**************************************************************************</font>
+<font color ="#0000FF">*   Types section of class.                                              *</font>
+<font color ="#0000FF">**************************************************************************</font>
+<font color ="#0000FF">*"* dummy include to reduce generation dependencies between</font>
+<font color ="#0000FF">*"* class ZCL_ZEDU05_CRUDEX01_MPC and it's users.</font>
+<font color ="#0000FF">*"* touched if any type reference has been changed</font>
+</pre>
+<hr>
+<font size="2" face = "Sans Serif">Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
+</font>
+</body>
+</html>

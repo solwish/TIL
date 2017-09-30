@@ -1,0 +1,41 @@
+  METHOD crudset_get_entityset.
+**TRY.
+*CALL METHOD SUPER->CRUDSET_GET_ENTITYSET
+*  EXPORTING
+*    IV_ENTITY_NAME           =
+*    IV_ENTITY_SET_NAME       =
+*    IV_SOURCE_NAME           =
+*    IT_FILTER_SELECT_OPTIONS =
+*    IS_PAGING                =
+*    IT_KEY_TAB               =
+*    IT_NAVIGATION_PATH       =
+*    IT_ORDER                 =
+*    IV_FILTER_STRING         =
+*    IV_SEARCH_STRING         =
+**    io_tech_request_context  =
+**  IMPORTING
+**    et_entityset             =
+**    es_response_context      =
+*    .
+** CATCH /iwbep/cx_mgw_busi_exception .
+** CATCH /iwbep/cx_mgw_tech_exception .
+**ENDTRY.
+
+    IF iv_filter_string IS INITIAL.
+
+      SELECT kokrs bukrs kostl wrbtr waers
+        INTO CORRESPONDING FIELDS OF TABLE et_entityset
+        FROM ztui505_01.
+    ELSE.
+
+      SELECT kokrs bukrs kostl wrbtr waers
+        INTO CORRESPONDING FIELDS OF TABLE et_entityset
+        FROM ztui505_01
+        WHERE (iv_filter_string).
+    ENDIF.
+
+*    IF sy-subrc EQ 0.
+*      et_entityset[] = et_entityset[].
+*    ENDIF.
+
+  ENDMETHOD.

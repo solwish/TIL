@@ -1,0 +1,62 @@
+  METHOD crudset_delete_entity.
+**TRY.
+*CALL METHOD SUPER->CRUDSET_DELETE_ENTITY
+*  EXPORTING
+*    IV_ENTITY_NAME          =
+*    IV_ENTITY_SET_NAME      =
+*    IV_SOURCE_NAME          =
+*    IT_KEY_TAB              =
+**    io_tech_request_context =
+*    IT_NAVIGATION_PATH      =
+*    .
+** CATCH /iwbep/cx_mgw_busi_exception .
+** CATCH /iwbep/cx_mgw_tech_exception .
+**ENDTRY.
+
+    DATA : ls_key       TYPE /iwbep/s_mgw_name_value_pair,
+           lv_kokrs     TYPE ztui505_01-kokrs,
+           lv_bukrs     TYPE ztui505_01-bukrs,
+           lv_kostl     TYPE ztui505_01-kostl.
+*           lv_kostl(10) TYPE n.
+
+    LOOP AT it_key_tab INTO ls_key.
+      CASE ls_key-name.
+        WHEN 'Kokrs'.
+          lv_kokrs = ls_key-value.
+        WHEN 'Bukrs'.
+          lv_bukrs = ls_key-value.
+        WHEN 'Kostl'.
+          CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+            EXPORTING
+              input  = ls_key-value
+            IMPORTING
+              output = lv_kostl.
+*          lv_kostl = ls_key-value.
+      ENDCASE.
+    ENDLOOP.
+
+*    READ TABLE it_key_tab INTO ls_key INDEX 1.
+*    IF sy-subrc EQ 0.
+*      lv_kokrs = ls_key-value.
+*    ENDIF.
+*
+*    READ TABLE it_key_tab INTO ls_key INDEX 2.
+*    IF sy-subrc EQ 0.
+*      lv_bukrs = ls_key-value.
+*    ENDIF.
+*
+*    READ TABLE it_key_tab INTO ls_key INDEX 3.
+*    IF sy-subrc EQ 0.
+*      lv_kostl = ls_key-value.
+*    ENDIF.
+
+    DELETE FROM ztui505_01 WHERE kokrs = lv_kokrs
+                             AND bukrs = lv_bukrs
+                             AND kostl = lv_kostl.
+
+    IF sy-subrc EQ 0.
+      COMMIT WORK AND WAIT.
+    ELSE.
+      ROLLBACK WORK.
+    ENDIF.
+  ENDMETHOD.
