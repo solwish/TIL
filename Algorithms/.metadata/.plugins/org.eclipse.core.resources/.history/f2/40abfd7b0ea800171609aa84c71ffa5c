@@ -1,0 +1,42 @@
+
+public class PracticeSort02 {
+
+	public static void main(String[] args) {
+		int A[] = { 82, 6, 8, 74, 21, 26, 23, 87, 34, 95, 1, 2, 3, 4, 5, 6, 7 };
+		
+		PracticeSort02 pr = new PracticeSort02();
+		
+		pr.mergeSort(A, 0, A.length - 1);
+
+		for (int i = 0; i < A.length; i++)
+			System.out.print(A[i] + " ");
+	}
+
+	void mergeSort(int[] A, int p, int r) {
+		int q = (p + r) / 2;
+		if (p < r) {
+			mergeSort(A, p, q);
+			mergeSort(A, q + 1, r);
+			merge(A, p, q, r);
+		}
+	}
+
+	void merge(int[] data, int p, int q, int r) {
+		int i = p, j = q + 1, k = p;
+		int[] temp = new int[data.length];
+
+		while (i <= q && j <= r)
+			if (data[i] < data[j])
+				temp[k++] = data[i++];
+			else
+				temp[k++] = data[j++];
+
+		while (i <= q)
+			temp[k++] = data[i++];
+		while (j <= r)
+			temp[k++] = data[k++];
+
+		for (i = p; i < r; i++)
+			data[i] = temp[i];
+	}
+}

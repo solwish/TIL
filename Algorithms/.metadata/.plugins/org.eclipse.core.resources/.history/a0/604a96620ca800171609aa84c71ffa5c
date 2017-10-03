@@ -1,0 +1,12 @@
+
+public class PracticeSort02 {
+
+	public static void main(String[] args) {
+
+	}
+
+	void mergeSort(int[] A, int p, int r) {
+		
+	}
+
+}
