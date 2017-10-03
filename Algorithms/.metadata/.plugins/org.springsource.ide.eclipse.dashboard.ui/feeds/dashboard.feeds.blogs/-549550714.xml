@@ -5,7 +5,120 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-09-28T15:09:00Z</updated>
+  <updated>2017-10-02T13:37:47Z</updated>
+  <entry>
+    <title>Spring For Apache Kafka 2.0 GA Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/02/spring-for-apache-kafka-2-0-ga-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Artem Bilan</name>
+    </author>
+    <id>tag:spring.io,2017-09-29:3048</id>
+    <updated>2017-10-02T13:37:47Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;We are pleased to announce the general availability of the &lt;a href="https://github.com/spring-projects/spring-kafka/milestone/22?closed=1"&gt;2.0.0.RELEASE&lt;/a&gt; of the Spring for Apache Kafka &lt;code&gt;2.0&lt;/code&gt; version.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As mentioned in the &lt;a href="https://spring.io/blog/2017/09/12/spring-for-apache-kafka-2-0-and-1-3-release-candidates-available"&gt;2.0 RC1 announcement&lt;/a&gt;, the &lt;code&gt;1.3 GA&lt;/code&gt; is also available supporting the Kafka &lt;code&gt;0.11.x.x&lt;/code&gt; client with Spring Framework &lt;code&gt;4.3.x&lt;/code&gt; applications.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;They are available for download from the &lt;a href="https://repo.spring.io/release"&gt;Release Repository&lt;/a&gt; and Maven Central:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;repositories {
+    maven { url 'http://repo.spring.io/release' }
+}
+compile "org.springframework.kafka:spring-kafka:2.0.0.RELEASE"&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;That was 6 months journey to bring a Java 8 and Spring Framework 5 vision for Spring for Apache Kafka project and here is what we have so far overall:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Apache Kafka &lt;code&gt;0.11.x.x&lt;/code&gt; client&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Transactions support&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Headers mapping&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kafka Streams support&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;KafkaAdmin&lt;/code&gt; is now available to automatically add topics (for &lt;code&gt;NewTopic&lt;/code&gt; beans present in the application context)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;errorHandler&lt;/code&gt; and &lt;code&gt;groupId&lt;/code&gt; support for &lt;code&gt;@KafkaListener&lt;/code&gt;; also &lt;code&gt;Consumer&lt;/code&gt; argument resolution&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;@EmbeddedKafka&lt;/code&gt; for testing support&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Many of these features are also available in the 1.3 release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Thanks to all community members for any feedback and contributions!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Also the minor version &lt;code&gt;spring-integration-kafka-2.3.0.RELEASE&lt;/code&gt; is available.
+This version utilize the &lt;code&gt;spring-kafka-1.3.0.RELEASE&lt;/code&gt; foundation and provide some functionality to support Apache Kafka &lt;code&gt;0.11.x.x&lt;/code&gt; client.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;See the &lt;a href="http://projects.spring.io/spring-kafka/"&gt;Project Page&lt;/a&gt; for a complete matrix of &lt;code&gt;spring-kafka&lt;/code&gt;, &lt;code&gt;spring-integration-kafka&lt;/code&gt; and &lt;code&gt;kafka-clients&lt;/code&gt; version compatibility.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-kafka/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-kafka/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-kafka/blob/master/CONTRIBUTING.adoc"&gt;Contributing&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-kafka"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-kafka"&gt;Chat&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Data release train Kay goes GA</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/02/spring-data-release-train-kay-goes-ga" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Oliver Gierke</name>
+    </author>
+    <id>tag:spring.io,2017-10-02:3049</id>
+    <updated>2017-10-02T10:46:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the Spring Data engineering team I am happy to announce the general availability of Spring Data Kay. It&amp;rsquo;s the first major revision since Spring Data&amp;rsquo;s inception in 2009 and thus packed with tons of features. Here are the most significant ones:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Upgrade to Spring Framework 5.0, Java 8 and JavaEE 7 as baseline&lt;/li&gt;
+  &lt;li&gt;Revised repository APIs (better method names, &lt;code&gt;Optional&lt;/code&gt; etc.)&lt;/li&gt;
+  &lt;li&gt;A revised repository composition model&lt;/li&gt;
+  &lt;li&gt;Support for reactive data access for Cassandra, Couchbase, MongoDB and Redis&lt;/li&gt;
+  &lt;li&gt;Addition of Spring Data Geode to the release train&lt;/li&gt;
+  &lt;li&gt;Use of nullability annotations and advanced runtime checks on those&lt;/li&gt;
+  &lt;li&gt;Kotlin support for null-safety and immutable data classes supported through Kotlin constructors&lt;/li&gt;
+  &lt;li&gt;General Java 9 compatibility&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Find out more about what&amp;rsquo;s new in the curated changelog, &lt;a href="https://spring.io/blog/2017/06/20/a-preview-on-spring-data-kay"&gt;previous blog posts&lt;/a&gt; (and an &lt;a href="https://spring.io/blog/2016/11/28/going-reactive-with-spring-data"&gt;even former one&lt;/a&gt; on the reactive bits) and the what&amp;rsquo;s new sections of the individual module&amp;rsquo;s reference documentation.&lt;/p&gt;
+&lt;p&gt;The release will be included in the upcoming Spring Boot milestone to give us time for some further refinements and a first service release for Boot 2.0&amp;rsquo;s GA. Besides that, we&amp;rsquo;re now starting the work on our upcoming release train &lt;a href="https://en.wikipedia.org/wiki/Ada_Lovelace"&gt;Lovelace&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Also, make sure you&amp;rsquo;re not going to miss this year&amp;rsquo;s &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; conference that&amp;rsquo;s packed with data related talks, opportunities to learn about the latest and greatest features and of course some previews about what we&amp;rsquo;re planning to do next. Discounted pricing is running out soon!&lt;/p&gt;
+&lt;p&gt;Last but not least, as usual, the laundry list:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Data Commons 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-commons/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data JPA 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-jpa/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data for Apache Solr 3.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-solr/3.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/3.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/3.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/3.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data for Apache Cassandra 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-cassandra/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data KeyValue 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-keyvalue/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data MongoDB 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-mongodb/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Gemfire 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-gemfire/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Neo4j 5.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-neo4j/5.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/5.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/5.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/5.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data for Apache Geode 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-geode/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/geode/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/geode/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/geode/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data LDAP 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-ldap/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/ldap/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/ldap/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/ldap/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Envers 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-envers/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/envers/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data REST 3.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-rest-webmvc/3.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/3.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/3.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/3.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Redis 2.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-redis/2.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/2.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Elasticsearch 3.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-elasticsearch/3.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/3.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data Couchbase 3.0 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-couchbase/3.0.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/3.0.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Pivotal and Spring Team at JavaOne 2017</title>
     <link rel="alternate" href="https://spring.io/blog/2017/09/28/pivotal-and-spring-team-at-javaone-2017" />
@@ -1645,80 +1758,5 @@ public HeaderWebSessionIdResolver webSessionIdResolver() {
 &lt;div class="paragraph"&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/2.0.0.M4/reference/html5/"&gt;Reference&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot 2.0.0 M4 Available Now</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/09/15/spring-boot-2-0-0-m4-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>St?phane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2017-09-15:3029</id>
-    <updated>2017-09-15T07:43:30Z</updated>
-    <content type="html">&lt;p&gt;Hot on the heels of &lt;a href="https://spring.io/blog/2017/09/11/spring-framework-5-0-rc4-available-now"&gt;the latest Spring Framework 5 release candidate&lt;/a&gt;, Spring Boot 2.0 M4 is now available from &lt;a href="http://repo.spring.io/milestone/"&gt;our milestone repository&lt;/a&gt;. This release closes &lt;a href="https://github.com/spring-projects/spring-boot/milestone/78?closed=1"&gt;150 issues and pull requests&lt;/a&gt; and is a major step towards 2.0 GA. Thanks to all that contributed!&lt;/p&gt;
-&lt;p&gt;This milestone provides a host of minor tweaks and enhancements along with three major changes:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;A new &lt;a href="https://spring.io/blog/2017/08/22/introducing-actuator-endpoints-in-spring-boot-2-0"&gt;Actuator endpoint&lt;/a&gt; infrastructure&lt;/li&gt;
-  &lt;li&gt;An &lt;a href="https://spring.io/blog/2017/09/15/security-changes-in-spring-boot-2-0-m4"&gt;overhaul of security&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="http://micrometer.io/"&gt;Micrometer&lt;/a&gt; metrics support&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For a complete list of changes, and upgrade instructions, see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0.0-M4-Release-Notes"&gt;Spring Boot 2.0.0.M4 Release Notes&lt;/a&gt; on the WIKI. We are a bit behind with regards to updating the reference documentation, so please consider using &lt;a href="http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/"&gt;the snapshot version&lt;/a&gt; which we&amp;rsquo;ll continue to update.&lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;re especially keen to get feedback on any core Spring Framework issues that you might encounter with this release. The final version of Spring Framework 5.0 is due to be released in two weeks time. If you find any issues with the framework, please raise them on &lt;a href="https://jira.spring.io/browse/SPR"&gt;their JIRA&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To get started with Spring Boot 2.0 M4 and discover those new feature, you can easily bootstrap a new project on &lt;a href="https://start.spring.io"&gt;start.spring.io&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.0.0.M4/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Security changes in Spring Boot 2.0 M4</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/09/15/security-changes-in-spring-boot-2-0-m4" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Madhura Bhave</name>
-    </author>
-    <id>tag:spring.io,2017-08-23:3006</id>
-    <updated>2017-09-15T06:58:12Z</updated>
-    <content type="html">&lt;p&gt;Milestone 4 of Spring Boot 2.0 brings important changes to the security auto-configuration provided by Spring Boot.&lt;/p&gt;&lt;h2&gt;&lt;a href="#problem-statement" class="anchor" name="problem-statement"&gt;&lt;/a&gt;Problem Statement&lt;/h2&gt;
-&lt;p&gt;Until Spring Boot 1.x, the default auto-configuration secured all of the application endpoints using basic authentication. If actuator was on the classpath, there was a separate security configuration that applied to the actuator endpoints. The way these two auto-configurations would turn on and off was completely independent. Because of this, users wanting to provide custom security found themselves fighting ordering issues with &lt;code&gt;WebSecurityConfigurerAdapter&lt;/code&gt;s.&lt;/p&gt;
-&lt;p&gt;Additionally, for actuator endpoints, the effects of the &lt;code&gt;management.security.enabled&lt;/code&gt; flag based on whether Spring Security was on the classpath or not was quite confusing. &lt;/p&gt;
-&lt;p&gt;There were a number of properties under &lt;code&gt;security.*&lt;/code&gt; and &lt;code&gt;management.security.*&lt;/code&gt; that were applicable only to the auto-configuration provided by Spring Boot. For example, if &lt;code&gt;security.basic.enabled&lt;/code&gt; was set to &lt;code&gt;false&lt;/code&gt;, setting &lt;code&gt;security.sessions&lt;/code&gt; would have absolutely no effect and this turned out to be quite misleading.&lt;/p&gt;&lt;h2&gt;&lt;a href="#improvements-in-2-0" class="anchor" name="improvements-in-2-0"&gt;&lt;/a&gt;Improvements in 2.0&lt;/h2&gt;
-&lt;p&gt;In Spring Boot 2.0, our main goal was to greatly simplify the default security configuration and and make adding custom security easy.&lt;/p&gt;&lt;h3&gt;&lt;a href="#simplified-default-configuration" class="anchor" name="simplified-default-configuration"&gt;&lt;/a&gt;Simplified default configuration&lt;/h3&gt;
-&lt;p&gt;Providing sensible defaults for security is challenging. We&amp;rsquo;ve decided to opt for the most secure default, which is, secure everything, even public and static resources. By default, if Spring Security is on the classpath, Spring Boot will add &lt;code&gt;@EnableWebSecurity&lt;/code&gt;, and rely on Spring Security&amp;rsquo;s content-negotiation to decide which authentication mechanism to use. A default user with a generated password will be provided.&lt;/p&gt;
-&lt;p&gt;If actuator is on the classpath, the same default security configuration will also apply to actuator endpoints. In order to prevent actuators from exposing sensitive data accidentally, most web endpoints will be disabled by default (&lt;code&gt;status&lt;/code&gt; and &lt;code&gt;info&lt;/code&gt; are enabled by default however). Users need to take an explicit step to enable those web endpoints. This behavior is consistent, regardless of whether Spring Security is present on the classpath or not.&lt;/p&gt;&lt;h3&gt;&lt;a href="#consistent-customization" class="anchor" name="consistent-customization"&gt;&lt;/a&gt;Consistent customization&lt;/h3&gt;
-&lt;p&gt;Once users decide that they want to add custom security, the default security configuration provided by Spring Boot will back off completely. At this point, users need to explicitly define all the bits they want to secure. This means security configuration is now in one place and avoids any kind of ordering issues with existing &lt;code&gt;WebSecurityConfigurerAdapter&lt;/code&gt;s.&lt;br/&gt;We provide dedicated helpers to make your configuration more readable and explicit. For management endpoints and static resources, Spring Boot provides convenience factories that will supply the right &lt;code&gt;RequestMatcher&lt;/code&gt;. For management endpoints, the &lt;code&gt;RequestMatcher&lt;/code&gt; will be created based on the &lt;code&gt;management.context-path&lt;/code&gt;. Using &lt;code&gt;RequestMatcher&lt;/code&gt;s gives users the flexibility to secure the application using existing Spring Security expressions such as &lt;code&gt;permitAll&lt;/code&gt;, &lt;code&gt;hasRole&lt;/code&gt; etc.&lt;/p&gt;
-&lt;p&gt;Here is an example of a custom security:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;http&#xD;
-    .authorizeRequests()&#xD;
-        // 1&#xD;
-        .requestMatchers(EndpointRequest.to(&amp;quot;status&amp;quot;, &amp;quot;info&amp;quot;))&#xD;
-            .permitAll()&#xD;
-        // 2&#xD;
-        .requestMatchers(EndpointRequest.toAnyEndpoint())&#xD;
-            .hasRole(&amp;quot;ACTUATOR&amp;quot;)&#xD;
-        // 3 &#xD;
-        .requestMatchers(StaticResourceRequest.toCommonLocations())&#xD;
-            .permitAll()&#xD;
-        // 4&#xD;
-        .antMatchers(&amp;quot;/**&amp;quot;)&#xD;
-            .hasRole(&amp;quot;USER&amp;quot;)&#xD;
-    .and()&#xD;
-  ... // additional configuration&#xD;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;code&gt;/status&lt;/code&gt; and &lt;code&gt;/info&lt;/code&gt; endpoints do not require authentication.&lt;/li&gt;
-  &lt;li&gt;All other actuator endpoints are protected by the &lt;code&gt;ACTUATOR&lt;/code&gt; role.&lt;/li&gt;
-  &lt;li&gt;Common static resource locations are open to all.&lt;/li&gt;
-  &lt;li&gt;All other application endpoints are protected by the &lt;code&gt;USER&lt;/code&gt; role.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;We have reduced &lt;code&gt;SecurityProperties&lt;/code&gt; to a minimum so that there is no confusion about which properties are used only by the auto-configuration and which ones get used even if the default security is turned off. As mentioned before, Spring Boot provides a default user with a generated password. If you want to configure your own user, you can define a bean of type&lt;br/&gt;&lt;code&gt;UserDetailsService&lt;/code&gt; as follows:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;@Bean&#xD;
-public UserDetailsService userDetailsService() throws Exception {&#xD;
-    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();&#xD;
-    manager.createUser(User.withUsername(&amp;quot;user&amp;quot;).password(&amp;quot;password&amp;quot;)&#xD;
-        .roles(&amp;quot;USER&amp;quot;).build());&#xD;
-    return manager;&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can also provide your own &lt;code&gt;AuthenticationManager&lt;/code&gt; bean or &lt;code&gt;AuthenticationProvider&lt;/code&gt; bean, which will then be used.&lt;/p&gt;&lt;h3&gt;&lt;a href="#additional-improvements" class="anchor" name="additional-improvements"&gt;&lt;/a&gt;Additional improvements&lt;/h3&gt;&lt;h4&gt;&lt;a href="#status-endpoint" class="anchor" name="status-endpoint"&gt;&lt;/a&gt;Status endpoint&lt;/h4&gt;
-&lt;p&gt;Previously, the health endpoint would decide whether to return just the status or expose full health details based on the presence of a role. Users who always wanted to expose full health details, would need to set the &lt;code&gt;management.security.flag&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt; which was less than ideal as it would expose other actuators. As part of 2.0, we&amp;rsquo;ve added a separate status endpoint which returns just the status. The health endpoint always returns the full health details. Both endpoints are secure by default but it makes adding custom security rules for the two cases much easier.&lt;/p&gt;</content>
   </entry>
 </feed>
