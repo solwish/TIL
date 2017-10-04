@@ -35,6 +35,7 @@ public class Stack {
 		}
 	}
 
+	// 스택 출력
 	public void printStack() {
 		if (top != -1) {
 			for (int i = top; i <= top; i--) {
@@ -52,7 +53,7 @@ public class Stack {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("stack size : ");
+		System.out.println("스택 크기 입력 : ");
 		int size = sc.nextInt();
 		Stack stack = new Stack(size);
 
