@@ -1,0 +1,40 @@
+package SWexpert;
+
+import java.util.Comparator;
+
+public class Test01 implements Comparable<Test01> {
+
+	// public static void main(String[] args) {
+	// // TODO Auto-generated method stub
+	//
+	// }
+
+	int quantity;
+	String name;
+
+	public Test01(int quantity, String name) {
+		this.quantity = quantity;
+		this.name = name;
+	}
+
+	@Override
+	public int compareTo(Test01 others) {
+		// return name.compareTo(others.name);
+		return quantity - others.quantity;
+		// 양수냐 음수냐에 따라 비교.
+	}
+
+	Comparator<Test01> nameComparator = new Comparator<Test01>() {
+		public int compare(Test01 t1, Test01 t2) {
+			return t1.name.compareTo(t2.name);
+		}
+	};
+
+	Comparator<Test01> quantityComparator = new Comparator<Test01>() {
+
+		@Override
+		public int compare(Test01 o1, Test01 o2) {
+			return o1.quantity - o2.quantity;
+		}
+	};
+}

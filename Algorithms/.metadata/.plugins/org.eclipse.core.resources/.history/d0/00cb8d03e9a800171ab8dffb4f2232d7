@@ -1,0 +1,24 @@
+package SWexpert;
+
+public class Test01 implements Comparable<Test01> {
+
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//	}
+	
+	int a;
+	String name;
+	public Test01(int a, String name) {
+		this.a = a;
+		this.name = name;
+	}
+	@Override
+	public int compareTo(Test01 others) {
+		return name.compareTo(others.name);
+	}
+	
+	
+	
+
+}

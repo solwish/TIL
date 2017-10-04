@@ -5,7 +5,137 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-10-02T13:37:47Z</updated>
+  <updated>2017-10-04T00:35:00Z</updated>
+  <entry>
+    <title>Spring Tips: Reactive Spring Security</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/04/spring-tips-reactive-spring-security" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-09-27:3039</id>
+    <updated>2017-10-04T00:35:00Z</updated>
+    <content type="html">&lt;p&gt;Speaker: &lt;a href="https://www.twitter.com/starbuxman"&gt;Josh Long&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Hi Spring fans! In this tip, we&amp;rsquo;ll look at the reactive programming support in Spring Security 5.0. We&amp;rsquo;ll look at it in terms of its integration with Spring WebFlux, the reactive web runtime and framework in Spring Framework 5.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/LzNhedHo7pM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - October 3rd, 2017 - Spring Framework 5.0 Edition!</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/03/this-week-in-spring-october-3rd-2017-spring-framework-5-0-edition" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-10-03:3051</id>
+    <updated>2017-10-03T21:19:40Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This last week&amp;rsquo;s been &lt;em&gt;nuts&lt;/em&gt;! So much good stuff on offer. Spring Framework 5.0 is now available! And with Spring Framework 5.0 comes a deluge of releases, all of which you&amp;rsquo;ll see in this post. Also, this week I - and others from the Pivotal and Spring teams - are at JavaOne and I hope &lt;a href="https://spring.io/blog/2017/09/28/pivotal-and-spring-team-at-javaone-2017"&gt; you&amp;rsquo;ll come find us and say hi at our booth or the various talks&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Last week I looked at using Spring Framework 5&amp;rsquo;s support for &lt;a href="https://spring.io/blog/2017/09/27/spring-tips-reactive-websockets-with-spring-framework-5"&gt;building reactive websocket-based applications&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Spring AMQP and Spring Integration lead Gary Russell &lt;a href="https://spring.io/blog/2017/09/27/spring-amqp-2-0-release-candidate-2-available"&gt;has just announced Spring AMQP 2.0.RC2&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;At long last, Spring Framework 5.0.GA is here! The new release integrates with Project Reactor, includes a reactive web runtime, Kotlin extensions, and baselines on Java EE 7 and Java 8. The new release has entirely too many new things to hope to capture here so check out the &lt;a href="https://spring.io/blog/2017/09/28/spring-framework-5-0-goes-ga"&gt;release blog&lt;/a&gt; and then &lt;a href="https://github.com/spring-projects/spring-framework/wiki/What's-New-in-the-Spring-Framework#whats-new-in-spring-framework-5x"&gt;check out the &lt;em&gt;What&amp;rsquo;s New&lt;/em&gt; post&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring and Reactor ninja Simon Basl? just &lt;a href="https://spring.io/blog/2017/09/28/reactor-bismuth-is-out"&gt;announced the Reactor Bismuth release&lt;/a&gt;. This new release sets the foundation for Spring Framework 5.0 and is, itself, also packed with features!&lt;/li&gt;
+  &lt;li&gt;The Spring Framework 5.0 release opens the doors for a number of other &lt;a href="https://spring.io/blog/2017/10/02/spring-data-release-train-kay-goes-ga"&gt;projects, including Spring Data Kay&lt;/a&gt;. This is the largest revision of Spring Data since Spring Data&amp;rsquo;s inception in 2009! This new release has a baseline against Spring Framework 5.0, Java 8 and Java EE 7. It includes a revised repository APIs (complete support for &lt;code&gt;Optional&amp;lt;T&amp;gt;&lt;/code&gt;), support for reactive data access (Cassandra, Couchbase, MongoDB and Redis), the addition of Spring Data Geode to the release train, use of nullability annotations and advanced runtime checks on those, Kotlin support for null-safety and immutable data classes supported through Kotlin constructors, Java 9 compatibility, and sooo much more!&lt;/li&gt;
+  &lt;li&gt;Spring messaging and integration ninja Artem Bilan &lt;a href="https://spring.io/blog/2017/10/02/spring-for-apache-kafka-2-0-ga-available"&gt;just announced Spring for Apache Kafka 2.0.GA&lt;/a&gt;. The new release includes Apache Kafka support, transaction support, headers mapping, Apache Kafka Streams support, a new &lt;code&gt;KafkaAdmin&lt;/code&gt;, error handling and group support in the &lt;code&gt;@KafkaListener&lt;/code&gt; and &lt;code&gt;Consumer&lt;/code&gt; resolution. It also supports &lt;code&gt;@EmbeddedKafka&lt;/code&gt; for testing.&lt;/li&gt;
+  &lt;li&gt;Spring Cloud ninja Ryan Baxter just announced &lt;a href="https://spring.io/blog/2017/10/03/spring-cloud-dalston-sr4-is-now-available"&gt;Spring Cloud Dalston SR4&lt;/a&gt;. The new release updates Spring Cloud Contract, Spring Cloud Config, Spring Cloud Commons, Spring Cloud Netflix, and Spring Cloud Sleuth.&lt;/li&gt;
+  &lt;li&gt;Spring REST Docs lead Andy Wilkinson &lt;a href="https://spring.io/blog/2017/09/28/spring-rest-docs-1-2-2-release"&gt;just announced Spring REST Docs 1.2.2.RELEASE&lt;/a&gt;. This maintenance release includes a handful of bug fixes and documentation improvements and so is a recommended upgrade&lt;/li&gt;
+  &lt;li&gt;Check out the implementation of &lt;a href="https://github.com/spring-projects/spring-framework/commit/23497a7ece7aac1591187b46f4b601d2f48764e0"&gt;Spring Framework 5&amp;rsquo;s new autowire-by-constructor wiring&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I liked this German-language &lt;a href="https://jaxenter.de/spring-security-interview-falk-62685"&gt;interview with Andreas Falk on new features in Spring Framework 5.0 and Spring Security 5.0&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;This post, by Zoltan Altfatter, looks at how to &lt;a href="http://blog.mimacom.com/blog/2017/09/29/trigger-a-spring-batch-job-with-a-jms-message/"&gt;launch a Spring Batch &lt;code&gt;Job&lt;/code&gt;&lt;/a&gt; as the result of an incoming JMS message in a Spring Integration flow.&lt;/li&gt;
+  &lt;li&gt;Rohit Kelapure? looks at why Pivotal&amp;rsquo;s Cloud Foundry &lt;a href="https://twitter.com/rkela/status/914924780373073920"&gt;is the best place to run Spring Boot applications&lt;/a&gt; in this epic Twitter thread.&lt;/li&gt;
+  &lt;li&gt;In this post, Cristina Negrean looks at &lt;a href="https://cristinanegrean.github.io/2017/10/01/spring-cloud-dataflow-for-real-time-analytics-with-twitter-api"&gt;using Spring Cloud Data Flow for real-time analytics&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Gabriela Motroc put together a nice post &lt;a href="https://jaxenter.com/spring-framework-5-0-137677.html"&gt;for JAXEnter on the new Spring Framework 5 release&lt;/a&gt;. There&amp;rsquo;s so much to like.&lt;/li&gt;
+  &lt;li&gt;Aboullaite Mohammed put together a very good post &lt;a href="https://aboullaite.me/spring-boot-elastic-kibana/"&gt;on monitoring metrics using Elasticsearch and Kibana and Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The Ordina JWorks blog has a nice post on &lt;a href="https://ordina-jworks.github.io/microservices/2017/09/26/Secure-your-architecture-part1.html"&gt;securing microservices with Spring Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Dalston SR4 Is Now Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/03/spring-cloud-dalston-sr4-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Ryan Baxter</name>
+    </author>
+    <id>tag:spring.io,2017-10-03:3050</id>
+    <updated>2017-10-03T17:20:22Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I am pleased to announce that Service Release 4 (SR4) of the &lt;a href="https://cloud.spring.io"&gt;Spring Cloud Dalston&lt;/a&gt; Release Train is available today. The release can be found in the &lt;a href="https://repo1.maven.org/maven2/org/springframework/cloud/"&gt;Maven Central&lt;/a&gt; repository. You can check out the Dalston &lt;a href="https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Dalston-Release-Notes"&gt;release notes for more information&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The following modules were updated as part of Dalston.SR4:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Module &lt;/th&gt;
+      &lt;th&gt;Version &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Contract &lt;/td&gt;
+      &lt;td&gt;1.1.4.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Config &lt;/td&gt;
+      &lt;td&gt;1.3.3.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Commons &lt;/td&gt;
+      &lt;td&gt;1.2.4.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Netflix &lt;/td&gt;
+      &lt;td&gt;1.3.5.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Sleuth &lt;/td&gt;
+      &lt;td&gt;1.2.5.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;As always, we welcome feedback on &lt;a href="https://github.com/spring-cloud/"&gt;GitHub&lt;/a&gt;, on &lt;a href="https://gitter.im/spring-cloud/spring-cloud"&gt;Gitter&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/SpringCloud"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To get started with Maven with a BOM (dependency management only):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;&amp;lt;dependencyManagement&amp;gt;&#xD;
+    &amp;lt;dependencies&amp;gt;&#xD;
+        &amp;lt;dependency&amp;gt;&#xD;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+            &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt;&#xD;
+            &amp;lt;version&amp;gt;Dalston.SR4&amp;lt;/version&amp;gt;&#xD;
+            &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&#xD;
+            &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;&#xD;
+        &amp;lt;/dependency&amp;gt;&#xD;
+    &amp;lt;/dependencies&amp;gt;&#xD;
+&amp;lt;/dependencyManagement&amp;gt;&#xD;
+&amp;lt;dependencies&amp;gt;&#xD;
+    &amp;lt;dependency&amp;gt;&#xD;
+        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+        &amp;lt;artifactId&amp;gt;spring-cloud-starter-config&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;/dependency&amp;gt;&#xD;
+    &amp;lt;dependency&amp;gt;&#xD;
+        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+        &amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;/dependency&amp;gt;&#xD;
+    ...&#xD;
+&amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or with Gradle:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;buildscript {&#xD;
+    dependencies {&#xD;
+        classpath &amp;quot;io.spring.gradle:dependency-management-plugin:1.0.2.RELEASE&amp;quot;&#xD;
+    }&#xD;
+}&#xD;
+&#xD;
+apply plugin: &amp;quot;io.spring.dependency-management&amp;quot;&#xD;
+&#xD;
+dependencyManagement {&#xD;
+    imports {&#xD;
+        mavenBom &amp;#39;org.springframework.cloud:spring-cloud-dependencies:Dalston.SR4&amp;#39;&#xD;
+    }&#xD;
+}&#xD;
+&#xD;
+dependencies {&#xD;
+    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-config&amp;#39;&#xD;
+    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-eureka&amp;#39;&#xD;
+    ...&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+  </entry>
   <entry>
     <title>Spring For Apache Kafka 2.0 GA Available</title>
     <link rel="alternate" href="https://spring.io/blog/2017/10/02/spring-for-apache-kafka-2-0-ga-available" />
@@ -1056,707 +1186,5 @@ public List&amp;lt;?&amp;gt; submitOrder() { ... }
     <id>tag:spring.io,2017-09-15:3031</id>
     <updated>2017-09-15T20:04:36Z</updated>
     <content type="html">&lt;p&gt;Spring Web Flow 2.4.6 was released earlier today containing a &lt;a href="https://pivotal.io/security/cve-2017-8039"&gt;security fix&lt;/a&gt;. Applications that use explicit data bindings through the &lt;code&gt;&amp;lt;binder&amp;gt;&lt;/code&gt; element in flow definitions are not affected. Those that do rely on default bindings should upgrade as soon as possible. &lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Session MongoDB 2.0.0.M3 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/09/15/spring-session-mongodb-2-0-0-m3-released" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Greg Turnquist</name>
-    </author>
-    <id>tag:spring.io,2017-09-14:3026</id>
-    <updated>2017-09-15T18:10:37Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;Dear Spring Community,&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Session MongoDB 2.0.0.M3 is released. It is based on:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://spring.io/blog/2017/09/15/spring-session-2-0-0-m4"&gt;Spring Session 2.0.0.M4&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://spring.io/blog/2017/09/11/spring-data-ingalls-sr7-and-kay-rc3-released"&gt;Spring Data Kay-RC3&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Reactor Bismuth-M4&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://spring.io/blog/2017/09/11/spring-framework-5-0-rc4-available-now"&gt;Spring Framework 5.0.0.RC4&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In this release, several new features have been added to simplify using it with your Spring WebFlux application.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@EnableMongoWebSession
-public class SpringWebFluxConfig {
-
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;All you must do is apply the &lt;code&gt;@EnableMongoWebSession&lt;/code&gt; to any of your Spring configuration classes to activate session support with MongoDB. Additionally, you must provide a &lt;code&gt;ReactorMongoOperations&lt;/code&gt; Spring bean, but if you&amp;#8217;re using Spring Boot&amp;#8217;s &lt;code&gt;spring-boot-starter-data-mongodb-reactive&lt;/code&gt; starter, this is already provided.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;code&gt;@EnableMongoWebSession&lt;/code&gt; comes with the ability to set session-wide overrides including &lt;code&gt;maxInactiveIntervalInSeconds&lt;/code&gt; and &lt;code&gt;collectionName&lt;/code&gt;, to match the same features as the servlet-based &lt;code&gt;@EnableMongoHttpSession&lt;/code&gt; annotation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="admonitionblock note"&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class="icon"&gt;
-&lt;div class="title"&gt;Note&lt;/div&gt;
-&lt;/td&gt;
-&lt;td class="content"&gt;
-&lt;code&gt;@EnableMongoWebSession&lt;/code&gt; itself applies a Spring &lt;code&gt;@Configuration&lt;/code&gt; annotation, so there is no need to apply the same annotation to your own configuration class.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Session MongoDB, by default, uses the JDK-based serialization strategy and it is verified to support writing security context details out to MongoDB, making it seemless to integrate with Spring Security.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;As mentioned in the &lt;a href="https://spring.io/blog/2017/09/15/spring-session-2-0-0-m4#simplified-webflux-configuration"&gt;recent Spring Session blog post&lt;/a&gt;, Spring Session MongoDB (through Spring Session and Spring WebFlux), leverages cookie-base session handling. This means that when a new session is created, the app will send back to the client a &lt;code&gt;set-cookie SESSION=&amp;#8230;&amp;#8203;&lt;/code&gt; response header, and also check incoming web requests for a cookie named &lt;code&gt;SESSION&lt;/code&gt;. But with Spring Framework 5.0.0.M4, there is now the opportunity to switch from cookies to a header-based strategy.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;To change from cookies to headers, simply add this Spring bean to your configuration:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@EnableMongoWebSession
-public class SpringWebFluxConfig {
-
-	@Bean
-	HeaderWebSessionIdResolver headerBasedSessionIdResolver() {
-	    return new HeaderWebSessionIdResolver();
-	}
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;When creating a new session, &lt;code&gt;HeaderWebSessionIdResolver&lt;/code&gt; will generate a &lt;code&gt;SESSION=&amp;#8230;&amp;#8203;&lt;/code&gt; response header clients can pick up. And incoming web requests will be parsed for a &lt;code&gt;SESSION=&amp;#8230;&amp;#8203;&lt;/code&gt; request header.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;It&amp;#8217;s also possible to change the name of the header as shown below:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@EnableMongoWebSession
-public class SpringWebFluxConfig {
-
-	@Bean
-	HeaderWebSessionIdResolver headerBasedSessionIdResolver() {
-	    HeaderWebSessionIdResolver resolver = new HeaderWebSessionIdResolver();
-	    resolver.setHeaderName("MyCustomHeaderName"); // Use this instead of SESSION for the header
-	    return resolver;
-	}
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;With all this, you&amp;#8217;re geared up to use Spring Session MongoDB for session management, and tailor it as you wish!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="admonitionblock important"&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class="icon"&gt;
-&lt;div class="title"&gt;Important&lt;/div&gt;
-&lt;/td&gt;
-&lt;td class="content"&gt;
-In the past, Spring Session MongoDB would use Jackson-based serialization if it detected Jackson on the classpath. Since we&amp;#8217;ve switched to JDK-based serialization, and not having it jump purely based on classpath settings, it&amp;#8217;s recommended that any running applications may have to drop existing sessions and reinitialize.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;In the meantime, you can get the bits today if you visit the project site, get the coordinates, and &lt;em&gt;include the version number&lt;/em&gt; in your Spring Boot application.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session-data-mongodb/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session-data-mongodb/docs/2.0.0.M3/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-session+mongodb"&gt;Help&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Security 5.0.0 M4 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/09/15/spring-security-5-0-0-m4-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2017-09-14:3024</id>
-    <updated>2017-09-15T12:42:03Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community, I&amp;#8217;m pleased to announce the release of Spring Security 5.0.0 M4. This release includes bug fixes, new features, and is based off of Spring Framework 5.0.0 RC4. You can find complete details in the &lt;a href="https://github.com/spring-projects/spring-security/milestone/101?closed=1"&gt;changelog&lt;/a&gt;. The highlights of the release include:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#oauth2-oidc"&gt;OAuth2 / OIDC&lt;/a&gt;&lt;/p&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#oauth2-login-java-config"&gt;OAuth2 Login Java Config&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#security-token-repository"&gt;Security Token Repository&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#id-token-and-claims"&gt;ID Token and Claims&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#authorization-request-improvements"&gt;Authorization Request Improvements&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#oauth2-client-properties"&gt;OAuth2 Client Properties&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#reactive-security"&gt;Reactive Security&lt;/a&gt;&lt;/p&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#reactive-method-security"&gt;Reactive Method Security&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#webflux-form-log-in"&gt;WebFlux Form Log In&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#webflux-content-negotiation"&gt;WebFlux Content Negotiation&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="#webflux-session-optimizations"&gt;WebFlux Session Optimizations&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;h1 id="oauth2-oidc" class="sect0"&gt;&lt;a class="anchor" href="#oauth2-oidc"&gt;&lt;/a&gt;OAuth2 / OIDC&lt;/h1&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="oauth2-login-java-config"&gt;&lt;a class="anchor" href="#oauth2-login-java-config"&gt;&lt;/a&gt;OAuth2 Login Java Config&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;There are a number of improvements to the &lt;code&gt;HttpSecurity.oauth2Login()&lt;/code&gt; DSL.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;You can now configure the &lt;em&gt;Token Endpoint&lt;/em&gt; with a custom implementation of an &lt;code&gt;AuthorizationGrantTokenExchanger&lt;/code&gt; or &lt;code&gt;SecurityTokenRepository&amp;lt;AccessToken&amp;gt;&lt;/code&gt;, as follows:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;protected void configure(HttpSecurity http) throws Exception {
-  http
-    .authorizeRequests()
-      .anyRequest().authenticated()
-      .and()
-    .oauth2Login()
-      .tokenEndpoint()
-        .authorizationCodeTokenExchanger(this.authorizationCodeTokenExchanger())
-	.accessTokenRepository(this.accessTokenRepository());
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We&amp;#8217;ve also added the capability of customizing the request paths for the &lt;em&gt;Authorization Endpoint&lt;/em&gt; and &lt;em&gt;Redirection Endpoint&lt;/em&gt;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;protected void configure(HttpSecurity http) throws Exception {
-  http
-    .authorizeRequests()
-      .anyRequest().authenticated()
-      .and()
-    .oauth2Login()
-      .authorizationEndpoint()
-        .requestMatcher(new AntPathRequestMatcher("/custom-path/{clientAlias}"))
-        .and()
-      .redirectionEndpoint()
-        .requestMatcher(new AntPathRequestMatcher("/custom-path/callback/{clientAlias}"));
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;As with all &lt;code&gt;AbstractAuthenticationProcessingFilter&lt;/code&gt; 's in Spring Security, you can also set a custom &lt;code&gt;AuthenticationSuccessHandler&lt;/code&gt; and &lt;code&gt;AuthenticationFailureHandler&lt;/code&gt;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;protected void configure(HttpSecurity http) throws Exception {
-  http
-    .authorizeRequests()
-      .anyRequest().authenticated()
-      .and()
-     .oauth2Login()
-       .successHandler(this.customAuthenticationSuccessHandler())
-       .failureHandler(this.customAuthenticationFailureHandler());
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="security-token-repository"&gt;&lt;a class="anchor" href="#security-token-repository"&gt;&lt;/a&gt;Security Token Repository&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We&amp;#8217;ve introduced the &lt;code&gt;SecurityTokenRepository&amp;lt;T extends SecurityToken&amp;gt;&lt;/code&gt; abstraction, which is responsible for the persistence of  &lt;code&gt;SecurityToken&lt;/code&gt; 's.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The initial implementation &lt;code&gt;InMemoryAccessTokenRepository&lt;/code&gt; provides the persistence of &lt;code&gt;AccessToken&lt;/code&gt; 's.
-In an upcoming release we&amp;#8217;ll also provide an implementation that supports the persistence of &lt;em&gt;Refresh Token&amp;#8217;s&lt;/em&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="id-token-and-claims"&gt;&lt;a class="anchor" href="#id-token-and-claims"&gt;&lt;/a&gt;ID Token and Claims&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;A couple of minor improvements were introduced to the &lt;code&gt;IdToken&lt;/code&gt; along with some final implementation details for &lt;code&gt;JwtClaimAccessor&lt;/code&gt;,
-&lt;code&gt;StandardClaimAccessor&lt;/code&gt; and &lt;code&gt;IdTokenClaimAccessor&lt;/code&gt;, which provide convenient access to &lt;code&gt;claims&lt;/code&gt; in their associated constructs, for example, &lt;code&gt;Jwt&lt;/code&gt;, &lt;code&gt;IdToken&lt;/code&gt;, &lt;code&gt;UserInfo&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="authorization-request-improvements"&gt;&lt;a class="anchor" href="#authorization-request-improvements"&gt;&lt;/a&gt;Authorization Request Improvements&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We&amp;#8217;ve added the capability for an &lt;code&gt;AuthorizationRequestRepository&lt;/code&gt; to persist the &lt;em&gt;Authorization Request&lt;/em&gt; to a &lt;code&gt;Cookie&lt;/code&gt;.
-The current default implementation persists in the &lt;code&gt;HttpSession&lt;/code&gt;, however, a custom implementation may be provided to persist to a &lt;code&gt;Cookie&lt;/code&gt; instead.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Support was also added for &lt;code&gt;URI&lt;/code&gt; variables configured in the &lt;code&gt;redirect-uri&lt;/code&gt; for the &lt;code&gt;AuthorizationCodeRequestRedirectFilter&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="oauth2-client-properties"&gt;&lt;a class="anchor" href="#oauth2-client-properties"&gt;&lt;/a&gt;OAuth2 Client Properties&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;There were a couple of minor updates to the properties for configuring an OAuth 2.0 Client. The configuration below outlines the current structure.
-You will notice that there is support for configuring multiple clients, for example, google, github, okta, etc.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-yml" data-lang="yml"&gt;security:
-  oauth2:
-    client:
-      google:
-        client-id: your-app-client-id
-        client-secret: your-app-client-secret
-        client-authentication-method: basic
-        authorization-grant-type: authorization_code
-        redirect-uri: "{scheme}://{serverName}:{serverPort}{contextPath}/oauth2/authorize/code/{clientAlias}"
-        scope: openid, profile, email, address, phone
-        authorization-uri: "https://accounts.google.com/o/oauth2/v2/auth"
-        token-uri: "https://www.googleapis.com/oauth2/v4/token"
-        user-info-uri: "https://www.googleapis.com/oauth2/v3/userinfo"
-        user-name-attribute-name: "sub"
-        jwk-set-uri: "https://www.googleapis.com/oauth2/v3/certs"
-        client-name: Google
-        client-alias: google
-      github:
-        ...
-      okta:
-        ...&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;A complete example for using the new Spring Security OAuth 2.0 / OpenID Connect 1.0
-login feature can be found in the Spring Security samples at
-&lt;a href="https://github.com/spring-projects/spring-security/tree/5.0.0.M4/samples/boot/oauth2login"&gt;oauth2login&lt;/a&gt;.
-The guide will walk you through the steps for setting up the sample application
-for OAuth 2.0 login using an external OAuth 2.0 or OpenID Connect 1.0 Provider.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id="reactive-security" class="sect0"&gt;&lt;a class="anchor" href="#reactive-security"&gt;&lt;/a&gt;Reactive Security&lt;/h1&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="reactive-method-security"&gt;&lt;a class="anchor" href="#reactive-method-security"&gt;&lt;/a&gt;Reactive Method Security&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Security&amp;#8217;s Reactive support now includes method security by leveraging Reactor&amp;#8217;s Context. The highlights are below, but you can find a complete example of it in action in &lt;a href="https://github.com/spring-projects/spring-security/tree/5.0.0.M4/samples/javaconfig/hellowebflux-method"&gt;samples/javaconfig/hellowebflux-method&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The first step is to use &lt;code&gt;@EnableReactiveMethodSecurity&lt;/code&gt; to enable support for &lt;code&gt;@PreAuthorize&lt;/code&gt; and &lt;code&gt;@PostAuthorize&lt;/code&gt; annotations. This step ensures that the objects are properly proxied.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@EnableWebFluxSecurity
-@EnableReactiveMethodSecurity
-public class SecurityConfig {&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The next step is to create a service that is annotated with &lt;code&gt;@PreAuthorize&lt;/code&gt; or &lt;code&gt;@PostAuthorize&lt;/code&gt;. For example:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@PreAuthorize("hasRole('ADMIN')")
-public Mono&amp;lt;String&amp;gt; findMessage() {&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Security&amp;#8217;s WebFlux support will then ensure that the Reactor Context will be populated with the current user which is used to determine if access is granted or denied.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Security&amp;#8217;s standard &lt;code&gt;@WithMockUser&lt;/code&gt; and &lt;a href="https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#test-method"&gt;related annotations&lt;/a&gt; has been updated to work with Reactive Method Security. For example:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@RunWith(SpringRunner.class)
-// ...
-public class HelloWorldMessageServiceTests {
-  @Autowired
-  HelloWorldMessageService messages;
-
-  @Test
-  public void messagesWhenNotAuthenticatedThenDenied() {
-    StepVerifier.create(this.messages.findMessage())
-      .expectError(AccessDeniedException.class)
-      .verify();
-  }
-
-  @Test
-  @WithMockUser
-  public void messagesWhenUserThenDenied() {
-    StepVerifier.create(this.messages.findMessage())
-      .expectError(AccessDeniedException.class)
-      .verify();
-  }
-
-  @Test
-  @WithMockUser(roles = "ADMIN")
-  public void messagesWhenAdminThenOk() {
-    StepVerifier.create(this.messages.findMessage())
-      .expectNext("Hello World!")
-      .verifyComplete();
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The test support also works nicely with &lt;code&gt;TestWebClient&lt;/code&gt;. For example:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@RunWith(SpringRunner.class)
-// ...
-public class HelloWebfluxMethodApplicationTests {
-  @Autowired
-  ApplicationContext context;
-
-  WebTestClient rest;
-
-  @Before
-  public void setup() {
-    this.rest = WebTestClient
-      .bindToApplicationContext(this.context)
-      // Setup Spring Security Test Support
-      .apply(springSecurity())
-      .configureClient()
-      .filter(basicAuthentication())
-      .build();
-  }
-
-  @Test
-  public void messageWhenNotAuthenticated() throws Exception {
-    this.rest
-      .get()
-      .uri("/message")
-      .exchange()
-      .expectStatus().isUnauthorized();
-  }
-
-  // --- authenticate with HTTP Basic ---
-
-  @Test
-  public void messageWhenUserThenForbidden() throws Exception {
-    this.rest
-      .get()
-      .uri("/message")
-      .attributes(robsCredentials())
-      .exchange()
-      .expectStatus().isEqualTo(HttpStatus.FORBIDDEN)
-      .expectBody().isEmpty();
-  }
-
-  @Test
-  public void messageWhenAdminThenOk() throws Exception {
-    this.rest
-      .get()
-      .uri("/message")
-      .attributes(adminCredentials())
-      .exchange()
-      .expectStatus().isOk()
-      .expectBody(String.class).isEqualTo("Hello World!");
-  }
-
-  // --- Use @WithMockUser ---
-
-  @Test
-  @WithMockUser
-  public void messageWhenWithMockUserThenForbidden() throws Exception {
-    this.rest
-      .get()
-      .uri("/message")
-      .exchange()
-      .expectStatus().isEqualTo(HttpStatus.FORBIDDEN)
-      .expectBody().isEmpty();
-  }
-
-  @Test
-  @WithMockUser(roles = "ADMIN")
-  public void messageWhenWithMockAdminThenOk() throws Exception {
-    this.rest
-      .get()
-      .uri("/message")
-      .exchange()
-      .expectStatus().isOk()
-      .expectBody(String.class).isEqualTo("Hello World!");
-  }
-
-  // --- Use mutateWith ---
-
-  @Test
-  public void messageWhenMockUserThenForbidden() throws Exception {
-    this.rest
-      .mutateWith(mockUser())
-      .get()
-      .uri("/message")
-      .exchange()
-      .expectStatus().isEqualTo(HttpStatus.FORBIDDEN)
-      .expectBody().isEmpty();
-  }
-
-  @Test
-  public void messageWhenMockAdminThenOk() throws Exception {
-    this.rest
-      .mutateWith(mockUser().roles("ADMIN"))
-      .get()
-      .uri("/message")
-      .exchange()
-      .expectStatus().isOk()
-      .expectBody(String.class).isEqualTo("Hello World!");
-  }
-
-  // ...
-
-
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="webflux-form-log-in"&gt;&lt;a class="anchor" href="#webflux-form-log-in"&gt;&lt;/a&gt;WebFlux Form Log In&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;WebFlux security now supports form based log in and provides a default log in page to ease getting started. For example, the &lt;a href="https://github.com/spring-projects/spring-security/tree/5.0.0.M4/samples/javaconfig/hellowebflux-method"&gt;samples/javaconfig/hellowebflux[samples/javaconfig/hellowebflux&lt;/a&gt; allows users to authenticate using form based log in with a default log in page.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@EnableWebFluxSecurity
-public class HelloWebfluxSecurityConfig {
-
-  @Bean
-  public MapUserDetailsRepository userDetailsRepository() {
-    UserDetails user = User.withUsername("user")
-      .password("user")
-      .roles("USER")
-      .build();
-    return new MapUserDetailsRepository(user);
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We decided to make the default log in page link to an external CSS file to make it look nicer without needing to bundle CSS. What do you think?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="imageblock"&gt;
-&lt;div class="content"&gt;
-&lt;img src="https://user-images.githubusercontent.com/362503/30441057-e755170a-993d-11e7-9709-b100dd1432ce.png" alt="Default Log In Page"&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;If you are not connected to the internet, the log in page falls back to an unstyled page. Of course, you can provide your own custom log in page as well.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="webflux-content-negotiation"&gt;&lt;a class="anchor" href="#webflux-content-negotiation"&gt;&lt;/a&gt;WebFlux Content Negotiation&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Similar to the servlet world, we have also added content negotiation support for WebFlux security. For example, when requesting a protected resource without being authenticated our minimal example from &lt;a href="#webflux-form-log-in"&gt;WebFlux Form Log In&lt;/a&gt; will produce a log in page in a web browser and a &lt;code&gt;WWW-Authenticate&lt;/code&gt; response from a command line.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-http" data-lang="http"&gt;---
-HTTP/1.1 401 Unauthorized
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Expires: 0
-Pragma: no-cache
-WWW-Authenticate: Basic realm="Realm"
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
-X-XSS-Protection: 1 ; mode=block
-content-length: 0&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="webflux-session-optimizations"&gt;&lt;a class="anchor" href="#webflux-session-optimizations"&gt;&lt;/a&gt;WebFlux Session Optimizations&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We have refined the way WebFlux authentication and session management works to give greater flexability than the servlet counterpart. For example, our minimal example from &lt;a href="#webflux-form-log-in"&gt;WebFlux Form Log In&lt;/a&gt; will produce the following result when authenticating using form based log in:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-http" data-lang="http"&gt;POST /login HTTP/1.1
-Accept: */*
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Content-Length: 27
-Content-Type: application/x-www-form-urlencoded; charset=utf-8
-Host: localhost:8080
-
-username=user&amp;amp;password=user
-
-HTTP/1.1 302 Found
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Expires: 0
-Location: /
-Pragma: no-cache
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
-X-XSS-Protection: 1 ; mode=block
-content-length: 0
-set-cookie: SESSION=1e04aa3c-5a15-42ed-9e25-933fd0e44b2a; HTTPOnly&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;However, the very same code will produce the following response for HTTP Basic authentication&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-http" data-lang="http"&gt;GET / HTTP/1.1
-Accept: */*
-Accept-Encoding: gzip, deflate
-Authorization: Basic dXNlcjp1c2Vy
-Connection: keep-alive
-Host: localhost:8080
-
-
-
-HTTP/1.1 200 OK
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Content-Type: application/json;charset=UTF-8
-Expires: 0
-Pragma: no-cache
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
-X-XSS-Protection: 1 ; mode=block
-transfer-encoding: chunked
-
-{
-    "message": "Hello user!"
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Notice that the form based login has a SESSION cookie in the response, but HTTP Basic does not. This is done with a single &lt;code&gt;HttpSecurity&lt;/code&gt; configuration (we are splitting the application into slices).&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="feedback-please"&gt;&lt;a class="anchor" href="#feedback-please"&gt;&lt;/a&gt;Feedback Please&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;If you have feedback on this release, I encourage you to reach out via &lt;a href="http://stackoverflow.com/questions/tagged/spring-security"&gt;StackOverflow&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-security/issues"&gt;GitHub Issues&lt;/a&gt;, or via the comments section. You can also ping me &lt;a href="https://twitter.com/rob_winch"&gt;@rob_winch&lt;/a&gt; or Joe &lt;a href="https://twitter.com/joe_grandja"&gt;@joe_grandja&lt;/a&gt; on Twitter.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Of course the best feedback comes in the form of &lt;a href="https://github.com/spring-projects/spring-security/blob/5.0.0.M4/CONTRIBUTING.md"&gt;contributions&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security/site/docs/5.0.0.M4/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security/site/docs/current/guides/html5/"&gt;Guides&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-security"&gt;Help&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Session 2.0.0 M4</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/09/15/spring-session-2-0-0-m4" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2017-09-14:3027</id>
-    <updated>2017-09-15T12:41:00Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community I&amp;#8217;m pleased to announce the release of &lt;a href="http://docs.spring.io/spring-session/docs/2.0.0.M4/reference/html5/"&gt;Spring Session 2.0.0.M4&lt;/a&gt;. This release is focused primarily on refining WebFlux support. The highlights are:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="simplified-webflux-configuration"&gt;&lt;a class="anchor" href="#simplified-webflux-configuration"&gt;&lt;/a&gt;Simplified WebFlux Configuration&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Configuring Spring Session for WebFlux is simplified to be:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@Configuration
-@EnableSpringWebSession
-public class HelloWebfluxSessionConfig {
-
-  @Bean
-  public MapReactorSessionRepository reactorSessionRepository() {
-    return new MapReactorSessionRepository(new ConcurrentHashMap&amp;lt;&amp;gt;());
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;You can also switch the strategy for resolving session id&amp;#8217;s by simply adding a &lt;code&gt;WebSessionIdResolver&lt;/code&gt; Bean. For example, to switch from using cookies to resolve the session id to using headers, you can use Spring Framework&amp;#8217;s new &lt;code&gt;HeaderWebSessionIdResolver&lt;/code&gt;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@Bean
-public HeaderWebSessionIdResolver webSessionIdResolver() {
-  return new HeaderWebSessionIdResolver();
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="webflux-sample-application"&gt;&lt;a class="anchor" href="#webflux-sample-application"&gt;&lt;/a&gt;WebFlux Sample Application&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We have added a &lt;a href="https://github.com/spring-projects/spring-session/blob/2.0.0.M4/samples/javaconfig/webflux/"&gt;webflux sample&lt;/a&gt; application that demonstrates how to do WebFlux session management.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="webflux-session-refactoring"&gt;&lt;a class="anchor" href="#webflux-session-refactoring"&gt;&lt;/a&gt;WebFlux Session Refactoring&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We also spent some time refining the APIs within Spring Framework&amp;#8217;s &lt;code&gt;WebSession&lt;/code&gt; management APIs. While this might not seem important to Spring Session, it ended up letting us delete quite a bit of code within Spring Session which is always a big win!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id="feedback-please" class="sect0"&gt;&lt;a class="anchor" href="#feedback-please"&gt;&lt;/a&gt;Feedback Please&lt;/h1&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;If you have feedback on this release, I encourage you to reach out via &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;StackOverflow&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;GitHub Issues&lt;/a&gt;, or via the comments section. You can also ping me &lt;a href="https://twitter.com/rob_winch"&gt;@rob_winch&lt;/a&gt;, Joe &lt;a href="https://twitter.com/joe_grandja"&gt;@joe_grandja&lt;/a&gt;, or Vedran &lt;a href="https://twitter.com/vedran_pavic"&gt;@vedran_pavic&lt;/a&gt;  on Twitter.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Of course the best feedback comes in the form of &lt;a href="https://github.com/spring-projects/spring-session/blob/2.0.0.M4/CONTRIBUTING.adoc"&gt;contributions&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/2.0.0.M4/reference/html5/"&gt;Reference&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>
