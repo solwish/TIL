@@ -1,0 +1,12 @@
+package swExpert;
+
+public class View {
+	
+	int[][] A = new int[300][1000];
+	
+	
+	public static void main(String[] args) {
+
+	}
+
+}

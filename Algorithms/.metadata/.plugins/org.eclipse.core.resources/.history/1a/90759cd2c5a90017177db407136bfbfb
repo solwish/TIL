@@ -1,0 +1,54 @@
+package swExpert;
+
+import java.util.Scanner;
+
+public class View {
+
+	// int[][] A = new int[300][1000];
+	//
+	// void init() {
+	// for(int i = 0; i<300; i++) {
+	// for(int j = 0; j<1000; j++) {
+	// A[i][j] = 0;
+	// }
+	// }
+	// }
+
+	void solve() {
+
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = 10;
+		int n;
+		int height;
+		int count = 0;
+
+		for (int test_case = 0; test_case < 10; test_case++) {
+			n = sc.nextInt();
+			int[][] A = new int[300][n];
+
+			for (int i = 0; i < 300; i++) {
+				for (int j = 0; j < n; j++) {
+					A[i][j] = 0;
+				}
+			}
+
+			for (int j = 0; j < n; j++) {
+				height = sc.nextInt();
+				for (int i = 0; i < height; i++) {
+					A[i][j] = 1;
+				}
+			}
+			
+			for (int i = 0; i < 300; i++) {
+				for (int j = 0; j < n; j++) {
+					
+				}
+			}
+			
+		}
+	}
+
+}
