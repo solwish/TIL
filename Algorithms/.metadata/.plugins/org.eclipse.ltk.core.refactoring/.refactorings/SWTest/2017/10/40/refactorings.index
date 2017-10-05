@@ -1,3 +1,5 @@
 1507015569613	Rename type 'PracticeSort'
 1507112177024	Rename type 'Test01'
 1507188991973	Rename package 'SWexpert'
+1507214990979	Extract method 'compareBlock'
+1507223547119	Delete element

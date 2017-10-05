@@ -5,7 +5,66 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-10-04T00:35:00Z</updated>
+  <updated>2017-10-05T13:10:00Z</updated>
+  <entry>
+    <title>Spring AMQP 2.0.0 RELEASE Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/05/spring-amqp-2-0-0-release-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Artem Bilan</name>
+    </author>
+    <id>tag:spring.io,2017-10-04:3052</id>
+    <updated>2017-10-05T13:10:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;I am pleased to announce that the &lt;code&gt;2.0.0.RELEASE&lt;/code&gt; of Spring AMQP is now available in the &lt;a href="https://repo.spring.io/release/"&gt;Spring release repository&lt;/a&gt; and Maven Central.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;First of all thanks to all community members for any feedback and contributions to make this new instalment of Spring for AMQP and RabbitMQ support project!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Some highlights what we have after &lt;a href="https://github.com/spring-projects/spring-amqp/commit/2ee8c34a8cea2c7f6706943d8092e7d9996ba4fa"&gt;a year and a couple months&lt;/a&gt; of amazing team work:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Full Java 8 and Spring Framework &lt;code&gt;5.0&lt;/code&gt; support;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;New &lt;code&gt;sring-rabbit-junit&lt;/code&gt; artifact with some useful testing utilities including &lt;code&gt;BrokerRunning&lt;/code&gt; JUnit &lt;code&gt;@Rule&lt;/code&gt;;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;amqp-client&lt;/code&gt; library of version &lt;code&gt;5.0&lt;/code&gt;;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;code&gt;DirectMessageListenerContainer&lt;/code&gt; to allow to consume messages directly on the client thread instead of queue-based logic in the &lt;code&gt;SimpleMessageListenerContainer&lt;/code&gt;;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;code&gt;ConnectionNameStrategy&lt;/code&gt; option for the &lt;code&gt;ConnectionFactory&lt;/code&gt; to name target Broker connections for possible diagnostics;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;new &lt;code&gt;RabbitOperations.invoke()&lt;/code&gt; for batch of template operation on the dedicated, thread-bound channel;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Encoder&lt;/code&gt; support for the Logback &lt;code&gt;AmqpAppender&lt;/code&gt;;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Removed deprecated API since previous version;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;And, of course, a ton of bug fixes!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For a complete list of changes in &lt;code&gt;2.0&lt;/code&gt;, see &lt;a href="http://docs.spring.io/spring-amqp/docs/2.0.0.RELEASE/reference/html/_introduction.html#_changes_in_2_0_since_1_7"&gt;What&amp;#8217;s New in the reference manual&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Also, make sure you&amp;#8217;re not going to miss this year&amp;#8217;s &lt;a href="https://springoneplatform.io"&gt;SpringOne Platform&lt;/a&gt; conference that&amp;#8217;s packed with many Spring talks, opportunities to learn about the latest and greatest features and of course some previews about what we&amp;#8217;re planning to do next. Discounted pricing is running out soon!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-amqp/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/AMQP"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-amqp/blob/master/CONTRIBUTING.adoc"&gt;Contributing&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-amqp"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-amqp"&gt;Chat&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Spring Tips: Reactive Spring Security</title>
     <link rel="alternate" href="https://spring.io/blog/2017/10/04/spring-tips-reactive-spring-security" />
@@ -1175,16 +1234,5 @@ public List&amp;lt;?&amp;gt; submitOrder() { ... }
 &lt;p&gt;This is just the first milestone, full of new features. In the upcoming weeks, we plan on fixing a few bugs, finishing writing the comprehensive &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt; and refactor a few internals, leading to a 2.0.0.RELEASE for &lt;a href="https://springoneplatform.io/"&gt;Spring One Platform&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In the meantime, please &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#_getting_started"&gt;try it out&lt;/a&gt; and provide feedback!&lt;/p&gt;&lt;h2&gt;&lt;a href="#special-thanks" class="anchor" name="special-thanks"&gt;&lt;/a&gt;Special Thanks&lt;/h2&gt;
 &lt;p&gt;I&amp;rsquo;d like to thank &lt;a href="https://github.com/fbiville"&gt;Florent Biville&lt;/a&gt; and &lt;a href="https://github.com/camilojc"&gt;Camilo Gonzalez&lt;/a&gt; who helped make this rewrite concrete by providing useful ideas and some of their valuable time!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Web Flow 2.4.6 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/09/15/spring-web-flow-2-4-6-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rossen Stoyanchev</name>
-    </author>
-    <id>tag:spring.io,2017-09-15:3031</id>
-    <updated>2017-09-15T20:04:36Z</updated>
-    <content type="html">&lt;p&gt;Spring Web Flow 2.4.6 was released earlier today containing a &lt;a href="https://pivotal.io/security/cve-2017-8039"&gt;security fix&lt;/a&gt;. Applications that use explicit data bindings through the &lt;code&gt;&amp;lt;binder&amp;gt;&lt;/code&gt; element in flow definitions are not affected. Those that do rely on default bindings should upgrade as soon as possible. &lt;/p&gt;</content>
   </entry>
 </feed>
