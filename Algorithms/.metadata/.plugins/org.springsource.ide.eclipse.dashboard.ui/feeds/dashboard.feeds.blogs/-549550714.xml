@@ -5,7 +5,174 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-10-05T13:10:00Z</updated>
+  <updated>2017-10-06T00:43:30Z</updated>
+  <entry>
+    <title>Spring Session Data Geode/GemFire 2.0.0.M2 Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/06/spring-session-data-geode-gemfire-2-0-0-m2-available" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>John Blum</name>
+    </author>
+    <id>tag:spring.io,2017-10-05:3053</id>
+    <updated>2017-10-06T00:43:30Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Greetings Spring Community!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I am pleased to announce the second milestone of both &lt;em&gt;Spring Session Data Geode&lt;/em&gt; for Apache Geode and &lt;em&gt;Spring Session Data GemFire&lt;/em&gt; for Pivotal GemFire.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The 2nd milestone release brings many welcome improvements, including:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Upgrades to &lt;em&gt;Spring Framework&lt;/em&gt; 5.0.0.RELEASE.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Upgrades to &lt;em&gt;Spring Data&lt;/em&gt; Kay-RELEASE.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Upgrades to &lt;em&gt;Spring Session&lt;/em&gt; 2.0.0.M4.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Upgrades to &lt;em&gt;Spring Boot&lt;/em&gt; 2.0.0.M4.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adds support for Pivotal GemFire and Apache Geode &lt;a href="http://geode.apache.org/docs/guide/12/developing/data_serialization/gemfire_pdx_serialization.html"&gt;PDX Serialization&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Introduces a new &lt;a href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.0.0.M2/reference/htmlsingle/#httpsession-gemfire-serialization-framework"&gt;Serialization framework&lt;/a&gt; and adapter for Pivotal GemFire/Apache Geode&amp;#8217;s &lt;em&gt;Data Serialization&lt;/em&gt; and PDX frameworks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Both artifacts can be downloaded from &lt;em&gt;Spring¡¯s&lt;/em&gt; &lt;code&gt;libs-milestone&lt;/code&gt; Repository using Maven ¡¦&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;  &amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.session&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-session-data-geode&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;2.0.0.M2&amp;lt;/version&amp;gt;
+  &amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Or, using Gradle&amp;#8230;&amp;#8203;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;code&gt;compile 'org.springframework.session:spring-session-data-geode:2.0.0.M2&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To use &lt;em&gt;Spring Session&lt;/em&gt; with Pivotal GemFire, just switch the artifact from &lt;code&gt;spring-session-data-geode&lt;/code&gt; to &lt;code&gt;spring-session-data-gemfire&lt;/code&gt;.  The version stays the same.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="from-data-serialization-to-pdx"&gt;&lt;a class="anchor" href="#from-data-serialization-to-pdx"&gt;&lt;/a&gt;From Data Serialization to PDX&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Many users have been requesting that &lt;em&gt;Spring Session&lt;/em&gt; for Pivotal GemFire and Apache Geode support &lt;a href="http://geode.apache.org/docs/guide/12/developing/data_serialization/gemfire_pdx_serialization.html"&gt;PDX Serialization&lt;/a&gt;.  This makes sense given that PDX is highly "portable", as explained further in the &lt;a href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.0.0.M2/reference/htmlsingle/#httpsession-gemfire-serialization-background"&gt;&lt;em&gt;Reference Guide&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;One of the key benefits of PDX is that you do not need &lt;em&gt;Spring Session&lt;/em&gt; for Pivotal GemFire or Apache Geode on the classpath of the servers in the cluster to use &lt;em&gt;Spring Session&lt;/em&gt; in &lt;em&gt;Spring Boot&lt;/em&gt;, GemFire/Geode cache client applications using the client/server topology.  In fact, you do not even need to put your application domain object classes stored in an (HTTP) Session, and persisted to GemFire/Geode servers in the cluster, on the servers' classpath, either.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Spring Session Data GemFire/Geode&lt;/em&gt; now uses PDX by default.  However, it is very easy to switch between &lt;em&gt;Data Serialization&lt;/em&gt; and PDX just by switching the bean reference in the &lt;code&gt;@EnableGemFireHttpSession&lt;/code&gt; annotation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;OOTB, &lt;em&gt;Spring Session Data GemFire/Geode&lt;/em&gt; register 2 beans on the user&amp;#8217;s behalf implementing each GemFire/Geode Serialization strategy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To explicitly declare that you want your &lt;em&gt;Spring Boot&lt;/em&gt;, &lt;em&gt;Spring Session&lt;/em&gt; enabled application to use PDX Serialization, set the new &lt;code&gt;sessionSerializerBeanName&lt;/code&gt; attribute in the &lt;code&gt;@EnableGemFireHttpSession&lt;/code&gt; annotation to &lt;code&gt;GemFireHttpSessionConfiguration.SESSION_PDX_SERIALIZER_BEAN_NAME&lt;/code&gt;&amp;#8230;&amp;#8203;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
+@EnableGemFireHttpSession(sessionSerializerBeanName =
+    GemFireHttpSessionConfiguration.SESSION_PDX_SERIALIZER_BEAN_NAME
+class Application {
+  ...
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To use &lt;em&gt;Data Serialization&lt;/em&gt;, and leverage &lt;em&gt;Deltas&lt;/em&gt;, set &lt;code&gt;sessionSerializerBeanName&lt;/code&gt; to &lt;code&gt;GemFireHttpSessionConfiguration.SESSION_DATA_SERIALIZER_BEAN_NAME&lt;/code&gt;&amp;#8230;&amp;#8203;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
+@EnableGemFireHttpSession(sessionSerializerBeanName =
+    GemFireHttpSessionConfiguration.SESSION_DATA_SERIALIZER_BEAN_NAME
+class Application {
+  ...
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;More details on using PDX with &lt;em&gt;Spring Session&lt;/em&gt; and Pivotal GemFire or Apache Geode can be found in the &lt;a href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.0.0.M2/reference/htmlsingle/#httpsession-gemfire-serialization-spring-session"&gt;&lt;em&gt;Reference Guide&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="serialization-framework"&gt;&lt;a class="anchor" href="#serialization-framework"&gt;&lt;/a&gt;Serialization Framework&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;Spring Session Data GemFire/Geode&lt;/em&gt; introduces a new &lt;code&gt;SessionSerializer&lt;/code&gt; interface allowing users to customize how a &lt;code&gt;Session&lt;/code&gt; gets serialized to either Pivotal GemFire or Apache Geode.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;interface SessionSerializer&amp;lt;T, IN, OUT&amp;gt; {
+
+  void serializer(T session, OUT out);
+
+  T deserialize(IN in);
+
+  boolean canSerialize(Class&amp;lt;?&amp;gt; type);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Users can provide an custom implementation of this interface, register it as a bean in the &lt;em&gt;Spring&lt;/em&gt; context, set the &lt;code&gt;sessionSerializerBeanName&lt;/code&gt; attribute to the name of the custom &lt;code&gt;SessionSerializer&lt;/code&gt; bean definition, and &lt;em&gt;Spring Session Data GemFire/Geode&lt;/em&gt; will adapt and register this bean as a &lt;code&gt;PdxSerializer&lt;/code&gt; in Pivotal GemFire or Apache Geode.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For instance&amp;#8230;&amp;#8203;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
+@EnableGemFireHttpSession(sessionSerializerBeanName = "customSerializer")
+class Application {
+
+  @Bean
+  SessionSerializer&amp;lt;Session, PdxReader, PdxWriter&amp;gt; customSerializer() {
+    // return an instance of a custom `SessionSerializer` implementation
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is just the tip of the iceberg.  More details can be found in the &lt;em&gt;Reference Guide&lt;/em&gt; on the new &lt;a href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.0.0.M2/reference/htmlsingle/#httpsession-gemfire-serialization-framework-serializer-implementation"&gt;Serialization framework&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="feedback"&gt;&lt;a class="anchor" href="#feedback"&gt;&lt;/a&gt;Feedback&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As always, any feedback on this release is highly appreciated.  Users can reach out on &lt;a href="https://stackoverflow.com/questions/tagged/spring-session"&gt;StackOverflow&lt;/a&gt;, file &lt;a href="https://github.com/spring-projects/spring-session-data-geode/issues"&gt;GitHub Issues&lt;/a&gt;, or share your comments below.  You can also reach me on Twitter, &lt;a href="https://twitter.com/john_blum"&gt;@john_blum&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="springone-platform-2017"&gt;&lt;a class="anchor" href="#springone-platform-2017"&gt;&lt;/a&gt;SpringOne Platform 2017&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Also make sure to checkout the lineup this year at &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform 2017&lt;/a&gt;.
+This is going to be a year to remember with so much great content&amp;#8230;&amp;#8203; &lt;em&gt;Spring Framework&lt;/em&gt; 5 with early support of JDK 9, &lt;em&gt;Reactive&lt;/em&gt; and &lt;em&gt;Functional&lt;/em&gt; programming, integration with JUnit 5 and Kotlin.  So much cool stuff to learn!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Spring AMQP 2.0.0 RELEASE Available</title>
     <link rel="alternate" href="https://spring.io/blog/2017/10/05/spring-amqp-2-0-0-release-available" />
@@ -1195,44 +1362,5 @@ or ask for help on our &lt;a href="https://gitter.im/reactor/reactor"&gt;Gitter&
 &lt;p&gt;The next two weeks will be all about preparing the GA release, for which we do not expect any new change other than documentation and a few new operators.&lt;/p&gt;
 &lt;p&gt;But it is also the &lt;strong&gt;last opportunity&lt;/strong&gt; for you to try the changes out and give feedback! So please give it a roll as soon as you can, and come back to us with any feedback you might have (on &lt;a href="http://github.com/reactor/reactor-core/issues"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/reactor/reactor"&gt;Gitter chat&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Happy reactive coding!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Introducing Spring Shell 2.0M1!</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/09/18/introducing-spring-shell-2-0m1" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Eric Bottard</name>
-    </author>
-    <id>tag:spring.io,2017-09-17:3032</id>
-    <updated>2017-09-18T12:40:04Z</updated>
-    <content type="html">&lt;p&gt;We are pleased to announce the first release milestone of Spring Shell 2.x!&lt;/p&gt;
-&lt;p&gt;Two years in the making, &lt;a href="http://projects.spring.io/spring-shell/"&gt;Spring Shell 2&lt;/a&gt; is a complete rewrite of Spring Shell, leveraging newer components (such as JLine 3) and applying better modularization. Spring Shell 2 is also built with Spring Boot in mind, making use of auto configuration and other boot features.&lt;/p&gt;
-&lt;p&gt;The internal architecture now uses a pluggable model to discover what methods to turn into commands, how to parse user input into argument values and how to handle return values. This is very similar to the approach taken by Spring MVC for example and allows extensions of the framework in ways that were not previously possible. Users of Spring Shell would typically not care though, only dealing with the new &amp;ldquo;standard&amp;rdquo; &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#_writing_your_own_commands"&gt;command API&lt;/a&gt; to define their commands.&lt;/p&gt;&lt;h2&gt;&lt;a href="#features-highlight" class="anchor" name="features-highlight"&gt;&lt;/a&gt;Features Highlight&lt;/h2&gt;
-&lt;p&gt;Some of the new features are highlighted in the video below (be sure to run it full screen), but here is a more extensive rundown:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;A long requested feature, &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#_by_name_em_vs_em_positional_parameters"&gt;positional parameters&lt;/a&gt; are now supported (can even mix and match, to some extent)&lt;/li&gt;
-  &lt;li&gt;Use of the standard Spring conversion API allows re-use of many existing converters, while Shell 1 had its own dedicated approach&lt;/li&gt;
-  &lt;li&gt;Building on top of JLine 3 brings nice user experience enhancements, such as navigating among completion proposals using TAB&lt;/li&gt;
-  &lt;li&gt;Integration with the &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#_validating_command_arguments"&gt;bean validation API&lt;/a&gt; makes commands more expressive&lt;/li&gt;
-  &lt;li&gt;The new &lt;code&gt;help&lt;/code&gt; &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#help-command"&gt;command&lt;/a&gt; is way more useful than it used to be, resembling the output of a &lt;code&gt;man&lt;/code&gt; page&lt;/li&gt;
-  &lt;li&gt;Commands parameters that accept a collection or an array value may now specify a non default &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#_parameter_arity"&gt;arity&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Another long requested feature, &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#interacting-with-the-shell"&gt;multi-line&lt;/a&gt; commands are now supported&lt;/li&gt;
-  &lt;li&gt;Turning commands &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#dynamic-command-availability"&gt;on and off&lt;/a&gt; is still supported, with a more natural programming model now as well as the ability to provide an explanation of why a command is currently unavailable&lt;/li&gt;
-&lt;/ul&gt;&lt;h2&gt;&lt;a href="#let-rsquo-s-see-it-in-action" class="anchor" name="let-rsquo-s-see-it-in-action"&gt;&lt;/a&gt;Let&amp;rsquo;s See it in Action!&lt;/h2&gt;
-&lt;p&gt;The short video below shows some of the features, using example commands that have the following signatures:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;@ShellMethod(&amp;quot;Add an item to the current order.&amp;quot;)&#xD;
-public String addItem(&#xD;
- 	@ShellOption(help = &amp;quot;the item reference&amp;quot;) String item,&#xD;
- 	@ShellOption(help = &amp;quot;unit price&amp;quot;) @Min(0) float price,&#xD;
- 	@ShellOption(help = &amp;quot;the number of items to add&amp;quot;, defaultValue = &amp;quot;1&amp;quot;) @Range(min = 1, max = 15) int qty&#xD;
- ) { ... }&#xD;
-&#xD;
-@ShellMethod(&amp;quot;Submit the order for processing.&amp;quot;)&#xD;
-public List&amp;lt;?&amp;gt; submitOrder() { ... }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;script type="text/javascript" src="https://asciinema.org/a/Am90gsE4MdwvsqBtzRm7yKhzW.js" id="asciicast-Am90gsE4MdwvsqBtzRm7yKhzW" async&gt;&lt;/script&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-next" class="anchor" name="what-rsquo-s-next"&gt;&lt;/a&gt;What&amp;rsquo;s next&lt;/h2&gt;
-&lt;p&gt;This is just the first milestone, full of new features. In the upcoming weeks, we plan on fixing a few bugs, finishing writing the comprehensive &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt; and refactor a few internals, leading to a 2.0.0.RELEASE for &lt;a href="https://springoneplatform.io/"&gt;Spring One Platform&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In the meantime, please &lt;a href="https://docs.spring.io/spring-shell/docs/2.0.0.M1/reference/htmlsingle/#_getting_started"&gt;try it out&lt;/a&gt; and provide feedback!&lt;/p&gt;&lt;h2&gt;&lt;a href="#special-thanks" class="anchor" name="special-thanks"&gt;&lt;/a&gt;Special Thanks&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;d like to thank &lt;a href="https://github.com/fbiville"&gt;Florent Biville&lt;/a&gt; and &lt;a href="https://github.com/camilojc"&gt;Camilo Gonzalez&lt;/a&gt; who helped make this rewrite concrete by providing useful ideas and some of their valuable time!&lt;/p&gt;</content>
   </entry>
 </feed>
