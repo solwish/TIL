@@ -5,7 +5,67 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-10-06T00:43:30Z</updated>
+  <updated>2017-10-06T06:52:33Z</updated>
+  <entry>
+    <title>Spring Vault 1.1.0 GA and 2.0.0 M3 available</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/06/spring-vault-1-1-0-ga-and-2-0-0-m3-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Mark Paluch</name>
+    </author>
+    <id>tag:spring.io,2017-10-06:3054</id>
+    <updated>2017-10-06T06:52:33Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the community, I&amp;#8217;m pleased to announce the general availability of Spring Vault 1.1.0 and the third milestone of Spring Vault 2.0, available from Maven Cental respective the milestone repository.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Highlights of Spring Vault 1.1 GA release are:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Pull-mode support for AppRole authentication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Vault login using via AWS IAM.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Support of batch transit operations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rotation of generic secrets based on their lease duration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Introduction of &lt;code&gt;VaultEndpointProvider&lt;/code&gt; to configure endpoints dynamically.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Looking at Spring Vault 2.0 M3 you will find the following enhancements:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.spring.io/spring-vault/docs/2.0.0.M3/reference/html/#vault.repositories"&gt;Vault repositories&lt;/a&gt; via &lt;code&gt;@EnableVaultRepositories&lt;/code&gt; built on top of Spring Data KeyValue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Support to create and modify Vault&amp;#8217;s policies represented as JSON.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="what-s-next"&gt;&lt;a class="anchor" href="#what-s-next"&gt;&lt;/a&gt;What¡¯s next?&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We&amp;#8217;re shifting development towards the 2.x branch line resulting in Spring Vault 1.1 GA to be the last minor release of the 1.x branch. Spring Vault 1.1 will see maintenance releases until reaching its end of life. We will polish up the reactive support in the next Spring Vault 2.0 milestone, that will be actually a release candidate.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For a complete list of changes see the changelogs of &lt;a href="http://docs.spring.io/spring-vault/docs/1.1.0.RELEASE/changelog.txt"&gt;1.1.0 RELEASE&lt;/a&gt; and &lt;a href="http://docs.spring.io/spring-vault/docs/2.0.0.M3/changelog.txt"&gt;2.0.0 M3&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-vault/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-vault"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-vault/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-vault/docs/1.1.0.RELEASE/reference/html/"&gt;Documentation for 1.1.0 RELEASE&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-vault/docs/2.0.0.M3/reference/html/"&gt;Documentation for 2.0.0 M3&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-vault"&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Spring Session Data Geode/GemFire 2.0.0.M2 Available</title>
     <link rel="alternate" href="https://spring.io/blog/2017/10/06/spring-session-data-geode-gemfire-2-0-0-m2-available" />
@@ -1309,58 +1369,5 @@ or ask for help on our &lt;a href="https://gitter.im/reactor/reactor"&gt;Gitter&
 &lt;p&gt;Looking ahead, we are aiming for 1.3.0 M3 followed by the release candidate and then the general availability release by October 2017. &lt;/p&gt;
 &lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-dataflow"&gt;Stackoverflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow/issues"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/spring-cloud/spring-cloud-stream"&gt;Gitter&lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;Please try it out, share your feedback, and consider contributing to the project!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Announcing First Release Candidate of Reactor Core 3.1</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/09/18/announcing-first-release-candidate-of-reactor-core-3-1" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Simon Basl?</name>
-    </author>
-    <id>tag:spring.io,2017-09-11:3018</id>
-    <updated>2017-09-18T13:36:33Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the Reactor team, it is my pleasure to announce that &lt;a href="https://github.com/reactor/reactor-core/releases/tag/v3.1.0.RC1"&gt;reactor-core &lt;code&gt;3.1.0.RC1&lt;/code&gt;&lt;/a&gt; has been released &#x1f389;. This is a big last step towards GA release of 3.1 at the end of the month, the long term support version that will back &lt;a href="https://spring.io/blog/2017/09/11/spring-framework-5-0-rc4-available-now"&gt;Spring 5&lt;/a&gt;!&lt;/p&gt;
-&lt;p&gt;It is also complemented by various releases, all tied together in the &lt;code&gt;Bismuth-M4&lt;/code&gt; Release Train and BOM:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;reactor-test&lt;/code&gt;, &lt;code&gt;reactor-extra&lt;/code&gt;, &lt;code&gt;reactor-adapter&lt;/code&gt; and &lt;code&gt;reactor-logback&lt;/code&gt; all made the cut to &lt;code&gt;3.1.0.RC1&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;reactor-netty&lt;/code&gt; has seen significant updates and bug fixes in the new &lt;code&gt;0.7.0.M2&lt;/code&gt; milestone&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;reactor-kafka&lt;/code&gt; has been released in its &lt;code&gt;1.0.0.M4&lt;/code&gt; milestone&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In order to get this release, the best way is to use the BOM, as described in the reference guide &lt;a href="http://projectreactor.io/docs/core/milestone/reference/docs/index.html#getting"&gt;here&lt;/a&gt;. Make sure to read the part about &lt;a href="http://projectreactor.io/docs/core/milestone/reference/docs/index.html#_milestones_and_snapshots"&gt;milestones&lt;/a&gt; (transposing it to &lt;em&gt;Bismuth-M4&lt;/em&gt;).&lt;/p&gt;&lt;h1&gt;&lt;a href="#important-changes-in-reactor-core" class="anchor" name="important-changes-in-reactor-core"&gt;&lt;/a&gt;Important Changes in Reactor-Core&lt;/h1&gt;
-&lt;p&gt;Since we did not make many announcements since MILESTONE 1, let&amp;rsquo;s have a slightly deeper look at the main changes in &lt;code&gt;reactor-core&lt;/code&gt; 3.1.0, which has the most changes.&lt;/p&gt;
-&lt;p&gt;We reserved the option of making API changes until 3.1.0.RELEASE, and this allowed us to collect great feedback from our &lt;a href="https://gitter.im/reactor/reactor"&gt;community&lt;/a&gt; and from the Spring Framework team. Thus we were able to polish the API and come up with something we feel is 100% suited for the long term ride along Spring Framework 5.0.&lt;/p&gt;
-&lt;p&gt;These changes have been progressively made since the first MILESTONE of Reactor 3.1.0, and you can head to the &lt;a href="https://github.com/reactor/reactor-core/releases"&gt;release notes on Github&lt;/a&gt; for a complete changelog, especially if you haven&amp;rsquo;t upgraded to any of these since the &lt;code&gt;3.0.7.RELEASE&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Here is a non-exhaustive overview of these changes:&lt;/p&gt;&lt;h3&gt;&lt;a href="#better-alignment-of-flux-and-mono-apis" class="anchor" name="better-alignment-of-flux-and-mono-apis"&gt;&lt;/a&gt;Better Alignment of Flux and Mono APIs&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Mono and Flux error handling operators have been adjusted. (M1)&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Mono#flatMap&lt;/code&gt; has become &lt;code&gt;flatMapMany&lt;/code&gt; and Mono.then (&lt;code&gt;Mono&amp;lt;V&amp;gt; then(Function&amp;lt;T, Mono&amp;lt;V&amp;gt; other)&lt;/code&gt;) is now &lt;code&gt;flatMap&lt;/code&gt;. (M1)&lt;/li&gt;
-  &lt;li&gt;Tuple-returning &lt;code&gt;Mono.when&lt;/code&gt; static methods and &lt;code&gt;Mono#and&lt;/code&gt; are now &lt;code&gt;zip&lt;/code&gt; and &lt;code&gt;zipWith&lt;/code&gt;, consistent with their &lt;code&gt;Flux&lt;/code&gt; counterparts. Note the &lt;code&gt;when&lt;/code&gt; and &lt;code&gt;and&lt;/code&gt; methods still exist in 3.1.0.RC1 but they are specific to the case where one is only interested in the completion of several &lt;code&gt;Publisher&lt;/code&gt; objects (represented as a &lt;code&gt;Mono&amp;lt;Void&amp;gt;&lt;/code&gt; return type). (RC1)&lt;/li&gt;
-  &lt;li&gt;The &lt;code&gt;Flux#firstEmitting&lt;/code&gt; static method is now called &lt;code&gt;first&lt;/code&gt; and the &lt;code&gt;Flux#firstEmittingWith&lt;/code&gt; instance method is now called &lt;code&gt;or&lt;/code&gt;. (RC1)&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#better-operator-consistency" class="anchor" name="better-operator-consistency"&gt;&lt;/a&gt;Better Operator Consistency&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;A &lt;code&gt;*When&lt;/code&gt; suffix is used for operator variants that take a companion &lt;code&gt;Publisher&lt;/code&gt; or that perform the same task as their unsuffixed counterparts asynchronously. (M1)&lt;/li&gt;
-  &lt;li&gt;All &lt;code&gt;delayError&lt;/code&gt; parameter variants have been removed in favor of adding an alias suffixed with &lt;code&gt;DelayError&lt;/code&gt; (for example &lt;code&gt;flatMapDelayError&lt;/code&gt;). (M1)&lt;/li&gt;
-  &lt;li&gt;All &lt;code&gt;*Millis&lt;/code&gt; variants (taking a &lt;code&gt;long&lt;/code&gt; duration) have been removed in favor of &lt;code&gt;Duration&lt;/code&gt; based variants. (M1)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These changes usually have the added benefit of removing any ambiguity about which override of&lt;br/&gt;the method to apply when using lambdas, especially from languages like Kotlin.&lt;/p&gt;&lt;h3&gt;&lt;a href="#mono-specific-apis" class="anchor" name="mono-specific-apis"&gt;&lt;/a&gt;Mono Specific APIs&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;Mono&lt;/code&gt; has several APIs that deal with completion of tasks. They basically ignore the elements (if any) and propagate only the &lt;code&gt;onComplete&lt;/code&gt; signals.&lt;/p&gt;
-&lt;p&gt;Before RC1, these APIs would also have overrides that wouldn&amp;rsquo;t be focused on this task-completion use case, introducing some confusion. As of RC1 these variants have all been renamed (eg. the &lt;code&gt;Mono&amp;lt;Tuple2&amp;gt; and(Mono&amp;lt;V&amp;gt; other)&lt;/code&gt; has been renamed &lt;code&gt;zipWith&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;The task-completion oriented variants, which have been kept, can be spotted by the fact that they return a &lt;code&gt;Mono&amp;lt;Void&amp;gt;&lt;/code&gt;. They now work with any &lt;code&gt;Publisher&lt;/code&gt;, not just Monos:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;when&lt;/code&gt; static methods fire several provided tasks at once and wait for all of them to complete&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;and&lt;/code&gt; does the same when called from a &lt;code&gt;Mono&lt;/code&gt;, with a single provided &lt;code&gt;Publisher&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;then&lt;/code&gt; is about forgetting the element(s) of the source to only signal its completion&lt;/li&gt;
-&lt;/ul&gt;&lt;h3&gt;&lt;a href="#other-changes" class="anchor" name="other-changes"&gt;&lt;/a&gt;Other Changes&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;reactor-test&lt;/code&gt; sources have been moved to the same repo as &lt;code&gt;reactor-core&lt;/code&gt; and the artifact is now under the &lt;code&gt;io.projectreactor&lt;/code&gt; groupId in Maven. (M2)&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Hooks&lt;/code&gt; are cumulative (M3) and can be partially set/reset using a key (RC1)&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;WorkQueueProcessor&lt;/code&gt; and &lt;code&gt;TopicProcessor&lt;/code&gt; have many construction options, now represented as a &lt;code&gt;Builder&lt;/code&gt; (M2)&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Processor&lt;/code&gt; implementations in Reactor have been heavily reworked and a facade &lt;code&gt;Sink&lt;/code&gt; interface has been created to ease direct interactions with processors. Use &lt;code&gt;Processor#sink()&lt;/code&gt; to obtain and keep a reference to this facade. (M3)&lt;/li&gt;
-  &lt;li&gt;A &lt;code&gt;Flux&lt;/code&gt;/&lt;code&gt;Mono&lt;/code&gt; can be tagged with multiple &lt;code&gt;tag&lt;/code&gt; annotations or a &lt;code&gt;name&lt;/code&gt; annotation. (M3)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;It is now possible to tie a &lt;code&gt;Context&lt;/code&gt; to a reactive sequence&lt;/strong&gt; upon subscribing to it, using &lt;code&gt;subscriberContext(Context)&lt;/code&gt;. This context is propagated upstream along with the subscription signal. (RC1)&lt;/li&gt;
-&lt;/ul&gt;&lt;h1&gt;&lt;a href="#the-road-from-here" class="anchor" name="the-road-from-here"&gt;&lt;/a&gt;The Road from Here&lt;/h1&gt;
-&lt;p&gt;The next two weeks will be all about preparing the GA release, for which we do not expect any new change other than documentation and a few new operators.&lt;/p&gt;
-&lt;p&gt;But it is also the &lt;strong&gt;last opportunity&lt;/strong&gt; for you to try the changes out and give feedback! So please give it a roll as soon as you can, and come back to us with any feedback you might have (on &lt;a href="http://github.com/reactor/reactor-core/issues"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/reactor/reactor"&gt;Gitter chat&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;Happy reactive coding!&lt;/p&gt;</content>
   </entry>
 </feed>

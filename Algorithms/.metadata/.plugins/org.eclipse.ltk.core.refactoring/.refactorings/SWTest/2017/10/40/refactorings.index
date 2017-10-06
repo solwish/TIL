@@ -3,3 +3,5 @@
 1507188991973	Rename package 'SWexpert'
 1507214990979	Extract method 'compareBlock'
 1507223547119	Delete element
+1507278082962	Extract method 'solve'
+1507290913719	Extract method 'makeBinary'
