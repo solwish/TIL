@@ -1,0 +1,81 @@
+package swExpert;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class BFSPracticeEx02 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = 10;
+
+		for (int test_case = 1; test_case <= T; test_case++) {
+			int[][] A = new int[16][16];
+//			int[][] isVisit = new int[16][16];
+			int[][] pie = new int[16][16]; // predecessor
+			Queue<Integer> Q = new LinkedList<Integer>();
+			
+			int t_case = sc.nextInt();
+			for (int i = 0; i < 16; i++) {
+					for(int j = 0; j<16; j++) {
+						int n = sc.nextInt();
+						A[i][j] = n;
+				}
+			}
+
+			for (int i = 0; i < 16; i++) {
+				for(int j = 0; j<16; j++) {
+					if(A[i][j]==1) {
+//						isVisit[i][j] = 1;
+					}else {
+//						isVisit[i][j] = -1;
+						pie[i][j] = -1;
+					}
+				}
+			}
+			
+			int sx, sy;
+			for (int i = 0; i < 16; i++) {
+				for(int j = 0; j<16; j++) {
+					if(A[i][j]==2) {
+						sx = i;
+						sy = j;
+					}
+				}
+			}
+			
+			Q.offer(sx);
+			Q.offer(sy);
+			
+			isVisit[sx][sy] = 0;
+
+			while (!(Q.isEmpty())) {
+				int ux = Q.poll();
+				int uy = Q.poll();
+				if(A[ux-1][uy]==1)
+				for (int vx = 0; vx < 16; vx++) {
+					for(int vy = 0; vy < 16; vy++) {
+						if (A[u][v] == 1) {
+							if (d[v] == -1) {
+								d[v] = d[u] + 1;
+								pie[v] = u;
+								Q.offer(v);
+							}
+					}
+					}
+				}
+			}
+
+			int v = 99; // ³¡Á¡.
+
+			System.out.print("#" + test_case + " ");
+			if (pie[v] == -1) {
+				System.out.println("0");
+			} else {
+				System.out.println("1");
+			}
+
+	}
+
+}

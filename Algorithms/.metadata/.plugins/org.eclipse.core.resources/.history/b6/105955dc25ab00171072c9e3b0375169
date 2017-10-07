@@ -1,0 +1,18 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class BFS {
+
+	public static void main(String[] args) {
+		Queue<Integer> Q = new LinkedList<Integer>();
+		int[][] A = new int[8][8];
+		
+		System.out.println(A[4][4]);
+		
+		Q.offer(0);
+		while(!(Q.isEmpty())) {
+			int u = Q.poll();
+//			for()
+		}
+	}
+}

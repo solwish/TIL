@@ -5,3 +5,6 @@
 1507223547119	Delete element
 1507278082962	Extract method 'solve'
 1507290913719	Extract method 'makeBinary'
+1507303233578	Delete element
+1507359127713	Extract method 'printPath'
+1507362390205	Extract method 'isPossible'

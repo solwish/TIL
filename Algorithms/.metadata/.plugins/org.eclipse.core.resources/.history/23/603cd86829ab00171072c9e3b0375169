@@ -1,0 +1,44 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class BFS {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Queue<Integer> Q = new LinkedList<Integer>();
+		int[][] A = new int[8][8];
+		int[] check = new int[8];
+		int[] d = new int[8]; // s로부터 v까지의 최단 경로의 길이 (에지의 개수)
+		int[] pie = new int[8]; // s로부터 v까지의 최단경로상에서 v의 직전 노드(predecessor)
+
+		int z = sc.nextInt();
+		for (int i = 0; i < z; i++) {
+			int n = sc.nextInt();
+			int m = sc.nextInt();
+			A[n][m] = 1;
+			A[m][n] = 1;
+		}
+
+		for (int i = 0; i < 8; i++) {
+//			d[i] = -1;
+			pie[i] = -1;
+		}
+
+		Q.offer(0);
+		d[0] = 0; // 시작점에서 시작점까지의 거리 0임
+		pie[0] = -1; // 시작전 전 노드는 없음. -1로 없는 걸 의미
+		while (!(Q.isEmpty())) {
+			int u = Q.poll();
+			for (int v = 0; v < 8; v++) {
+				if (A[u][v] == 1) {
+					if (check[v] == 0) {
+						check[v] = 1;
+						d[v] = d[u] + 1;
+						Q.offer(v);
+					}
+				}
+			}
+		}
+	}
+}
