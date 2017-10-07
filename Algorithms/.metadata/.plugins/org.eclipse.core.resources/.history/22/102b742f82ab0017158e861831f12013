@@ -1,0 +1,87 @@
+package swExpert;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class BFSPracticeExAdvanced01 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = 10;
+
+		for (int test_case = 1; test_case <= T; test_case++) {
+			int[][] A = new int[101][102];
+			int[][] isVisit = new int[102][102];
+			int[][] pie = new int[100][100]; // predecessor
+			Queue<Integer> Q = new LinkedList<Integer>();
+
+			int t_case = sc.nextInt();
+
+			for (int i = 1; i < 101; i++) {
+				for (int j = 1; j < 101; j++) {
+					A[i][j] = sc.nextInt();
+				}
+			}
+
+			int[] start = new int[100];
+			int sx = 1, sy = 0; // 시작점.
+			int vx = 0, vy = 0; // 끝점.
+
+			for (int i = 1; i < 101; i++) {
+				if (A[0][i] == 1) {
+					start[i - 1] = 1;
+				}
+				if (A[100][i] == 2) {
+					vx = 99;
+					vy = i - 1;
+				}
+			}
+
+			for (int x = 0; x < 100; x++) {
+				if (start[x] == 1) {
+					sy = x + 1;
+
+					Q.offer(0);
+					Q.offer(sy);
+					System.arraycopy(A, 0, isVisit, 0, A.length);
+					isVisit[sx][sy] = 0;
+					// isVisit[vx][vy] = 1;
+
+					while (!(Q.isEmpty())) {
+						int ux = Q.poll();
+						int uy = Q.poll();
+
+						if (isVisit[ux][uy - 1] == 1 || isVisit[ux][uy + 1] == 1) {
+							if (isVisit[ux][uy - 1] == 1) {
+								isVisit[ux][uy - 1] = 0;
+								pie[ux][uy - 1] = 1;
+								Q.offer(ux);
+								Q.offer(uy - 1);
+							}
+							if (isVisit[ux][uy + 1] == 1) {
+								isVisit[ux][uy + 1] = 0;
+								pie[ux][uy + 1] = 1;
+								Q.offer(ux);
+								Q.offer(uy + 1);
+							}
+						} else if (isVisit[ux + 1][uy] == 1) {
+							isVisit[ux + 1][uy] = 0;
+							pie[ux + 1][uy] = 1;
+							Q.offer(ux + 1);
+							Q.offer(uy);
+						} else if (isVisit[ux + 1][uy] == 2) {
+							isVisit[ux + 1][uy] = 5;
+							pie[ux + 1][uy] = 1;
+						}
+
+					}
+					if (isVisit[vx][vy] == 5)
+						break;
+				}
+			}
+
+			System.out.println("#" + t_case + " " + (sy - 1));
+		}
+	}
+}
