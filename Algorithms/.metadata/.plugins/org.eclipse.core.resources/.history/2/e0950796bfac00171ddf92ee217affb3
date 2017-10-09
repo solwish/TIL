@@ -1,0 +1,56 @@
+package swExpert;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class SupplyRoute {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		Queue<Integer> Q = new LinkedList<Integer>();
+
+		for (int test_case = 0; test_case < T; test_case++) {
+			int n = sc.nextInt();
+			int[][] A = new int[n][n];
+			int[][] d = new int[n][n];
+
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					A[i][j] = sc.nextInt();
+					d[i][j] = -1;
+				}
+			}
+
+			int sx = 0;
+			int sy = 0;
+			int vx = n - 1;
+			int vy = n - 1;
+
+			Q.offer(sx);
+			Q.offer(sy);
+			d[sx][sy] = 0;
+
+			while (!Q.isEmpty()) {
+				int ux = Q.poll();
+				int uy = Q.poll();
+
+				if (uy + 1 < n && d[ux][uy + 1] == -1) { // 우측
+					d[ux][uy + 1] = d[ux][uy] + A[ux][uy + 1];
+					Q.offer(ux);
+					Q.offer(uy + 1);
+				}
+
+				if (ux + 1 < n && d[ux + 1][uy] == -1) { // 아래
+					d[ux + 1][uy] = d[ux][uy] + A[ux + 1][uy];
+					Q.offer(ux + 1);
+					Q.offer(uy);
+				}
+			}
+
+		}
+
+	}
+
+}

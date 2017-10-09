@@ -1,0 +1,87 @@
+package swExpert;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Status2149 {
+	public int x;
+	public int y;
+
+	public Status2149(int x, int y) {
+		this.x = x;
+		this.y = y;
+
+	}
+
+}
+
+public class ZcodeForStudy01 {
+	public static int N;
+
+	public static int[] xCordi = { 0, 1, 0, -1 };
+	public static int[] yCordi = { -1, 0, 1, 0 };
+
+	public static boolean isVisitable(int x, int y) {
+		return x >= 0 && x < N && y >= 0 && y < N;
+	}
+
+	public static int bfs(int[][] grid, int[][] dp) {
+		Queue<Status2149> q = new LinkedList<Status2149>();
+		Status2149 first = new Status2149(0, 0);
+		q.add(first);
+		dp[0][0] = 0;
+
+		while (!q.isEmpty()) {
+			Status2149 tmp = q.poll();
+			int x = tmp.x;
+			int y = tmp.y;
+
+			for (int i = 0; i < 4; i++) {
+				int newX = x + xCordi[i];
+				int newY = y + yCordi[i];
+
+				if (isVisitable(newX, newY)) {
+					if (dp[x][y] + grid[newX][newY] < dp[newX][newY]) {
+
+						dp[newX][newY] = dp[x][y] + grid[newX][newY];
+						Status2149 next = new Status2149(newX, newY);
+
+						q.add(next);
+					}
+
+				}
+			}
+
+		}
+		return dp[N - 1][N - 1];
+
+	}
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		int T = Integer.parseInt(br.readLine());
+
+		for (int z = 1; z <= T; z++) {
+			N = Integer.parseInt(br.readLine());
+			int[][] grid = new int[N][N];
+			int[][] dp = new int[N][N];
+
+			for (int i = 0; i < N; i++) {
+				String line = br.readLine();
+				for (int j = 0; j < N; j++) {
+					grid[i][j] = Integer.parseInt(String.valueOf(line.charAt(j)));
+					dp[i][j] = Integer.MAX_VALUE;
+				}
+			}
+
+			sb.append("#" + z + " " + bfs(grid, dp) + "\n");
+
+		}
+		System.out.print(sb);
+	}
+
+}
