@@ -1,0 +1,217 @@
+package swExpert;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+//import java.util.logging.Logger;
+
+class Ax {
+	public int x;
+	public int y;
+
+	public Ax(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+
+public class HsProgramCheck {
+	// private static final Logger logger =
+	// Logger.getLogger(HsProgramCheck.class.getName());
+
+	static int[] xAxis = { 0, -1, 0, 1 };
+	static int[] yAxis = { -1, 0, 1, 0 };
+
+	public static void main(String[] args) throws Exception {
+		// BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		// int T = Integer.parseInt(br.readLine());
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+
+		for (int test_case = 1; test_case <= T; test_case++) {
+			int n = sc.nextInt();
+			int m = sc.nextInt();
+			String s;
+			sc.nextLine();
+			// s = sc.nextLine();
+			// s = br.readLine();
+			// int n = Integer.parseInt(String.valueOf(s.charAt(0)));
+			// int m = Integer.parseInt(String.valueOf(s.charAt(2)));
+			char[][] A = new char[n][m];
+			// int[][] visited = new int[n][m];
+			int memory = 0;
+			Queue<Ax> Q = new LinkedList<Ax>();
+			boolean isFinish = false;
+
+			for (int i = 0; i < n; i++) {
+				// s = br.readLine();
+				s = sc.nextLine();
+				for (int j = 0; j < m; j++) {
+					A[i][j] = s.charAt(j);
+					// visited[i][j] = -1;
+				}
+			}
+			// if (test_case == 29) {
+			// for (int i = 0; i < n; i++) {
+			// for (int j = 0; j < m; j++) {
+			// System.out.print(A[i][j]);
+			// }
+			// System.out.println();
+			// }
+			// }
+
+			Ax start = new Ax(0, 0);
+			Q.offer(start);
+			char direction = '>';
+			int limit = 0;
+
+			isFinish = search(n, m, A, memory, Q, isFinish, direction, limit);
+			
+			if (isFinish)
+				System.out.println("#" + test_case + " " + "YES");
+			else
+				System.out.println("#" + test_case + " " + "NO");
+		}
+
+	}
+
+	private static boolean search(int n, int m, char[][] A, int memory, Queue<Ax> Q, boolean isFinish, char direction,
+			int limit) {
+		while (!(isFinish) && !Q.isEmpty() && limit < 10000) {
+			Ax axis = Q.poll();
+			int ux = axis.x;
+			int uy = axis.y;
+			if (A[ux][uy] == '<' || A[ux][uy] == '>' || A[ux][uy] == '^' || A[ux][uy] == 'v') {
+				direction = A[ux][uy];
+				axis = makeAxis(n, m, direction, axis, ux, uy);
+				Q.offer(axis);
+			} else if (A[ux][uy] == '_' || A[ux][uy] == '|' || A[ux][uy] == '?' || A[ux][uy] == '.') {
+				switch (A[ux][uy]) {
+				case '_':
+					if (memory == 0) {
+						direction = '>';
+						axis = makeAxis(n, m, direction, axis, ux, uy);
+						Q.offer(axis);
+					} else {
+						direction = '<';
+						axis = makeAxis(n, m, direction, axis, ux, uy);
+						Q.offer(axis);
+					}
+					break;
+				case '|':
+					if (memory == 0) {
+						direction = 'v';
+						axis = makeAxis(n, m, direction, axis, ux, uy);
+						Q.offer(axis);
+					} else {
+						direction = '^';
+						axis = makeAxis(n, m, direction, axis, ux, uy);
+						Q.offer(axis);
+					}
+					break;
+
+				case '?':
+					 direction = '>';
+					 search(n, m, A, memory, Q, isFinish, direction, limit);
+					 
+					// if (!isFinish) {
+					// direction = '<';
+					// isFinish = dfs(limit, isFinish, n, m, direction, axis, ux, uy);
+					// }
+					// if (!isFinish) {
+					// direction = 'v';
+					// isFinish = dfs(limit, isFinish, n, m, direction, axis, ux, uy);
+					// }
+					// if (!isFinish) {
+					// direction = '^';
+					// isFinish = dfs(limit, isFinish, n, m, direction, axis, ux, uy);
+					// }
+					break;
+
+				case '.':
+					axis = makeAxis(n, m, direction, axis, ux, uy);
+					Q.offer(axis);
+					break;
+				default:
+					break;
+				}
+			} else if (A[ux][uy] == '+' || A[ux][uy] == '-' || A[ux][uy] == '@') {
+				switch (A[ux][uy]) {
+				case '+':
+					memory += 1;
+					if (memory > 15)
+						memory = 0;
+					axis = makeAxis(n, m, direction, axis, ux, uy);
+					Q.offer(axis);
+					break;
+				case '-':
+					memory -= 1;
+					if (memory < 0)
+						memory = 15;
+					axis = makeAxis(n, m, direction, axis, ux, uy);
+					Q.offer(axis);
+					break;
+				case '@':
+					isFinish = true;
+					break;
+				default:
+					break;
+				}
+			} else {
+				memory = Integer.parseInt(String.valueOf(A[ux][uy]));
+				axis = makeAxis(n, m, direction, axis, ux, uy);
+				Q.offer(axis);
+			}
+			limit++;
+		}
+		return isFinish;
+	}
+
+	static boolean dfs(int limit, boolean isFinish, int n, int m, char direction, Ax axis, int ux, int uy) {
+		int zlimit = limit + 1;
+		boolean zisFinish = isFinish;
+		int zn = n;
+		int zm = m;
+		char zdirection = direction;
+		Ax zaxis = axis;
+		int zux = ux;
+		int zuy = uy;
+
+		if (zlimit < 1000 && zisFinish == false) {
+			zaxis = makeAxis(zn, zm, zdirection, zaxis, zux, zuy);
+			zisFinish = dfs(zlimit, zisFinish, zn, zm, zdirection, zaxis, zux, zuy);
+		}
+		return zisFinish;
+	}
+
+	private static Ax makeAxis(int n, int m, char direction, Ax axis, int ux, int uy) {
+		switch (direction) {
+		case '>':
+			uy = uy + 1;
+			if (uy >= m)
+				uy = 0;
+			break;
+		case '<':
+			uy = uy - 1;
+			if (uy < 0)
+				uy = m - 1;
+			break;
+		case '^':
+			ux = ux - 1;
+			if (ux < 0)
+				ux = n - 1;
+			break;
+		case 'v':
+			ux = ux + 1;
+			if (ux >= n)
+				ux = 0;
+			break;
+		default:
+			break;
+		}
+		axis.x = ux;
+		axis.y = uy;
+		return axis;
+	}
+
+}
