@@ -1,0 +1,30 @@
+*&---------------------------------------------------------------------*
+*& Report  ZHOME05J
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE zhome05j_top                            .    " global Data
+
+INCLUDE zhome05j_o01                            .  " PBO-Modules
+INCLUDE zhome05j_i01                            .  " PAI-Modules
+INCLUDE zhome05j_f01                            .  " FORM-Routines
+
+START-OF-SELECTION.
+  CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> BDC review
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: OO
+*000   & & & &
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
