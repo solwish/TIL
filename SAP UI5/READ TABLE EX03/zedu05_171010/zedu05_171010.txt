@@ -1,0 +1,43 @@
+*&---------------------------------------------------------------------*
+*& Report  ZEDU05_171010
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE zedu05_171010_top                       .    " global Data
+
+INCLUDE zedu05_171010_scr                       .  " Selection Screen
+INCLUDE zedu05_171010_o01                       .  " PBO-Modules
+INCLUDE zedu05_171010_i01                       .  " PAI-Modules
+INCLUDE zedu05_171010_f01                       .  " FORM-Routines
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR s_matnr-low.
+  PERFORM get_material USING 'S_MATNR-LOW'.
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR s_matnr-high.
+  PERFORM get_material USING 'S_MATNR-HIGH'.
+
+START-OF-SELECTION.
+  PERFORM get_data.
+  CALL SCREEN '0100'.
+
+*GUI Texts
+*----------------------------------------------------------
+* 0100 --> Material ui5
+
+
+*Selection texts
+*----------------------------------------------------------
+* S_MATNR D       .
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: OO
+*000   & & & &
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

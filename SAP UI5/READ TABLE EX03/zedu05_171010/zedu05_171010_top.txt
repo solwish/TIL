@@ -1,0 +1,23 @@
+*&---------------------------------------------------------------------*
+*& Include ZEDU05_171010_TOP                                 Report ZEDU05_171010
+*&
+*&---------------------------------------------------------------------*
+REPORT ZEDU05_171010 MESSAGE-ID oo.
+
+TABLES : ztui505_02.
+
+DATA : gt_data TYPE TABLE OF ztui505_02 WITH HEADER LINE.
+
+DATA : go_container TYPE REF TO cl_gui_docking_container,
+       go_grid      TYPE REF TO cl_gui_alv_grid,
+       gs_fcat      TYPE lvc_s_fcat,
+       gt_fcat      TYPE lvc_t_fcat,
+       gs_layout    TYPE lvc_s_layo,
+       gs_variant   TYPE disvariant,
+       gs_stable    TYPE lvc_s_stbl,
+       go_textedit  TYPE REF TO cl_gui_textedit.
+
+DATA : gv_okcode TYPE sy-ucomm.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

@@ -1,0 +1,34 @@
+  METHOD materialset_get_entityset.
+**TRY.
+*CALL METHOD SUPER->MATERIALSET_GET_ENTITYSET
+*  EXPORTING
+*    IV_ENTITY_NAME           =
+*    IV_ENTITY_SET_NAME       =
+*    IV_SOURCE_NAME           =
+*    IT_FILTER_SELECT_OPTIONS =
+*    IS_PAGING                =
+*    IT_KEY_TAB               =
+*    IT_NAVIGATION_PATH       =
+*    IT_ORDER                 =
+*    IV_FILTER_STRING         =
+*    IV_SEARCH_STRING         =
+**    io_tech_request_context  =
+**  IMPORTING
+**    et_entityset             =
+**    es_response_context      =
+*    .
+** CATCH /iwbep/cx_mgw_busi_exception .
+** CATCH /iwbep/cx_mgw_tech_exception .
+**ENDTRY.
+
+    DATA : lt_data TYPE TABLE OF ztui505_02.
+    CLEAR : lt_data.
+
+    SELECT *
+      INTO CORRESPONDING FIELDS OF TABLE lt_data
+      FROM ztui505_02.
+
+    IF sy-subrc EQ 0.
+      et_entityset[] = lt_data.
+    ENDIF.
+  ENDMETHOD.

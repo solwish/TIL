@@ -1,0 +1,23 @@
+package swExpert;
+
+import java.util.Scanner;
+
+public class CodeScanner {
+
+	public static void main(String[] args) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		String s;
+		
+		for (int test_case = 1; test_case <= T; test_case++) {
+			int N = sc.nextInt();
+			int M = sc.nextInt();
+			int[][] A = new int[N][M];
+			System.out.println(T);
+			System.out.println(N);
+			System.out.println(M);
+			
+		}
+	}
+
+}
