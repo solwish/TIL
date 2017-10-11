@@ -1,4 +1,4 @@
-sap.ui.jsview("ui5_edu_04.ui5_edu_04", {
+﻿sap.ui.jsview("ui5_edu_04.ui5_edu_04", {
 
 	/**
 	 * Specifies the Controller belonging to this View. In the case that it is
@@ -51,6 +51,7 @@ sap.ui.jsview("ui5_edu_04.ui5_edu_04", {
 //		oChart.setDataset(oDataset);
 //		oChart.setModel(oModel)
 //		return oChart;
+//
 		
 		//Table
 		var oTable = new sap.ui.table.Table("itab1",{
