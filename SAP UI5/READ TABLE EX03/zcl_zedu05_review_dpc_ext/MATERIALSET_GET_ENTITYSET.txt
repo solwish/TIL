@@ -31,4 +31,5 @@
     IF sy-subrc EQ 0.
       et_entityset[] = lt_data.
     ENDIF.
+
   ENDMETHOD.
