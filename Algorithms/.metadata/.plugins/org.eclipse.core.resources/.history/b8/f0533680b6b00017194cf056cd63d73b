@@ -1,0 +1,109 @@
+package swExpert;
+
+import java.util.Scanner;
+
+public class Trail {
+	static int[] xAxis = { 0, -1, 0, 1 };
+	static int[] yAxis = { -1, 0, 1, 0 };
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+
+		for (int test_case = 1; test_case <= T; test_case++) {
+			int max = -1;
+			int N = sc.nextInt();
+			int K = sc.nextInt();
+			// Queue<Integer> Q = new LinkedList<Integer>();
+
+			int[][] A = new int[N][N];
+
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					A[i][j] = sc.nextInt();
+				}
+			}
+
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+
+					for (int p = 0; p < N; p++) {
+						for (int o = 0; o < N; o++) {
+							for (int k = 0; k <= K; k++) {
+								int[][] d = new int[N][N];
+								int[][] B = new int[N][N];
+								for (int q = 0; q < N; q++) {
+									for (int w = 0; w < N; w++) {
+										B[q][w] = A[q][w];
+									}
+								}
+								B[p][o] = A[p][o] - k;
+
+								// **************************
+								if (i == 2 && j == 2)
+									System.out.println("BP");
+
+								d[i][j] = 1;
+								max = dfs(max, N, B, i, j, d);
+							}
+						}
+					}
+					// int[][] d = new int[N][N];
+					// int[][] B = new int[N][N];
+					// for (int q = 0; q < N; q++) {
+					// for (int w = 0; w < N; w++) {
+					// B[q][w] = A[q][w];
+					// }
+					// }
+					//
+					// d[i][j] = 1;
+					// max = dfs(max, N, B, i, j, d);
+
+				}
+			}
+			// // ***********************************
+			// System.out.println("A체크");
+			// for (int q = 0; q < N; q++) {
+			// for (int w = 0; w < N; w++) {
+			// System.out.print(A[q][w] + " ");
+			// }
+			// System.out.println();
+			// }
+			// // ***********************************
+			System.out.println("#" + test_case + " " + max);
+		}
+	}
+
+	private static int dfs(int max, int N, int[][] B, int i, int j, int[][] d) {
+		for (int z = 0; z < 4; z++) {
+			int nx = i + xAxis[z];
+			int ny = j + yAxis[z];
+
+			if (isPossible(nx, ny, N) && d[nx][ny] == 0 && B[nx][ny] > B[i][j]) {
+				d[nx][ny] = d[i][j] + 1;
+				if (max < d[nx][ny]) {
+					max = d[nx][ny];
+
+					// ***********************************
+					System.out.println("d구하기");
+					for (int q = 0; q < N; q++) {
+						for (int w = 0; w < N; w++) {
+							System.out.print(d[q][w] + " ");
+						}
+						System.out.println();
+					}
+					// ***********************************
+
+				}
+				max = dfs(max, N, B, nx, ny, d);
+			}
+		}
+		return max;
+	}
+
+	static boolean isPossible(int x, int y, int N) {
+		if (x >= 0 && x < N && y >= 0 && y < N)
+			return true;
+		return false;
+	}
+}
