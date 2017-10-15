@@ -1,4 +1,4 @@
-# TIL
+## TIL Link
 
 [Algorithms](https://github.com/solwish/TIL/tree/one/Algorithms/SWTest/src/swExpert)
 
@@ -6,4 +6,4 @@
 
 [SAP UI5, GATEWAY SERVICE](https://github.com/solwish/TIL/tree/one/SAP%20UI5)
 
-[Java, Spring, web, Android](https://github.com/solwish/TIL/tree/one/Programming) 
+[Java, Spring, Web, Android](https://github.com/solwish/TIL/tree/one/Programming) 
