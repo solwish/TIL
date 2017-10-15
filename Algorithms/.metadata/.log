@@ -1727,3 +1727,585 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jface.text 2 0 2017-10-15 14:50:09.463
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+!SESSION 2017-10-15 16:20:10.973 -----------------------------------------------
+eclipse.buildId=4.7.1.M20170906-1700
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-10-15 16:20:20.668
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jinsol'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface.text 2 0 2017-10-15 16:23:03.716
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-10-15 16:23:03.719
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-10-15 16:23:51.017
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-10-15 16:23:51.018
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.223
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.255
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.256
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.259
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.260
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.262
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.264
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.266
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.267
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.269
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.271
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.274
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.275
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.277
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.279
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.281
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.284
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.285
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:31:14.287
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at java.io.FilterOutputStream.close(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:129)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.223
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.227
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.229
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.230
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.233
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.235
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.237
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.239
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:149)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.241
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.250
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.251
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.253
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.255
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.257
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.259
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.261
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.262
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.264
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.265
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.267
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.268
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at java.io.FilterOutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:145)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:125)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 125 2017-10-15 16:32:08.270
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: 파이프가 닫히는 중입니다
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at java.io.FilterOutputStream.close(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:129)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:100)
+	at java.lang.Thread.run(Unknown Source)

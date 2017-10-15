@@ -1,3 +1,4 @@
+package theory;
 import java.util.Scanner;
 
 public class Insertion {
