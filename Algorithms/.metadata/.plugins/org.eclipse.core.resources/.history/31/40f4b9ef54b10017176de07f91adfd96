@@ -1,0 +1,49 @@
+package swExpert;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class JejuTripPlan {
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine());
+
+		for (int test_case = 1; test_case <= T; test_case++) {
+			StringTokenizer s;
+			s = new StringTokenizer(br.readLine());
+			int N = Integer.parseInt(s.nextToken());
+			int M = Integer.parseInt(s.nextToken());
+			int[][] d = new int[N][N];
+
+			for (int i = 0; i < N - 1; i++) {
+				s = new StringTokenizer(br.readLine());
+				for (int j = i + 1; j < N; j++) {
+					d[i][j] = Integer.parseInt(s.nextToken());
+					d[j][i] = d[i][j];
+				}
+			}
+			s = new StringTokenizer(br.readLine());
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					System.out.print(d[i][j] + " ");
+				}
+				System.out.println();
+			}
+
+		}
+	}
+
+	class pointInfo {
+		char pointType;
+		int sTime;
+		int satis;
+
+		public pointInfo(char pointType, int sTime, int satis) {
+			this.pointType = pointType;
+			this.sTime = sTime;
+			this.satis = satis;
+		}
+	}
+}
