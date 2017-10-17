@@ -21,7 +21,6 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="javax.net.ssl.SSLEngineResult.Status"/>
-<fullyQualifiedTypeName name="swExpert.Axis"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="swExpert.HsProgramCheck.Axis"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
@@ -40,5 +39,7 @@
 <fullyQualifiedTypeName name="swExpert.JejuTripPlan.PointInfo"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="swExpert.Axis"/>
+<fullyQualifiedTypeName name="imgonnasolve.Counselor.Zaxis"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

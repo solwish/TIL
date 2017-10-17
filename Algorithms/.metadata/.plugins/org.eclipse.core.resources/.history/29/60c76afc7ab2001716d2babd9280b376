@@ -1,0 +1,33 @@
+package imgonnasolve;
+
+import java.util.Scanner;
+
+import swExpert.Axis;
+
+public class Counselor {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		int N;
+
+		for (int t_case = 1; t_case <= T; t_case++) {
+			N = sc.nextInt();
+			Axis[] axis = new Axis[N];
+			for (int i = 0; i < N; i++) {
+				axis[i] = new Axis(sc.nextInt(), sc.nextInt());
+			}
+			
+			
+		}
+	}
+//	class Axis {
+//		public int x;
+//		public int y;
+//
+//		public Axis(int x, int y) {
+//			this.x = x;
+//			this.y = y;
+//		}
+//	}
+}
