@@ -1,0 +1,21 @@
+package swExpert;
+
+import java.util.Scanner;
+
+public class WaterPayment {
+
+	static int min = Integer.MAX_VALUE;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+
+		for (int t_case = 1; t_case <= T; t_case++) {
+			
+
+			System.out.println("#" + t_case + " " + );
+		}
+
+	}
+
+}
