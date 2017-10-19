@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class N_Queen {
 	static int N;
 	static int Q = 0;
-	static int tempX, tempY; //µð¹ö±ë¿ë
+	static int tempX, tempY; // µð¹ö±ë¿ë
 
 	static void solve(int[][] A, int x, int y, int cnt) {
 		if (cnt >= N) {
@@ -13,6 +13,11 @@ public class N_Queen {
 			Q++;
 			return;
 		}
+
+		int[][] D = new int[N][N];
+		for (int i = 0; i <= (N - 1) / 2; i++)
+			for (int j = 0; j <= (N - 1) / 2; j++)
+				D[i][j] = A[i][j];
 
 		for (int i = 0; i < N; i++)
 			A[i][y] = 1;
@@ -45,6 +50,11 @@ public class N_Queen {
 			for (int j = 0; j < N; j++)
 				if (A[i][j] == 0)
 					solve(A, i, j, cnt + 1);
+
+		for (int i = 0; i <= (N - 1) / 2; i++)
+			for (int j = 0; j <= (N - 1) / 2; j++)
+				A[i][j] = D[i][j];
+		
 	}
 
 	public static void main(String[] args) {

@@ -1,0 +1,84 @@
+package swExpert;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class ProtectiveFilm {
+	static int D, W, K;
+	static boolean flag = false;
+	static int best = Integer.MAX_VALUE;
+
+	static void solve(int[][] A, boolean[] B, int change, int row, int kind) {
+		if (flag)
+			return;
+
+		if (row != -1)
+			for (int j = 0; j < W; j++) {
+				A[row][j] = kind;
+			}
+
+		int cnt;
+		for (int i = 0; i < B.length; i++)
+			B[i] = false;
+
+		for (int j = 0; j < W; j++) {
+			cnt = 0;
+			for (int i = 0; i < D - 1; i++) {
+				if (A[i][j] == A[i + 1][j]) {
+					cnt++;
+				} else
+					cnt = 0;
+				if (cnt == K) {
+					B[j] = true;
+					break;
+				}
+			}
+		}
+
+		for (int i = 0; i < B.length; i++) {
+			if (B[i])
+				flag = true;
+			else {
+				flag = false;
+				break;
+			}
+		}
+
+		if (flag) {
+			if (best > change)
+				best = change;
+			return;
+		} else if (change <= K) {
+			for (int i = 0; i < W; i++)
+				for (int j = 0; j <= 1; j++)
+					solve(A, B, change + 1, i, j);
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine());
+		StringTokenizer s;
+
+		for (int t_case = 1; t_case <= T; t_case++) {
+			s = new StringTokenizer(br.readLine());
+			D = Integer.parseInt(s.nextToken());
+			W = Integer.parseInt(s.nextToken());
+			K = Integer.parseInt(s.nextToken());
+			int[][] A = new int[D][W];
+			boolean[] B = new boolean[W];
+			flag = false;
+
+			for (int i = 0; i < D; i++) {
+				s = new StringTokenizer(br.readLine());
+				for (int j = 0; j < W; j++) {
+					A[i][j] = Integer.parseInt(s.nextToken());
+				}
+			}
+			System.out.print("#" + t_case + " ");
+			solve(A, B, 0, -1, -1);
+		}
+	}
+
+}
