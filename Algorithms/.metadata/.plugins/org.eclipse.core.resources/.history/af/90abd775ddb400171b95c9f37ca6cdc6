@@ -39,16 +39,18 @@ public class ProtectiveFilm {
 		}
 		flag = true;
 		for (int i = 0; i < B.length; i++) {
-			if (B[i] == false) {
+			if (B[i] == false)
 				flag = false;
-				break;
-			}
 		}
 
 		if (flag) {
 			if (best > change) {
 				best = change;
 				flag = true;
+				if (row != -1)
+					for (int i = 0; i < W; i++)
+						A[row][i] = temp[i];
+				return;
 			}
 		} else if (change < K) {
 			for (int i = (row == -1) ? 0 : row + 1; i < D; i++) {

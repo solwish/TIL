@@ -6,52 +6,59 @@ import java.util.StringTokenizer;
 
 public class ProtectiveFilm {
 	static int D, W, K;
-	static boolean flag = false;
+	static boolean flag = true;
+	static int best = Integer.MAX_VALUE;
 
-	static void solve(int[][] A, boolean[] B, int change, int row, int kind) {
-		if (flag)
+	static void solve(int[][] A, int change, int row, int kind) {
+		if (best <= change)
 			return;
+
+		int[] temp = new int[W];
 
 		if (row != -1)
 			for (int j = 0; j < W; j++) {
+				temp[j] = A[row][j];
 				A[row][j] = kind;
 			}
 
+		boolean[] B = new boolean[W];
 		int cnt;
-		for (int i = 0; i < B.length; i++)
-			B[i] = false;
 
 		for (int j = 0; j < W; j++) {
-			cnt = 0;
+			cnt = 1;
 			for (int i = 0; i < D - 1; i++) {
 				if (A[i][j] == A[i + 1][j]) {
 					cnt++;
 				} else
-					cnt = 0;
+					cnt = 1;
 				if (cnt == K) {
 					B[j] = true;
 					break;
 				}
 			}
 		}
-
+		flag = true;
 		for (int i = 0; i < B.length; i++) {
-			if (B[i])
-				flag = true;
-			else {
+			if (B[i] == false) {
 				flag = false;
 				break;
 			}
 		}
 
 		if (flag) {
-			System.out.println(change);
-			return;
-		} else if (change <= K) {
-			for (int i = 0; i < W; i++)
-				for (int j = 0; j <= 1; j++)
-					solve(A, B, change + 1, i, j);
+			if (best > change) {
+				best = change;
+				flag = true;
+			}
+		} else if (change < K) {
+			for (int i = (row == -1) ? 0 : row + 1; i < D; i++) {
+				solve(A, change + 1, i, 0);
+				solve(A, change + 1, i, 1);
+			}
 		}
+		if (row != -1)
+			for (int i = 0; i < W; i++)
+				A[row][i] = temp[i];
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -65,17 +72,15 @@ public class ProtectiveFilm {
 			W = Integer.parseInt(s.nextToken());
 			K = Integer.parseInt(s.nextToken());
 			int[][] A = new int[D][W];
-			int change = 0;
-			boolean[] B = new boolean[W];
-			flag = false;
+			best = Integer.MAX_VALUE;
 
 			for (int i = 0; i < D; i++) {
 				s = new StringTokenizer(br.readLine());
-				for (int j = 0; j < W; j++) {
+				for (int j = 0; j < W; j++)
 					A[i][j] = Integer.parseInt(s.nextToken());
-				}
 			}
-
+			solve(A, 0, -1, -1);
+			System.out.println("#" + t_case + " " + best);
 		}
 	}
 
