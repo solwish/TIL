@@ -1,0 +1,23 @@
+package swExpert;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class SumSubsequenc {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		int N, K;
+		for (int t_case = 1; t_case <= T; t_case++) {
+			N = sc.nextInt();
+			T = sc.nextInt();
+			LinkedList<Integer> li = new LinkedList<Integer>();
+
+			while (N > 0)
+
+				System.out.println("#" + t_case + " ");
+		}
+	}
+
+}

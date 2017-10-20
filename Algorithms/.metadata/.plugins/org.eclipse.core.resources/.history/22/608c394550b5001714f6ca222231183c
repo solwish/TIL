@@ -1,0 +1,42 @@
+package swExpert;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class SumSubsequenc {
+	static LinkedList<Integer> li = new LinkedList<Integer>();
+	static int answer = 0;
+	static int N, K;
+
+	static void permutation(boolean[] check, int k, int n, int multi) {
+		if (k == n) {
+			if (K == multi)
+				answer++;
+			return;
+		}else {
+			
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		for (int t_case = 1; t_case <= T; t_case++) {
+			N = sc.nextInt();
+			T = sc.nextInt();
+			li.clear();
+			answer = 0;
+
+			for (int i = 1; i <= N; i++) {
+				if (N % i == 0)
+					li.add(i);
+			}
+			boolean[] check = new boolean[li.size()];
+			permutation(check, 0, li.size(), 1);
+
+			System.out.println("#" + t_case + " ");
+		}
+	}
+
+}
