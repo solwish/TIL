@@ -1,0 +1,16 @@
+package swExpert;
+
+import java.util.HashMap;
+
+public class TwoDi_Array {
+
+	public static void main(String[] args) {
+
+		HashMap<Integer, int[]> map = new HashMap<>();
+		for (int i = 1; i <= 10000; i++) {
+			
+		}
+
+	}
+
+}

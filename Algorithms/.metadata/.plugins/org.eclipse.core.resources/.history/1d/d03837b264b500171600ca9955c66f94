@@ -1,0 +1,32 @@
+package swExpert;
+
+import java.util.HashMap;
+
+class TwodiD {
+	int x, y;
+
+	public TwodiD(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+}
+
+public class TwoDi_Array {
+
+	public static void main(String[] args) {
+		int temp, tempy;
+		HashMap<Integer, TwodiD> map = new HashMap<>();
+		for (int i = 1; i <= 10000; i++) {
+			temp = 1;
+			for (int k = 1; k <= temp; k++) {
+				tempy = temp;
+				map.put(i, new TwodiD(k, tempy));
+				temp++;
+				temp--;
+			}
+		}
+
+	}
+
+}
