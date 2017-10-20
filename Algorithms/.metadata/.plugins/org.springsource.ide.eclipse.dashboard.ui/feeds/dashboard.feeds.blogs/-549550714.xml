@@ -5,7 +5,78 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-10-18T01:33:00Z</updated>
+  <updated>2017-10-19T19:19:23Z</updated>
+  <entry>
+    <title>Spring Integration for AWS 1.1 Release Candidate  1 Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/19/spring-integration-for-aws-1-1-release-candidate-1-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Artem Bilan</name>
+    </author>
+    <id>tag:spring.io,2017-10-19:3068</id>
+    <updated>2017-10-19T19:19:23Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Dear Spring Community!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Today I¡¯d like to announce the first Release Candidate of the version &lt;code&gt;1.1&lt;/code&gt; of Spring Integration for &lt;a href="https://aws.amazon.com"&gt;Amazon Web Services&lt;/a&gt;.
+Its artifact&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="literalblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre&gt;org.springframework.integration:spring-integration-aws:1.1.0.RC1&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;is available in the &lt;a href="https://repo.spring.io/milestone/"&gt;Milestone Repository&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Thanks to everybody contributed!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Some highlights of the features since the previously announced &lt;a href="https://spring.io/blog/2017/03/09/spring-integration-extension-for-aws-1-1-0-m1-available"&gt;Milestone 1&lt;/a&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="kinesismessagedrivenchanneladapter"&gt;&lt;a class="anchor" href="#kinesismessagedrivenchanneladapter"&gt;&lt;/a&gt;KinesisMessageDrivenChannelAdapter&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;KinesisMessageDrivenChannelAdapter&lt;/code&gt; has been improved to handle properly expired and throttled shard iterators.
+Also it now skips closed shards.
+Some other bug fixed have been provided after early community adoption.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="dynamodbmetadatastore"&gt;&lt;a class="anchor" href="#dynamodbmetadatastore"&gt;&lt;/a&gt;DynamoDbMetaDataStore&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;ConcurrentMetadataStore&lt;/code&gt; implementation for the AWS &lt;a href="https://aws.amazon.com/dynamodb"&gt;DynamoDB&lt;/a&gt; is now provided via &lt;code&gt;DynamoDbMetaDataStore&lt;/code&gt; component.
+This metadata store can be used in the &lt;code&gt;KinesisMessageDrivenChannelAdapter&lt;/code&gt; for distributed checkpoint management between instances in the cluster.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="spring-cloud-stream-kinesis-binder"&gt;&lt;a class="anchor" href="#spring-cloud-stream-kinesis-binder"&gt;&lt;/a&gt;Spring Cloud Stream Kinesis Binder&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In addition it&amp;#8217;s my pleasure to announce here that we already have started the AWS Kinesis Binder implementation for Spring Cloud Stream.
+The solution is fully based on the Spring Integration AWS and already has some traction from the community.
+Check its &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-binder-aws-kinesis"&gt;project page&lt;/a&gt; and an appropriate sample in the &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-samples/tree/master/kinesis-produce-consume"&gt;Spring Cloud Samples&lt;/a&gt;!
+Especial thanks to Peter Oates (&lt;a href="https://github.com/oatesp"&gt;@oatesp&lt;/a&gt;) and Jacob Severson (&lt;a href="https://github.com/JacobASeverson"&gt;@JacobASeverson&lt;/a&gt;) for their valuable time and quality contributions!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The General Availability release for version &lt;code&gt;1.1&lt;/code&gt; is going to happen in a week.
+After that we will switch to the version &lt;code&gt;2.0&lt;/code&gt; based on the Spring Integration &lt;code&gt;5.0&lt;/code&gt; and Spring Cloud AWS &lt;code&gt;2.0&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Of course any feedback is welcome via all available communication channel!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-integration-aws"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration-aws/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-integration"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-integration"&gt;Chat&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Spring Tips: Bootiful JAX-RS</title>
     <link rel="alternate" href="https://spring.io/blog/2017/10/18/spring-tips-bootiful-jax-rs" />
@@ -723,93 +794,5 @@ This is going to be a year to remember with so much great content&amp;#8230;&amp
   &lt;li&gt;Aboullaite Mohammed put together a very good post &lt;a href="https://aboullaite.me/spring-boot-elastic-kibana/"&gt;on monitoring metrics using Elasticsearch and Kibana and Spring Boot&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;The Ordina JWorks blog has a nice post on &lt;a href="https://ordina-jworks.github.io/microservices/2017/09/26/Secure-your-architecture-part1.html"&gt;securing microservices with Spring Cloud&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Dalston SR4 Is Now Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/03/spring-cloud-dalston-sr4-is-now-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Ryan Baxter</name>
-    </author>
-    <id>tag:spring.io,2017-10-03:3050</id>
-    <updated>2017-10-03T17:20:22Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the community, I am pleased to announce that Service Release 4 (SR4) of the &lt;a href="https://cloud.spring.io"&gt;Spring Cloud Dalston&lt;/a&gt; Release Train is available today. The release can be found in the &lt;a href="https://repo1.maven.org/maven2/org/springframework/cloud/"&gt;Maven Central&lt;/a&gt; repository. You can check out the Dalston &lt;a href="https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Dalston-Release-Notes"&gt;release notes for more information&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The following modules were updated as part of Dalston.SR4:&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Module &lt;/th&gt;
-      &lt;th&gt;Version &lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Contract &lt;/td&gt;
-      &lt;td&gt;1.1.4.RELEASE &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Config &lt;/td&gt;
-      &lt;td&gt;1.3.3.RELEASE &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Commons &lt;/td&gt;
-      &lt;td&gt;1.2.4.RELEASE &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Netflix &lt;/td&gt;
-      &lt;td&gt;1.3.5.RELEASE &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Spring Cloud Sleuth &lt;/td&gt;
-      &lt;td&gt;1.2.5.RELEASE &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;As always, we welcome feedback on &lt;a href="https://github.com/spring-cloud/"&gt;GitHub&lt;/a&gt;, on &lt;a href="https://gitter.im/spring-cloud/spring-cloud"&gt;Gitter&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/SpringCloud"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To get started with Maven with a BOM (dependency management only):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint"&gt;&amp;lt;dependencyManagement&amp;gt;&#xD;
-    &amp;lt;dependencies&amp;gt;&#xD;
-        &amp;lt;dependency&amp;gt;&#xD;
-            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-            &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt;&#xD;
-            &amp;lt;version&amp;gt;Dalston.SR4&amp;lt;/version&amp;gt;&#xD;
-            &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&#xD;
-            &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;&#xD;
-        &amp;lt;/dependency&amp;gt;&#xD;
-    &amp;lt;/dependencies&amp;gt;&#xD;
-&amp;lt;/dependencyManagement&amp;gt;&#xD;
-&amp;lt;dependencies&amp;gt;&#xD;
-    &amp;lt;dependency&amp;gt;&#xD;
-        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-        &amp;lt;artifactId&amp;gt;spring-cloud-starter-config&amp;lt;/artifactId&amp;gt;&#xD;
-    &amp;lt;/dependency&amp;gt;&#xD;
-    &amp;lt;dependency&amp;gt;&#xD;
-        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
-        &amp;lt;artifactId&amp;gt;spring-cloud-starter-eureka&amp;lt;/artifactId&amp;gt;&#xD;
-    &amp;lt;/dependency&amp;gt;&#xD;
-    ...&#xD;
-&amp;lt;/dependencies&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or with Gradle:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint"&gt;buildscript {&#xD;
-    dependencies {&#xD;
-        classpath &amp;quot;io.spring.gradle:dependency-management-plugin:1.0.2.RELEASE&amp;quot;&#xD;
-    }&#xD;
-}&#xD;
-&#xD;
-apply plugin: &amp;quot;io.spring.dependency-management&amp;quot;&#xD;
-&#xD;
-dependencyManagement {&#xD;
-    imports {&#xD;
-        mavenBom &amp;#39;org.springframework.cloud:spring-cloud-dependencies:Dalston.SR4&amp;#39;&#xD;
-    }&#xD;
-}&#xD;
-&#xD;
-dependencies {&#xD;
-    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-config&amp;#39;&#xD;
-    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-eureka&amp;#39;&#xD;
-    ...&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
   </entry>
 </feed>

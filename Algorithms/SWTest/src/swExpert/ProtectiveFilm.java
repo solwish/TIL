@@ -10,18 +10,18 @@ public class ProtectiveFilm {
 	static int best = Integer.MAX_VALUE;
 
 	static void solve(int[][] A, int change, int row, int kind) {
-		if (best <= change)
+		if (best <= change)//유망성 검사
 			return;
 
 		int[] temp = new int[W];
 
-		if (row != -1)
+		if (row != -1)//-1은 초기값 이후부터 되돌려놓을 행 저장
 			for (int j = 0; j < W; j++) {
 				temp[j] = A[row][j];
 				A[row][j] = kind;
 			}
 
-		boolean[] B = new boolean[W];
+		boolean[] B = new boolean[W];//성능검사
 		int cnt;
 
 		for (int j = 0; j < W; j++) {
@@ -45,7 +45,7 @@ public class ProtectiveFilm {
 			}
 		}
 
-		if (flag) {
+		if (flag) {//성능검사 통과한 경우
 			if (best > change) {
 				best = change;
 				flag = true;

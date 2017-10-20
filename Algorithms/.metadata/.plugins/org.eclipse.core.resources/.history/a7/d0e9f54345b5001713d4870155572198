@@ -1,0 +1,77 @@
+package swExpert;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+class ZSM {
+	int x, y;
+
+	public ZSM(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+
+public class LunchTime {
+	static int answer = Integer.MAX_VALUE;
+	static int[] match;
+	static int M = 0;
+	static int S = 0;
+	static ZSM man[], stair[];
+	static int[][] map;
+
+	static void update() {
+		int total_min_time = 0;
+		
+		for(int stair_index = 0; stair_index<2; stair_index++) {
+			
+		}
+		
+	}
+
+	static void dfs(int man_index) {
+		if (man_index == M) {
+			update();
+			return;
+		}
+
+		for (int stair_index = 0; stair_index < 2; stair_index++) {
+			match[man_index] = stair_index;
+			dfs(man_index + 1);
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine());
+		int N;
+
+		for (int t_case = 1; t_case <= T; t_case++) {
+			N = Integer.parseInt(br.readLine());
+			map = new int[N][N];
+			StringTokenizer s;
+			M = S = 0;
+			man = new ZSM[N * N];
+			stair = new ZSM[2];
+
+			for (int i = 0; i < N; i++) {
+				s = new StringTokenizer(br.readLine());
+				for (int j = 0; j < N; j++) {
+					map[i][j] = Integer.parseInt(s.nextToken());
+					if (map[i][j] == 1) {
+						man[M++] = new ZSM(i, j);
+					} else if (map[i][j] >= 2) {
+						stair[M++] = new ZSM(i, j);
+					}
+				}
+			}
+			answer = Integer.MAX_VALUE;
+			match = new int[M];
+
+			dfs(0);
+			System.out.println("#" + t_case + " " + answer);
+		}
+	}
+
+}
