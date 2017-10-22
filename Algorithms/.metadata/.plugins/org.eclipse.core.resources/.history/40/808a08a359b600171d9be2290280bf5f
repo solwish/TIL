@@ -1,0 +1,54 @@
+package swExpert;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+class MicroXY {
+	int x, y, num, direct;
+
+	public MicroXY(int x, int y, int num, int direct) {
+		this.x = x;
+		this.y = y;
+		this.num = num;
+		this.direct = direct;
+	}
+
+	@Override
+	public String toString() {
+		return "MicroXY [x=" + x + ", y=" + y + ", num=" + num + ", direct=" + direct + "]";
+	}
+}
+
+public class MicrobialIsolation {
+
+	static int[] Iaxis = { 0, -1, 1, 0, 0 };
+	static int[] Jaxis = { 0, 0, 0, -1, 1 };
+	static int N, M, K;
+	static int[][] map;
+	static MicroXY[] micros;
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine());
+		StringTokenizer s;
+
+		for (int t_case = 1; t_case <= T; t_case++) {
+			s = new StringTokenizer(br.readLine());
+			N = Integer.parseInt(s.nextToken());
+			M = Integer.parseInt(s.nextToken());
+			K = Integer.parseInt(s.nextToken());
+			map = new int[N][N];
+			micros = new MicroXY[K];
+
+			for (int i = 0; i < K; i++) {
+				s = new StringTokenizer(br.readLine());
+				micros[i] = new MicroXY(Integer.parseInt(s.nextToken()), Integer.parseInt(s.nextToken()),
+						Integer.parseInt(s.nextToken()), Integer.parseInt(s.nextToken()));
+			}
+
+		}
+
+	}
+
+}
