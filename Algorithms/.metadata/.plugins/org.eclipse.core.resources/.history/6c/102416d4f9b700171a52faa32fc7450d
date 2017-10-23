@@ -1,6 +1,6 @@
 package swExpert;
 
-public class MaximumPathLength {
+public class CircularLetter {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
