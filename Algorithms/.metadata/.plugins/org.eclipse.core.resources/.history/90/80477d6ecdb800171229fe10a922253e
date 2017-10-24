@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 public class MillionaireProject {
 	static int N;
-	static long ans;
+	static int ans;
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -32,14 +32,18 @@ public class MillionaireProject {
 			return;
 
 		int max = 0;
+		boolean flag = false;
+		for (int i = 0; i < base - 1; i++)
+			if (max < A[i + 1])
+				max = A[i + 1];
+
+		int[] AA;
 		int temp = 0;
 		for (int i = 0; i < base; i++)
-			if (max < A[i]) {
-				max = A[i];
+			if (A[i] == max) {
+				B[i] = 1;
 				temp = i;
 			}
-		int[] AA;
-		B[temp] = 1;
 
 		if (B[0] == 1) {
 			AA = new int[base - 1];
@@ -48,31 +52,32 @@ public class MillionaireProject {
 				AA[x] = A[i];
 				x++;
 			}
-			B = new int[base - 1];
-			solve(AA, B, base - 1);
+
+			solve(AA, B, base);
 			return;
 		}
 
 		int cnt = 0;
-		for (int i = 0; i < base; i++) {
-			if (B[i] == 0) {
-				ans -= A[i];
-				cnt++;
-			} else if (B[i] == 1) {
-				ans += cnt * A[i];
-				break;
+		if (flag)
+			for (int i = 0; i < base; i++) {
+				if (B[i] == 0) {
+					ans -= A[i];
+					cnt++;
+				} else if (B[i] == 1) {
+					ans += cnt * A[i];
+					cnt = 0;
+					break;
+				}
 			}
-		}
 
-		AA = new int[base - 1 - temp];
-		B = new int[base - 1 - temp];
+		AA = new int[N - 1 - temp];
+		B = new int[N - 1 - temp];
 		int x = 0;
-		if (base - 1 - temp != 0)
-			for (int i = temp + 1; i < base; i++) {
-				AA[x] = A[i];
-				x++;
-			}
-		solve(AA, B, base - 1 - temp);
+		for (int i = temp + 1; i < N; i++) {
+			AA[x] = A[i];
+			x++;
+		}
+		solve(AA, B, N - 1 - temp);
 	}
 
 }

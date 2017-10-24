@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 public class MillionaireProject {
 	static int N;
-	static long ans;
+	static int ans;
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -48,8 +48,8 @@ public class MillionaireProject {
 				AA[x] = A[i];
 				x++;
 			}
-			B = new int[base - 1];
-			solve(AA, B, base - 1);
+
+			solve(AA, B, base);
 			return;
 		}
 
@@ -60,19 +60,19 @@ public class MillionaireProject {
 				cnt++;
 			} else if (B[i] == 1) {
 				ans += cnt * A[i];
+				cnt = 0;
 				break;
 			}
 		}
 
-		AA = new int[base - 1 - temp];
-		B = new int[base - 1 - temp];
+		AA = new int[N - 1 - temp];
+		B = new int[N - 1 - temp];
 		int x = 0;
-		if (base - 1 - temp != 0)
-			for (int i = temp + 1; i < base; i++) {
-				AA[x] = A[i];
-				x++;
-			}
-		solve(AA, B, base - 1 - temp);
+		for (int i = temp + 1; i < N; i++) {
+			AA[x] = A[i];
+			x++;
+		}
+		solve(AA, B, N - 1 - temp);
 	}
 
 }

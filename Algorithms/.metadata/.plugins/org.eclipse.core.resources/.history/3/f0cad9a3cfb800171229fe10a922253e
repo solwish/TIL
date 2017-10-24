@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 public class MillionaireProject {
 	static int N;
-	static long ans;
+	static int ans;
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
