@@ -5,7 +5,344 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-10-19T19:19:23Z</updated>
+  <updated>2017-10-24T12:57:00Z</updated>
+  <entry>
+    <title>How to test Spring Cloud Stream applications (Part I)</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/24/how-to-test-spring-cloud-stream-applications-part-i" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Artem Bilan</name>
+    </author>
+    <id>tag:spring.io,2017-10-23:3069</id>
+    <updated>2017-10-24T12:57:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Dear Spring Community!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As an event-driven microservices framework, Spring Cloud Stream dramatically simplifies the complexity while developing event-driven applications. The feature capabilities and its benefits are not the focus of this article (to learn more, please review the &lt;a href="https://docs.spring.io/spring-cloud-stream/docs/Ditmars.RELEASE/reference/htmlsingle"&gt;Reference Guide&lt;/a&gt;), but instead, my goal is to show you what the framework has to offer from the testing standpoint, the tools, and techniques. This article is intended to encourage the community to share feedback on the existing testing infrastructure, so any thoughts, comments, or feature requests are welcome! We strive to adapt to the inputs to provide a better development and testing experience in the future.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Well, let me start with the quote:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="quoteblock text-right"&gt;
+&lt;blockquote&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;"It is surprising then that so many integration solutions are deployed
+with little or no testing. Testing, if any, is usually done manually
+and sporadically. One of the reasons integration solutions
+are not tested thoroughly is the fact that testing asynchronous,
+message-based middleware solutions is challenging."&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="paragraph text-right"&gt;
+&lt;p&gt;&lt;em&gt;- Gregor Hohpe,&lt;br&gt;
+Test-Driver Development in Enterprise Integration Projects&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;That¡¯s right, while we are marching towards modernizing the legacy monolith workload to a cloud-native style microservices architecture, any form of testing plays a very critical role in it. More specifically, having the automated CI pipelines to run the test-suites on every single commit, iteratively, is highly recommended and in fact widely accepted as adopted practice.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;While using Spring Cloud Stream, it may not be obvious to test the simple (¡°micro¡±) business-logic, and we might overlook the integration tests between the microservices, because there is nothing more than a middleware binding is expected from the end-user - the framework automates all other boilerplate semantics! Or even if we would like to do that, there are no useful tools to quickly spin-up and tear it down. And that¡¯s why we are here - to break the myth about the simplicity of microservices and complexity of testing them!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="what-is-spring-cloud-stream-application"&gt;&lt;a class="anchor" href="#what-is-spring-cloud-stream-application"&gt;&lt;/a&gt;What is Spring Cloud Stream application?&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The Spring Cloud Stream application is an event-driven, Spring Boot microservice based on well-known Enterprise Integration Patterns implemented by Spring Integration. Their testing tools and utilities  (&lt;code&gt;SpringRunner&lt;/code&gt; from &lt;a href="https://docs.spring.io/spring/docs/5.0.0.RELEASE/spring-framework-reference/testing.html#testing"&gt;Spring Testing Framework&lt;/a&gt;, the Spring Boot &lt;a href="https://docs.spring.io/spring-boot/docs/1.5.8.RELEASE/reference/htmlsingle/#boot-features-testing"&gt;auto-configuration&lt;/a&gt; for test environment, mocks from Spring Integration etc.) bring for us an interesting combination that our unit and integration tests are not so challenging any more. Only what we need to know what, when and how to use!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For example, the following simple Spring Cloud Stream application, a source, generates ¡°foo¡± or ¡°bar¡± string periodically according the semaphore state:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
+@EnableBinding(Source.class)
+public class FooBarSource {
+
+  private AtomicBoolean semaphore = new AtomicBoolean(true);
+
+  @Bean
+  @InboundChannelAdapter(channel = Source.OUTPUT,
+                      poller = @Poller(fixedDelay = "100"))
+  public MessageSource&amp;lt;String&amp;gt; fooBarStrings() {
+     return () -&amp;gt;
+          new GenericMessage&amp;lt;&amp;gt;(
+                this.semaphore.getAndSet(!this.semaphore.get()) ? "foo" : "bar");
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Or this processor to convert the incoming strings to upper case:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
+@EnableBinding(Processor.class)
+public class ToUpperCaseProcessor {
+
+  @StreamListener(Processor.INPUT)
+  @SendTo(Processor.OUTPUT)
+  public String transform(String payload) {
+     return payload.toUpperCase();
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Or finally this sink to save the incoming payload to a database:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
+@EnableBinding(Sink.class)
+public class JdbcSink {
+
+  @Bean
+  @ServiceActivator(inputChannel = Sink.INPUT)
+  public MessageHandler logHandler(DataSource dataSource) {
+     return new JdbcMessageHandler(dataSource,
+                                 "INSERT INTO foobar (value) VALUES (:payload)");
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Of course the most obvious unit test, for example, for the processor code would be:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@Test
+public void testUpperCase() {
+  assertEquals("FOO", new ToUpperCaseProcessor().transform("foo"));
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;But our goal is really to test all those Spring Boot, Cloud and Integration goodies. Let¡¯s see how to do that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="unit-tests"&gt;&lt;a class="anchor" href="#unit-tests"&gt;&lt;/a&gt;Unit Tests&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Since Spring Cloud Stream is fully based on Spring Boot, it is obvious that our tests should be marked with &lt;code&gt;@SpringBootTest&lt;/code&gt; and all its features and utilities (including mocking and spying) are available for us. See &lt;a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html"&gt;Testing Spring Boot applications&lt;/a&gt; for more information. On the other hand Spring Cloud Stream is Spring Integration application as well. So, all the Spring Integration testing tools and utilities from &lt;a href="https://docs.spring.io/spring-integration/docs/5.0.0.M7/reference/html/testing.html"&gt;Spring Integration Test&lt;/a&gt; module can be used in Spring Cloud Stream application tests, too.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In addition, Spring Cloud Stream provides support for testing your microservice applications without connecting to a messaging system. You can do that by using the &lt;code&gt;TestSupportBinder&lt;/code&gt; provided by the &lt;code&gt;spring-cloud-stream-test-support&lt;/code&gt; library, which can be added as a test dependency to the application:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-cloud-stream-test-support&amp;lt;/artifactId&amp;gt;
+  &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;TestSupportBinder&lt;/code&gt; allows users to interact with the bound channels and inspect what messages are sent and/or received by the application. For outbound message channels, the &lt;code&gt;TestSupportBinder&lt;/code&gt; registers a single subscriber and retains the messages emitted by the application in a &lt;code&gt;MessageCollector&lt;/code&gt;. They can be retrieved during tests and assertions can be made against them.
+The user can also send messages to inbound message channels, so that the consumer application can consume the messages:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@Autowired
+private Source channels;
+
+@Autowired
+private MessageCollector collector;
+
+@Test
+public void testMessages() {
+  BlockingQueue&amp;lt;Message&amp;lt;?&amp;gt;&amp;gt; messages = collector.forChannel(channels.output());
+
+  assertThat(messages, receivesPayloadThat(is("foo")));
+  assertThat(messages, receivesPayloadThat(is("bar")));
+  assertThat(messages, receivesPayloadThat(is("foo")));
+  assertThat(messages, receivesPayloadThat(is("bar")));
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Pay attention to the &lt;code&gt;receivesPayloadThat()&lt;/code&gt;, it is a static utility. This comes from the &lt;code&gt;MessageQueueMatcher&lt;/code&gt; and together with the &lt;code&gt;receivesMessageThat()&lt;/code&gt;, we can use it to assert with any appropriate &lt;code&gt;Matcher&lt;/code&gt; implementation from the incoming messages in the output channel of a source or processor application.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;@MockBean&lt;/code&gt; and &lt;code&gt;@SpyBean&lt;/code&gt; from Spring Boot can be useful to verify an interaction with our stream listeners:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpyBean
+private ToUpperCaseProcessor toUpperCaseProcessor;
+
+@Test
+public void testMessages() {
+  this.channels.input().send(new GenericMessage&amp;lt;&amp;gt;("foo"));
+
+  BlockingQueue&amp;lt;Message&amp;lt;?&amp;gt;&amp;gt; messages = collector.forChannel(channels.output());
+
+  assertThat(messages, receivesPayloadThat(is("FOO")));
+
+  verify(this.toUpperCaseProcessor, times(1)).transform(anyString());
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Right, to send test data, there is just enough to get an &lt;code&gt;input&lt;/code&gt; &lt;code&gt;MessageChannel&lt;/code&gt; for the processor and build &lt;code&gt;Message&lt;/code&gt; object. To send some headers for testing together with the &lt;code&gt;payload&lt;/code&gt;, you can use &lt;code&gt;org.springframework.integration.support.MessageBuilder&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Message&amp;lt;String&amp;gt; testMessage =
+     MessageBuilder.withPayload("headers")
+           .setHeader("foo", "bar")
+           .build();
+
+input.send(testMessage);
+
+Message&amp;lt;String&amp;gt; expected =
+     MessageBuilder.withPayload("HEADERS")
+           .copyHeaders(testMessage.getHeaders())
+           .build();
+
+Matcher&amp;lt;Message&amp;lt;Object&amp;gt;&amp;gt; sameExceptIgnorableHeaders =
+     (Matcher&amp;lt;Message&amp;lt;Object&amp;gt;&amp;gt;) (Matcher&amp;lt;?&amp;gt;) sameExceptIgnorableHeaders(expected);
+
+assertThat(messages, receivesMessageThat(sameExceptIgnorableHeaders));&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Testing the sink application is a bit tricky since this is typically the last step in a data pipeline solution. Here, we just send the data into the target system relying on the channel adapter for the particular protocol. For example our &lt;code&gt;JdbcSink&lt;/code&gt; application uses &lt;code&gt;JdbcMessageHandler&lt;/code&gt; from Spring Integration to insert payload of the incoming messages to a database. So, to test whether the  &lt;code&gt;JdbcSink&lt;/code&gt; works well, we need to query  the database. Fortunately, Spring Boot provides the  auto-configuration for &lt;code&gt;DataSource&lt;/code&gt; - it is as simple as making sure the intended database vendor¡¯s driver dependency is on the classpath, e.g.:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.hsqldb&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;hsqldb&amp;lt;/artifactId&amp;gt;
+  &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With that taken care by Spring Boot, an integration test that interacts with a  database becomes straightforward.
+We simply  inject &lt;code&gt;JdbcTemplate&lt;/code&gt; auto-configured by Spring Boot:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@Autowired
+private Sink channels;
+
+@Autowired
+private JdbcTemplate jdbcTemplate;
+
+@Test
+public void testMessages() {
+  this.channels.input().send(new GenericMessage&amp;lt;&amp;gt;("foo"));
+  this.channels.input().send(new GenericMessage&amp;lt;&amp;gt;("bar"));
+
+  List&amp;lt;Map&amp;lt;String, Object&amp;gt;&amp;gt; data =
+                    this.jdbcTemplate.queryForList("SELECT * FROM foobar");
+
+  assertThat(data.size()).isEqualTo(2);
+  assertThat(data.get(0).get("value")).isEqualTo("foo");
+  assertThat(data.get(1).get("value")).isEqualTo("bar");
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Such an approach based on the Spring Boot Testing Framework works well for JDBC and JPA configurations. Similar approach we can apply for many other protocols including  ActiveMQ, MongoDB, Cassandra, Gemfire, Hazelcast and many others. If we can¡¯t  have an embedded, test-scope service for our purpose, we have a choice to &lt;strong&gt;mock&lt;/strong&gt; the &lt;code&gt;MessageHandler&lt;/code&gt; for target protocol and assert an interaction with it:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@MockBean(name = "jdbcHandler")
+private MessageHandler jdbcMessageHandler;
+¡¦
+ArgumentCaptor&amp;lt;Message&amp;lt;?&amp;gt;&amp;gt; messageArgumentCaptor =
+     (ArgumentCaptor&amp;lt;Message&amp;lt;?&amp;gt;&amp;gt;) (ArgumentCaptor&amp;lt;?&amp;gt;)
+                                          ArgumentCaptor.forClass(Message.class);
+
+verify(this.jdbcMessageHandler, times(2))
+                          .handleMessage(messageArgumentCaptor.capture());
+
+Message&amp;lt;?&amp;gt; message = messageArgumentCaptor.getValue();
+assertThat(message).hasFieldOrPropertyWithValue("payload", "bar");&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Another approach to verify sent messages to the sink (or out of processor) can be applied as a &lt;code&gt;ChannelInterceptor&lt;/code&gt; injection into the message channel:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;AbstractMessageChannel input = (AbstractMessageChannel) this.channels.input();
+
+final AtomicReference&amp;lt;Message&amp;lt;?&amp;gt;&amp;gt; messageAtomicReference =
+                                   new AtomicReference&amp;lt;&amp;gt;();
+
+ChannelInterceptor assertionInterceptor = new ChannelInterceptorAdapter() {
+
+  @Override
+  public void afterSendCompletion(Message&amp;lt;?&amp;gt; message, MessageChannel channel,
+                                          boolean sent, Exception ex) {
+     messageAtomicReference.set(message);
+     super.afterSendCompletion(message, channel, sent, ex);
+  }
+
+};
+
+input.addInterceptor(assertionInterceptor);
+input.send(new GenericMessage&amp;lt;&amp;gt;("foo"));
+
+¡¦
+Message&amp;lt;?&amp;gt; message1 = messageAtomicReference.get();
+assertThat(message1).isNotNull();
+assertThat(message1).hasFieldOrPropertyWithValue("payload", "foo");&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="summary"&gt;&lt;a class="anchor" href="#summary"&gt;&lt;/a&gt;Summary&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The entire code for the mentioned applications and, of course, tests for them are available in the Spring Cloud Stream Samples project in the &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-samples/tree/master/testing"&gt;testing&lt;/a&gt; module.
+Try out the the various testing tools and techniques provided by  Spring Boot, Spring Integration and Spring Cloud Stream. Don¡¯t hesitate to combine these tools for a more comprehensive test coverage.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The second part of this article will concentrate on the integration tests for Spring Cloud Stream applications and the event-driven interaction.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Lastly, please join my session, at &lt;a href="https://springoneplatform.io/sessions/spring-integration-5-0-whats-new"&gt;Spring One Platform&lt;/a&gt; conference this December where in my talk I will give some insight for new Testing features in Spring Integration &lt;code&gt;5.0&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - October 24th, 2017</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/24/this-week-in-spring-october-24th-2017" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-10-24:3070</id>
+    <updated>2017-10-24T07:10:22Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! Can you believe we&amp;rsquo;re already staring down the end of October 2017? This year has &lt;em&gt;flown&lt;/em&gt; by! What a rush! This week I&amp;rsquo;m home in sunny San Francisco talking to customers and giving talks. &lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll be speaking &amp;ldquo;at&amp;rdquo; the &lt;a href="_URL_"&gt;vJUG 24 online conference&lt;/a&gt;. The conference lasts 24 hours! There&amp;rsquo;s a talk every hour, from as many timezones as possible! I hope you&amp;rsquo;ll join me (and thousands of others) as we look at Reactive Spring at 04:00 GMT on Wednesday.&lt;/p&gt;
+&lt;p&gt;And, of course, I hope you&amp;rsquo;ll register and join my friend and Grails co-founder Jeff Scott Brown and me for a look &lt;a href="https://objectcomputing.com/products/grails/webinar-grails-3-spring-developers/"&gt;at Grails for Spring Developers&lt;/a&gt; on November 9th, 2017.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;In last week&amp;rsquo;s installment of &lt;em&gt;Spring Tips&lt;/em&gt;, &lt;a href="https://spring.io/blog/2017/10/18/spring-tips-bootiful-jax-rs"&gt;I look at how to use JAX-RS, with the Jersey reference implementation, in a Spring Boot 2.0 application&lt;/a&gt; context.&lt;/li&gt;
+  &lt;li&gt;Spring Integration ninja Artem Bilan &lt;a href="https://spring.io/blog/2017/10/19/spring-integration-for-aws-1-1-release-candidate-1-available"&gt;has just announced Spring Integration for AWS 1.1 RC1&lt;/a&gt;. The new release includes a &lt;code&gt;KinesisMessageDrivenChannelAdapter&lt;/code&gt;, a &lt;code&gt;DynamoDbMetaDataStore&lt;/code&gt;, a Spring Cloud Stream Kinesis Binder, and much more. Check it out!&lt;/li&gt;
+  &lt;li&gt;Spring Boot 1.x does &lt;em&gt;not&lt;/em&gt; support Java 9. Spring Boot 2.0, due in December, does. That said, if you want to use Spring Boot 1.x with Java 9, you might &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-Java-9"&gt;appreciate this Wiki page with some gotchas on using Java 9&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Our very own Richard Seroter has put together a &lt;a href="https://content.pivotal.io/blog/velocity-as-a-service-5-ways-to-ship-like-a-software-company"&gt;great list of five ways to shop software like a software company&lt;/a&gt;, and increase velocity.&lt;/li&gt;
+  &lt;li&gt;I love this issue in Spring Framework wherein Thymeleaf lead Daniel Fernandez sheds a lot of on &lt;a href="https://jira.spring.io/browse/SPR-14981"&gt;how to use Thymeleaf in a Spring WebFlux-based application&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;You can now provision &lt;a href="https://content.pivotal.io/home-page/demand-your-on-demand-rabbitmq-clusters-now"&gt;multi-instance RabbitMQ clusters on demand&lt;/a&gt; with &lt;code&gt;cf create-serivice&lt;/code&gt; on Pivotal Cloud Foundry: hurray!&lt;/li&gt;
+  &lt;li&gt;Andreas Falk has a nice look at how to &lt;a href="https://www.youtube.com/watch?v=QlyslxoTCUA"&gt;manage secrets on Cloud Foundry with, among other things, Spring Cloud Vault&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Randhir Randhir Singh has put together &lt;a href="https://dzone.com/articles/building-data-pipelines-with-spring-cloud-data-flo"&gt;a nice look at how to build a Spring Cloud Data Flow to build real-time data integration and data processing pipelines&lt;/a&gt; by stitching together Spring Boot applications.&lt;/li&gt;
+  &lt;li&gt;I love this &lt;em&gt;All and Sundry&lt;/em&gt; blog by Biju Kunjummen &lt;a href="http://www.java-allandsundry.com/2017/10/raw-performance-numbers-spring-boot-2.html?m=1"&gt;comparing the performance of Spring Boot 1.0 vs. Spring Boot 2.0&lt;/a&gt;, which of course is based on Spring WebFlux and the Reactor Project. Spoiler alert: the async, non-blocking IO in Spring Boot 2.0 supports &lt;em&gt;many&lt;/em&gt; more demand at SLA levels.&lt;/li&gt;
+  &lt;li&gt;OK, first: this is &lt;em&gt;super&lt;/em&gt; early days, and nothing more than a prototype! But, our very own &lt;a href="https://github.com/viniciusccarvalho/spring-cloud-sockets"&gt;Vinicius Carvalho has put together a &lt;em&gt;prototype&lt;/em&gt; integration for Spring and RSocket&lt;/a&gt;. RSocket is a high performance protocol on top of the Reactive Streams types (and, in particular, it uses Reactor). It enjoys contributions from senior engineers at Facebook, Netflix, and the AEron project, among many others. All this to say, this is &lt;em&gt;really&lt;/em&gt; exciting! But early, yet! (Did I mention that?) It&amp;rsquo;s super early and &lt;em&gt;so&lt;/em&gt; I&amp;rsquo;m sure Vinicius would appreciate any feedback.&lt;/li&gt;
+  &lt;li&gt;I love this amazing example from Spring Framework, reactive Spring and Kotlin ninja S?bastien Deleuze demonstrating &lt;a href="https://github.com/sdeleuze/spring-kotlin-fullstack"&gt;how to use Kotlin for both the front end and back end of an application&lt;/a&gt;. The front-end leverages Kotlin2JS and the backend leverages Kotlin on the JVM (with Spring Boot, natch)&lt;/li&gt;
+  &lt;li&gt;I haven&amp;rsquo;t read this yet, but it does interesting: Ravi Kant Soni has written &lt;a href="https://www.amazon.com/Full-Stack-AngularJS-Java-Developers/dp/148423197X/ref=redir_mobile_desktop/131-1572141-3987769?_encoding=UTF8&amp;dpID=51XPtAmfcFL&amp;dpPl=1&amp;keywords=ravi%20kant%20soni&amp;pi=AC_SX236_SY340_FMwebp_QL65&amp;qid=1508328122&amp;ref=plSrch&amp;ref_=mp_s_a_1_1&amp;sr=8-1"&gt;a book on building Angular applications with Spring Boot&lt;/a&gt;. Check it out.&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring Integration for AWS 1.1 Release Candidate  1 Available</title>
     <link rel="alternate" href="https://spring.io/blog/2017/10/19/spring-integration-for-aws-1-1-release-candidate-1-available" />
@@ -752,47 +1089,5 @@ This is going to be a year to remember with so much great content&amp;#8230;&amp
 &lt;div class="paragraph"&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-amqp/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/AMQP"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-amqp/blob/master/CONTRIBUTING.adoc"&gt;Contributing&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-amqp"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-amqp"&gt;Chat&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tips: Reactive Spring Security</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/04/spring-tips-reactive-spring-security" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2017-09-27:3039</id>
-    <updated>2017-10-04T00:35:00Z</updated>
-    <content type="html">&lt;p&gt;Speaker: &lt;a href="https://www.twitter.com/starbuxman"&gt;Josh Long&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Hi Spring fans! In this tip, we&amp;rsquo;ll look at the reactive programming support in Spring Security 5.0. We&amp;rsquo;ll look at it in terms of its integration with Spring WebFlux, the reactive web runtime and framework in Spring Framework 5.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/LzNhedHo7pM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - October 3rd, 2017 - Spring Framework 5.0 Edition!</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/03/this-week-in-spring-october-3rd-2017-spring-framework-5-0-edition" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2017-10-03:3051</id>
-    <updated>2017-10-03T21:19:40Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This last week&amp;rsquo;s been &lt;em&gt;nuts&lt;/em&gt;! So much good stuff on offer. Spring Framework 5.0 is now available! And with Spring Framework 5.0 comes a deluge of releases, all of which you&amp;rsquo;ll see in this post. Also, this week I - and others from the Pivotal and Spring teams - are at JavaOne and I hope &lt;a href="https://spring.io/blog/2017/09/28/pivotal-and-spring-team-at-javaone-2017"&gt; you&amp;rsquo;ll come find us and say hi at our booth or the various talks&lt;/a&gt;.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Last week I looked at using Spring Framework 5&amp;rsquo;s support for &lt;a href="https://spring.io/blog/2017/09/27/spring-tips-reactive-websockets-with-spring-framework-5"&gt;building reactive websocket-based applications&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Spring AMQP and Spring Integration lead Gary Russell &lt;a href="https://spring.io/blog/2017/09/27/spring-amqp-2-0-release-candidate-2-available"&gt;has just announced Spring AMQP 2.0.RC2&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;At long last, Spring Framework 5.0.GA is here! The new release integrates with Project Reactor, includes a reactive web runtime, Kotlin extensions, and baselines on Java EE 7 and Java 8. The new release has entirely too many new things to hope to capture here so check out the &lt;a href="https://spring.io/blog/2017/09/28/spring-framework-5-0-goes-ga"&gt;release blog&lt;/a&gt; and then &lt;a href="https://github.com/spring-projects/spring-framework/wiki/What's-New-in-the-Spring-Framework#whats-new-in-spring-framework-5x"&gt;check out the &lt;em&gt;What&amp;rsquo;s New&lt;/em&gt; post&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring and Reactor ninja Simon Basl? just &lt;a href="https://spring.io/blog/2017/09/28/reactor-bismuth-is-out"&gt;announced the Reactor Bismuth release&lt;/a&gt;. This new release sets the foundation for Spring Framework 5.0 and is, itself, also packed with features!&lt;/li&gt;
-  &lt;li&gt;The Spring Framework 5.0 release opens the doors for a number of other &lt;a href="https://spring.io/blog/2017/10/02/spring-data-release-train-kay-goes-ga"&gt;projects, including Spring Data Kay&lt;/a&gt;. This is the largest revision of Spring Data since Spring Data&amp;rsquo;s inception in 2009! This new release has a baseline against Spring Framework 5.0, Java 8 and Java EE 7. It includes a revised repository APIs (complete support for &lt;code&gt;Optional&amp;lt;T&amp;gt;&lt;/code&gt;), support for reactive data access (Cassandra, Couchbase, MongoDB and Redis), the addition of Spring Data Geode to the release train, use of nullability annotations and advanced runtime checks on those, Kotlin support for null-safety and immutable data classes supported through Kotlin constructors, Java 9 compatibility, and sooo much more!&lt;/li&gt;
-  &lt;li&gt;Spring messaging and integration ninja Artem Bilan &lt;a href="https://spring.io/blog/2017/10/02/spring-for-apache-kafka-2-0-ga-available"&gt;just announced Spring for Apache Kafka 2.0.GA&lt;/a&gt;. The new release includes Apache Kafka support, transaction support, headers mapping, Apache Kafka Streams support, a new &lt;code&gt;KafkaAdmin&lt;/code&gt;, error handling and group support in the &lt;code&gt;@KafkaListener&lt;/code&gt; and &lt;code&gt;Consumer&lt;/code&gt; resolution. It also supports &lt;code&gt;@EmbeddedKafka&lt;/code&gt; for testing.&lt;/li&gt;
-  &lt;li&gt;Spring Cloud ninja Ryan Baxter just announced &lt;a href="https://spring.io/blog/2017/10/03/spring-cloud-dalston-sr4-is-now-available"&gt;Spring Cloud Dalston SR4&lt;/a&gt;. The new release updates Spring Cloud Contract, Spring Cloud Config, Spring Cloud Commons, Spring Cloud Netflix, and Spring Cloud Sleuth.&lt;/li&gt;
-  &lt;li&gt;Spring REST Docs lead Andy Wilkinson &lt;a href="https://spring.io/blog/2017/09/28/spring-rest-docs-1-2-2-release"&gt;just announced Spring REST Docs 1.2.2.RELEASE&lt;/a&gt;. This maintenance release includes a handful of bug fixes and documentation improvements and so is a recommended upgrade&lt;/li&gt;
-  &lt;li&gt;Check out the implementation of &lt;a href="https://github.com/spring-projects/spring-framework/commit/23497a7ece7aac1591187b46f4b601d2f48764e0"&gt;Spring Framework 5&amp;rsquo;s new autowire-by-constructor wiring&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I liked this German-language &lt;a href="https://jaxenter.de/spring-security-interview-falk-62685"&gt;interview with Andreas Falk on new features in Spring Framework 5.0 and Spring Security 5.0&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;This post, by Zoltan Altfatter, looks at how to &lt;a href="http://blog.mimacom.com/blog/2017/09/29/trigger-a-spring-batch-job-with-a-jms-message/"&gt;launch a Spring Batch &lt;code&gt;Job&lt;/code&gt;&lt;/a&gt; as the result of an incoming JMS message in a Spring Integration flow.&lt;/li&gt;
-  &lt;li&gt;Rohit Kelapure? looks at why Pivotal&amp;rsquo;s Cloud Foundry &lt;a href="https://twitter.com/rkela/status/914924780373073920"&gt;is the best place to run Spring Boot applications&lt;/a&gt; in this epic Twitter thread.&lt;/li&gt;
-  &lt;li&gt;In this post, Cristina Negrean looks at &lt;a href="https://cristinanegrean.github.io/2017/10/01/spring-cloud-dataflow-for-real-time-analytics-with-twitter-api"&gt;using Spring Cloud Data Flow for real-time analytics&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Gabriela Motroc put together a nice post &lt;a href="https://jaxenter.com/spring-framework-5-0-137677.html"&gt;for JAXEnter on the new Spring Framework 5 release&lt;/a&gt;. There&amp;rsquo;s so much to like.&lt;/li&gt;
-  &lt;li&gt;Aboullaite Mohammed put together a very good post &lt;a href="https://aboullaite.me/spring-boot-elastic-kibana/"&gt;on monitoring metrics using Elasticsearch and Kibana and Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;The Ordina JWorks blog has a nice post on &lt;a href="https://ordina-jworks.github.io/microservices/2017/09/26/Secure-your-architecture-part1.html"&gt;securing microservices with Spring Cloud&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
   </entry>
 </feed>
