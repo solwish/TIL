@@ -5,7 +5,89 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-10-24T12:57:00Z</updated>
+  <updated>2017-10-25T01:40:00Z</updated>
+  <entry>
+    <title>Spring Tips:  Spring Cloud Contract (HTTP)</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/25/spring-tips-spring-cloud-contract-http" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2017-09-27:3042</id>
+    <updated>2017-10-25T01:40:00Z</updated>
+    <content type="html">&lt;p&gt;Speaker: &lt;a href="https://www.twitter.com/starbuxman"&gt;Josh Long&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Hi Spring fans! In this tip, we&amp;rsquo;ll look at how to get fast-feedback &lt;em&gt;and&lt;/em&gt; do integration testing with Spring Cloud Contract. In this video, we&amp;rsquo;ll focus on HTTP-based services.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Ki54FB2B25U" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Batch 4.0.0.M5 is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/24/spring-batch-4-0-0-m5-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Michael Minella</name>
+    </author>
+    <id>tag:spring.io,2017-10-24:3073</id>
+    <updated>2017-10-24T22:52:55Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce that Spring Batch 4.0.0.M5 is now available via Github and the Pivotal download repository. This release represents the fifth milestone for the Spring Batch 4.0 release. Many thanks to all that contributed to this release.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-new" class="anchor" name="what-rsquo-s-new"&gt;&lt;/a&gt;What&amp;rsquo;s new?&lt;/h2&gt;
+&lt;p&gt;This milestone continues the work laid out in the previous 4.0.0 milestones. Specific updates include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dependency updates&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;FunctionItemProcessor&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Continued updates to documentation&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#dependency-updates" class="anchor" name="dependency-updates"&gt;&lt;/a&gt;Dependency updates&lt;/h2&gt;
+&lt;p&gt;As the dependency graph of Spring Boot 2 evolves, we have been updating our dependencies to be in line with them. This round includes updates to pull in the GA release of Spring Framework 5 as well as Spring Data Kay. Spring Integration 5.0.0.M7 was also pulled in for this release.&lt;/p&gt;&lt;h2&gt;&lt;a href="#code-functionitemprocessor-code" class="anchor" name="code-functionitemprocessor-code"&gt;&lt;/a&gt;&lt;code&gt;FunctionItemProcessor&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;With Java 8 and the introduction of functional interfaces (from the &lt;code&gt;java.util.function&lt;/code&gt; package), it makes sense to review how those interfaces map into Spring Batch. The three key interfaces consist of the &lt;code&gt;Supplier&lt;/code&gt;, &lt;code&gt;Function&lt;/code&gt;, and &lt;code&gt;Consumer&lt;/code&gt;. This release provides an &lt;code&gt;ItemProcessor&lt;/code&gt; and related capabilities to enable the use of a &lt;code&gt;Function&lt;/code&gt; as an &lt;code&gt;ItemProcessor&lt;/code&gt;. An example may look something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;...&#xD;
+@Bean&#xD;
+public Function&amp;lt;String, String&amp;gt; function() {&#xD;
+	return o -&amp;gt; o.toUpperCase();&#xD;
+}&#xD;
+&#xD;
+@Bean&#xD;
+public Step step1() {&#xD;
+	return this.stepBuilderFactory.get(&amp;quot;step1&amp;quot;)&#xD;
+				.&amp;lt;String, String&amp;gt;chunk(10)&#xD;
+				.reader(reader())&#xD;
+				.processor(upperCase())&#xD;
+				.writer(writer())&#xD;
+				.build();&#xD;
+}&#xD;
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that in the previous example, the actual Function implementation has zero Spring Batch dependencies. I can create a processor implementation that does not actually implement &lt;code&gt;ItemProcessor&lt;/code&gt; and use it as a processor within my step[1].&lt;/p&gt;
+&lt;p&gt;Between now and GA for Spring Batch, we&amp;rsquo;ll begin to look at the other functional interfaces and their applicibility to Spring Batch.&lt;/p&gt;&lt;h2&gt;&lt;a href="#updates-to-documentation" class="anchor" name="updates-to-documentation"&gt;&lt;/a&gt;Updates to documentation&lt;/h2&gt;
+&lt;p&gt;The Spring Batch documentation hasn&amp;rsquo;t had a major overhaul since java configuration became the norm. This release begins the transition of the documentation to address that. You&amp;rsquo;ll see at the top of the following pages a toggle between Java and XML. That toggle will indicate how the examples within that page are configured (via Java based configuration or XML based configuration respectively). The pages this is currently implemented on are:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Spring Batch Introduction&lt;/li&gt;
+  &lt;li&gt;The Domain of Batch&lt;/li&gt;
+  &lt;li&gt;Configuring and Running a Job&lt;/li&gt;
+  &lt;li&gt;Configuring a Step&lt;/li&gt;
+  &lt;li&gt;Readers and Writers&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Before our next release we&amp;rsquo;ll finish this migration to allow for ever example within the Spring Batch reference documentation to be illustrated both via Java configuration as well as XML configuration.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-next" class="anchor" name="what-rsquo-s-next"&gt;&lt;/a&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+&lt;p&gt;Looking ahead we&amp;rsquo;ll be wrapping up the documentation updates. We&amp;rsquo;ll also be looking at how the other functional interfaces fit into Spring Batch. Finally we&amp;rsquo;ll pick up the rest of the Spring Framework ecosystem&amp;rsquo;s latest dependencies in preparation for the GA release.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-happened-to-spring-batch-4-0-0-m4" class="anchor" name="what-happened-to-spring-batch-4-0-0-m4"&gt;&lt;/a&gt;What happened to Spring Batch 4.0.0.M4?&lt;/h2&gt;
+&lt;p&gt;Spring Batch 4.0.0.M4 was released last Friday with an error in it and is not recommend for general consumption. 4.0.0.M5 is the latest milestone recommended to be consumed.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-do-you-think" class="anchor" name="what-do-you-think"&gt;&lt;/a&gt;What do you think?&lt;/h2&gt;
+&lt;p&gt;We look forward to your feedback on these new features in &lt;a href="https://jira.spring.io/browse/BATCH/"&gt;Jira&lt;/a&gt;, &lt;a href="https://stackoverflow.com/tags/spring-batch"&gt;StackOverflow&lt;/a&gt;, or to me directly via Twitter &lt;a href="https://twitter.com/michaelminella"&gt;@michaelminella&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://projects.spring.io/spring-batch/"&gt;Spring Batch Home&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-batch"&gt;Source on GitHub&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-batch/4.0.x/reference/html/index.html"&gt;Reference Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[1] Note: We are aware of the &lt;code&gt;ItemProcessorAdapter&lt;/code&gt; that existed and that it provided another way to accomplish using a service not implementing &lt;code&gt;ItemProcessor&lt;/code&gt; as an &lt;code&gt;ItemProcessor&lt;/code&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Framework 5.0.1 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/24/spring-framework-5-0-1-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Juergen Hoeller</name>
+    </author>
+    <id>tag:spring.io,2017-10-24:3071</id>
+    <updated>2017-10-24T18:55:00Z</updated>
+    <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;
+&lt;p&gt;It is my pleasure to announce that Spring Framework &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10000&amp;version=16318"&gt;5.0.1&lt;/a&gt; &lt;a href="http://projects.spring.io/spring-framework"&gt;is available now&lt;/a&gt;, as the first maintenance release in our Spring Framework 5.0 line.&lt;/p&gt;
+&lt;p&gt;In addition to addressing various user-reported bugs, we&amp;rsquo;ve applied minor refactorings to clean up unintended leftovers from the 5.0 GA release, e.g. for the reactive codec configurers.&lt;/p&gt;
+&lt;p&gt;This release upgrades Reactor to Bismuth SR3, based on Reactor Core 3.1.1, picking up essential fixes in Reactor Netty. Furthermore, AspectJ 1.8.12 brings some welcome performance improvements to Spring AOP&amp;rsquo;s pointcut expression evaluation at runtime.&lt;/p&gt;
+&lt;p&gt;Last but not least, we&amp;rsquo;ve restructured our documentation as a starting point for further refinements in the 5.0.x line, including a revised &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/"&gt;documentation landing page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;All in all, 5.0.1 is an immediate update for every Spring Framework 5.0 user. Next up is Spring Framework 5.0.2 in mid November, coming just in time for the Spring Boot 2.0 RC1 release!&lt;/p&gt;
+&lt;p&gt;Cheers,&lt;br/&gt;Juergen&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>How to test Spring Cloud Stream applications (Part I)</title>
     <link rel="alternate" href="https://spring.io/blog/2017/10/24/how-to-test-spring-cloud-stream-applications-part-i" />
@@ -803,291 +885,5 @@ Spring IO Platform testing is a critical component, so we are still working on m
 &lt;p&gt;The 1.3 release marks the last iteration on the 1.x series and Boot 1.5.&lt;br/&gt;The next major release-train (Elmhurst) includes a complete overhaul of several core functionalities. The following themes are under consideration: Spring Boot 2.0 compatibility, better content-type resolution, a further simplified error-handling experience, and smarter binding-lifecycle hooks to start, stop and pause consumers. This is actively under development, and we hope to get to a stable release-candidate state by &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform 2017&lt;/a&gt;. We are excited about the work-in-progress!&lt;/p&gt;
 &lt;p&gt;Lastly, a variety of bug-fixes and improvements are part of the release. For more details, please refer to project-level release markers from the &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-starters/releases/tag/vDitmars.RELEASE"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-stream"&gt;Stackoverflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/spring-cloud/spring-cloud-stream"&gt;Gitter&lt;/a&gt;. &lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Vault 1.1.0 GA and 2.0.0 M3 available</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/06/spring-vault-1-1-0-ga-and-2-0-0-m3-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mark Paluch</name>
-    </author>
-    <id>tag:spring.io,2017-10-06:3054</id>
-    <updated>2017-10-06T06:52:33Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community, I&amp;#8217;m pleased to announce the general availability of Spring Vault 1.1.0 and the third milestone of Spring Vault 2.0, available from Maven Cental respective the milestone repository.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Highlights of Spring Vault 1.1 GA release are:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Pull-mode support for AppRole authentication.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Vault login using via AWS IAM.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Support of batch transit operations.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Rotation of generic secrets based on their lease duration.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Introduction of &lt;code&gt;VaultEndpointProvider&lt;/code&gt; to configure endpoints dynamically.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Looking at Spring Vault 2.0 M3 you will find the following enhancements:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://docs.spring.io/spring-vault/docs/2.0.0.M3/reference/html/#vault.repositories"&gt;Vault repositories&lt;/a&gt; via &lt;code&gt;@EnableVaultRepositories&lt;/code&gt; built on top of Spring Data KeyValue.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Support to create and modify Vault&amp;#8217;s policies represented as JSON.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="sect2"&gt;
-&lt;h3 id="what-s-next"&gt;&lt;a class="anchor" href="#what-s-next"&gt;&lt;/a&gt;What¡¯s next?&lt;/h3&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We&amp;#8217;re shifting development towards the 2.x branch line resulting in Spring Vault 1.1 GA to be the last minor release of the 1.x branch. Spring Vault 1.1 will see maintenance releases until reaching its end of life. We will polish up the reactive support in the next Spring Vault 2.0 milestone, that will be actually a release candidate.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For a complete list of changes see the changelogs of &lt;a href="http://docs.spring.io/spring-vault/docs/1.1.0.RELEASE/changelog.txt"&gt;1.1.0 RELEASE&lt;/a&gt; and &lt;a href="http://docs.spring.io/spring-vault/docs/2.0.0.M3/changelog.txt"&gt;2.0.0 M3&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-vault/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-vault"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-vault/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-vault/docs/1.1.0.RELEASE/reference/html/"&gt;Documentation for 1.1.0 RELEASE&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-vault/docs/2.0.0.M3/reference/html/"&gt;Documentation for 2.0.0 M3&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-vault"&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Session Data Geode/GemFire 2.0.0.M2 Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/06/spring-session-data-geode-gemfire-2-0-0-m2-available" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>John Blum</name>
-    </author>
-    <id>tag:spring.io,2017-10-05:3053</id>
-    <updated>2017-10-06T00:43:30Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;Greetings Spring Community!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;I am pleased to announce the second milestone of both &lt;em&gt;Spring Session Data Geode&lt;/em&gt; for Apache Geode and &lt;em&gt;Spring Session Data GemFire&lt;/em&gt; for Pivotal GemFire.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The 2nd milestone release brings many welcome improvements, including:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Upgrades to &lt;em&gt;Spring Framework&lt;/em&gt; 5.0.0.RELEASE.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Upgrades to &lt;em&gt;Spring Data&lt;/em&gt; Kay-RELEASE.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Upgrades to &lt;em&gt;Spring Session&lt;/em&gt; 2.0.0.M4.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Upgrades to &lt;em&gt;Spring Boot&lt;/em&gt; 2.0.0.M4.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Adds support for Pivotal GemFire and Apache Geode &lt;a href="http://geode.apache.org/docs/guide/12/developing/data_serialization/gemfire_pdx_serialization.html"&gt;PDX Serialization&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Introduces a new &lt;a href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.0.0.M2/reference/htmlsingle/#httpsession-gemfire-serialization-framework"&gt;Serialization framework&lt;/a&gt; and adapter for Pivotal GemFire/Apache Geode&amp;#8217;s &lt;em&gt;Data Serialization&lt;/em&gt; and PDX frameworks.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Both artifacts can be downloaded from &lt;em&gt;Spring¡¯s&lt;/em&gt; &lt;code&gt;libs-milestone&lt;/code&gt; Repository using Maven ¡¦&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;  &amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.session&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-session-data-geode&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;2.0.0.M2&amp;lt;/version&amp;gt;
-  &amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Or, using Gradle&amp;#8230;&amp;#8203;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;code&gt;compile 'org.springframework.session:spring-session-data-geode:2.0.0.M2&lt;/code&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;To use &lt;em&gt;Spring Session&lt;/em&gt; with Pivotal GemFire, just switch the artifact from &lt;code&gt;spring-session-data-geode&lt;/code&gt; to &lt;code&gt;spring-session-data-gemfire&lt;/code&gt;.  The version stays the same.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="from-data-serialization-to-pdx"&gt;&lt;a class="anchor" href="#from-data-serialization-to-pdx"&gt;&lt;/a&gt;From Data Serialization to PDX&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Many users have been requesting that &lt;em&gt;Spring Session&lt;/em&gt; for Pivotal GemFire and Apache Geode support &lt;a href="http://geode.apache.org/docs/guide/12/developing/data_serialization/gemfire_pdx_serialization.html"&gt;PDX Serialization&lt;/a&gt;.  This makes sense given that PDX is highly "portable", as explained further in the &lt;a href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.0.0.M2/reference/htmlsingle/#httpsession-gemfire-serialization-background"&gt;&lt;em&gt;Reference Guide&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;One of the key benefits of PDX is that you do not need &lt;em&gt;Spring Session&lt;/em&gt; for Pivotal GemFire or Apache Geode on the classpath of the servers in the cluster to use &lt;em&gt;Spring Session&lt;/em&gt; in &lt;em&gt;Spring Boot&lt;/em&gt;, GemFire/Geode cache client applications using the client/server topology.  In fact, you do not even need to put your application domain object classes stored in an (HTTP) Session, and persisted to GemFire/Geode servers in the cluster, on the servers' classpath, either.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;em&gt;Spring Session Data GemFire/Geode&lt;/em&gt; now uses PDX by default.  However, it is very easy to switch between &lt;em&gt;Data Serialization&lt;/em&gt; and PDX just by switching the bean reference in the &lt;code&gt;@EnableGemFireHttpSession&lt;/code&gt; annotation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;OOTB, &lt;em&gt;Spring Session Data GemFire/Geode&lt;/em&gt; register 2 beans on the user&amp;#8217;s behalf implementing each GemFire/Geode Serialization strategy.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;To explicitly declare that you want your &lt;em&gt;Spring Boot&lt;/em&gt;, &lt;em&gt;Spring Session&lt;/em&gt; enabled application to use PDX Serialization, set the new &lt;code&gt;sessionSerializerBeanName&lt;/code&gt; attribute in the &lt;code&gt;@EnableGemFireHttpSession&lt;/code&gt; annotation to &lt;code&gt;GemFireHttpSessionConfiguration.SESSION_PDX_SERIALIZER_BEAN_NAME&lt;/code&gt;&amp;#8230;&amp;#8203;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
-@EnableGemFireHttpSession(sessionSerializerBeanName =
-    GemFireHttpSessionConfiguration.SESSION_PDX_SERIALIZER_BEAN_NAME
-class Application {
-  ...
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;To use &lt;em&gt;Data Serialization&lt;/em&gt;, and leverage &lt;em&gt;Deltas&lt;/em&gt;, set &lt;code&gt;sessionSerializerBeanName&lt;/code&gt; to &lt;code&gt;GemFireHttpSessionConfiguration.SESSION_DATA_SERIALIZER_BEAN_NAME&lt;/code&gt;&amp;#8230;&amp;#8203;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
-@EnableGemFireHttpSession(sessionSerializerBeanName =
-    GemFireHttpSessionConfiguration.SESSION_DATA_SERIALIZER_BEAN_NAME
-class Application {
-  ...
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;More details on using PDX with &lt;em&gt;Spring Session&lt;/em&gt; and Pivotal GemFire or Apache Geode can be found in the &lt;a href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.0.0.M2/reference/htmlsingle/#httpsession-gemfire-serialization-spring-session"&gt;&lt;em&gt;Reference Guide&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="serialization-framework"&gt;&lt;a class="anchor" href="#serialization-framework"&gt;&lt;/a&gt;Serialization Framework&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;em&gt;Spring Session Data GemFire/Geode&lt;/em&gt; introduces a new &lt;code&gt;SessionSerializer&lt;/code&gt; interface allowing users to customize how a &lt;code&gt;Session&lt;/code&gt; gets serialized to either Pivotal GemFire or Apache Geode.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;interface SessionSerializer&amp;lt;T, IN, OUT&amp;gt; {
-
-  void serializer(T session, OUT out);
-
-  T deserialize(IN in);
-
-  boolean canSerialize(Class&amp;lt;?&amp;gt; type);
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Users can provide an custom implementation of this interface, register it as a bean in the &lt;em&gt;Spring&lt;/em&gt; context, set the &lt;code&gt;sessionSerializerBeanName&lt;/code&gt; attribute to the name of the custom &lt;code&gt;SessionSerializer&lt;/code&gt; bean definition, and &lt;em&gt;Spring Session Data GemFire/Geode&lt;/em&gt; will adapt and register this bean as a &lt;code&gt;PdxSerializer&lt;/code&gt; in Pivotal GemFire or Apache Geode.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For instance&amp;#8230;&amp;#8203;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
-@EnableGemFireHttpSession(sessionSerializerBeanName = "customSerializer")
-class Application {
-
-  @Bean
-  SessionSerializer&amp;lt;Session, PdxReader, PdxWriter&amp;gt; customSerializer() {
-    // return an instance of a custom `SessionSerializer` implementation
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This is just the tip of the iceberg.  More details can be found in the &lt;em&gt;Reference Guide&lt;/em&gt; on the new &lt;a href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.0.0.M2/reference/htmlsingle/#httpsession-gemfire-serialization-framework-serializer-implementation"&gt;Serialization framework&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="feedback"&gt;&lt;a class="anchor" href="#feedback"&gt;&lt;/a&gt;Feedback&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;As always, any feedback on this release is highly appreciated.  Users can reach out on &lt;a href="https://stackoverflow.com/questions/tagged/spring-session"&gt;StackOverflow&lt;/a&gt;, file &lt;a href="https://github.com/spring-projects/spring-session-data-geode/issues"&gt;GitHub Issues&lt;/a&gt;, or share your comments below.  You can also reach me on Twitter, &lt;a href="https://twitter.com/john_blum"&gt;@john_blum&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="springone-platform-2017"&gt;&lt;a class="anchor" href="#springone-platform-2017"&gt;&lt;/a&gt;SpringOne Platform 2017&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Also make sure to checkout the lineup this year at &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform 2017&lt;/a&gt;.
-This is going to be a year to remember with so much great content&amp;#8230;&amp;#8203; &lt;em&gt;Spring Framework&lt;/em&gt; 5 with early support of JDK 9, &lt;em&gt;Reactive&lt;/em&gt; and &lt;em&gt;Functional&lt;/em&gt; programming, integration with JUnit 5 and Kotlin.  So much cool stuff to learn!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring AMQP 2.0.0 RELEASE Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/05/spring-amqp-2-0-0-release-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Artem Bilan</name>
-    </author>
-    <id>tag:spring.io,2017-10-04:3052</id>
-    <updated>2017-10-05T13:10:00Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;I am pleased to announce that the &lt;code&gt;2.0.0.RELEASE&lt;/code&gt; of Spring AMQP is now available in the &lt;a href="https://repo.spring.io/release/"&gt;Spring release repository&lt;/a&gt; and Maven Central.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;First of all thanks to all community members for any feedback and contributions to make this new instalment of Spring for AMQP and RabbitMQ support project!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Some highlights what we have after &lt;a href="https://github.com/spring-projects/spring-amqp/commit/2ee8c34a8cea2c7f6706943d8092e7d9996ba4fa"&gt;a year and a couple months&lt;/a&gt; of amazing team work:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Full Java 8 and Spring Framework &lt;code&gt;5.0&lt;/code&gt; support;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;New &lt;code&gt;spring-rabbit-junit&lt;/code&gt; artifact with some useful testing utilities including &lt;code&gt;BrokerRunning&lt;/code&gt; JUnit &lt;code&gt;@Rule&lt;/code&gt;;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The &lt;code&gt;amqp-client&lt;/code&gt; library of version &lt;code&gt;5.0&lt;/code&gt;;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;A &lt;code&gt;DirectMessageListenerContainer&lt;/code&gt; to allow to consume messages directly on the client thread instead of queue-based logic in the &lt;code&gt;SimpleMessageListenerContainer&lt;/code&gt;;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;A &lt;code&gt;ConnectionNameStrategy&lt;/code&gt; option for the &lt;code&gt;ConnectionFactory&lt;/code&gt; to name target Broker connections for possible diagnostics;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;new &lt;code&gt;RabbitOperations.invoke()&lt;/code&gt; for batch of template operation on the dedicated, thread-bound channel;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;Encoder&lt;/code&gt; support for the Logback &lt;code&gt;AmqpAppender&lt;/code&gt;;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Removed deprecated API since previous version;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;And, of course, a ton of bug fixes!&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For a complete list of changes in &lt;code&gt;2.0&lt;/code&gt;, see &lt;a href="http://docs.spring.io/spring-amqp/docs/2.0.0.RELEASE/reference/html/_introduction.html#_changes_in_2_0_since_1_7"&gt;What&amp;#8217;s New in the reference manual&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Also, make sure you&amp;#8217;re not going to miss this year&amp;#8217;s &lt;a href="https://springoneplatform.io"&gt;SpringOne Platform&lt;/a&gt; conference that&amp;#8217;s packed with many Spring talks, opportunities to learn about the latest and greatest features and of course some previews about what we&amp;#8217;re planning to do next. Discounted pricing is running out soon!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-amqp/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/AMQP"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-amqp/blob/master/CONTRIBUTING.adoc"&gt;Contributing&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-amqp"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-amqp"&gt;Chat&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>
