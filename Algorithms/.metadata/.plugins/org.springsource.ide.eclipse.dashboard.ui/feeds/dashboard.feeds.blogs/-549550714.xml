@@ -5,7 +5,244 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-10-25T01:40:00Z</updated>
+  <updated>2017-10-25T19:09:37Z</updated>
+  <entry>
+    <title>Spring Cloud Edgware.RC1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/10/25/spring-cloud-edgware-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Spencer Gibb</name>
+    </author>
+    <id>tag:spring.io,2017-10-24:3072</id>
+    <updated>2017-10-25T19:09:37Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I am pleased to announce that the Release Candidate 1 (RC1) of the &lt;a href="https://cloud.spring.io"&gt;Spring Cloud Edgware&lt;/a&gt; Release Train is available today. The release can be found in &lt;a href="https://repo.spring.io/milestone/"&gt;Spring Milestone&lt;/a&gt; repository. You can check out the Edgware &lt;a href="https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Release-Notes"&gt;release notes for more information&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#notable-changes-in-the-edgware-release-train" class="anchor" name="notable-changes-in-the-edgware-release-train"&gt;&lt;/a&gt;Notable Changes in the Edgware Release Train&lt;/h2&gt;&lt;h3&gt;&lt;a href="#renamed-starters" class="anchor" name="renamed-starters"&gt;&lt;/a&gt;Renamed starters&lt;/h3&gt;
+&lt;p&gt;A number of starters did not follow normal Spring Cloud naming conventions. In Edgware, use of the deprecated starter will log a warning with the name of the new starter to use in its place. Below is a table of the deprecated starters and their replacements&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Deprecated &lt;/th&gt;
+      &lt;th&gt;Edgware Starter &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-archaius &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-archaius &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-atlas &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-atlas &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-eureka &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-eureka-client &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-eureka-server &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-eureka-server &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-feign &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-openfeign &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-hystrix &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-hystrix &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-hystrix-dashboard &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-hystrix-dashboard &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-ribbon &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-ribbon &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-spectator &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-spectator &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-turbine &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-turbine &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-turbine-amqp &lt;/td&gt;
+      &lt;td&gt;DELETED &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-turbine-stream &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-turbine-stream &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spring-cloud-starter-zuul &lt;/td&gt;
+      &lt;td&gt;spring-cloud-starter-netflix-zuul &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;&lt;h3&gt;&lt;a href="#spring-cloud-bus" class="anchor" name="spring-cloud-bus"&gt;&lt;/a&gt;Spring Cloud Bus&lt;/h3&gt;
+&lt;p&gt;Updates to allow Bus clients to implement remote events in independent packages.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-task" class="anchor" name="spring-cloud-task"&gt;&lt;/a&gt;Spring Cloud Task&lt;/h3&gt;
+&lt;p&gt;See the &lt;a href="https://spring.io/blog/2017/09/25/spring-cloud-task-1-2-2-release-is-now-available"&gt;release announcement&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-netflix" class="anchor" name="spring-cloud-netflix"&gt;&lt;/a&gt;Spring Cloud Netflix&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;@EnableDiscoveryClient&lt;/code&gt; is now optional. Including &lt;code&gt;spring-cloud-starter-netflix&lt;/code&gt; will automatically assume the application should register and be a discovery client. To disable auto-registration set &lt;code&gt;spring.cloud.service-registry.auto-registration.enabled=false&lt;/code&gt;. Hystrix and Eureka Server are now tested via Spring Cloud Contract.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-consul" class="anchor" name="spring-cloud-consul"&gt;&lt;/a&gt;Spring Cloud Consul&lt;/h3&gt;
+&lt;p&gt;Consul DiscoveryClient now supports a datacenter parameter. HTTPS checks with self-signed certificates are now supported.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-contract" class="anchor" name="spring-cloud-contract"&gt;&lt;/a&gt;Spring Cloud Contract&lt;/h3&gt;
+&lt;p&gt;Wiremock has been updated and custom extensions are now supported. URL segments can now be referenced in body response verification.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-sleuth" class="anchor" name="spring-cloud-sleuth"&gt;&lt;/a&gt;Spring Cloud Sleuth&lt;/h3&gt;
+&lt;p&gt;Zipkin 2 support has been added along with numerous minor enhancements.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-stream" class="anchor" name="spring-cloud-stream"&gt;&lt;/a&gt;Spring Cloud Stream&lt;/h3&gt;
+&lt;p&gt;See the &lt;a href="https://spring.io/blog/2017/10/06/spring-cloud-stream-1-3-goes-ga"&gt;release annoucement&lt;/a&gt;;&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-config" class="anchor" name="spring-cloud-config"&gt;&lt;/a&gt;Spring Cloud Config&lt;/h3&gt;
+&lt;p&gt;A new JDBC &lt;code&gt;EnvironmentRepository&lt;/code&gt; was created.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-zookeeper" class="anchor" name="spring-cloud-zookeeper"&gt;&lt;/a&gt;Spring Cloud Zookeeper&lt;/h3&gt;
+&lt;p&gt;The ability to set the instance ID was added.&lt;/p&gt;&lt;h3&gt;&lt;a href="#spring-cloud-commons" class="anchor" name="spring-cloud-commons"&gt;&lt;/a&gt;Spring Cloud Commons&lt;/h3&gt;
+&lt;p&gt;As mentioned above, &lt;code&gt;@EnableDiscoveryClient&lt;/code&gt; is now optional.&lt;/p&gt;
+&lt;p&gt;The following modules were updated as part of Edgware.RC1:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Module &lt;/th&gt;
+      &lt;th&gt;Version &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Bus &lt;/td&gt;
+      &lt;td&gt;1.3.2.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Task &lt;/td&gt;
+      &lt;td&gt;1.2.2.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Netflix &lt;/td&gt;
+      &lt;td&gt;1.4.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Consul &lt;/td&gt;
+      &lt;td&gt;1.3.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Contract &lt;/td&gt;
+      &lt;td&gt;1.2.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Sleuth &lt;/td&gt;
+      &lt;td&gt;1.3.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Stream &lt;/td&gt;
+      &lt;td&gt;Ditmars.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Dependencies &lt;/td&gt;
+      &lt;td&gt;1.3.5.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Aws &lt;/td&gt;
+      &lt;td&gt;1.2.2.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Config &lt;/td&gt;
+      &lt;td&gt;1.4.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Boot &lt;/td&gt;
+      &lt;td&gt;1.5.6.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Zookeeper &lt;/td&gt;
+      &lt;td&gt;1.2.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Gateway &lt;/td&gt;
+      &lt;td&gt;1.0.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Cloudfoundry &lt;/td&gt;
+      &lt;td&gt;1.1.0.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Commons &lt;/td&gt;
+      &lt;td&gt;1.3.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Boot Dependencies &lt;/td&gt;
+      &lt;td&gt;1.5.6.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Build &lt;/td&gt;
+      &lt;td&gt;1.3.5.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Boot Starter &lt;/td&gt;
+      &lt;td&gt;1.5.6.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Security &lt;/td&gt;
+      &lt;td&gt;1.2.1.RELEASE &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Spring Cloud Vault &lt;/td&gt;
+      &lt;td&gt;1.1.0.RC1 &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;As always, we welcome feedback on &lt;a href="https://github.com/spring-cloud/"&gt;GitHub&lt;/a&gt;, on &lt;a href="https://gitter.im/spring-cloud/spring-cloud"&gt;Gitter&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/SpringCloud"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To get started with Maven with a BOM (dependency management only):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;&amp;lt;repositories&amp;gt;&#xD;
+    &amp;lt;repository&amp;gt;&#xD;
+        &amp;lt;id&amp;gt;spring-milestones&amp;lt;/id&amp;gt;&#xD;
+        &amp;lt;name&amp;gt;Spring Milestones&amp;lt;/name&amp;gt;&#xD;
+        &amp;lt;url&amp;gt;http://repo.spring.io/milestone&amp;lt;/url&amp;gt;&#xD;
+        &amp;lt;snapshots&amp;gt;&#xD;
+            &amp;lt;enabled&amp;gt;false&amp;lt;/enabled&amp;gt;&#xD;
+        &amp;lt;/snapshots&amp;gt;&#xD;
+    &amp;lt;/repository&amp;gt;&#xD;
+&amp;lt;/repositories&amp;gt;&#xD;
+&amp;lt;dependencyManagement&amp;gt;&#xD;
+    &amp;lt;dependencies&amp;gt;&#xD;
+        &amp;lt;dependency&amp;gt;&#xD;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+            &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt;&#xD;
+            &amp;lt;version&amp;gt;Edgware.RC1&amp;lt;/version&amp;gt;&#xD;
+            &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&#xD;
+            &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;&#xD;
+        &amp;lt;/dependency&amp;gt;&#xD;
+    &amp;lt;/dependencies&amp;gt;&#xD;
+&amp;lt;/dependencyManagement&amp;gt;&#xD;
+&amp;lt;dependencies&amp;gt;&#xD;
+    &amp;lt;dependency&amp;gt;&#xD;
+        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+        &amp;lt;artifactId&amp;gt;spring-cloud-starter-config&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;/dependency&amp;gt;&#xD;
+    &amp;lt;dependency&amp;gt;&#xD;
+        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;&#xD;
+        &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;/dependency&amp;gt;&#xD;
+    ...&#xD;
+&amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or with Gradle:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;buildscript {&#xD;
+    dependencies {&#xD;
+        classpath &amp;quot;io.spring.gradle:dependency-management-plugin:1.0.2.RELEASE&amp;quot;&#xD;
+    }&#xD;
+}&#xD;
+&#xD;
+repositories {&#xD;
+    maven {&#xD;
+        url &amp;#39;http://repo.spring.io/milestone&amp;#39;&#xD;
+    }&#xD;
+}&#xD;
+&#xD;
+apply plugin: &amp;quot;io.spring.dependency-management&amp;quot;&#xD;
+&#xD;
+dependencyManagement {&#xD;
+    imports {&#xD;
+        mavenBom &amp;#39;org.springframework.cloud:spring-cloud-dependencies:Edgware.RC1&amp;#39;&#xD;
+    }&#xD;
+}&#xD;
+&#xD;
+dependencies {&#xD;
+    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-config&amp;#39;&#xD;
+    compile &amp;#39;org.springframework.cloud:spring-cloud-starter-netflix-eureka-client&amp;#39;&#xD;
+    ...&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+  </entry>
   <entry>
     <title>Spring Tips:  Spring Cloud Contract (HTTP)</title>
     <link rel="alternate" href="https://spring.io/blog/2017/10/25/spring-tips-spring-cloud-contract-http" />
@@ -857,33 +1094,5 @@ Spring IO Platform testing is a critical component, so we are still working on m
     <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that Spring Framework &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10000&amp;version=16317"&gt;4.3.12&lt;/a&gt; &lt;a href="http://projects.spring.io/spring-framework"&gt;is available now&lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;This maintenance release is the base for the upcoming Spring Boot 1.5.8 maintenance release and includes 17 fixes and selected improvements.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/SPR"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/4.3.12.RELEASE/spring-framework-reference/htmlsingle/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Stream 1.3 goes GA</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/10/06/spring-cloud-stream-1-3-goes-ga" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Vinicius Carvalho</name>
-    </author>
-    <id>tag:spring.io,2017-10-06:3055</id>
-    <updated>2017-10-06T17:39:11Z</updated>
-    <content type="html">&lt;p&gt;We are pleased to announce the general availability release of the Spring Cloud Stream Ditmars release train.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://docs.spring.io/spring-cloud-stream/docs/Ditmars.RELEASE/reference/htmlsingle/"&gt;Spring Cloud Stream Ditmars.RELEASE&lt;/a&gt; is available for use in the &lt;a href="http://repo.spring.io/libs-release"&gt;Spring Release&lt;/a&gt; repository. The &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-starters/releases/tag/vDitmars.RELEASE"&gt;release notes&lt;/a&gt; include relevant information about version compatibility with Spring Boot, Spring Cloud, Spring AMQP, and Spring for Apache Kafka.&lt;/p&gt;
-&lt;p&gt;The following sections list new features included in this release.&lt;/p&gt;&lt;h1&gt;&lt;a href="#apache-kafka" class="anchor" name="apache-kafka"&gt;&lt;/a&gt;Apache Kafka&lt;/h1&gt;&lt;h2&gt;&lt;a href="#kafka-streams-for-apache-kafka" class="anchor" name="kafka-streams-for-apache-kafka"&gt;&lt;/a&gt;Kafka Streams for Apache Kafka&lt;/h2&gt;
-&lt;p&gt;Spring Cloud Stream automates discovery and auto-configuration, and it provides a simple approach to facilitating the interactivity between application business-logic and Apache Kafka. With most of the standard message broker-specific settings exposed as Spring Boot properties, it is easy to use and override to adapt to business needs.&lt;/p&gt;
-&lt;p&gt;Further enhancing the Apache Kafka integration, the Kafka Streams integration has been promoted to be a top-level construct in Apache Kafka¡¯s binder implementation. &lt;/p&gt;
-&lt;p&gt;Thanks to having the Kafka Streams API baked into the framework, both simple and more complex data processing functions can be built as Spring Boot applications. All you need is the &lt;code&gt;spring-cloud-stream-binder-kstream&lt;/code&gt; dependency in the classpath - it&amp;rsquo;s that easy to get started. This integration includes a partition-level local state to further simplify solving for event-driven processors, data aggregators, continuous-queries, and transformations.&lt;/p&gt;
-&lt;p&gt;The following screencast shows it in action.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Boj3FrQ9pkU?rel=0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;h2&gt;&lt;a href="#apache-kafka-0-11" class="anchor" name="apache-kafka-0-11"&gt;&lt;/a&gt;Apache Kafka 0.11&lt;/h2&gt;
-&lt;p&gt;By popular demand from customers and the community, we have added support for Apache Kafka 0.11. Though it is supported today, we haven&amp;rsquo;t switched to it as the default in this release. 0.11 will be a default in the upcoming 2.0.0.RELEASE. For that reason, for early adopters who are interested in upgrading to this release, we have released it as a &lt;a href="https://search.maven.org/#search%7Cga%7C1%7Cspring-cloud-stream-binder-kafka11"&gt;standalone artifact&lt;/a&gt;. &lt;/p&gt;&lt;h2&gt;&lt;a href="#consumer-lag-metrics" class="anchor" name="consumer-lag-metrics"&gt;&lt;/a&gt;Consumer Lag Metrics&lt;/h2&gt;
-&lt;p&gt;With &lt;a href="https://github.com/hekonsek"&gt;@hekonsek&lt;/a&gt;&amp;rsquo;s contribution, there is a new metrics addition that can help with consumer-lag forensics. This is helpful for situations involving whether or not to auto-scale the consumer depending on the dynamic traffic patterns.&lt;/p&gt;&lt;h1&gt;&lt;a href="#rabbitmq" class="anchor" name="rabbitmq"&gt;&lt;/a&gt;RabbitMQ&lt;/h1&gt;&lt;h2&gt;&lt;a href="#lazy-queues" class="anchor" name="lazy-queues"&gt;&lt;/a&gt;Lazy Queues&lt;/h2&gt;
-&lt;p&gt;If reducing I/O footprint is a requirement, there is now support for &amp;ldquo;Lazy Queues&amp;rdquo; in the &lt;a href="https://docs.spring.io/spring-cloud-stream/docs/Ditmars.BUILD-SNAPSHOT/reference/htmlsingle/#_rabbit_producer_properties"&gt;RabbitMQ binder implementation&lt;/a&gt;. Likewise, DLQ support for &amp;ldquo;Lazy Queues&amp;rdquo; is also available.&lt;/p&gt;&lt;h2&gt;&lt;a href="#resilient-retries" class="anchor" name="resilient-retries"&gt;&lt;/a&gt;Resilient Retries&lt;/h2&gt;
-&lt;p&gt;A typical scale-out setup of RabbitMQ involves a collection of RabbitMQ nodes connected with a load-balancer in front. Upon a node failure, to embrace it and recover, there is now a fix in place for eventual recovery with the help of retries.&lt;/p&gt;&lt;h2&gt;&lt;a href="#distinct-connection-factories" class="anchor" name="distinct-connection-factories"&gt;&lt;/a&gt;Distinct Connection Factories&lt;/h2&gt;
-&lt;p&gt;To avoid deadlocks at the consumers when the shared connection is blocked by a busy producer, this release adds support for separate connection factories for non-transactional producers. &lt;/p&gt;&lt;h1&gt;&lt;a href="#amazon-kinesis-incubating" class="anchor" name="amazon-kinesis-incubating"&gt;&lt;/a&gt;Amazon Kinesis (incubating)&lt;/h1&gt;
-&lt;p&gt;The community-driven &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-binder-aws-kinesis"&gt;binder implementation for Amazon Kinesis&lt;/a&gt; has had significant progress; however, it couldn&amp;rsquo;t make it to the Ditmars release-train given the upstream dependencies from the Spring Cloud ecosystem of projects. We hope to continue the momentum and graduate the kinesis-binder in the upcoming 2.0.0 milestones. We would like to thank our community champions Peter Oates (&lt;a href="https://github.com/oatesp"&gt;@oatesp&lt;/a&gt;) and Jacob Severson (&lt;a href="https://github.com/JacobASeverson"&gt;@JacobASeverson&lt;/a&gt;) for their valuable time and quality contributions. &lt;/p&gt;&lt;h1&gt;&lt;a href="#error-handling" class="anchor" name="error-handling"&gt;&lt;/a&gt;Error Handling&lt;/h1&gt;
-&lt;p&gt;Ditmars release-train revisits the error-handling support in the core framework. We have simplified the producer- and consumer-level exception handling. For instance, there is an error channel (&lt;code&gt;&amp;lt;destination&amp;gt;.errors&lt;/code&gt;) to receive a copy of messages that fail, and the global Spring Integration &lt;code&gt;errorChannel&lt;/code&gt; remains available. The creation, orchestration, and global representation of error channels are in this release train. &lt;/p&gt;&lt;h1&gt;&lt;a href="#spring-cloud-stream-2-0" class="anchor" name="spring-cloud-stream-2-0"&gt;&lt;/a&gt;Spring Cloud Stream 2.0&lt;/h1&gt;
-&lt;p&gt;The 1.3 release marks the last iteration on the 1.x series and Boot 1.5.&lt;br/&gt;The next major release-train (Elmhurst) includes a complete overhaul of several core functionalities. The following themes are under consideration: Spring Boot 2.0 compatibility, better content-type resolution, a further simplified error-handling experience, and smarter binding-lifecycle hooks to start, stop and pause consumers. This is actively under development, and we hope to get to a stable release-candidate state by &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform 2017&lt;/a&gt;. We are excited about the work-in-progress!&lt;/p&gt;
-&lt;p&gt;Lastly, a variety of bug-fixes and improvements are part of the release. For more details, please refer to project-level release markers from the &lt;a href="https://github.com/spring-cloud/spring-cloud-stream-starters/releases/tag/vDitmars.RELEASE"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As always, we welcome feedback and contributions, so please reach out to us on &lt;a href="https://stackoverflow.com/questions/tagged/spring-cloud-stream"&gt;Stackoverflow&lt;/a&gt; or &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/"&gt;GitHub&lt;/a&gt; or via &lt;a href="https://gitter.im/spring-cloud/spring-cloud-stream"&gt;Gitter&lt;/a&gt;. &lt;/p&gt;</content>
   </entry>
 </feed>
