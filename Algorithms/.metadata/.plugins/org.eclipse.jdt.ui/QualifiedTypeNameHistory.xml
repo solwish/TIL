@@ -33,7 +33,6 @@
 <fullyQualifiedTypeName name="swExpert.SquareRoom.SquareXY"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Queue"/>
-<fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="swExpert.customer"/>
 <fullyQualifiedTypeName name="swExpert.MicorXY"/>
 <fullyQualifiedTypeName name="swExpert.MicroXY"/>
@@ -45,7 +44,11 @@
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.util.Stack"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="bro.T02.Zxy"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="bro.T03"/>
+<fullyQualifiedTypeName name="bro.T03.Zsquare"/>
 </qualifiedTypeNameHistroy>
