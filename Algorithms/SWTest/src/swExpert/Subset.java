@@ -13,7 +13,7 @@ public class Subset {
 					if (include[i])
 						System.out.print(data[i] + " ");
 				System.out.println();
-//				cnt++;
+				cnt++;
 				return;
 			}
 		}
