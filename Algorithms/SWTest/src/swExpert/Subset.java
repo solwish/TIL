@@ -4,6 +4,7 @@ public class Subset {
 	static char data[] = { 'a', 'b', 'c', 'd', 'e', 'f' };
 	static int n = data.length;
 	static boolean[] include = new boolean[n];
+	static int cnt;
 
 	static void powerSet(int k) {
 		if (k == n) {
@@ -12,6 +13,7 @@ public class Subset {
 					if (include[i])
 						System.out.print(data[i] + " ");
 				System.out.println();
+//				cnt++;
 				return;
 			}
 		}
@@ -22,7 +24,9 @@ public class Subset {
 	}
 
 	public static void main(String[] args) {
+		cnt = 0;
 		powerSet(0);
+		System.out.println(cnt);
 	}
 
 }
