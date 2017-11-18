@@ -16,25 +16,36 @@ public class NumericalPlay {
 			double a = Integer.parseInt(s.nextToken());
 			double b = Integer.parseInt(s.nextToken());
 			boolean hasAns = false;
-			double x = 0, y = 0, tempx;
-//			if (a > b) {
-//				tempx = a;
-//				a = b;
-//				b = tempx;
-//			}
+			double x = 0, y = 0;
+			int i = 1;
 
-			for (x = 1; x <= b; x++) {
+			while (!hasAns && i < 100) {
+				x = i;
 				y = (1 - a * x) / b;
-				if (y % 1 == 0) {
+				if (y % 1 == 0)
 					hasAns = true;
-					break;
+
+				if (!hasAns) {
+					x = -i;
+					y = (1 - a * x) / b;
+					if (y % 1 == 0)
+						hasAns = true;
 				}
-				tempx = (1 - b * y) / x;
-				if (y % 1 == 0) {
-					hasAns = true;
-					x = tempx;
-					break;
+
+				if (!hasAns) {
+					y = -i;
+					x = (1 - b * y) / a;
+					if (x % 1 == 0)
+						hasAns = true;
 				}
+
+				if (!hasAns) {
+					y = i;
+					x = (1 - b * y) / a;
+					if (x % 1 == 0)
+						hasAns = true;
+				}
+				i++;
 			}
 
 			if (hasAns)
