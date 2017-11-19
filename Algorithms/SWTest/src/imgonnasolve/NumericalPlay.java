@@ -15,39 +15,17 @@ public class NumericalPlay {
 			s = new StringTokenizer(br.readLine());
 			double a = Integer.parseInt(s.nextToken());
 			double b = Integer.parseInt(s.nextToken());
-			boolean hasAns = false;
 			double x = 0, y = 0;
-			int i = 1;
+			boolean hasAns = false;
 
-			while (!hasAns && i < 100) {
+			for (int i = 0; i < 1000000; i++) {
 				x = i;
 				y = (1 - a * x) / b;
-				if (y % 1 == 0)
+				if (y % 1 == 0) {
 					hasAns = true;
-
-				if (!hasAns) {
-					x = -i;
-					y = (1 - a * x) / b;
-					if (y % 1 == 0)
-						hasAns = true;
+					break;
 				}
-
-				if (!hasAns) {
-					y = -i;
-					x = (1 - b * y) / a;
-					if (x % 1 == 0)
-						hasAns = true;
-				}
-
-				if (!hasAns) {
-					y = i;
-					x = (1 - b * y) / a;
-					if (x % 1 == 0)
-						hasAns = true;
-				}
-				i++;
 			}
-
 			if (hasAns)
 				System.out.println("#" + t_case + " " + (int) x + " " + (int) y);
 			else
