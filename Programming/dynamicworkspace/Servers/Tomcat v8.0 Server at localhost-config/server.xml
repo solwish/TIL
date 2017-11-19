@@ -129,7 +129,7 @@
       <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxWait="-1" name="jdbc/myoracle" password="1231" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="edu"/>
       </Context>
       
-      <Context docBase="web-submit-js" path="/web-submit-js" reloadable="true" source="org.eclipse.jst.jee.server:web-submit-js"/></Host>
+      <Context docBase="web-submit-js" path="/web-submit-js" reloadable="true" source="org.eclipse.jst.jee.server:web-submit-js"/><Context docBase="web-zreview171119" path="/web-zreview171119" reloadable="true" source="org.eclipse.jst.jee.server:web-zreview171119"/></Host>
     </Engine>
   </Service>
 </Server>
