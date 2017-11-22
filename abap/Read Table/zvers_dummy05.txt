@@ -1,0 +1,56 @@
+*&---------------------------------------------------------------------*
+*& Report ZVERS_DUMMY05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT zvers_dummy05.
+
+DATA: BEGIN OF gt_data OCCURS 0,
+        matnr TYPE mara-matnr,
+        maktx TYPE makt-maktx,
+      END OF gt_data.
+
+DATA: gt_makt TYPE TABLE OF makt WITH HEADER LINE.
+
+DATA : gt_temp TYPE mara-matnr.
+
+*-- 임의데이터 2개 입력
+gt_data-matnr = 'COFMK-100'.
+APPEND gt_data.
+
+gt_data-matnr = 'COMP105'.
+APPEND gt_data.
+
+IF gt_data[] IS NOT INITIAL.
+
+  SORT gt_data BY matnr.
+  DELETE ADJACENT DUPLICATES FROM gt_data COMPARING ALL FIELDS.
+*  comparing 조건으로 자재번호가 같기만 하면 맨 위에것만 남고 중복되는 튜플은 다 지워짐
+
+  SELECT matnr maktx  "자재번호 자재명
+    INTO CORRESPONDING FIELDS OF TABLE gt_makt
+    FROM makt
+    FOR ALL ENTRIES IN gt_data
+    WHERE matnr = gt_data-matnr
+      AND spras = 3.      "KO 직접 넣어주면 안되네
+
+ENDIF.
+
+SORT gt_makt BY matnr.
+LOOP AT gt_data.
+  READ TABLE gt_makt WITH KEY matnr = gt_data-matnr BINARY SEARCH.
+  IF sy-subrc EQ 0.       "지금 경우는 상관이 없지만 gt_data와 gt_makt의 둘 중 하나만
+                          "데이터가 있는 경우가 있을 수 있기 때문에 꼭 넣는 습관.
+    gt_data-maktx = gt_makt-maktx.
+    MODIFY gt_data TRANSPORTING maktx.
+    WRITE:gt_data-matnr, gt_data-maktx, /.
+  ENDIF.
+ENDLOOP.
+
+*BREAK-POINT.
+*  내가 가지고 있는 범위 내의 데이터로 테이블의 데이터를 조회할 때. 속도차이가 많이 남.
+*  join 못 쓸때 씀. 위의 경우는 makt의 자료가 많음. 조인 써줄경우 시간 업청 걸림.
+*  GT_DATA에 현재 데이터가 있는 상태임.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
