@@ -1,0 +1,23 @@
+*&---------------------------------------------------------------------*
+*& Include ZRFC_ALV_05_TOP                                   Report ZRFC_ALV_05
+*&
+*&---------------------------------------------------------------------*
+REPORT zrfc_alv_05 MESSAGE-ID oo.
+
+TABLES: mkpf.
+
+DATA : gt_data TYPE TABLE OF zppg0150t WITH HEADER LINE.
+
+DATA : go_container TYPE REF TO cl_gui_docking_container,
+       go_grid      TYPE REF TO cl_gui_alv_grid,
+       gs_layout    TYPE lvc_s_layo,
+       gs_variant   TYPE disvariant,
+       gs_fcat      TYPE lvc_s_fcat,
+       gt_fcat      TYPE lvc_t_fcat,
+       gs_scol      TYPE lvc_s_scol,
+       gs_sort      TYPE lvc_s_sort,
+       gt_sort      TYPE lvc_t_sort,
+       gs_stable    TYPE lvc_s_stbl.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750

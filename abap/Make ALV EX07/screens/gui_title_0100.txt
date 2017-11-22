@@ -1,0 +1,1 @@
+Reading RTC into ALV table

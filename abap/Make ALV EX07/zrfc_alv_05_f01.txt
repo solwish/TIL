@@ -1,0 +1,53 @@
+*&---------------------------------------------------------------------*
+*&  Include           ZRFC_ALV_05_F01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  GET_DATA
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM get_data .
+
+  SELECT *
+    INTO CORRESPONDING FIELDS OF TABLE gt_data
+    FROM zppg0150t
+    WHERE werks EQ p_werks
+      AND budat IN s_budat.
+
+  IF gt_data[] IS INITIAL.
+    MESSAGE s000 WITH 'Data not found'.
+    LEAVE LIST-PROCESSING.
+  ENDIF.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  SET_FCAT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_0021   text
+*      -->P_0022   text
+*----------------------------------------------------------------------*
+FORM set_fcat  USING    p_key
+                        p_field.
+
+  gs_fcat-key       = p_key.
+  gs_fcat-fieldname = p_field.
+  gs_fcat-coltext   = p_field.
+  gs_fcat-ref_table = 'ZPPG0150T'.
+  gs_fcat-ref_field = p_field.
+
+*  CASE p_field.
+*    WHEN 'DMBTR'.
+*      gs_fcat-cfieldname = 'WAERS'.
+*  ENDCASE.
+
+  APPEND gs_fcat TO gt_fcat.
+  CLEAR gs_fcat.
+
+ENDFORM.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
