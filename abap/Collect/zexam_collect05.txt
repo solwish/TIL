@@ -1,0 +1,41 @@
+*&---------------------------------------------------------------------*
+*& Report ZEXAM_COLLECT05
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT zexam_collect05.
+
+DATA : BEGIN OF gt_itab OCCURS 0,
+         ryear TYPE faglflext-ryear,
+         racct TYPE faglflext-racct,
+         hsl01 TYPE faglflext-hsl01,
+       END OF gt_itab.
+
+DATA: BEGIN OF gs_temp.
+    INCLUDE STRUCTURE gt_itab.
+DATA: cnt TYPE i,
+      END OF gs_temp.
+
+DATA: gt_sum LIKE TABLE OF gs_temp.
+
+SELECT ryear racct hsl01
+INTO CORRESPONDING FIELDS OF TABLE gt_itab
+FROM faglflext
+WHERE ryear >= '2014'
+  AND racct = '0000100000'.
+
+gs_temp-cnt = 1.
+LOOP AT gt_itab.
+  MOVE-CORRESPONDING gt_itab TO gs_temp.
+  COLLECT gs_temp INTO gt_sum.
+ENDLOOP.
+
+LOOP AT gt_sum INTO gs_temp.
+  WRITE :/ gs_temp-ryear,
+           gs_temp-racct,
+           gs_temp-hsl01,
+           gs_temp-cnt.
+ENDLOOP.
+
+----------------------------------------------------------------------------------
+Extracted by Direct Download Enterprise version 1.3.1 - E.G.Mellodew. 1998-2005 UK. Sap Release 750
