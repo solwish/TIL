@@ -1,0 +1,20 @@
+<html>
+<head>
+  <meta charset = "utf-8">
+  <title>Asked</title>
+</head>
+<body>
+  <h1>Asked!!</h1>
+  <form action="/ask">
+    <select name = "id">
+      <option value="anonym">익명</option>
+      <option value="my_id">실명</option>
+    </select>
+    <input type="text" name="question" placeholder="질문을 입력해 주세요">
+    <input type="submit">
+  </form>
+  <% @list.each do |e| %>
+    <p><%= e %></p>
+    <% end %>
+</body>
+</html>
