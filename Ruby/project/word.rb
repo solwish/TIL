@@ -26,6 +26,6 @@ wf.each do |k, v|
 end
 
 print "최댓값은 ", max, "\n"
-puts wf.values.max
+puts "함수로 최댓값 찾기 #{wf.values.max}"
 # puts wf.methods
 # hash가 쓸 수 있는 모든 메서드를 출력해줌.
