@@ -1,0 +1,9 @@
+<h1>관리지페이지</h1>
+<!-- @users < ["1번 유저정보 ", "2번", "3번"] -->
+<% @users.each do |user| %>
+<!-- user(email, password, id, created_at) -->
+  <%= user.id %>
+  <%= user.email %>
+  <%= user.password %>
+  <%= user.created_at %>
+<% end %>
