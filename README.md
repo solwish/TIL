@@ -2,9 +2,8 @@
 
 ##### Today I Learned Link
 
-- [Ruby](https://github.com/solwish/TIL/tree/one/Ruby)
+- [Ruby](https://github.com/solwish/TIL/tree/one/Ruby)<br>
 
-  <br>
 
 
 
