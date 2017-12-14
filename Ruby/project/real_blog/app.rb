@@ -49,7 +49,7 @@ end
 get '/login_check' do
   @message = ""
   if User.first(:email => params["email"])     #없으면 리턴값이 nil임
-     if User.first(:email => params["email"]).password = params["password"]
+     if User.first(:email => params["email"]).password == params["password"]
        session[:email] = params["email"]
        @message = "로그인이 되었습니다"
        redirect to '/'
