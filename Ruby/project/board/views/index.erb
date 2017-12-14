@@ -1,0 +1,18 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Welcome to Board!</h1>
+    <% @posts.each do |post| %>
+      <div class="card">
+        <div class="card-body">
+          <p>제목 : <%= post.title %></p>
+          <p>작성자 : <%= post.email %></p>
+          <p>내용 : <%= post.body %></p>
+          <a href="/edit/<%= post.id %>">[수정]</a>
+          <a href="/destroy/<%= post.id %>">[삭제]</a>
+        </div>
+      </div>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <form action="/update/<%= @post.id %>">
+      <div class="form-group">
+        <label for="exampleInputEmail1">제목</label>
+        <input type="text" name="title" value="<%= @post.title %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="제목을 입력해주세요.">
+      <div class="form-group">
+        <label for="exampleInputPassword1">내용</label>
+        <input type="text" name="content" value="<%= @post.body %>" class="form-control" id="exampleInputPassword1" placeholder="내용을 입력해주세요.">
+        <% if session[:email] %>
+          <input type="hidden" name="author" value="<%= session[:email] %>" />
+        <% else %>
+          <input type="hidden" name="author" value="익명" />
+        <% end %>
+      </div>
+      <button type="submit" class="btn btn-primary">수정하기</button>
+    </form>
+  </body>
+</html>
