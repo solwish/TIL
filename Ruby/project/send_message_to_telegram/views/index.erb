@@ -1,0 +1,15 @@
+<html>
+<head>
+  <meta charset = "utf-8">
+</head>
+<body>
+  <h1>Send message!!</h1>
+  <form action="/write">
+    <input type="text" name="msg" placeholder="메세지를 입력해 주세요">
+    <input type="submit">
+  </form>
+  <% @list.each do |e| %>
+    <p><%= e %></p>
+  <% end %>
+</body>
+</html>
