@@ -1,0 +1,6 @@
+<h1>게시판입니다.</h1>
+<a href="/posts/new">글쓰기</a>
+<% @posts.each do |post|%>
+<p>제목 : <%= post.title %> <br>
+내용 : <%= post.content %></p>
+<% end %>

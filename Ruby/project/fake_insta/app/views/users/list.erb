@@ -1,0 +1,6 @@
+<h1>회원목록입니다.</h1>
+<% @users.each do |user|%>
+<p>이메일 : <%= user.email %> <br>
+비번 : <%= user.password %></p>
+<% end %>
+<a href="/">홈으로</a>
