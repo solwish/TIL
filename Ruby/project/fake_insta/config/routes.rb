@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   get '/register' => 'users#register'
   get '/user_list' => 'users#list'
 
-  
+  get '/login' => 'users#login'
+  get '/login_check' => 'users#login_check'
+  get '/logout' => 'users#logout'
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
