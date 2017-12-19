@@ -1,0 +1,9 @@
+<h1>텔레그램 메세지 보내기</h1>
+<form action="/messages/send_msg">
+  메세지 : <input type="text" name="msg">
+  <input type="submit"><br>
+</form>
+  <% @Messages.each do |message| %>
+  <p><%= message.user.email %> | <%= message.content %> | <%= time_ago_in_words(message.created_at).split(" ")[0] %> 분전</p>
+  test <%= ((Time.now - message.created_at) / 60).round.to_s + "분전" %>
+  <% end %>

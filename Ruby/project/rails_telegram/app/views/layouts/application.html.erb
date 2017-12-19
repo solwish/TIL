@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsTelegram</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<a href="/">홈으로</a>
+<% unless current_user %>
+  <a href="/users/signup">회원가입</a>
+  <a href="/users/login">로그인</a>
+<% else %>
+  <a href="/users/logout">로그아웃</a>
+<% end %>
+<p><%= "#{$login_msg}" %></p>
+<p><%= "#{current_user.email}님 환영합니다." if session[:user_id]%></p>
+<!-- 세션이 있을 때만 출력해줘 -->
+
+<%= yield %>
+
+</body>
+</html>
