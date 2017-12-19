@@ -4,7 +4,7 @@ require 'json'
 require 'uri'
 require 'nokogiri'
 
-$token = "460770273:AAGcijXpyTVbBcqgTF6OXLMh3RPJ_Ry392w"
+$token = "token numbers"
 $url = "https://api.telegram.org/bot"
 
 response = HTTParty.get("#{$url}#{$token}/getUpdates")

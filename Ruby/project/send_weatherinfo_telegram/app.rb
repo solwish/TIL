@@ -11,7 +11,7 @@ get '/' do
   erb :index
 end
 
-$token = "460770273:AAGcijXpyTVbBcqgTF6OXLMh3RPJ_Ry392w"
+$token = "your token number"
 $url = "https://api.telegram.org/bot"
 response = HTTParty.get("#{$url}#{$token}/getUpdates")
 hash = JSON.parse(response.body)

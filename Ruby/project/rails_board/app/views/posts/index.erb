@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>메인화면</title>
+  </head>
+  <body>
+    <a href="/posts/new">새글 쓰기</a>
+    <% @list.each do |x| %>
+      <p> 제목 : <%= x.title %> <br>
+      내용 : <%= x.content %><br>
+      <a href="/posts/destroy/<%= x.id %>">삭제</a>
+      <a href="/posts/edit/<%= x.id %>">수정</a>
+      </p>
+    <% end %>
+
+  </body>
+</html>
