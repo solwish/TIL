@@ -2,5 +2,7 @@
 <a href="/posts/new">글쓰기</a>
 <% @posts.each do |post|%>
 <p>제목 : <%= post.title %> <br>
-내용 : <%= post.content %></p>
+내용 : <%= post.content %> <br>
+<p> <%= time_ago_in_words(post.created_at) %> </p>
+</p>
 <% end %>

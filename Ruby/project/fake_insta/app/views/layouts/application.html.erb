@@ -7,11 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if session[:email] %>
-    <p><%= session[:email] %> 님 환영합니다<p>
+  <% if current_user %>
+    <p><%= "#{current_user.email}님 환영합니다." if current_user%></p>
   <% end %>
 
-  <% if session[:email] %>
+  <% if current_user %>
     <a href="/logout">로그 아웃</a>
   <% else %>
       <a href="/signup">회원가입</a>

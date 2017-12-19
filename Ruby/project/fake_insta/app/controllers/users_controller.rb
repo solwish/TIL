@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     @password = params[:password]
 
     User.create(
-      :email => params[:email],
-      :password => params[:password]
+      email: params[:email],
+      password: params[:password]
     )
     redirect_to '/'
   end
@@ -22,9 +22,9 @@ class UsersController < ApplicationController
   end
 
   def login_check
-
-    if User.find_by(email: params[:email])
-       if User.find_by(:email => params["email"]).password == params["password"]
+    user = User.find_by(email: params[:email])
+    if user
+       if user.password == params[:password]
          session[:email] = params[:email]
          redirect_to '/'
        else

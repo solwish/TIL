@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+
+  before_action :authorize
+
+  def authorize
+    redirect_to '/login' unless current_user
+  end
+
   def index
     #우리가 가지고 있는 모든 글을 보여준다.
     @posts = Post.all.reverse

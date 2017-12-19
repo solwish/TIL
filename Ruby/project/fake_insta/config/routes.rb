@@ -2,16 +2,15 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get '/' => 'home#index'
+  root 'home#index'
   get '/hello/:name' => 'home#hello'
   get '/lotto' => 'home#lotto'
   get '/lunch' => 'home#lunch'
   get '/search' => 'home#search'
 
   get '/posts' => 'posts#index'
-  get '/posts/new' => 'posts#new'
-  get '/posts/create' => 'posts#create'
-
+  get '/posts/new'
+  get '/posts/create'
 
   get '/signup' => 'users#signup'
   get '/register' => 'users#register'
