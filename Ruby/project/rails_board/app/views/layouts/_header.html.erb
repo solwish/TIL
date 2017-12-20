@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">게시판</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <% unless session[:user_id] %>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/signup">회원가입 </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/login">로그인 </a>
+      </li>
+      <% else %>
+      <span class="navbar-text">
+        <%= "#{current_user.email}님 환영합니다." %>
+      </span>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/logout">로그아웃 </a>
+      </li>
+      <% end %>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/admin">관리자 </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="<%= flash[:class] %>" role="alert">
+    <%= flash[:notice] %>
+  </div>

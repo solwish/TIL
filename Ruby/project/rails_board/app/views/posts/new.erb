@@ -5,7 +5,7 @@
     <title>글쓰기 창</title>
   </head>
   <body>
-    <form action="/posts/create">
+    <form action="/posts/create/<%= session[:user_id] %>">
       제목 : <input type="text" name="title"> <br>
       내용 : <input type="text" name="content"> <br>
       <input type="submit">

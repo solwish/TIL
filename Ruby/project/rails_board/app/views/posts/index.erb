@@ -2,17 +2,39 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>메인화면</title>
+    <title>게시판</title>
   </head>
   <body>
-    <a href="/posts/new">새글 쓰기</a>
-    <% @list.each do |x| %>
-      <p> 제목 : <%= x.title %> <br>
-      내용 : <%= x.content %><br>
-      <a href="/posts/destroy/<%= x.id %>">삭제</a>
-      <a href="/posts/edit/<%= x.id %>">수정</a>
+    <div class="jumbotron" style="background-image: url(http://www.jangsada.com/files/attach/images/1572/500/002/db0e26c4043c42908ad321de21aeef76.jpg)">
+      <h1 class="display-3">게시판!</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/posts/new" role="button">새글 쓰기</a>
       </p>
-    <% end %>
+    </div>
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" width="800px">제목</th>
+          <th scope="col">글쓴이</th>
+          <th scope="col">작성일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @list.each do |x| %>
+        <tr>
+          <th scope="row"><%= x.id %></th>
+          <td><a href="/posts/show/<%= x.id %>"><%= x.title %></a></td>
+          <td><%= x.user.email %></td>
+          <td><%= time_ago_in_words(x.created_at) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
   </body>
 </html>

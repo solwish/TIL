@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
 
+  before_action :authorize
+
   def index
     @list = Post.all.reverse
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -10,6 +16,7 @@ class PostsController < ApplicationController
   def create
 
     Post.create(
+      user_id: session[:user_id],
       title: params[:title],
       content: params[:content]
     )
@@ -20,6 +27,9 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
+
+    comment = Comment.find_by(post_id: params[:id])
+    comment.destroy
 
     redirect_to '/'
   end
@@ -34,7 +44,16 @@ class PostsController < ApplicationController
       title: params[:title],
       content: params[:content]
     )
-    redirect_to '/'
+    redirect_to "/posts/show/#{params[:id]}"
+  end
+
+  def add_comment
+    Comment.create(
+      user_id: current_user.id,
+      content: params[:content],
+      post_id: params[:id]
+    )
+    redirect_to :back
   end
 
 end

@@ -1,0 +1,31 @@
+
+
+
+
+<div class="card" style="width: 200rem;">
+  <div class="card-body">
+    <h4 class="card-title"><%= @post.title %></h4>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @post.user.email %></h6>
+    <p class="card-text"><%= @post.content %></p>
+    <a href="/posts/edit/<%= @post.id %>" class="card-link btn btn-primary">수정</a>
+    <a href="/posts/destroy/<%= @post.id %>" class="card-link btn btn-danger">삭제</a>
+  </div>
+</div>
+
+<div class="card" style="width: 200rem;">
+  <div class="card-header">
+    댓글목록
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @post.comments.each do |comment| %>
+      <li class="list-group-item"><%= comment.content %><div><h6 class="card-subtitle mb-2 text-muted"><%= comment.user.email %></h6></div></li>
+    <% end %>
+  </ul>
+</div>
+
+  <div class="form-group">
+    <form action="/posts/<%= @post.id %>/add_comment/<%= session[:user_id] %>">
+      <input type="text" name="content" class="form-control" placeholder="Enter comment">
+      <button type="submit" class="btn btn-primary">댓글쓰기</button>
+    </form>
+  </div>
