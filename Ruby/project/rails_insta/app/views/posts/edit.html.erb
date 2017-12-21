@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>수정 창</title>
+  </head>
+  <body>
+    <form action="/posts/update/<%= session[:user_id] %>">
+      제목 : <input type="text" name="title" value=" <%= @post.title %> "> <br>
+      내용 : <input type="text" name="content" value=" <%= @post.content %> "> <br>
+      <input type="submit">
+    </form>
+    <br>아래가 태그 써준거<br>
+    <%= form_tag("/posts/update/#{session[:user_id]}") do %>
+      <%= text_field_tag("title", @post.title) %>
+      <%= text_field_tag("content", @post.content) %>
+      <%= submit_tag() %>
+    <% end %>
+
+  </body>
+</html>

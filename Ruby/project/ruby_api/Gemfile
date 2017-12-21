@@ -1,0 +1,19 @@
+source 'https://rubygems.org'
+
+#Upgrade ERB, Enhanced IRB
+gem 'pry'
+
+# 프리티 프린트
+gem 'awesome_print'
+
+#주식정보 받아오기
+gem 'stock_quote'
+
+#환율 변환용 은행
+gem 'eu_central_bank'
+# 날씨 정보 gem
+gem 'forecast_io'
+# 위도경도 변환 gem
+gem 'geocoder'
+#아스키 아트
+gem 'artii'

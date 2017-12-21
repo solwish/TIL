@@ -1,0 +1,13 @@
+
+    <h4 class="card-title"><%= @post.title %></h4>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @post.user.email %></h6>
+    <p class="card-text"><%= @post.content %></p>
+
+
+    <img src="<%= @post.avatar %>">
+
+
+    <a href="/posts/edit/<%= @post.id %>" class="card-link btn btn-primary">수정</a>
+    <a href="/posts/destroy/<%= @post.id %>" class="card-link btn btn-danger">ss삭제</a>
+    <%= link_to "삭제", "/posts/destroy/#{@post.id}", data: {method: "post", confirm: "진짜 삭제하실거에요?"} %>
+    <%= link_to "de방식 삭제", "/posts/destroy/#{@post.id}", data: {method: "delete", confirm: "진짜 삭제하실거에요?"} %>

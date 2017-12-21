@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsInsta</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <!-- <a href="/">홈으로</a> -->
+    <%= link_to("홈으로", root_path) %>
+    <%= link_to("회원가입", "/users/signup") %>
+    <%= link_to("로그인", "/users/login") %>
+    <%= link_to("로그아웃", "/users/logout") %>
+    <%= link_to "글쓰기", "/posts/new" %>
+    <!-- <a href="/users/signup">회원가입</a>
+    <a href="/users/login">로그인</a>
+    <a href="/users/logout">로그아웃</a>
+    <a href="/posts/new">글쓰기</a> -->
+    <br>
+    <%= flash[:notice] %>
+    <%= yield %>
+  </body>
+</html>

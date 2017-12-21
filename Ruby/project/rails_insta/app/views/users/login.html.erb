@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>로그인 창입니다</h1>
+    <%= form_tag("/users/login_session") do %>
+      <%= text_field_tag("email") %>
+      <%= password_field_tag("password") %>
+      <%= submit_tag("로그인") %>
+    <% end %>
+    <!-- <form action="/users/login_session">
+      이메일 : <input type="text" name="email"> <br>
+      비밀번호 : <input type="text" name="password"> <br>
+      <input type="submit">
+    </form> -->
+  </body>
+</html>
