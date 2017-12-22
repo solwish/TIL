@@ -1,0 +1,12 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+<h1>메일쓰기</h1>
+
+<form action="/home/spam" method="get"><br>
+  보낼사람 : <input type="text" name="receiver"> <br>
+  제목 : <input type="text" name="title"><br>
+  <!-- 내용 : <input type="text" name="content"> <br> -->
+  <input id="x" type="hidden" name="content">
+  <trix-editor input="x" name="text"></trix-editor>
+  <input type="submit">
+</form>
