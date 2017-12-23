@@ -1,9 +1,0 @@
-INDEX VERSION 1.4+C:\Users\Jinsol\TIL\SAP UI5\ui5workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-4180169311.index
-1612776421.index
-1666028071.index
-2385470153.index
-1278038393.index
-1918102105.index
-2612163105.index
-4154054396.index
