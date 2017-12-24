@@ -1,0 +1,12 @@
+<h1>메일쓰기</h1>
+<form action="/home/sendto" method="post">
+  <input name="utf8" type="hidden" value="&#x2713;" />
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input type="hidden" name="from" value="<%= current_user.email %>">
+  제목 : <input type="text" name="title"> <br>
+  내용 :
+  <input id="x" type="hidden" name="content">
+  <trix-editor input="x"></trix-editor>
+  <br>
+  <input type="submit">
+</form>
