@@ -1,0 +1,11 @@
+<!-- <form action="/users/login_session" method="post">
+  <input type="email" name="email"> <br>
+  <input type="password" name="password"> <br>
+  <input type="submit">
+</form> -->
+
+<%= form_tag("/users/login_session") do %>
+  이메일 : <%= email_field_tag("email") %> <br>
+  비밀번호 : <%= password_field_tag("password") %> <br>
+  <%= submit_tag("로그인")%>
+<% end %>

@@ -1,0 +1,6 @@
+<%= form_tag("/posts/update") do%>
+  <%= hidden_field_tag("id", @post.id) %>
+  제목 : <%= text_field_tag("title", @post.title) %>  <br>
+  내용 : <%= text_field_tag("content", @post.content) %>  <br>
+  <%= submit_tag("수정하기") %>
+<% end %>

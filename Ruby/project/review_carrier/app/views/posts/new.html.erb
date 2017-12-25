@@ -1,0 +1,6 @@
+<%= form_tag("/posts/create", multipart: true) do%>
+  제목 : <%= text_field_tag("title") %> <br>
+  내용 : <%= text_field_tag("content") %> <br>
+  <%= file_field_tag("avatar") %> <br>
+  <%= submit_tag("글 쓰기") %>
+<% end %>

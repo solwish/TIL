@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+  </head>
+  <body>
+    <% @posts.each do |post| %>
+      <%= post.title %> <br>
+      <%= post.content %> <br>
+      <img src="<%= post.avatar %>">
+      <%= link_to "수정", "/posts/edit/#{post.id}" %>
+      <%= link_to "삭제", "/posts/destroy/#{post.id}", data: {method: "delete", confirm: "진짜 삭제하실거에요?"} %> <br>
+    <% end %>
+  </body>
+</html>

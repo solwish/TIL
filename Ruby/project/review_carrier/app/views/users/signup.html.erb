@@ -1,0 +1,6 @@
+
+<%= form_tag("/users/register") do%>
+  이메일 : <%= email_field_tag("email") %> <br>
+  비밀번호 : <%= password_field_tag("password") %> <br>
+  <%= submit_tag("회원가입") %>
+<% end %>

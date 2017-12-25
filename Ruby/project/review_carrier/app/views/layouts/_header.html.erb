@@ -1,0 +1,14 @@
+
+<a href="/">홈</a>
+<% unless current_user %>
+  <a href="/users/signup">회원가입 </a>
+  <a href="/users/login">로그인 </a>
+<% else %>
+  <a href="/posts/new">글 쓰기</a>
+  <%= link_to "로그아웃", "/users/logout", method: "delete" %> <br>
+  <%= "#{current_user.email}님 환영합니다." %>
+<% end %>
+
+<br>
+<%= flash[:notice] %>
+<br>
