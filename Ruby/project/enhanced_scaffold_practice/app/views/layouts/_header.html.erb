@@ -2,9 +2,8 @@
 
 <% if user_signed_in? %>
   <%= link_to "글쓰기", "/posts/new", method: "get" %>
-  <%= link_to "포스트 홈", "/posts", method: "get" %>
   <%= link_to "로그아웃", "/users/sign_out", method: "delete" %>
-  <p> <%= current_user.email %> </p>
+  <p> <%= current_user.email %>님 환영합니다.</p>
 <% else %>
   <%= link_to "로그인", "/users/sign_in"%>
   <%= link_to "회원가입", "/users/sign_up" %>
