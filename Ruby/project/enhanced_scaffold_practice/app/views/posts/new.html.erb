@@ -1,0 +1,9 @@
+<h1>Posts#new</h1>
+<p>Find me in app/views/posts/new.html.erb</p>
+
+<%= form_tag("/posts", multipart: true, method: :post) do%>
+  제목 : <%= text_field_tag("post[title]") %> <br>
+  내용 : <%= text_area_tag("post[content]", nil, size: "25x10") %> <br>
+  <%= file_field_tag("post[avatar]") %> <br>
+  <%= submit_tag("글 쓰기") %>
+<% end %>
