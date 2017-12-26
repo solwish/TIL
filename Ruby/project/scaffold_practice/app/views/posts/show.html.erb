@@ -1,0 +1,7 @@
+<h1>Posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p>
+
+제목 : <%= @post.title %> <br>
+내용 : <%= @post.content %> <br>
+<%= link_to "수정", "/posts/#{@post.id}/edit" %>
+<%= link_to "삭제", "/posts/#{@post.id}", data: {method: :delete, confirm: "진짜 삭제하실거에요?"} %> <br>
