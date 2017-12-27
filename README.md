@@ -38,7 +38,7 @@
 
 
 
-- [jemtaku project](https://github.com/solwish/solwish.github.io)
+- [Jemtaku Project](https://github.com/solwish/solwish.github.io)
 
 
 
