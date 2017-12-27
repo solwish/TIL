@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+
+    <div class="card mb-3">
+      <img class="card-img-top" src="<%= @movie.poster %>" alt="포스터가 없습니다">
+      <div class="card-body">
+        <h4 class="card-title">제목 : <%= @movie.title %></h4>
+        <p class="card-text">장르 : <%= @movie.genre %></p>
+        <p class="card-text">국가 : <%= @movie.nation %></p>
+        <p class="card-text">감독 : <%= @movie.director %></p>
+        <p class="card-text">평점 : <%= @movie.avg == 0 ? "평가 없음" : @movie.avg %>/ 5점</p>
+        <p class="card-text"><small class="text-muted"><%= time_ago_in_words(@movie.created_at).to_s %></small></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <%= form_tag("/movies/#{@movie.id}/review", method: :post) do %>
+        평점 : <%= select_tag :rating, "<option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>".html_safe %> <br>
+        리뷰 : <%= text_field_tag :comment %>
+        <%= submit_tag "리뷰달기" %>
+      <% end %>
+
+      <% @movie.reviews.reverse.each do |review| %>
+        <p>
+          평점 : <%= review.rating %>  |
+          리뷰 : <%= review.comment %>
+          <div class="flex-container">
+            작성자 : <%= review.user.nickname %>
+          </div>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
