@@ -1,8 +1,0 @@
-<%= form_tag(movies_path, method: :post) do%>
-  제목 : <%= text_field_tag :title %> <br>
-  포스터 : <%= text_field_tag :poster %> <br>
-  장르 : <%= text_field_tag :genre %> <br>
-  국가 : <%= text_field_tag :nation %> <br>
-  감독 : <%= text_field_tag :director %> <br>
-  <%= submit_tag "영화만들기" %>
-<% end %>
