@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin/users/index">관리자 페이지<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">유저관리</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/users/posts">게시판관리</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/users/reviews">리뷰관리</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+      <h1>관리자 페이지</h1>
+
+      <h2>유저 정보</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>이메일</th>
+              <th>닉네임</th>
+              <th>역할</th>
+              <th>링크</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user|%>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td><%= user.nickname  %></td>
+                <td><%= user.role %></td>
+                <td>
+                  <%= link_to "[매니저로]", "/admin/users/to_manager/#{user.id}", data: {method: :put, confirm: "매니저로?"}, class: 'btn btn-primary' %>
+                  <%= link_to "[유저로]", "/admin/users/to_user/#{user.id}", method: :put, data: { confirm: '유저로 강등하겠습니까?' }, class: 'btn btn-primary' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
