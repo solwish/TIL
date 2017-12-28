@@ -1,16 +1,28 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get '/users/index' => 'users#index'
-    get '/users/to_manager/:id' => 'users#to_manager'
-    get '/users/to_user/:id' => 'users#to_user'
-    get '/users/posts'
-    get '/users/posts_destroy/:id' => 'users#posts_destroy'
-    get '/users/reviews'
-    get '/users/reviews_destroy/:id' => 'users#reviews_destroy'
+    resources :users do
+      member do
+        get '/to_ma' => 'users#to_manager'
+        get '/to_us' => 'users#to_user'
+      end
+    end
+
+    get '/posts/:id' => 'posts#delete'
+    get '/reviews/:id' => 'reviews#delete'
+
+    resources :posts
+    resources :reviews
+    # get '/users/index' => 'users#index'
+    # get '/users/to_manager/:id' => 'users#to_manager'
+    # get '/users/to_user/:id' => 'users#to_user'
+    # get '/users/posts'
+    # get '/users/posts_destroy/:id' => 'users#posts_destroy'
+    # get '/users/reviews'
+    # get '/users/reviews_destroy/:id' => 'users#reviews_destroy'
   end
 
-  get 'admin/index'
+  # get 'admin/index'
 
   get 'posts/privacy' => 'posts#privacy'
 
