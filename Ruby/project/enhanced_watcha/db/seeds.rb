@@ -24,7 +24,8 @@ movies = JSON.parse(File.read('./watcha_boxoffice.json'))
     # ap movie
       Movie.create(
         title: movie["items"][0]["item"]["title"],
-        poster: movie["items"][0]["item"]["poster"]["original"],
+        remote_poster_url: movie["items"][0]["item"]["poster"]["original"],
+        # poster: movie["items"][0]["item"]["poster"]["original"],
         genre: movie["items"][0]["item"]["main_genre"],
         nation: movie["items"][0]["item"]["nation"],
         director: movie["items"][0]["item"]["directors"][0]["name"]
