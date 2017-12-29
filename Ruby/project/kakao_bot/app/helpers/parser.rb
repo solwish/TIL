@@ -9,8 +9,8 @@ module Parser
       movies = Hash.new
       movie_title = Array.new
 
-      doc.css("ul.lst_detail_t1 dt a").each do |title|
-        movie_title << title.text
+      doc.css("ul.lst_detail_t1 dt a").each do |tit|
+        movie_title << tit.text
       end
 
       doc.css("ul.lst_detail_t1 li").each do |mv|
@@ -19,9 +19,12 @@ module Parser
           rating: mv.css("dl dd.star dl.info_star dd div.star_t1 span.num").text
         }
       end
+
       title = movie_title.sample
   		return_text = title + " " + movies[title][:rating]
       re_url = movies[title][:url]
+
+      # return_text = movie_title.inspect.to_s + "///////" + movies.inspect.to_s
 
       return [return_text, re_url]
     end
