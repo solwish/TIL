@@ -34,8 +34,13 @@ class KakaoController < ApplicationController
     elsif user_message == "영화"
       image = true
       naver_movie = Parser::Movie.new
-      re_msg = naver_movie.naver[0]
-      img_url = naver_movie.naver[1]
+
+      #아래처럼 했을 때 각각 메서드가 실행되서 틀린 결과 값이 나왔어
+      # re_msg = naver_movie.naver[0]
+      # img_url = naver_movie.naver[1]
+      solution = naver_movie.naver
+      re_msg = solution[0]
+      img_url = solution[1]
     end
 
     # home_keyboard = {
