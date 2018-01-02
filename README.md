@@ -3,8 +3,9 @@
 ##### Today I Learned Link
 
 - [Ruby](https://github.com/solwish/TIL/tree/one/Ruby/project)
-
-  <br>
+  - Ruby on Rails
+  - JavaScript on Rails<br>
+- [Python](https://github.com/solwish/python_project/tree/master/pandas)<br>
 
 
 - [Algorithms](https://github.com/solwish/TIL/tree/one/Algorithms/SWTest/src/swExpert)
@@ -14,7 +15,6 @@
   > ![2017.11.05기준](http://blogfiles.naver.net/MjAxNzEyMjdfMTg2/MDAxNTE0Mzc2NjcwNDE2.XVQyXYhR53YKX20ObNO-x321mkUZtCFMj_1GPqs-E0sg.Zba8rCQtjledFadTyc612htB_qP-xqVIfhlqTgu8va4g.PNG.solwish/%EC%BA%A1%EC%B2%98.PNG?type=w1)
   >
   > [swexpertacademy.com](https://www.swexpertacademy.com/main/main.do) 
-
 
 <br>
 
