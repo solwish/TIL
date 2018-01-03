@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
-  resources :boards
+
   root 'boards#index'
+
+  resources :boards do
+
+    collection do
+      get '/:board_id/like' => 'boards#user_like_board', as: :user_like
+    end
+
+    member do
+      post '/comments' => 'boards#create_comment', as: :create_comment_to
+      delete '/comments/:comment_id' => 'boards#delete_comment', as: :delete_comment_to
+    end
+
+  end
+
 
   #sign_in
   get '/signin' => 'sessions#signin', as: :user_signin  #로그인 페이지

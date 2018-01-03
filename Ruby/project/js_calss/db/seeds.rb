@@ -6,6 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(
+  email: "qwe@asd.com",
+  password: "1231"
+)
+
+User.create(
+  email: "qwe@a.b",
+  password: "1231"
+)
+
 20.times do
   Board.create(
     title: Faker::Superhero.name,
