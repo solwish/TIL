@@ -1,3 +1,10 @@
+
+<%= link_to '새글쓰기', new_board_path, class: 'btn btn-dark' %>
+<a class='btn btn-warning' id='change-title'>제목바꾸기</a>
+<a class='btn btn-danger color-btn' haha="text-danger">빨강</a>
+<a class='btn btn-primary color-btn' haha="text-primary">파랑</a>
+<a class='btn btn-warning color-btn' haha="text-warning">노랑</a>
+<hr>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -21,14 +28,33 @@
 
 <br>
 
-  <%= link_to '새글쓰기', new_board_path, class: 'btn btn-dark' %>
-  <a class='btn btn-warning' id='change-title'>제목바꾸기</a>
-  <a class='btn btn-danger color-btn' haha="text-danger">빨강</a>
-  <a class='btn btn-primary color-btn' haha="text-primary">파랑</a>
-  <a class='btn btn-warning color-btn' haha="text-warning">노랑</a>
+<% content_for :script do %>
 
-  <% content_for :script do %>
-    <script src="linkto_show.js"></script>
-    <script src="change_color.js"></script>
-    <script src="change_title.js"></script>
-  <% end %>
+  <script>
+    $(document).on('scroll', function() {
+      // console.log("scroll");
+      console.log("window.scrollTop : " + $(window).scrollTop());
+      console.log("document.height : " + $(document).height());
+      console.log("window.height : " + $(window).height());
+      console.log("-----------------------------------");
+      if($(window).scrollTop() == $(document).height() - $(window).height()) {
+        console.log("||||||End Point||||||");
+
+        $.ajax({
+          url: '',
+          method: '',
+          data: {
+            page: page_count++
+          }
+        })
+
+      }
+    })
+
+
+  </script>
+
+  <script src="linkto_show.js"></script>
+  <script src="change_color.js"></script>
+  <script src="change_title.js"></script>
+<% end %>

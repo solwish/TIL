@@ -5,14 +5,18 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all.reverse
+    @boards = Board.order("created_at DESC").page(params[:page])
   end
 
   # GET /boards/1
   # GET /boards/1.json
   def show
-    @like = Like.where(user_id: current_user.id, board_id: params[:id])
-    # @comments = Comment.where(board_id: params[:id]).reverse
+    if user_signed_in?
+      @like = Like.where(user_id: current_user.id, board_id: params[:id])
+      # 내가 눌렀는지 안눌렀는지 체크해줘야하기 때문에 이렇게 넘겨줌.
+    else
+      @like = []
+    end
   end
 
   # GET /boards/new
@@ -95,11 +99,21 @@ class BoardsController < ApplicationController
   end
 
   def delete_comment
-    comment = Comment.where(id: params[:comment_id], board_id: params[:id]).first
-    if comment.destroy
+    # @comment = Comment.where(id: params[:comment_id], board_id: params[:id]).first
+    @comment = Comment.find(params[:comment_id])
+    if @comment.destroy
       puts "성공"
     else
       puts "실패"
+    end
+  end
+
+  def update_comment
+    @comment = Comment.find(params[:comment_id])
+    if @comment.update(contents: params[:contents])
+      puts "성공성공"
+    else
+      puts "실패실패"
     end
   end
 

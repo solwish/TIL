@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(
-  email: "qwe@asd.com",
+  email: "asd@af.com",
   password: "1231"
 )
 
@@ -16,7 +16,7 @@ User.create(
   password: "1231"
 )
 
-20.times do
+1000.times do
   Board.create(
     title: Faker::Superhero.name,
     contents: Faker::Lorem.paragraphs.join.to_s,

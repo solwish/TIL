@@ -2,10 +2,10 @@ alert("댓글을 성공적으로 입력하였습니다");
 // 5. 댓글을 보여주는 테이블에 추가해줌
 // $('.comment-list').append(`
 $('.comment-list').prepend(`
-  <tr>
-    <td><%= @comment.contents %></td>
+  <tr id="comment-<%= @comment.id %>">
+    <td class="comment" data-id="<%= @comment.id %>"><%= @comment.contents %></td>
     <td><%= @comment.user.email %></td>
-    <td><button class="btn btn-outline-warning"><i class="fas fa-pen-square"></i>수정</button></td>
+    <td></td>
     <td><button class="btn btn-outline-danger delete-comment" data-id=<%= @comment.id %>><i class="fas fa-trash-alt"></i>삭제</button></td>
   </tr>
 `);

@@ -1,3 +1,6 @@
 alert("댓글을 성공적으로 삭제하였습니다");
 
-window.location.href = window.location.href
+// window.location.href = window.location.href
+
+// $('#comment-<%= @comment.id %>').hide(); //안보이게만해주고 html에서는 존재
+$('#comment-<%= @comment.id %>').fadeOut().remove(); //아예 제거해줌

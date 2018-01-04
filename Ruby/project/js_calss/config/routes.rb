@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       post '/comments' => 'boards#create_comment', as: :create_comment_to
       delete '/comments/:comment_id' => 'boards#delete_comment', as: :delete_comment_to
+      patch '/comments/:comment_id' => 'boards#update_comment', as: :update_comment_to
     end
 
   end

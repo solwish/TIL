@@ -1,0 +1,17 @@
+alert("update_comment 입니다.");
+
+// 2. input 태그가 있는 부분을 다시 일반 td태그로 변환
+console.log("쉣쉣");
+console.log($('.comment-id').val());
+console.log($('#comment-<%= @comment.id %>'));
+
+//선택지 1
+// $('.edit-comment').replaceWith(`<td class="comment" data-id="<%#= @comment.id %>" ><%#= @comment.contents %></td>`);
+
+//선택지2
+
+$('#comment-<%= @comment.id %>').find('.edit-comment').replaceWith(`<td class="comment" data-id="<%= @comment.id %>" ><%= @comment.contents %></td>`);
+
+// 3. 완료버튼 삭제
+// $('.update-comment').remove();
+$('#comment-<%= @comment.id %>').find('.update-comment').remove();
