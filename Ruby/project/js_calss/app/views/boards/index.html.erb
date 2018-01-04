@@ -15,7 +15,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="boards">
     <% @boards.each do |board| %>
       <tr class="board" data-id="<%= board.id %>">
         <td><%= board.id %></td>
@@ -31,24 +31,37 @@
 <% content_for :script do %>
 
   <script>
-    $(document).on('scroll', function() {
+
+    //스크롤 이벤트가 계속 발생해서 페이지에 과부하
+    // $(document).on('scroll', function() {
+    $(document).ready(function() {
+      // 스크롤 테스트
       // console.log("scroll");
-      console.log("window.scrollTop : " + $(window).scrollTop());
-      console.log("document.height : " + $(document).height());
-      console.log("window.height : " + $(window).height());
-      console.log("-----------------------------------");
-      if($(window).scrollTop() == $(document).height() - $(window).height()) {
-        console.log("||||||End Point||||||");
+      // console.log("window.scrollTop : " + $(window).scrollTop());
+      // console.log("document.height : " + $(document).height());
+      // console.log("window.height : " + $(window).height());
+      // console.log("-----------------------------------");
 
-        $.ajax({
-          url: '',
-          method: '',
-          data: {
-            page: page_count++
-          }
-        })
-
-      }
+      //만들어진 친구들 누르면 show로 이동 linkto_show.js 같은 펑션
+      $('.boards').on('click', '.board', function() {
+        location.href = '/boards/' + $(this).data('id');
+      })
+      var page_count = 2; //스크롤 이벤트로 했을때는 이거 밖으로 빼줘야해
+      //3초 간격으로 이벤트를 실행시켜줘
+      // setInterval(function(){ alert("이벤트 실행 간격 체크"); }, 3000);
+      setInterval(function() {
+        if($(window).scrollTop() >= $(document).height() - $(window).height() - 1) {
+          console.log("||||||End Point||||||");
+          console.log(page_count);
+          $.ajax({
+            url: '/boards/page_scroll',
+            method: 'GET',
+            data: {
+              page: page_count++
+            }
+          })
+        }
+      }, 3000);
     })
 
 

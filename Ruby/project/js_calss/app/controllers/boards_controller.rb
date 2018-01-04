@@ -8,6 +8,10 @@ class BoardsController < ApplicationController
     @boards = Board.order("created_at DESC").page(params[:page])
   end
 
+  def page_scroll
+    @boards = Board.order("created_at DESC").page(params[:page])
+  end
+
   # GET /boards/1
   # GET /boards/1.json
   def show

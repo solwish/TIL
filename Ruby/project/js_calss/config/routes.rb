@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     collection do
       get '/:board_id/like' => 'boards#user_like_board', as: :user_like
+      get '/page_scroll' => 'boards#page_scroll', as: :scroll
     end
 
     member do
