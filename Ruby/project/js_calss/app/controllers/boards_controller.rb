@@ -75,6 +75,8 @@ class BoardsController < ApplicationController
     else
       @like = Like.create(user_id: current_user.id, board_id: params[:board_id])
     end
+
+    @likecnt = Like.where(user_id: current_user.id, board_id: params[:board_id])
     # redirect_to :back
     # sleep(5)
   end

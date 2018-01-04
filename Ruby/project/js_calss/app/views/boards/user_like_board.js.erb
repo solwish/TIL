@@ -9,4 +9,9 @@ if(<%= @like.frozen? %>) {
 } else {
   $('#like-count').text(like_count + 1);
 }
-// $('#like-count').text(<%#= @like.count %>);
+
+//위는 누를 때 전체 좋아요 수와 상관없이 현재값에서 +1 -1 되는 형태
+//아래는 전체 좋아요 수를 나타내줌
+
+var like_count = <%= @likecnt.length %>
+$('#like-count').text(like_count);
