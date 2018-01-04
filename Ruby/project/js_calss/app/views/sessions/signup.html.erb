@@ -8,5 +8,52 @@
   <label for="inputPassword" class="sr-only">Password</label>
   <input type="password" name="password_confirmation" class="form-control" placeholder="password confirmation" >
 
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" disabled>Sign in</button>
+<% end %>
+
+<% content_for :script do %>
+<script>
+  var email = false;
+  var password = false;
+  function validation() {
+    console.log("email: " + email);
+    console.log("password: " + password);
+
+    if(email && password) {
+      $('button[type=submit]').removeAttr('disabled');
+    } else {
+      $('button[type=submit]').attr('disabled', 'disabled');
+    }
+  }
+
+  $(function() {
+    //on change는 한글자 바뀔 때마다 체크하는게 아니라 입력후 다른 칸에 포커스를 둘 때 발생함.
+    // console.log($('input[name=email]'));
+    $('input[name=email]').on('change', function() {
+      var id = $(this).val();
+      $.ajax({
+        url: '/check_email',
+        method: 'POST',
+        data: {
+          email: id
+        }
+      })
+    })
+
+    $('.form-signin').on('change', 'input[name=password], input[name=password_confirmation]', function() {
+      if($('input[name=password_confirmation]').val() == '' || $('input[name=password]').val() == '' ){
+        alert("비밀번호를 입력해주세요");
+        password = false;
+      }
+      if($('input[name=password_confirmation]').val() != $('input[name=password]').val()) {
+        alert("비밀번호를 다시 확인하세요!");
+        password = false;
+      } else {
+        alert("비밀번호가 일치합니다!");
+        password = true;
+      }
+      validation();
+    })
+  })
+</script>
 <% end %>

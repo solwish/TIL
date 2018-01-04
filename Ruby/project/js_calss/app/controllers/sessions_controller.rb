@@ -19,6 +19,12 @@ class SessionsController < ApplicationController
 
   end
 
+  def check_email
+    @email = params[:email]
+    @temp = User.find_by(email: params[:email]).nil?
+    #유저가 없는 경우(nil) true가 리턴
+  end
+
   # 로그인
 
   def signin
