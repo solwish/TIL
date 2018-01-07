@@ -1,0 +1,43 @@
+<%= link_to '새글쓰기', new_board_path, class: 'btn btn-dark' %>
+<a class='btn btn-warning' id='change-title'>제목바꾸기</a>
+<a class='btn btn-danger color-btn' haha="text-danger">빨강</a>
+<a class='btn btn-primary color-btn' haha="text-primary">파랑</a>
+<a class='btn btn-warning color-btn' haha="text-warning">노랑</a>
+<hr>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Contents</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boards.each do |board| %>
+      <tr>
+        <td><%= board.id %></td>
+        <td class="title" width="70%"><%= board.title %></td>
+        <td><%= board.contents %></td>
+        <td><%= link_to 'Show', board %></td>
+        <td><%= link_to 'Edit', edit_board_path(board) %></td>
+        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% content_for :script do %>
+  <script>
+    var btn = document.getElementById('change-title');
+    btn.onclick = function() {
+      var title = prompt('바꿀 제목을 입력하세요.');
+      var titles = document.getElementsByClassName('title');
+      for(var i=0; i<titles.length; i++){
+        titles[i].textContent = title;
+      }
+    }
+  </script>
+<% end %>
