@@ -5,3 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create(
+  email: "asd@af.com",
+  password: "1231"
+)
+
+User.create(
+  email: "qwe@a.b",
+  password: "1231"
+)
+
+1000.times do
+  Board.create(
+    title: Faker::Superhero.name,
+    contents: Faker::Lorem.paragraphs.join.to_s,
+    user_id: 1
+  )
+end

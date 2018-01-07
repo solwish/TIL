@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/c,c++,java
 
+
+Ruby/project/gemtaku
+
 ### C ###
 # Prerequisites
 *.d
