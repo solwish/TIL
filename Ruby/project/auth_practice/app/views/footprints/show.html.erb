@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @footprint.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @footprint.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @footprint.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_footprint_path(@footprint) if can? :edit, @footprint %> |
+<%= link_to 'Back', footprints_path %>

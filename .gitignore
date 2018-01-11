@@ -1,7 +1,7 @@
 # Created by https://www.gitignore.io/api/c,c++,java
 
 
-Ruby/project/gemtaku
+/Ruby/project/gemtaku
 
 ### C ###
 # Prerequisites
