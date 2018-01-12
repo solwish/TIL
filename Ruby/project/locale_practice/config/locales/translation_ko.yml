@@ -1,0 +1,29 @@
+ko:
+  activerecord:
+    models:
+      post: 게시하다  #g
+      user: 사용자  #g
+
+    attributes:
+      post:
+        content: 내용  #g
+        title: 제목  #g
+
+      user:
+        current_sign_in_at: 현재 접속 시간  #g
+        current_sign_in_ip: 현재 접속 IP주소  #g
+        email: 이메일  #g
+        encrypted_password: 암호화된 비밀번호  #g
+        last_sign_in_at: 마지막 접속 시간  #g
+        last_sign_in_ip: 마지막 접속 IP주소  #g
+        remember_created_at: 로그인 기록된 시간  #g
+        reset_password_sent_at: 재설정된 암호 발송  #g
+        reset_password_token: 재설정된 암호 토큰  #g
+
+  posts:
+    index:
+      list: 게시물들
+      hello: 안녕 translation
+      title: 제목
+      content: 내용
+      new: 새글쓰기

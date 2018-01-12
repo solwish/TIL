@@ -1,0 +1,6 @@
+# imsi 지워주면 이걸 가장 먼저 참조해
+# 참조순서 현재 파일 > translation_ko > ko.yml 순인듯 t() 로 찾아줄 경우
+ko:
+  hello: "안녕하세요."
+  Title: "제목"
+  Content: "내용"
