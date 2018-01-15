@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+  <%= @markdown.render(@post.content).html_safe %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+<%= form_tag("/posts/#{@post.id}/comment", method: :post) %>
+  <%= text_field_tag 'content' %>
+<%= submit_tag "댓글 달기", data: { confirm: "Are you sure?" } %>
+
+<form class="" action="index.html" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+  <input type="text" name="content">
+  <input type="submit">
+</form>
+
+<br>
+<% @post.comments.reverse.each do |comment| %>
+  <%= comment.content %> | <%= comment.created_at %>
+  <br>
+<% end %>
