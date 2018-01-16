@@ -1,0 +1,47 @@
+<h1>pusher 테스트</h1>
+
+<%= form_tag '/talk', method: :get, id: :fo_id do %>
+  <%= text_field_tag :msg %>
+  <%= button_tag :submit, id: :shit %>
+ <!-- <button type="submit">submit</button> -->
+<% end %>
+<div id="talks">
+  <% @talks.each do |talk| %>
+    <p> <%= talk.message %> </p>
+  <% end %>
+</div>
+<div class="ss">
+
+</div>
+
+<script>
+  $(function(){
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('acc2e5a37658133ba4ad', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+
+    $('#shit').on('click', function(e) {
+      e.preventDefault();
+      var data = $('#msg').val();
+      $.ajax({
+        url: '/talk',
+        method: "POST",
+        data: {
+          msg: data
+        }
+      });
+
+      $('#msg').val('');
+      $('#msg').focus();
+    })
+    var data = $('#msg').val();
+    var channel = pusher.subscribe('namyangju');
+    channel.bind('hello', function(data) {
+      $('#talks').prepend("<p>" + data.message + "</p>");
+    });
+  })
+
+</script>

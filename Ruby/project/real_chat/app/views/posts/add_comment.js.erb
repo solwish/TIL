@@ -1,0 +1,13 @@
+
+  // Enable pusher logging - don't include this in production
+  Pusher.logToConsole = true;
+
+  var pusher = new Pusher('acc2e5a37658133ba4ad', {
+    cluster: 'ap1',
+    encrypted: true
+  });
+  var channel = pusher.subscribe('namyang');
+  channel.bind('newchat', function(data) {
+    $('#comments').append("<p>" + data.message + " | less than a minute" + "</p>");
+    $('#content').val("");
+  });
