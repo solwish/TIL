@@ -1,4 +1,4 @@
-package swExpert;
+package basicD1D2;
 
 import java.util.Scanner;
 
