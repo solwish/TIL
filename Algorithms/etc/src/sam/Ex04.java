@@ -11,7 +11,7 @@ public class Ex04 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.valueOf(br.readLine());
 
-		for (int t_case = 0; t_case <= T; t_case++) {
+		for (int t_case = 1; t_case <= T; t_case++) {
 			System.out.print("#" + t_case + " ");
 			String s = br.readLine();
 
@@ -29,7 +29,17 @@ public class Ex04 {
 					stack.pop();
 					idx++;
 				} else if (s.charAt(idx) >= '0' && s.charAt(idx) <= '9') {
-					// 추가 로직 필요
+					do {
+						ans += s.charAt(idx);
+						idx++;
+						if (s.length() == idx)
+							break;
+					} while (s.charAt(idx) >= '0' && s.charAt(idx) <= '9');
+					ans += ' ';
+					while (!stack.empty()) {
+						idx += stack.pop();
+						ans += ' ';
+					}
 				}
 			}
 			System.out.println(ans);
