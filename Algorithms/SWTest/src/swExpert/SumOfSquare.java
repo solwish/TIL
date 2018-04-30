@@ -2,6 +2,7 @@ package swExpert;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 public class SumOfSquare {
@@ -24,9 +25,9 @@ public class SumOfSquare {
 				A[i][0] = Integer.parseInt(sss);
 				A[i][1] = ss.charAt(ss.length() - 1) - 48;
 			}
-			long sum = 0;
+			BigInteger sum = BigInteger.ZERO;
 			for (int i = 0; i < n; i++)
-				sum += Math.pow(A[i][0], A[i][1]);
+				sum = sum.add(BigInteger.valueOf((long) Math.pow(A[i][0], A[i][1])));
 
 			System.out.println("#" + t_case + " " + sum);
 		}
