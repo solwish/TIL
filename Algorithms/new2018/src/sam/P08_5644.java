@@ -18,7 +18,7 @@ class BC {
 
 }
 
-public class S08_5644 {
+public class P08_5644 {
 	static int M, A, dx[] = { 0, -1, 0, 1, 0 }, dy[] = { 0, 0, 1, 0, -1 }, sum, N = 10, choose[], p_max;
 	static Vector<Integer> Va, Vb;
 	static BC bc[];
