@@ -1,4 +1,4 @@
-install.packages("KoNLP")  # 패키지 설치
+﻿install.packages("KoNLP")  # 패키지 설치
 
 KoNLP::extractnoun
 library(KoNLP)
@@ -118,7 +118,7 @@ b6 %in% c(3,5) #b6중에 값이 3 or 5인거
 
 # p75~
 install.packages("doBy") #그룹에 따라 데이터 일부를 추출하는 패키지
-# 층하추출 통계기법 사용할거야, 그룹별로 고르게 데이터를 추출
+# 층화추출 통계기법 사용할거야, 그룹별로 고르게 데이터를 추출
 library(doBy)
 set.seed(1234)  #무작위지만 이거 먼저치면 아랫줄 항상 같음(시드값 설정)
 sample(1:45, 6, replace = F) #무작위 추출
