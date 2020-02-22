@@ -39,7 +39,7 @@ print(df)
 df2 = df.reindex(['a','b','c','d'])
 print(df2)
 
-col =['x','m','w','z']
+col =['x','y','w','z']
 df3 = df2.reindex(columns=col)  #컬럼 색인 변경
 print(df3)
 
@@ -48,3 +48,11 @@ print(obj4)
 
 obj5 = obj4.reindex(range(6), method='ffill') # 앞에 있는 인덱스 값으로 대체
 print(obj5)
+
+df3 = df.reindex(index=['a','b','c','d'], method='ffill', columns=col)
+#DataFrame에서의 보간은 row(행)에 대해서만 이루어진다
+print(df3)
+print("-----------------------------------------------------")
+#재색인은 ix를 이용해서 처리할 수도 있다, 하지만 메소드 사용 불가
+df4 = df.ix[['a','b','c','d'], col]#, method='ffill']
+print(df4)
