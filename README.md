@@ -21,7 +21,7 @@
 
 - [Java, Spring, Web, Android](https://github.com/solwish/TIL/tree/master/Programming)
 
-- [Python](https://github.com/solwish/python_project/tree/master/pandas)
+- [Python](https://github.com/solwish/TIL/tree/master/python)
 
 ------
 
