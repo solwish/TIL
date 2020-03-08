@@ -1,0 +1,12 @@
+python --version
+pip --version
+
+python
+ipython
+exit()
+
+jupyter --version
+
+# 주피터 노트북
+
+jupyter notebook password  # 입력
