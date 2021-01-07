@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "title": "Spring IDE",
-  "timestamp": 1534671097757,
+  "timestamp": 1555192642083,
   "ttl": 10080,
   "helpUrl": "https://aer.ctrlflow.com/spring-ide/help",
   "feedbackUrl": "https://www.codetrails.com/error-analytics/",
@@ -14,10 +14,10 @@
   "connectTimeout": 5,
   "socketTimeout": 10,
   "acceptedProducts": [
-    "*"
+    "nothing"
   ],
   "acceptedPlugins": [
-    "*"
+    "nothing"
   ],
   "acceptedPackages": [
     "ch.qos.*",
@@ -38,7 +38,7 @@
   "acceptOtherPackages": true,
   "acceptUiFreezes": true,
   "ignoredStatuses": [
-    ":java.net.*:"
+    "*"
   ],
   "problemsZipLastDownloadTimestamp": 0
 }

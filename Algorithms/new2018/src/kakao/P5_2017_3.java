@@ -2,15 +2,15 @@ package kakao;
 
 import java.util.LinkedList;
 
-public class P_2017_3 {
+public class P5_2017_3 {
 
 	public static void main(String[] args) {
 		int n = 3;
 		String cities[] = { "Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA" };
-		System.out.println(solution(n, cities));
+		System.out.println(solutionkakaop4(n, cities));
 	}
 
-	static int solution(int cacheSize, String[] cities) {
+	static int solutionkakaop4(int cacheSize, String[] cities) {
 		int answer = 0;
 		LinkedList<String> cache = new LinkedList<>();
 		for (int i = 0; i < cities.length; i++) {

@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class Mode01 {
 	static HashMap<Integer, Integer> cnt = new HashMap<Integer, Integer>();
-	static final int T = 10;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
+		int T = sc.nextInt();
+		
 		for (int t_case = 0; t_case < T; t_case++) {
 			int tt = sc.nextInt();
 			int temp = -1;
