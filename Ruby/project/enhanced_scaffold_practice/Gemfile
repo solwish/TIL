@@ -48,5 +48,5 @@ group :development do
   gem 'awesome_print'
   gem 'pry-rails'
   gem 'meta_request'
-  gem 'carrierwave', '~> 1.0'
+  gem 'carrierwave', '~> 1.3'
 end
